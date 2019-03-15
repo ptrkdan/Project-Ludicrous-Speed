@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ea08cf98792694db4c64a1e48dfc2a, type: 3}
+  m_Name: RubyLaserMk2
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 5864462768340966210, guid: 49d8ff3424d299244be5bccee4c581e2,
+    type: 3}
+  speed: 30
+  shotCooldown: 2
+  shotCooldownVariation: 0.8
+  shootSFX: {fileID: 8300000, guid: 024fce0d4011d4844abdcb71f641dfb9, type: 3}
+  shootSFXVolume: 0.3
+  offset: {x: 1, y: 0, z: 0}
