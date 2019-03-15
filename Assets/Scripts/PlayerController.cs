@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] Projectile projectile;
 
+    [Header("VFX")]
+    [SerializeField] ParticleSystem explosionVFX;
+    [SerializeField] float explosionDuration = 1;
+
     [Header("Audio")]
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathSFXVolume = 1f;
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Move() {
+    private void Move() {   
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rigidBody.MovePosition(transform.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
@@ -85,8 +89,11 @@ public class PlayerController : MonoBehaviour
     private void Die() {
         Destroy(gameObject);
 
-        // Add explosion vfx?
+        // Death VFX
+        ParticleSystem explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
+        Destroy(explosion, explosionDuration);
 
+        // Death SFX
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
 
         FindObjectOfType<SceneLoader>().WaitAndLoadGameOverScene(gameOverDelay);

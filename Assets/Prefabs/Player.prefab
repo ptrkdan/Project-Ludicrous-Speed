@@ -100,10 +100,13 @@ MonoBehaviour:
   health: 500
   projectile: {fileID: 132911436509490290, guid: 85bd18dba23267c4693eb7e9c3f22119,
     type: 3}
+  explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
+    type: 3}
+  explosionDuration: 1
   deathSFX: {fileID: 8300000, guid: 121a3a90d64dea84f852138e89b6d5f3, type: 3}
   deathSFXVolume: 1
   gameOverDelay: 3
-  isInvincible: 1
+  isInvincible: 0
 --- !u!114 &7085491111313075989
 MonoBehaviour:
   m_ObjectHideFlags: 0

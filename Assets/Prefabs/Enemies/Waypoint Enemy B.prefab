@@ -99,6 +99,9 @@ MonoBehaviour:
   shotCounter: 0
   projectile: {fileID: 5864462768340966210, guid: 2e8224a8e03dd9044961408ecfc4b3ef,
     type: 3}
+  explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
+    type: 3}
+  explosionDuration: 1
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.4
 --- !u!114 &1153695225044299078
