@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  maxHealth: 500
   health: 500
+  healthBarSlider: {fileID: 0}
   projectile: {fileID: 132911436509490290, guid: 85bd18dba23267c4693eb7e9c3f22119,
     type: 3}
   explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,

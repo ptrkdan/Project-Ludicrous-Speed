@@ -2,13 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Stats")]
     [SerializeField] float moveSpeed = 30f;
+    [SerializeField] int maxHealth = 500;
     [SerializeField] int health = 500;
+    [SerializeField] Slider healthBarSlider;
 
     [Header("Projectile")]
     [SerializeField] Projectile projectile;
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer) {
         health -= damageDealer.Damage;
+        healthBarSlider.value = (float)health / maxHealth;
 
         if (health <= 0) {
             Die();
