@@ -104,7 +104,7 @@ MonoBehaviour:
   explosionDuration: 1
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.4
-  moveSpeed: 15
+  moveSpeed: 20
 --- !u!114 &1298490598032868000
 MonoBehaviour:
   m_ObjectHideFlags: 0

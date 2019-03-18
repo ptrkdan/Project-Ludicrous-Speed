@@ -10,6 +10,7 @@ TagManager:
   - Non-Friendly
   - Damage Dealer
   - Damager
+  - Path
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Non-Friendly
   - Friendly Projectile
   - Non-Friendly Projectile
-  - 
+  - Debris
   - 
   - 
   - 

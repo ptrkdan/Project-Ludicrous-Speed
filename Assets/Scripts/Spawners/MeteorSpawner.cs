@@ -8,6 +8,8 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField] float spawnRateMax = 10f;
     [SerializeField] int randomScaleMin = 2;
     [SerializeField] int randomScaleMax = 8;
+    [SerializeField] float randomSpeedMin = 5f;
+    [SerializeField] float randomSpeedMax = 20f;
     [SerializeField] int maxMeteor = 10;
     [SerializeField] List<MeteorController> meteorList;
 
@@ -38,12 +40,14 @@ public class MeteorSpawner : MonoBehaviour
     private void SpawnMeteor() {
         Vector3 spawnPosition = new Vector3(spawnPointX, Random.Range(spawnPointYMin, spawnPointYMax));
         float randomSpin = Random.Range(0, 180f);
+        float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
         int randomScale = Random.Range(randomScaleMin, randomScaleMax);
         int randomMeteor = Random.Range(0, meteorList.Count);
 
         MeteorController newMeteor = Instantiate(meteorList[randomMeteor], spawnPosition, Quaternion.identity);
         newMeteor.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
         newMeteor.transform.localScale = new Vector3(randomScale, randomScale, 0);
+        newMeteor.MoveSpeed = randomMoveSpeed;
         newMeteor.Health *= randomScale;
     }
 
