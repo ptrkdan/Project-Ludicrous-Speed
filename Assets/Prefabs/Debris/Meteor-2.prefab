@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1478005667491048972}
   - component: {fileID: 5149399161067919081}
   - component: {fileID: 1918596753867978311}
+  - component: {fileID: 3713397412735857831}
   - component: {fileID: 548153165716921930}
   - component: {fileID: 1861776107454265273}
   - component: {fileID: 407411544729675367}
@@ -99,6 +100,20 @@ MonoBehaviour:
   health: 100
   deathSFX: {fileID: 8300000, guid: af69ad20c08271f4093513b682d91ea7, type: 3}
   deathSFXVolume: 0.8
+--- !u!114 &3713397412735857831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683104010946518865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9be1d8463c5e044a3124ff800f4eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeedMin: 0
+  rotateSpeedMax: 90
 --- !u!114 &548153165716921930
 MonoBehaviour:
   m_ObjectHideFlags: 0
