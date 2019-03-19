@@ -1737,7 +1737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldCanvas: {fileID: 6860932}
   contractSelectCanvas: {fileID: 1284077838}
-  contractDetailsCanvas: {fileID: 0}
+  contractDetailsCanvas: {fileID: 216936284}
 --- !u!4 &1795578722
 Transform:
   m_ObjectHideFlags: 0

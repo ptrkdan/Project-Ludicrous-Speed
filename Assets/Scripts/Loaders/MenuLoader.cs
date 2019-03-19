@@ -19,10 +19,16 @@ public class MenuLoader : MonoBehaviour {
     }
 
     public void OpenContractSelect() {
+        // Select randomized contracts from list and place on display
+
+        worldCanvas.gameObject.SetActive(false);
         contractSelectCanvas.gameObject.SetActive(true);
+        
     }
 
-    public void OpenContractDetails() {
+    public void OpenContractDetails(ContractConfig contract = null) {
+        // Set contract details on UI
+
         contractSelectCanvas.gameObject.SetActive(false);
         contractDetailsCanvas.gameObject.SetActive(true);
     }
