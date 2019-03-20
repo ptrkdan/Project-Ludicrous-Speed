@@ -28,6 +28,9 @@ public class MenuLoader : MonoBehaviour {
 
     public void OpenContractDetails(ContractConfig contract = null) {
         // Set contract details on UI
+        ContractDetailsManager contractDetailsManager 
+            = contractDetailsCanvas.GetComponentInChildren<ContractDetailsManager>();
+        contractDetailsManager.SetContractConfig(contract);
 
         contractSelectCanvas.gameObject.SetActive(false);
         contractDetailsCanvas.gameObject.SetActive(true);

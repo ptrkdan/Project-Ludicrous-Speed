@@ -30,13 +30,11 @@ public class ContractSelectManager : MonoBehaviour
         return config;
     }
 
-    private void DisplayContract(ContractConfig contractConfig, int index) {
+    private void DisplayContract(ContractConfig contract, int index) {
         ContractSelection newContractSelection = Instantiate(
             contractSelectionPrefab, 
             gameObject.transform);
         newContractSelection.transform.localPosition = new Vector3(0, 60 - (index * 100));
-        newContractSelection.SetContractTitle(contractConfig.GetContractTitle());
-        newContractSelection.SetLootLevel(contractConfig.GetContractLootLevel());
-        newContractSelection.SetDifficultyLevel(contractConfig.GetContractDifficultyLevel());
+        newContractSelection.SetContractConfig(contract);
     }
 }

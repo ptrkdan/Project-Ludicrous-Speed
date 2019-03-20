@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(START_MENU_SCENE_INDEX + 1);
     }
 
-    public void LoadSmugglingRunScene() {
+    public void LoadSmugglingRunScene(ContractConfig contract = null) {
         SceneManager.LoadScene(SMUGGLING_RUN_SCENE_INDEX);
     }
 
