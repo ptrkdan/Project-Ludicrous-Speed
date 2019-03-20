@@ -7,12 +7,19 @@ public class ContractDetailsManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI contractTitleText;
     [SerializeField] TextMeshProUGUI contractDetailsText;
+
+    [SerializeField] GameSession session;
     [SerializeField] SceneLoader sceneLoader;
 
     [SerializeField] ContractConfig contractConfig;
 
     private void Start() {
+        session = FindObjectOfType<GameSession>();
         sceneLoader = FindObjectOfType<SceneLoader>();
+    }
+
+    private void OnEnable() {
+        SetContractConfig(session.ActiveContract);
     }
 
     public void SetContractConfig(ContractConfig contract) {

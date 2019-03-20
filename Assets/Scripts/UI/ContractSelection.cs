@@ -11,11 +11,15 @@ public class ContractSelection : MonoBehaviour
     [SerializeField] Transform difficultyLevelPanel;
     [SerializeField] Image lootSprite;
     [SerializeField] Image difficultySprite;
+
+    [SerializeField] GameSession session;
     [SerializeField] MenuLoader menuLoader;
+    
 
     [SerializeField] ContractConfig contractConfig;
 
     private void Start() {
+        session = FindObjectOfType<GameSession>();
         menuLoader = FindObjectOfType<MenuLoader>();
     }
 
@@ -47,6 +51,7 @@ public class ContractSelection : MonoBehaviour
     }
 
     public void SelectContract() {
-        menuLoader.OpenContractDetails(contractConfig);
+        session.ActiveContract = contractConfig;
+        menuLoader.OpenContractDetails();
     }
 }
