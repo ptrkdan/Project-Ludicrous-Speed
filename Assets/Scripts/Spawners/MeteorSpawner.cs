@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeteorSpawner : MonoBehaviour
 {
     [SerializeField] float spawnRateMin = 1f;
-    [SerializeField] float spawnRateMax = 10f;
+    [SerializeField] float spawnRateMax = 3f;
     [SerializeField] int randomScaleMin = 2;
     [SerializeField] int randomScaleMax = 8;
     [SerializeField] float randomSpeedMin = 5f;
@@ -49,6 +49,13 @@ public class MeteorSpawner : MonoBehaviour
         newMeteor.transform.localScale = new Vector3(randomScale, randomScale, 0);
         newMeteor.MoveSpeed = randomMoveSpeed;
         newMeteor.Health *= randomScale;
+    }
+
+    public void SetDifficulty(int difficulty) {
+        spawnRateMin = difficulty * 0.5f;
+        spawnRateMax = difficulty + 2.5f;
+        randomScaleMax = difficulty;
+        randomScaleMax = difficulty + 5;
     }
 
     public void IncreaseMeteorCount() {

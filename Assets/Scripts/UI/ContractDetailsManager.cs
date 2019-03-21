@@ -13,7 +13,7 @@ public class ContractDetailsManager : MonoBehaviour
 
     [SerializeField] ContractConfig contractConfig;
 
-    private void Start() {
+    private void Awake() {
         session = FindObjectOfType<GameSession>();
         sceneLoader = FindObjectOfType<SceneLoader>();
     }
@@ -29,6 +29,6 @@ public class ContractDetailsManager : MonoBehaviour
     }
 
     public void LoadContract() {
-        sceneLoader.LoadSmugglingRunScene(contractConfig);
+        sceneLoader.LoadSmugglingRunScene();
     }
 }

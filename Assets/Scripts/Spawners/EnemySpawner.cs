@@ -75,5 +75,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-
+    public void SetDifficulty(int difficulty) {
+        
+    }
 }

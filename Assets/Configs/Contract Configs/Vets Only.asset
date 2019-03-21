@@ -23,4 +23,5 @@ MonoBehaviour:
     Haaaahahahaha'
   contractLootLevel: 4
   contractDifficultyLevel: 5
+  runDistance: 5000
   contractRewards: []

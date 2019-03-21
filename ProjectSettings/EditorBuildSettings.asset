@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/20 SmugglingRun.unity
     guid: 7b61fa123ea37ca498a4a74cd2a2cce6
   - enabled: 1
+    path: Assets/Scenes/30 Run Results.unity
+    guid: 087b308390c52874fbcfe9988ed50094
+  - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 86f25917461ba7b49b0e8af418a166cc
   m_configObjects: {}

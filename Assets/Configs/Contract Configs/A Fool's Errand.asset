@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: Amateurs
+  m_Name: A Fool's Errand
   m_EditorClassIdentifier: 
   contractTitle: A Fool's Errand
   contractDetails: Are you a fool? 'Cause I'm lookin' for one.
   contractLootLevel: 2
   contractDifficultyLevel: 3
+  runDistance: 2500
   contractRewards: []

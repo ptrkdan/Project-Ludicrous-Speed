@@ -99,6 +99,6 @@ public class PlayerController : MonoBehaviour
         // Death SFX
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
 
-        FindObjectOfType<SceneLoader>().WaitAndLoadGameOverScene(gameOverDelay);
+        FindObjectOfType<SceneLoader>().WaitAndLoadRunResultsScene(gameOverDelay);
     }
 }

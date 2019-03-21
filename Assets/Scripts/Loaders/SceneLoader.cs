@@ -5,28 +5,29 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     const int START_MENU_SCENE_INDEX = 0;
+    const int HQ_SCENE_INDEX = 1;
     const int SMUGGLING_RUN_SCENE_INDEX = 2;
 
     public void GoToStartMenu() {
         SceneManager.LoadScene(START_MENU_SCENE_INDEX);
     }
 
-    public void StartGame() {
-        SceneManager.LoadScene(START_MENU_SCENE_INDEX + 1);
+    public void GoToHQScene() {
+        SceneManager.LoadScene(HQ_SCENE_INDEX);
     }
 
-    public void LoadSmugglingRunScene(ContractConfig contract = null) {
+    public void LoadSmugglingRunScene() {
         SceneManager.LoadScene(SMUGGLING_RUN_SCENE_INDEX);
     }
 
-    public void WaitAndLoadGameOverScene(float delay = 0) {
-        StartCoroutine(LoadGameOverScene(delay));
+    public void WaitAndLoadRunResultsScene(float delay = 0) {
+        StartCoroutine(LoadRunResultsScene(delay));
     }
 
-    IEnumerator LoadGameOverScene(float delay) {
+    IEnumerator LoadRunResultsScene(float delay) {
         yield return new WaitForSeconds(delay);
             
-        SceneManager.LoadScene("Game Over");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame() {
