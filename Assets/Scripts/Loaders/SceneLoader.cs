@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
-    const int START_MENU_SCENE_INDEX = 0;
-    const int HQ_SCENE_INDEX = 1;
-    const int SMUGGLING_RUN_SCENE_INDEX = 2;
+    const int START_MENU_SCENE_INDEX = 1;
+    const int HQ_SCENE_INDEX = 2;
+    const int SMUGGLING_RUN_SCENE_INDEX = 3;
 
     public void GoToStartMenu() {
         SceneManager.LoadScene(START_MENU_SCENE_INDEX);
@@ -26,7 +26,7 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadRunResultsScene(float delay) {
         yield return new WaitForSeconds(delay);
-            
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

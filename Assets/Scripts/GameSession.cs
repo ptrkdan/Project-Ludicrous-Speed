@@ -10,17 +10,4 @@ public class GameSession : MonoBehaviour
 
     public ContractConfig ActiveContract { get => activeContract; set => activeContract = value; }
     public bool IsRunSuccessful { get => isRunSuccessful; set => isRunSuccessful = value; }
-
-    private void Awake() {
-        SetUpSingleton();
-    }
-
-    private void SetUpSingleton() {
-        if (FindObjectsOfType(GetType()).Length > 1) {
-            Destroy(gameObject);
-        }
-        else {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
 }

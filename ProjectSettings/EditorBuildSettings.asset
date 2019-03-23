@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/00 Main Menu.unity
+    path: Assets/Scenes/Preload.unity
+    guid: d734c2f577c6baa4ebf37e0d46dfe10d
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
     guid: 68605979648507f45b79c7173c77bbdd
   - enabled: 1
-    path: Assets/Scenes/10 HQ.unity
+    path: Assets/Scenes/HQ.unity
     guid: d9999f732b51a644f8beb883704069e6
   - enabled: 1
-    path: Assets/Scenes/20 SmugglingRun.unity
+    path: Assets/Scenes/SmugglingRun.unity
     guid: 7b61fa123ea37ca498a4a74cd2a2cce6
   - enabled: 1
-    path: Assets/Scenes/30 Run Results.unity
+    path: Assets/Scenes/Run Results.unity
     guid: 087b308390c52874fbcfe9988ed50094
-  - enabled: 0
-    path: Assets/Scenes/Game Over.unity
-    guid: 86f25917461ba7b49b0e8af418a166cc
   m_configObjects: {}
