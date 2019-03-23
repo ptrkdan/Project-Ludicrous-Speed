@@ -50,6 +50,7 @@ public class RunManager : MonoBehaviour
             distanceRemainingText.text = distanceRemaining.ToString();
         }
         else {
+            session.IsRunSuccessful = true;
             sceneLoader.WaitAndLoadRunResultsScene(2f);
         }
     }

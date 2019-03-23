@@ -31,9 +31,11 @@ public class PlayerController : MonoBehaviour
 
     Vector3 movement = new Vector2();
 
+    GameSession session;
     Rigidbody2D rigidBody;
 
     void Start() {
+        session = FindObjectOfType<GameSession>();
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -99,6 +101,7 @@ public class PlayerController : MonoBehaviour
         // Death SFX
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
 
+        session.IsRunSuccessful = false;
         FindObjectOfType<SceneLoader>().WaitAndLoadRunResultsScene(gameOverDelay);
     }
 }

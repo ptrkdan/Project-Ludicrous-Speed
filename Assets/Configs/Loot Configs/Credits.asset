@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Credits
   m_EditorClassIdentifier: Assembly-CSharp::Loot
   lootName: Credits
-  lootDescription: Credits make the galaxy go 'roung. At least in here known universe.
-  lootSprite: {fileID: 0}
+  lootDescription: Credits are what make the galaxy go 'round. At least... in this
+    known universe.
+  lootSprite: {fileID: 21300000, guid: d8b311c9bf4789f49a73ba86aae3138b, type: 3}
   value: 100
   damageValue: 0

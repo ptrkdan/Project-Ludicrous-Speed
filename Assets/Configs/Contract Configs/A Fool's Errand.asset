@@ -17,4 +17,5 @@ MonoBehaviour:
   contractLootLevel: 2
   contractDifficultyLevel: 3
   runDistance: 2500
-  contractRewards: []
+  contractRewards:
+  - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
