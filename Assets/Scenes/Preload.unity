@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 416438701}
   - component: {fileID: 416438700}
   - component: {fileID: 416438703}
+  - component: {fileID: 416438704}
   m_Layer: 0
   m_Name: GameSession
   m_TagString: Untagged
@@ -267,3 +268,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &416438704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416438699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d36a9b96b33fa04ab843facdb161b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: TEST PILOT
+  experiencePoints: 0
+  playerLevel: 1
+  credits: 0
+  inventory: []
