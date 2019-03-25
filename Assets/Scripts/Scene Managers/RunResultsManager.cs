@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
-using System;
 
 public class RunResultsManager : MonoBehaviour
 {
@@ -27,21 +27,24 @@ public class RunResultsManager : MonoBehaviour
     [Header("Cached")]
     [SerializeField] GameSession session;
 
-    Queue<LootConfig> rewards;
-
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         session = FindObjectOfType<GameSession>();
-        rewards = new Queue<LootConfig>();
+        if (!session) {
+            SceneManager.LoadScene(0);
+        }
 
-        SetResultsText();
-        SetLoot();
-        
+        FinalizeResults(session.IsRunSuccessful);
+
     }
 
-    private void SetResultsText() {
-        if(session.IsRunSuccessful) {
+    private void FinalizeResults(bool success) {
+        SetResultsText(success);
+        SetLoot(success);
+    }
+
+    private void SetResultsText(bool success) {
+        if(success) {
             resultsText.text = "Successful!";
             restartButton.gameObject.SetActive(false);
             hqButton.transform.position -= new Vector3(120, 0); // TODO Make into const
@@ -50,17 +53,28 @@ public class RunResultsManager : MonoBehaviour
         }
     }
 
-    private void SetLoot() {
+    private void SetLoot(bool success) {
         List<LootConfig> lootList = session.ActiveContract.GetContractRewards();
-        for (int i = 0; i < lootList.Count; i++) {
-            GameObject newLoot = Instantiate(lootIcon, lootPanel);
-            newLoot.transform.Translate(
-                lootIconPaddingX, 
-                -lootIconPaddingY - (lootIconOffsetY*i), 
-                0);
-            newLoot.GetComponent<Image>().sprite = lootList[i].LootSprite;
-            newLoot.GetComponentInChildren<TextMeshProUGUI>().text = lootList[i].LootName;
+        if (success) {
+            for (int i = 0; i < lootList.Count; i++) {
+                GameObject newLoot = Instantiate(lootIcon, lootPanel);
+                newLoot.transform.Translate(
+                    lootIconPaddingX, 
+                    -lootIconPaddingY - (lootIconOffsetY*i), 
+                    0);
+                newLoot.GetComponent<Image>().sprite = lootList[i].LootSprite;
+                newLoot.GetComponentInChildren<TextMeshProUGUI>().text = lootList[i].LootName;
+                
+                if (lootList[i].LootName == "Credits") {
+                    session.Player.AddToCredits(lootList[i].LootValue);
+                } else {
+                    session.Player.AddToInventory(lootList[i]);
+                }
+            }
+        } else {
+            // TODO: Give XP? Pay 10% of credit reward?
         }
+
         lootPanel.GetComponent<RectTransform>().sizeDelta 
             = new Vector2(lootPanelWidth, lootPanelHeightPerLoot * (lootList.Count));
         lootPanelScrollbar.value = 0; // FIXME: scrollbar still shows up in the middle
