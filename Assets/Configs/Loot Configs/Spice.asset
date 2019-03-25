@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49db622687276b24594d3e0192f91bf6, type: 3}
-  m_Name: Credits
-  m_EditorClassIdentifier: Assembly-CSharp::Loot
-  lootName: Credits
-  lootDescription: Credits make the galaxy go 'round. At least in this know universe.
-  lootSprite: {fileID: 21300000, guid: 669034c6f6c17604690e5fe8ed6492a7, type: 3}
-  value: 100
+  m_Name: Spice
+  m_EditorClassIdentifier: 
+  lootName: Spice
+  lootDescription: Let it flow.
+  lootSprite: {fileID: 21300000, guid: 7a0946dd8cceebf49a9ae4ddaa79d776, type: 3}
+  lootValue: 1000
   damageValue: 0
