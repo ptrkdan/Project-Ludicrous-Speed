@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Loot Config")]
+[CreateAssetMenu(menuName = "Configs/Loot Config")]
 public class LootConfig : ScriptableObject
 {
     [SerializeField] string lootName;
-    [SerializeField] [TextArea (3,5)] string lootDescription;
     [SerializeField] Sprite lootSprite;
     [SerializeField] int lootValue = 0;
+    [SerializeField] [TextArea (3,5)] string lootDescription;
 
     [Header("Stats")]
     [SerializeField] float damageValue;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Projectile Config")]
+[CreateAssetMenu(menuName = "Configs/Projectile Config")]
 public class ProjectileConfig : ScriptableObject {
     [Header("Prefab")]
     [SerializeField] Projectile projectile;

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy Wave Config")]
+[CreateAssetMenu(menuName = "Configs/Enemy Wave Config")]
 public class WaveConfig : ScriptableObject {
+    [Header("Prefabs")]
     [SerializeField] WaypointEnemyController enemyPrefab;
     [SerializeField] GameObject pathPrefab;
+
+    [Header("Spawn Parameters")]
     [SerializeField] float timeBetweenSpawns = 0.5f;
     [SerializeField] float spawnRandomFactor = 0.3f;
     [SerializeField] int numberOfEnemies = 5;

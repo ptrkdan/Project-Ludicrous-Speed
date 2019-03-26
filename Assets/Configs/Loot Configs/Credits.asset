@@ -15,5 +15,5 @@ MonoBehaviour:
   lootName: Credits
   lootDescription: Credits make the galaxy go 'round. At least in this know universe.
   lootSprite: {fileID: 21300000, guid: 669034c6f6c17604690e5fe8ed6492a7, type: 3}
-  value: 100
+  lootValue: 100
   damageValue: 0
