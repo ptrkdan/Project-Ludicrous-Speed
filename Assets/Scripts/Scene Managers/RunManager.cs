@@ -9,7 +9,7 @@ public class RunManager : MonoBehaviour
     [SerializeField] GameSession session;
     [SerializeField] SceneLoader sceneLoader;
     [SerializeField] PlayerController player;
-    [SerializeField] MeteorSpawner meteorSpawner;
+    [SerializeField] AsteroidSpawner asteroidSpawner;
     [SerializeField] EnemySpawner enemySpanwer;
 
     [SerializeField] TextMeshProUGUI distanceRemainingText;
@@ -32,12 +32,12 @@ public class RunManager : MonoBehaviour
         int difficulty = session.ActiveContract.GetContractDifficultyLevel();
         distanceRemaining = session.ActiveContract.GetRunDistance();
         distanceRemainingText.text = distanceRemaining.ToString();
-        ConfigureMeteorSpawner(difficulty);
+        ConfigureAsteroidSpawner(difficulty);
         ConfigureEnemySpawner(difficulty);
     }
 
-    private void ConfigureMeteorSpawner(int difficulty) {
-        meteorSpawner.SetDifficulty(difficulty);
+    private void ConfigureAsteroidSpawner(int difficulty) {
+        asteroidSpawner.SetDifficulty(difficulty);
     }
 
     private void ConfigureEnemySpawner(int difficulty) {

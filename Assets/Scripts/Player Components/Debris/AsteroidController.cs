@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorController : MonoBehaviour
+public class AsteroidController : MonoBehaviour
 {
     [Header("Meteor Stats")]
     [SerializeField] float moveSpeed = 5f;
@@ -20,7 +20,7 @@ public class MeteorController : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
-        FindObjectOfType<MeteorSpawner>().IncreaseMeteorCount();
+        FindObjectOfType<AsteroidSpawner>().IncreaseAsteroidCount();
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class MeteorController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Despawner")) {
-            FindObjectOfType<MeteorSpawner>().DecreaseMeteorCount();
+            FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
             Destroy(gameObject);
         }
         else {
@@ -53,7 +53,7 @@ public class MeteorController : MonoBehaviour
     }
 
     private void Die() {
-        FindObjectOfType<MeteorSpawner>().DecreaseMeteorCount();
+        FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
         Destroy(gameObject);
 
         // Add explosion vfx?

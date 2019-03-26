@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorSpawner : MonoBehaviour
+public class AsteroidSpawner : MonoBehaviour
 {
     [SerializeField] float spawnRateMin = 1f;
     [SerializeField] float spawnRateMax = 3f;
@@ -11,7 +11,7 @@ public class MeteorSpawner : MonoBehaviour
     [SerializeField] float randomSpeedMin = 5f;
     [SerializeField] float randomSpeedMax = 20f;
     [SerializeField] int maxMeteor = 10;
-    [SerializeField] List<MeteorController> meteorList;
+    [SerializeField] List<AsteroidController> meteorList;
 
     private float spawnPointX;
     private float spawnPointYMin;
@@ -44,7 +44,7 @@ public class MeteorSpawner : MonoBehaviour
         int randomScale = Random.Range(randomScaleMin, randomScaleMax);
         int randomMeteor = Random.Range(0, meteorList.Count);
 
-        MeteorController newMeteor = Instantiate(meteorList[randomMeteor], spawnPosition, Quaternion.identity);
+        AsteroidController newMeteor = Instantiate(meteorList[randomMeteor], spawnPosition, Quaternion.identity);
         newMeteor.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
         newMeteor.transform.localScale = new Vector3(randomScale, randomScale, 0);
         newMeteor.MoveSpeed = randomMoveSpeed;
@@ -58,11 +58,11 @@ public class MeteorSpawner : MonoBehaviour
         randomScaleMax = difficulty + 5;
     }
 
-    public void IncreaseMeteorCount() {
+    public void IncreaseAsteroidCount() {
         activeMeteorCount += 1;
     }
 
-    public void DecreaseMeteorCount() {
+    public void DecreaseAsteroidCount() {
         activeMeteorCount -= 1;
     }
 
