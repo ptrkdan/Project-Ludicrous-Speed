@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuLoader : MonoBehaviour {
@@ -8,28 +6,50 @@ public class MenuLoader : MonoBehaviour {
     [SerializeField] Canvas contractSelectCanvas;
     [SerializeField] Canvas contractDetailsCanvas;
 
+    Stack<Canvas> overlayStack;     // Current overlay will always be on the top of the stack
+
     private void Start() {
+        overlayStack = new Stack<Canvas>();
         ResetHQScene();
+    }
+
+    private void HideCurrentOverlay() {
+        overlayStack.Peek().gameObject.SetActive(false);
+    }
+
+    private void ShowCurrentOverlay() {
+        overlayStack.Peek().gameObject.SetActive(true);
+    }
+
+    private void GoToNextOverlay(Canvas nextCanvas) {
+        HideCurrentOverlay();
+        overlayStack.Push(nextCanvas);
+        ShowCurrentOverlay();
     }
 
     private void ResetHQScene() {
         worldCanvas.gameObject.SetActive(true);
         contractSelectCanvas.gameObject.SetActive(false);
         contractDetailsCanvas.gameObject.SetActive(false);
+
+        overlayStack.Push(worldCanvas);
     }
 
     public void OpenContractSelect() {
-        // Select randomized contracts from list and place on display
-
-        worldCanvas.gameObject.SetActive(false);
-        contractSelectCanvas.gameObject.SetActive(true);
-        
+        GoToNextOverlay(contractSelectCanvas);
     }
 
     public void OpenContractDetails() {
-        contractSelectCanvas.gameObject.SetActive(false);
-        contractDetailsCanvas.gameObject.SetActive(true);
+        GoToNextOverlay(contractDetailsCanvas);
     }
 
-    
+    public void GoBack() {
+        if (overlayStack.Count > 1) {
+            HideCurrentOverlay();
+            overlayStack.Pop();
+            ShowCurrentOverlay();
+        } else {
+            ResetHQScene();
+        }
+    }
 }
