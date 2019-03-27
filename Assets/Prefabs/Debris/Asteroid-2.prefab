@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1861776107454265273}
   - component: {fileID: 407411544729675367}
   m_Layer: 12
-  m_Name: Meteor-2
+  m_Name: Asteroid-2
   m_TagString: Non-Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9be1d8463c5e044a3124ff800f4eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeedMin: 0
+  rotateSpeedMin: -90
   rotateSpeedMax: 90
 --- !u!114 &548153165716921930
 MonoBehaviour:

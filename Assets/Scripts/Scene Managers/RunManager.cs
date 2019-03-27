@@ -1,37 +1,43 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class RunManager : MonoBehaviour
 {
+    [Header("Cached")]
     [SerializeField] GameSession session;
     [SerializeField] SceneLoader sceneLoader;
     [SerializeField] PlayerController player;
+
+    [Header("Spawners")]
     [SerializeField] AsteroidSpawner asteroidSpawner;
     [SerializeField] EnemySpawner enemySpanwer;
 
+    [Header("UI References")]
     [SerializeField] TextMeshProUGUI distanceRemainingText;
 
-    int distanceRemaining;
+    private int distanceRemaining;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         session = FindObjectOfType<GameSession>();
-
+        if (!session) {
+            sceneLoader.GoToPreload();
+        }
         ConfigureRun();
     }
 
-    void FixedUpdate() {
+    private void FixedUpdate() {
         UpdateDistanceRemaining();
     }
 
     private void ConfigureRun() {
         int difficulty = session.ActiveContract.GetContractDifficultyLevel();
+        
+        // Set remaining distance on UI
         distanceRemaining = session.ActiveContract.GetRunDistance();
         distanceRemainingText.text = distanceRemaining.ToString();
+
+        // Configure spawners with contract difficulty
         ConfigureAsteroidSpawner(difficulty);
         ConfigureEnemySpawner(difficulty);
     }
@@ -48,8 +54,7 @@ public class RunManager : MonoBehaviour
         if (distanceRemaining > 0) {
             distanceRemaining -= 1;
             distanceRemainingText.text = distanceRemaining.ToString();
-        }
-        else {
+        } else {
             session.IsRunSuccessful = true;
             sceneLoader.WaitAndLoadRunResultsScene(2f);
         }

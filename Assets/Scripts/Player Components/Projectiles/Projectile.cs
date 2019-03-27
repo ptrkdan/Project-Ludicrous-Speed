@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
@@ -8,9 +6,14 @@ public abstract class Projectile : MonoBehaviour
 
     public ProjectileConfig Config { get => config; set => config = value; }
 
-    public abstract void Fire();
-
     private void OnTriggerEnter2D(Collider2D collision) {
         Destroy(gameObject);
     }
+
+    protected void PlayFireSFX() {
+        AudioSource.PlayClipAtPoint(config.ShootSFX, Camera.main.transform.position, config.ShootSFXVolume);
+    }
+
+    public abstract void Fire();
+
 }

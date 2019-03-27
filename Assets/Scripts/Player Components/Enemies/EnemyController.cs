@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class EnemyController : MonoBehaviour {
 
+    [Header("Stats")]
     [SerializeField] float health = 100;
+
+    [Header("Weaponry")]
     [SerializeField] float shotCounter; 
     [SerializeField] Projectile projectile;
 
@@ -21,25 +21,22 @@ public abstract class EnemyController : MonoBehaviour {
 
     protected abstract void Move();
 
-    // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         FindObjectOfType<EnemySpawner>().IncreaseEnemyCount();
         ResetShotCooldown();
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
         Move();
         CountDownAndShoot();
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Despawner")) {
             FindObjectOfType<EnemySpawner>().DecreaseEnemyCount();
             Destroy(gameObject);
-        }
-        else {
+        } else {
             DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
             if (!damageDealer) { return; }
             ProcessHit(damageDealer);

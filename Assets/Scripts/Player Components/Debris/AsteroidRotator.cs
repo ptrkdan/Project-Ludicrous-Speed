@@ -1,15 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AsteroidRotator : MonoBehaviour
 {
-    [SerializeField] float rotateSpeedMin = 0f;
+    [SerializeField] float rotateSpeedMin = -90;
     [SerializeField] float rotateSpeedMax = 90f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Rotate(0, 0, Random.Range(rotateSpeedMin, rotateSpeedMax) * Time.deltaTime);
+    float rotateSpeed = 0f;
+
+    private void Start() {
+        rotateSpeed = Random.Range(rotateSpeedMin, rotateSpeedMax);
+    }
+
+    private void Update() {
+        transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
     }
 }

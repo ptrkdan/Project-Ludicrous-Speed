@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
@@ -9,17 +7,12 @@ public class BackgroundScroller : MonoBehaviour
     Material backgroundMaterial;
     Vector2 offset;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    private void Start() {
         backgroundMaterial = GetComponent<MeshRenderer>().material;
         offset = new Vector2(scrollSpeed, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    private void Update() {
         backgroundMaterial.mainTextureOffset += offset * Time.deltaTime;
     }
 }

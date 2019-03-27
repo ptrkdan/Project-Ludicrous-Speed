@@ -1,22 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class ContractSelection : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI contractTitleText;
-    [SerializeField] Transform lootLevelPanel;
-    [SerializeField] Transform difficultyLevelPanel;
+
+    [Header("Cached")]
+    [SerializeField] GameSession session;
+    [SerializeField] MenuLoader menuLoader;
+    [SerializeField] ContractConfig contract;
+
+    [Header("UI Sprites")]
     [SerializeField] Image lootSprite;
     [SerializeField] Image difficultySprite;
 
-    [SerializeField] GameSession session;
-    [SerializeField] MenuLoader menuLoader;
-    
+    [Header("UI References")]
+    [SerializeField] TextMeshProUGUI contractTitleText;
+    [SerializeField] Transform lootLevelPanel;
+    [SerializeField] Transform difficultyLevelPanel;
 
-    [SerializeField] ContractConfig contractConfig;
+    [Header("UI Offsets")]
+    [SerializeField] float SpriceIconXOffset = -170;
+    [SerializeField] float SpriteIconYOffset = 10;
+    [SerializeField] float SpriteIconWidth = 100;
 
     private void Start() {
         session = FindObjectOfType<GameSession>();
@@ -31,7 +37,7 @@ public class ContractSelection : MonoBehaviour
         for (int i = 0; i < level; i++) {
             Image newLootSprite = Instantiate(lootSprite, lootLevelPanel);
             newLootSprite.GetComponent<Transform>().localPosition 
-                = new Vector3(-170 + (i*100), 10 , 0);
+                = new Vector3(SpriceIconXOffset + (i * SpriteIconWidth), SpriteIconYOffset);
         }
     }
 
@@ -39,19 +45,19 @@ public class ContractSelection : MonoBehaviour
         for (int i = 0; i < level; i++) {
             Image newDifficultySprite = Instantiate(difficultySprite, difficultyLevelPanel);
             newDifficultySprite.GetComponent<Transform>().localPosition
-                = new Vector3(-170 + (i * 100), 10, 0);
+                = new Vector3(SpriceIconXOffset + (i * SpriteIconWidth), SpriteIconYOffset);
         }
     }
 
     public void SetContractConfig(ContractConfig contract) {
-        contractConfig = contract;
+        this.contract = contract;
         SetContractTitle(contract.GetContractTitle());
         SetLootLevel(contract.GetContractLootLevel());
         SetDifficultyLevel(contract.GetContractDifficultyLevel());
     }
 
     public void SelectContract() {
-        session.ActiveContract = contractConfig;
+        session.ActiveContract = contract;
         menuLoader.OpenContractDetails();
     }
 }

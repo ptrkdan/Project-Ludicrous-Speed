@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -7,7 +6,11 @@ using TMPro;
 
 public class RunResultsManager : MonoBehaviour
 {
-    [Header("Canvas")]
+    [Header("Cached")]
+    [SerializeField] GameSession session;
+    [SerializeField] SceneLoader sceneLoader;
+
+    [Header("UI References")]
     [SerializeField] TextMeshProUGUI resultsText;
     [SerializeField] Transform lootPanel;
     [SerializeField] Scrollbar lootPanelScrollbar;
@@ -24,18 +27,13 @@ public class RunResultsManager : MonoBehaviour
     [SerializeField] int lootPanelWidth = 370;
     [SerializeField] int lootPanelHeightPerLoot = 75;
 
-    [Header("Cached")]
-    [SerializeField] GameSession session;
-
-    // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         session = FindObjectOfType<GameSession>();
         if (!session) {
-            SceneManager.LoadScene(0);
+            sceneLoader.GoToPreload();
         }
 
         FinalizeResults(session.IsRunSuccessful);
-
     }
 
     private void FinalizeResults(bool success) {

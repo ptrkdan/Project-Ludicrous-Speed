@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class ContractDetailsManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI contractTitleText;
-    [SerializeField] TextMeshProUGUI contractDetailsText;
-
+    [Header("Cached")]
     [SerializeField] GameSession session;
     [SerializeField] SceneLoader sceneLoader;
+    [SerializeField] ContractConfig contract;
 
-    [SerializeField] ContractConfig contractConfig;
+    [Header("UI References")]
+    [SerializeField] TextMeshProUGUI contractTitleText;
+    [SerializeField] TextMeshProUGUI contractDetailsText;
 
     private void Awake() {
         session = FindObjectOfType<GameSession>();
@@ -23,7 +22,7 @@ public class ContractDetailsManager : MonoBehaviour
     }
 
     public void SetContractConfig(ContractConfig contract) {
-        contractConfig = contract;
+        this.contract = contract;
         contractTitleText.text = contract.GetContractTitle();
         contractDetailsText.text = contract.GetContractDetails();
     }

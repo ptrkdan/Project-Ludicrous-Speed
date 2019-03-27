@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,16 +17,10 @@ public class EnemySpawner : MonoBehaviour
     private float nextTimeToSpawn = 0f;
     private int activeEnemiesCount = 0;
     private int startingWave = 0;
-    
-    public void IncreaseEnemyCount() {
-        activeEnemiesCount += 1;
-    }
+    private Quaternion rotateLeft = Quaternion.Euler(new Vector3(0, 0, -90));
+    private Quaternion rotateRight = Quaternion.Euler(new Vector3(0, 0, 90));
 
-    public void DecreaseEnemyCount() {
-        activeEnemiesCount -= 1;
-    }
-
-    IEnumerator Start() {
+    private IEnumerator Start() {
         SetSpawnRange();
 
         do {
@@ -43,19 +36,16 @@ public class EnemySpawner : MonoBehaviour
         spawnPointYMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
         spawnPointYMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
-
-    // Update is called once per frame
-    void Update() {
+   
+    private void Update() {
         SpawnStraightLineEnemy();
     }
 
     private void SpawnStraightLineEnemy() {
         if (Time.time >= nextTimeToSpawn) {
-            //Debug.Log("Spawning Enemy...");
-            Vector3 spawnPosition = new Vector3(-spawnPointX, UnityEngine.Random.Range(spawnPointYMin, spawnPointYMax));
-            Instantiate(EnemyPrefab, spawnPosition, Quaternion.Euler(0, 0, 90));
-            nextTimeToSpawn = Time.time + 1f / UnityEngine.Random.Range(spawnRateMin, spawnRateMax);
-
+            Vector3 spawnPosition = new Vector3(-spawnPointX, Random.Range(spawnPointYMin, spawnPointYMax));
+            Instantiate(EnemyPrefab, spawnPosition, rotateRight);
+            nextTimeToSpawn = Time.time + 1f / Random.Range(spawnRateMin, spawnRateMax);
         }
     }
 
@@ -68,14 +58,27 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig) {
         for (int i = 0; i < waveConfig.NumberOfEnemies; i++) {
-            // var enemy = Instantiate ...?
-            WaypointEnemyController enemy = Instantiate(waveConfig.GetEnemyPrefab(), waveConfig.GetWayPoints()[0].transform.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+            WaypointEnemyController enemy = Instantiate(
+                waveConfig.GetEnemyPrefab(), 
+                waveConfig.GetWayPoints()[0].transform.position, 
+                rotateLeft);
             enemy.WaveConfig = waveConfig;
+
             yield return new WaitForSeconds(waveConfig.TimeBetweenSpawns);
         }
     }
 
     public void SetDifficulty(int difficulty) {
-        
+
     }
+
+    public void IncreaseEnemyCount() {
+        activeEnemiesCount += 1;
+    }
+
+    public void DecreaseEnemyCount() {
+        activeEnemiesCount -= 1;
+    }
+
+    
 }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BGMPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         SetUpSingleton();
     }
@@ -14,8 +10,7 @@ public class BGMPlayer : MonoBehaviour
     private void SetUpSingleton() {
         if (FindObjectsOfType(GetType()).Length > 1) {
             Destroy(gameObject);
-        }
-        else {
+        } else {
             DontDestroyOnLoad(gameObject);
         }
     }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
 {
@@ -17,14 +15,12 @@ public class AsteroidController : MonoBehaviour
 
     Rigidbody2D rigidBody;
 
-    // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         FindObjectOfType<AsteroidSpawner>().IncreaseAsteroidCount();
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
         Move();
     }
 
@@ -32,10 +28,9 @@ public class AsteroidController : MonoBehaviour
         if (other.CompareTag("Despawner")) {
             FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
             Destroy(gameObject);
-        }
-        else {
+        } else {
             DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-            if (!damageDealer) { return; }
+            if (!damageDealer) { return; }      // If other object does not have a DamageDealer, ignore collision
             ProcessHit(damageDealer);
         }
     }
@@ -46,7 +41,6 @@ public class AsteroidController : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer) {
         health -= damageDealer.Damage;
-
         if (health <= 0) {
             Die();
         }
@@ -56,7 +50,7 @@ public class AsteroidController : MonoBehaviour
         FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
         Destroy(gameObject);
 
-        // Add explosion vfx?
+        // TODO: Add explosion vfx
 
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
     }

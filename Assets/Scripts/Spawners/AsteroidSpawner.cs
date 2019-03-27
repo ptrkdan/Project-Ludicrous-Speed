@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
@@ -10,7 +9,7 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField] int randomScaleMax = 8;
     [SerializeField] float randomSpeedMin = 5f;
     [SerializeField] float randomSpeedMax = 20f;
-    [SerializeField] int maxMeteor = 10;
+    [SerializeField] int maxMeteor = 10;                    // Needed?
     [SerializeField] List<AsteroidController> meteorList;
 
     private float spawnPointX;
@@ -19,22 +18,22 @@ public class AsteroidSpawner : MonoBehaviour
     private float nextTimeToSpawn = 0f;
     private int activeMeteorCount;
 
-    void Start() {
-        Camera gameCamera = Camera.main;
-        spawnPointX = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
-        spawnPointYMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
-        spawnPointYMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
-
+    private void Start() {
+        SetSpawningArea();
     }
 
-    // Update is called once per frame
-    void Update() 
-    {
+    private void Update() {
         if (Time.time >= nextTimeToSpawn) {
             SpawnMeteor();
             nextTimeToSpawn = Time.time + 1f / Random.Range(spawnRateMin, spawnRateMax);
         }
+    }
 
+    private void SetSpawningArea() {
+        Camera gameCamera = Camera.main;
+        spawnPointX = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
+        spawnPointYMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
+        spawnPointYMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 
     private void SpawnMeteor() {
