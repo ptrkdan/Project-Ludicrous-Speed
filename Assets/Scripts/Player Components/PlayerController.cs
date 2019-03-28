@@ -26,8 +26,12 @@ public class PlayerController : MonoBehaviour
     [Header("Misc.")]
     [SerializeField] float gameOverDelay = 2f;
     [SerializeField] bool isInvincible = true;
-
-    Coroutine fireLaserCoroutine;
+    
+    private float movementXMin;
+    private float movementXMax;
+    private float movementYMin;
+    private float movementYMax;
+    private Coroutine fireLaserCoroutine;
 
     Vector3 movement = new Vector2();
 
@@ -37,6 +41,11 @@ public class PlayerController : MonoBehaviour
     void Start() {
         session = FindObjectOfType<GameSession>();
         rigidBody = GetComponent<Rigidbody2D>();
+        Camera gameCamera = Camera.main;
+        movementXMin = gameCamera.ViewportToWorldPoint(Vector3.zero).x;
+        movementXMax = gameCamera.ViewportToWorldPoint(Vector3.right).x;
+        movementYMin = gameCamera.ViewportToWorldPoint(Vector3.zero).y;
+        movementYMax = gameCamera.ViewportToWorldPoint(Vector3.up).y;       // Need to take in account UI panel
     }
 
     void Update() {
@@ -79,7 +88,12 @@ public class PlayerController : MonoBehaviour
 
     private void Move() {   
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        rigidBody.MovePosition(transform.position + movement * moveSpeed * Time.fixedDeltaTime);
+        Vector3 newPosition = transform.position + movement * moveSpeed * Time.fixedDeltaTime;
+        newPosition.Set(
+            Mathf.Clamp(newPosition.x, movementXMin, movementXMax), 
+            Mathf.Clamp(newPosition.y, movementYMin, movementYMax),
+            0); 
+        rigidBody.MovePosition(newPosition);
     }
 
     private void ProcessHit(DamageDealer damageDealer) {
