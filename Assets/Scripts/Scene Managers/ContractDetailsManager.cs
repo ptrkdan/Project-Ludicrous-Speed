@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using System;
 
 public class ContractDetailsManager : MonoBehaviour
 {
@@ -18,7 +19,11 @@ public class ContractDetailsManager : MonoBehaviour
     }
 
     private void OnEnable() {
-        SetContractConfig(session.ActiveContract);
+        if (session) {
+            SetContractConfig(session.ActiveContract);
+        } else {
+            throw new Exception("Game Session not set. This overlay may have been accidentally left enabled.");
+        }
     }
 
     public void SetContractConfig(ContractConfig contract) {

@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 6339432536927386756}
   - component: {fileID: 6339432536927386757}
   - component: {fileID: 3753037359948416298}
+  - component: {fileID: 6181488672510244725}
   m_Layer: 5
   m_Name: Contract Selection
   m_TagString: Untagged
@@ -1014,12 +1015,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc72627fe6a40154782f2d4b5b0c00c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contractTitleText: {fileID: 6339432535431019504}
-  lootLevelPanel: {fileID: 3041355849889502414}
-  difficultyLevelPanel: {fileID: 184174721777483312}
+  session: {fileID: 0}
+  menuLoader: {fileID: 0}
+  contract: {fileID: 0}
   lootSprite: {fileID: 8624530356308599216, guid: 7b374b7612b32ca4695f3e43cd68bb98,
     type: 3}
   difficultySprite: {fileID: 8624530356308599216, guid: 7b4a9564d7bfc184db9419d3367aca83,
     type: 3}
-  menuLoader: {fileID: 0}
-  contractConfig: {fileID: 0}
+  contractTitleText: {fileID: 6339432535431019504}
+  lootLevelPanel: {fileID: 3041355849889502414}
+  difficultyLevelPanel: {fileID: 184174721777483312}
+  SpriceIconXOffset: -170
+  SpriteIconYOffset: 10
+  SpriteIconWidth: 100
+--- !u!114 &6181488672510244725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339432536927386752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 6339432536927386757}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null

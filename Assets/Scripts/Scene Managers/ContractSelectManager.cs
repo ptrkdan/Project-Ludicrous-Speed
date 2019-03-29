@@ -15,8 +15,12 @@ public class ContractSelectManager : MonoBehaviour
     [SerializeField] [Range(1,3)] int displayedContractCount = 3;
     [SerializeField] List<ContractConfig> contractConfigList;
 
+    private bool contractsDisplayed = false;
+
     private void OnEnable() {
-        DisplayAllContracts();
+        if (!contractsDisplayed) {
+            DisplayAllContracts();
+        }
     }
 
     private void DisplayAllContracts() {
@@ -26,6 +30,7 @@ public class ContractSelectManager : MonoBehaviour
             // Display
             DisplayContract(contractConfig, i);
         }
+        contractsDisplayed = true;
     }
 
     private ContractConfig SelectFromContractConfigList(List<ContractConfig> contracts) {
