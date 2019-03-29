@@ -25,12 +25,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Misc.")]
     [SerializeField] float gameOverDelay = 2f;
-    [SerializeField] bool isInvincible = true;
+    [SerializeField] bool isInvincible = false;
     
     private float movementXMin;
     private float movementXMax;
-    private float movementYMin;
-    private float movementYMax;
+    [SerializeField] private float movementYMin;
+    [SerializeField] private float movementYMax;
     private Coroutine fireLaserCoroutine;
 
     Vector3 movement = new Vector2();
@@ -41,11 +41,13 @@ public class PlayerController : MonoBehaviour
     void Start() {
         session = FindObjectOfType<GameSession>();
         rigidBody = GetComponent<Rigidbody2D>();
+
         Camera gameCamera = Camera.main;
+        RectTransform hudPanel = FindObjectOfType<HudPanel>().GetComponent<RectTransform>();
         movementXMin = gameCamera.ViewportToWorldPoint(Vector3.zero).x;
         movementXMax = gameCamera.ViewportToWorldPoint(Vector3.right).x;
         movementYMin = gameCamera.ViewportToWorldPoint(Vector3.zero).y;
-        movementYMax = gameCamera.ViewportToWorldPoint(Vector3.up).y;       // Need to take in account UI panel
+        movementYMax = gameCamera.ViewportToWorldPoint(Vector3.up).y - hudPanel.localScale.y; 
     }
 
     void Update() {
@@ -117,5 +119,9 @@ public class PlayerController : MonoBehaviour
 
         session.IsRunSuccessful = false;
         FindObjectOfType<SceneLoader>().WaitAndLoadRunResultsScene(gameOverDelay);
+    }
+
+    public void ToggleGodMode() {
+        isInvincible = !isInvincible;
     }
 }
