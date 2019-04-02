@@ -8,6 +8,7 @@ public class ContractSelection : MonoBehaviour
     [Header("Cached")]
     [SerializeField] GameSession session;
     [SerializeField] MenuLoader menuLoader;
+    [SerializeField] Canvas contractDetailsOverlay;
     [SerializeField] ContractConfig contract;
 
     [Header("UI Sprites")]

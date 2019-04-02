@@ -11,6 +11,11 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] int credits;
     [SerializeField] List<LootConfig> inventory;
 
+    [Header("Career")]
+    [SerializeField] string title = "Cannon Fodder";
+    [SerializeField] [TextArea] string titleDescription = "You're as expendable as the tissue they hand out at stations.";
+    [SerializeField] List<GameObject> perks;    // TODO: Make Perks GameObject
+
     public string PlayerName { get => playerName; set => playerName = value; }
 
     public int ExperiencePoints { get => experiencePoints; set => experiencePoints = value; }
@@ -36,4 +41,7 @@ public class PlayerSingleton : MonoBehaviour
     public void RemoveFromInventory(LootConfig item) {
         // TODO: Implement
     }
+
+    public string Title { get => title; set => title = value; }
+    public string TitleDescription { get => titleDescription; set => titleDescription = value; }
 }
