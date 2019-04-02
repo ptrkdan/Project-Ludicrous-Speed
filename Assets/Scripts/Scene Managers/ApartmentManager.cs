@@ -22,6 +22,8 @@ public class ApartmentManager : MonoBehaviour {
     [Header("UI Prefabs")]
     [SerializeField] CareerView careerView;
     [SerializeField] OverlayView perksView;
+    [SerializeField] InventoryView inventoryView;
+    [SerializeField] CreditsView creditsView;
 
     [Space]
     [SerializeField] string activeTab;
@@ -62,6 +64,9 @@ public class ApartmentManager : MonoBehaviour {
                 break;
             case INVENTORY_TAB:
                 Debug.Log("Changed to Inventory Tab");
+                InventoryView inventory = Instantiate(inventoryView, contentArea);
+                CreditsView credits = Instantiate(creditsView, contentArea);
+                credits.SetCreditsText(player.Credits);
                 break;
             default:
                 break;
