@@ -12,20 +12,12 @@ public class RunResultsManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI resultsText;
-    [SerializeField] Transform lootPanel;
-    [SerializeField] Scrollbar lootPanelScrollbar;
+    [SerializeField] Transform lootGrid;
     [SerializeField] Button restartButton;
     [SerializeField] Button hqButton;
 
     [Header("UI Prefabs")]
-    [SerializeField] GameObject lootIcon;
-
-    [Header("UI Offsets")]
-    [SerializeField] int lootIconPaddingX = 10;
-    [SerializeField] int lootIconPaddingY = 10;
-    [SerializeField] int lootIconOffsetY = 70;
-    [SerializeField] int lootPanelWidth = 370;
-    [SerializeField] int lootPanelHeightPerLoot = 75;
+    [SerializeField] Loot loot;
 
     private void Start() {
         session = FindObjectOfType<GameSession>();
@@ -55,13 +47,12 @@ public class RunResultsManager : MonoBehaviour
         List<LootConfig> lootList = session.ActiveContract.GetContractRewards();
         if (success) {
             for (int i = 0; i < lootList.Count; i++) {
-                GameObject newLoot = Instantiate(lootIcon, lootPanel);
-                newLoot.transform.Translate(
-                    lootIconPaddingX, 
-                    -lootIconPaddingY - (lootIconOffsetY*i), 
-                    0);
-                newLoot.GetComponent<Image>().sprite = lootList[i].LootSprite;
-                newLoot.GetComponentInChildren<TextMeshProUGUI>().text = lootList[i].LootName;
+                Loot newLoot = Instantiate(loot, lootGrid);
+                //newLoot.transform.Translate(
+                //    lootIconPaddingX, 
+                //    -lootIconPaddingY - (lootIconOffsetY*i), 
+                //    0);
+                newLoot.DisplayLoot(lootList[i]);
                 
                 if (lootList[i].LootName == "Credits") {
                     session.Player.AddToCredits(lootList[i].LootValue);
@@ -72,9 +63,5 @@ public class RunResultsManager : MonoBehaviour
         } else {
             // TODO: Give XP? Pay 10% of credit reward?
         }
-
-        lootPanel.GetComponent<RectTransform>().sizeDelta 
-            = new Vector2(lootPanelWidth, lootPanelHeightPerLoot * (lootList.Count));
-        lootPanelScrollbar.value = 0; // FIXME: scrollbar still shows up in the middle
     }
 }
