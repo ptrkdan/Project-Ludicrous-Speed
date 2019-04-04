@@ -261,8 +261,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1002,8 +1002,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1347,8 +1347,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1534,6 +1534,10 @@ MonoBehaviour:
   careerView: {fileID: 7659986897194360142, guid: cce8512a045e7944f9b18b030fb3fb13,
     type: 3}
   perksView: {fileID: 825252265, guid: 39d143215dd2d2045a25020e2f5d8ab5, type: 3}
+  shipView: {fileID: 5074807701304909681, guid: dc45acfad27e1404098b816136f9aa0c,
+    type: 3}
+  statsView: {fileID: 365653055793772492, guid: 43edd6fbac0c52a4abf17692cc1b37c1,
+    type: 3}
   inventoryListView: {fileID: 3147623864903635643, guid: 6341e662a91038540864ae50c8d05205,
     type: 3}
   inventoryDetailsView: {fileID: 4659335265440816830, guid: 97010642f180676408b36cb3adb2522a,

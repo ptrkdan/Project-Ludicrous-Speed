@@ -548,7 +548,7 @@ PrefabInstance:
     - target: {fileID: 5676042254994167831, guid: 6c3ff0dee59d2f7439546ea74ca84527,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5676042254994167827, guid: 6c3ff0dee59d2f7439546ea74ca84527,
         type: 3}
@@ -660,18 +660,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 5676042254994167830, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: shipView
-      value: 
-      objectReference: {fileID: 5074807701304909681, guid: dc45acfad27e1404098b816136f9aa0c,
-        type: 3}
-    - target: {fileID: 5676042254994167830, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: statsView
-      value: 
-      objectReference: {fileID: 365653055793772492, guid: 43edd6fbac0c52a4abf17692cc1b37c1,
-        type: 3}
     - target: {fileID: 7133422112534002662, guid: 6c3ff0dee59d2f7439546ea74ca84527,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -680,7 +668,7 @@ PrefabInstance:
     - target: {fileID: 3542606086052724761, guid: 6c3ff0dee59d2f7439546ea74ca84527,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3542606085871115668, guid: 6c3ff0dee59d2f7439546ea74ca84527,
         type: 3}
@@ -888,7 +876,7 @@ PrefabInstance:
     - target: {fileID: 7787167998140391180, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
