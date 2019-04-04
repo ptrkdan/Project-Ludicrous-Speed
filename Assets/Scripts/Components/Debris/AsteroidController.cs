@@ -47,11 +47,20 @@ public class AsteroidController : MonoBehaviour
     }
 
     private void Die() {
-        FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
+        FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();    // Make into a static method
+        DropLoot();
         Destroy(gameObject);
 
         // TODO: Add explosion vfx
 
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
+    }
+
+    private void DropLoot() {
+        PickUpLootConfig lootConfig = LootManager.instance.DropLoot();
+        if (lootConfig) {
+            LootController loot = Instantiate(lootConfig.LootPrefab, gameObject.transform.parent);
+            loot.Drop(lootConfig, transform.position);
+        }
     }
 }

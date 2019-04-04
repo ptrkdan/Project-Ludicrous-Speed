@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d61325408c5c31419617098e1de36a4, type: 3}
+  m_Name: Armour Recovery
+  m_EditorClassIdentifier: 
+  lootName: Armour Recovery
+  lootSprite: {fileID: 21300000, guid: 211af7b9ea6f3a24d96e3e8e66cc1992, type: 3}
+  lootValue: 0
+  lootDescription: MEDIIIC!
+  lootPrefab: {fileID: 4047980251234503735, guid: 7f1002a5606f73d43a5ba539cb6e3e74,
+    type: 3}
+  rarity: 0.25
+  damageValue: 0
+  damageType: 0
+  healValue: 100
+  healType: 1

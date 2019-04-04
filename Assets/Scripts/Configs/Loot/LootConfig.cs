@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Configs/Loot Config")]
+[CreateAssetMenu(menuName = "Configs/Loot/Generic Loot")]
 public class LootConfig : ScriptableObject
 {
     [SerializeField] string lootName;
@@ -8,14 +8,13 @@ public class LootConfig : ScriptableObject
     [SerializeField] int lootValue = 0;
     [SerializeField] [TextArea (3,5)] string lootDescription;
 
-    [Header("Stats")]
-    [SerializeField] float damageValue;
-    // If equippable, stats like ATK, DEF can be set
-    // If credits, stats are not necessary
-
     public string LootName { get => lootName; set => lootName = value; }
     public string LootDescription { get => lootDescription; set => lootDescription = value; }
     public Sprite LootSprite { get => lootSprite; set => lootSprite = value; }
     public int LootValue { get => lootValue; set => lootValue = value; }
 
+    public virtual void Use() { }
 }
+
+public enum DamageType { Laser, Ballistic, Bio }
+public enum ArmourType { Shield, Hull, Metal, Bio, Mineral }

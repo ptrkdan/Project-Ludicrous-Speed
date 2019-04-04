@@ -60,13 +60,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        if (!damageDealer) { return; }
-
-        if (!isInvincible) {
+        
+        if (!isInvincible && damageDealer) {
             ProcessHit(damageDealer);
+            return;
+        }
+
+        Repairer healer = other.gameObject.GetComponent<Repairer>();
+        if (healer) {
+            ProcessRepair(healer);
         }
     }
-
     private void Fire() {
         if (Input.GetButtonDown("Fire1")) {
             fireLaserCoroutine = StartCoroutine(FireLaser());
@@ -105,6 +109,11 @@ public class PlayerController : MonoBehaviour
         if (health <= 0) {
             Die();
         }
+    }
+
+    private void ProcessRepair(Repairer repairer) {
+        health = Mathf.Clamp(health + repairer.RepairValue, 0, maxHealth);
+        healthBarSlider.value = (float)health / maxHealth;
     }
 
     private void Die() {
