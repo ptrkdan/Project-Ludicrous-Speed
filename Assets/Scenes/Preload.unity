@@ -143,10 +143,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: TEST PILOT
-  experiencePoints: 0
+  experiencePoints: 25
   playerLevel: 1
-  credits: 0
-  inventory: []
+  credits: 25
+  inventory:
+  - {fileID: 11400000, guid: f9c941995084f4f4590abd0e48bc78a3, type: 2}
+  - {fileID: 11400000, guid: f9c941995084f4f4590abd0e48bc78a3, type: 2}
+  - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
+  - {fileID: 11400000, guid: f9c941995084f4f4590abd0e48bc78a3, type: 2}
+  - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
+  - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
+  title: Cannon Fodder
+  titleDescription: You're as expendable as the tissue they hand out at stations.
+  perks: []
 --- !u!114 &51158116
 MonoBehaviour:
   m_ObjectHideFlags: 0
