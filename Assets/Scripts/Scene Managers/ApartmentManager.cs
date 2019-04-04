@@ -22,6 +22,8 @@ public class ApartmentManager : MonoBehaviour {
     [Header("UI Prefabs")]
     [SerializeField] CareerView careerView;
     [SerializeField] OverlayView perksView;
+    [SerializeField] ShipView shipView;
+    [SerializeField] StatsView statsView;
     [SerializeField] InventoryListView inventoryListView;
     [SerializeField] InventoryDetailsView inventoryDetailsView;
     [SerializeField] CreditsView creditsView;
@@ -57,13 +59,15 @@ public class ApartmentManager : MonoBehaviour {
                 break;
             case SHIP_TAB:
                 Debug.Log("Changed to Ship Tab");
+                ShipView ship = Instantiate(shipView, contentArea);
+                StatsView stats = Instantiate(statsView, contentArea);
                 break;
             case INVENTORY_TAB:
                 Debug.Log("Changed to Inventory Tab");
                 InventoryListView inventoryList = Instantiate(inventoryListView, contentArea);
                 InventoryDetailsView inventoryDetails = Instantiate(inventoryDetailsView, contentArea);
                 CreditsView credits = Instantiate(creditsView, contentArea);
-                credits.SetCreditsText(player.Credits);
+                credits.SetCreditsText(player.Credits); // TODO: Make view handle this when starting
                 break;
             default:
                 break;
