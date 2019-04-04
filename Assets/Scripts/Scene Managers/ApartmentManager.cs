@@ -22,7 +22,8 @@ public class ApartmentManager : MonoBehaviour {
     [Header("UI Prefabs")]
     [SerializeField] CareerView careerView;
     [SerializeField] OverlayView perksView;
-    [SerializeField] InventoryView inventoryView;
+    [SerializeField] InventoryListView inventoryListView;
+    [SerializeField] InventoryDetailsView inventoryDetailsView;
     [SerializeField] CreditsView creditsView;
 
     [Space]
@@ -42,13 +43,8 @@ public class ApartmentManager : MonoBehaviour {
         playerExpBar.value = (float)player.ExperiencePoints / 100;             // TODO: Change percentage based on level
     }
 
-    private void ClearContentArea() {
-        foreach (OverlayView view in contentArea.GetComponentsInChildren<OverlayView>()) {
-            view.gameObject.SetActive(false);
-        }
-    }
-
     private void ChangeTab(string nextTab) {
+        ClearContentArea();
         switch (nextTab) {
             case PILOT_TAB:
                 Debug.Log("Changed to Pilot Tab");
@@ -64,7 +60,8 @@ public class ApartmentManager : MonoBehaviour {
                 break;
             case INVENTORY_TAB:
                 Debug.Log("Changed to Inventory Tab");
-                InventoryView inventory = Instantiate(inventoryView, contentArea);
+                InventoryListView inventoryList = Instantiate(inventoryListView, contentArea);
+                InventoryDetailsView inventoryDetails = Instantiate(inventoryDetailsView, contentArea);
                 CreditsView credits = Instantiate(creditsView, contentArea);
                 credits.SetCreditsText(player.Credits);
                 break;
@@ -74,10 +71,15 @@ public class ApartmentManager : MonoBehaviour {
         activeTab = nextTab;
     }
 
+    private void ClearContentArea() {
+        foreach (OverlayView view in contentArea.GetComponentsInChildren<OverlayView>()) {
+            Destroy(view.gameObject);
+        }
+    }
+
     public void OnTabButtonClick(Button tabButton) {
         string nextTab = tabButton.name;
         if (activeTab != nextTab) {
-            ClearContentArea();
             ChangeTab(nextTab);
         }
     }

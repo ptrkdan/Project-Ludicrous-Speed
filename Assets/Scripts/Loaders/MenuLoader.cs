@@ -36,6 +36,7 @@ public class MenuLoader : MonoBehaviour {
         worldCanvas.gameObject.SetActive(true);
         contractSelectCanvas.gameObject.SetActive(false);
         contractDetailsCanvas.gameObject.SetActive(false);
+        apartmentCanvas.gameObject.SetActive(false);
 
         overlayStack.Push(worldCanvas);
     }
