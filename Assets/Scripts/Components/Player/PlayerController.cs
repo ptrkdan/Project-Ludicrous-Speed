@@ -4,33 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : LivingInteractable
 {
-    [Header("Player Stats")]
-    [SerializeField] float moveSpeed = 30f;
-    [SerializeField] int maxHealth = 500;
-    [SerializeField] int health = 500;
-    [SerializeField] Slider healthBarSlider;
-
     [Header("Projectile")]
     [SerializeField] Projectile projectile;
 
-    [Header("VFX")]
-    [SerializeField] ParticleSystem explosionVFX;
-    [SerializeField] float explosionDuration = 1;
-
-    [Header("Audio")]
-    [SerializeField] AudioClip deathSFX;
-    [SerializeField] [Range(0, 1)] float deathSFXVolume = 1f;
-
-    [Header("Misc.")]
-    [SerializeField] float gameOverDelay = 2f;
     [SerializeField] bool isInvincible = false;
-    
+
     private float movementXMin;
     private float movementXMax;
-    [SerializeField] private float movementYMin;
-    [SerializeField] private float movementYMax;
+    private float movementYMin;
+    private float movementYMax;
     private Coroutine fireLaserCoroutine;
 
     Vector3 movement = new Vector2();
@@ -57,20 +41,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         Move();
     }
-
-    private void OnTriggerEnter2D(Collider2D other) {
-        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        
-        if (!isInvincible && damageDealer) {
-            ProcessHit(damageDealer);
-            return;
-        }
-
-        Repairer healer = other.gameObject.GetComponent<Repairer>();
-        if (healer) {
-            ProcessRepair(healer);
-        }
+    
+    public override void Interact(Interactable other) {
+        GetComponent<DamageDealer>().Interact(other);
     }
+
     private void Fire() {
         if (Input.GetButtonDown("Fire1")) {
             fireLaserCoroutine = StartCoroutine(FireLaser());
@@ -94,43 +69,17 @@ public class PlayerController : MonoBehaviour
 
     private void Move() {   
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector3 newPosition = transform.position + movement * moveSpeed * Time.fixedDeltaTime;
+        Vector3 newPosition = transform.position + movement * stats.speed.GetCalculatedValue() * Time.fixedDeltaTime;
         newPosition.Set(
             Mathf.Clamp(newPosition.x, movementXMin, movementXMax), 
             Mathf.Clamp(newPosition.y, movementYMin, movementYMax),
             0); 
         rigidBody.MovePosition(newPosition);
     }
-
-    private void ProcessHit(DamageDealer damageDealer) {
-        health -= damageDealer.Damage;
-        healthBarSlider.value = (float)health / maxHealth;
-
-        if (health <= 0) {
-            Die();
-        }
-    }
-
-    private void ProcessRepair(Repairer repairer) {
-        health = Mathf.Clamp(health + repairer.RepairValue, 0, maxHealth);
-        healthBarSlider.value = (float)health / maxHealth;
-    }
-
-    private void Die() {
-        Destroy(gameObject);
-
-        // Death VFX
-        ParticleSystem explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
-        Destroy(explosion, explosionDuration);
-
-        // Death SFX
-        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
-
-        session.IsRunSuccessful = false;
-        FindObjectOfType<SceneLoader>().WaitAndLoadRunResultsScene(gameOverDelay);
-    }
-
+    
     public void ToggleGodMode() {
         isInvincible = !isInvincible;
     }
+
+    
 }

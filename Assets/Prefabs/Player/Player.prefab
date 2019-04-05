@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4224309644902741306}
   - component: {fileID: 4224309644902741307}
+  - component: {fileID: 2580719223997610714}
   - component: {fileID: 4224309644902741305}
   - component: {fileID: 7085491111313075989}
   - component: {fileID: 4224309644902741304}
@@ -84,6 +85,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2580719223997610714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4224309644902741319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09608aacbb1245e49adeecd675a2782c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  currentHealth: 0
+  armour:
+    baseValue: 0
+  shield:
+    baseValue: 0
+  speed:
+    baseValue: 10
+  damage:
+    baseValue: 0
+  auxiliary:
+    baseValue: 0
+  healthBarSlider: {fileID: 0}
+  explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
+    type: 3}
+  explosionDuration: 1
+  deathSFX: {fileID: 8300000, guid: 121a3a90d64dea84f852138e89b6d5f3, type: 3}
+  deathSFXVolume: 0.2
+  gameOverDelay: 2
 --- !u!114 &4224309644902741305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,18 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878abcaff5e968d4997d4d864590b31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  maxHealth: 500
-  health: 500
-  healthBarSlider: {fileID: 0}
   projectile: {fileID: 132911436509490290, guid: 85bd18dba23267c4693eb7e9c3f22119,
     type: 3}
-  explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
-    type: 3}
-  explosionDuration: 1
-  deathSFX: {fileID: 8300000, guid: 121a3a90d64dea84f852138e89b6d5f3, type: 3}
-  deathSFXVolume: 1
-  gameOverDelay: 3
   isInvincible: 0
 --- !u!114 &7085491111313075989
 MonoBehaviour:

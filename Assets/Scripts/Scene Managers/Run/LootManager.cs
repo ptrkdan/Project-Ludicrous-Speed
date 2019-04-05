@@ -20,7 +20,7 @@ public class LootManager : MonoBehaviour
     public PickUpLootConfig DropLoot() {
 
         PickUpLootConfig loot = pickUpLootList[Random.Range(0, pickUpLootList.Count - 1)];
-        if (Random.Range(0f, 1f) >= 1 - loot.Rarity) {
+        if (Random.Range(0f, 1f) >= 1 - loot.SpawnRate) {
             return loot;
         } 
         return null;

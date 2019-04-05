@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 
-public class AsteroidController : MonoBehaviour
+public class AsteroidController : LivingInteractable
 {
-    [Header("Meteor Stats")]
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] int health = 100;
-
-    [Header("Audio")]
-    [SerializeField] AudioClip deathSFX;
-    [SerializeField] [Range(0, 1)] float deathSFXVolume;
-
-    public int Health { get => health; set => health = value; }
-    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    
+    public int Health {
+        get => stats.Health;
+        set => stats.Health = value; }
+    public float MoveSpeed {
+        get => stats.speed.GetCalculatedValue();
+        set => stats.speed.MultiplyModifier(value);
+    }
 
     Rigidbody2D rigidBody;
 
@@ -24,43 +22,20 @@ public class AsteroidController : MonoBehaviour
         Move();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    protected override void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Despawner")) {
             FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
             Destroy(gameObject);
         } else {
-            DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-            if (!damageDealer) { return; }      // If other object does not have a DamageDealer, ignore collision
-            ProcessHit(damageDealer);
+            base.OnTriggerEnter2D(other);
         }
+    }
+
+    public override void Interact(Interactable other) {
+        GetComponent<DamageDealer>().Interact(other);
     }
 
     private void Move() {
-        rigidBody.MovePosition(transform.position - Vector3.right * moveSpeed * Time.fixedDeltaTime);
-    }
-
-    private void ProcessHit(DamageDealer damageDealer) {
-        health -= damageDealer.Damage;
-        if (health <= 0) {
-            Die();
-        }
-    }
-
-    private void Die() {
-        FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();    // Make into a static method
-        DropLoot();
-        Destroy(gameObject);
-
-        // TODO: Add explosion vfx
-
-        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
-    }
-
-    private void DropLoot() {
-        PickUpLootConfig lootConfig = LootManager.instance.DropLoot();
-        if (lootConfig) {
-            LootController loot = Instantiate(lootConfig.LootPrefab, gameObject.transform.parent);
-            loot.Drop(lootConfig, transform.position);
-        }
+        rigidBody.MovePosition(transform.position - Vector3.right * stats.speed.GetCalculatedValue() * Time.fixedDeltaTime);
     }
 }

@@ -7,8 +7,8 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField] float spawnRateMax = 3f;
     [SerializeField] int randomScaleMin = 2;
     [SerializeField] int randomScaleMax = 8;
-    [SerializeField] float randomSpeedMin = 5f;
-    [SerializeField] float randomSpeedMax = 20f;
+    [SerializeField] float randomSpeedMin = 0.1f;
+    [SerializeField] float randomSpeedMax = 5f;
     [SerializeField] int maxMeteor = 10;                    // Needed?
     [SerializeField] List<AsteroidController> meteorList;
 

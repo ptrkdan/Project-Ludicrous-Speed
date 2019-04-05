@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 548153165716921930}
   - component: {fileID: 1861776107454265273}
   - component: {fileID: 407411544729675367}
+  - component: {fileID: 2388218530470035940}
   m_Layer: 12
   m_Name: Asteroid-1
   m_TagString: Non-Friendly
@@ -96,10 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ddd8a371af2b45b348e489eff615e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   health: 100
-  deathSFX: {fileID: 8300000, guid: af69ad20c08271f4093513b682d91ea7, type: 3}
-  deathSFXVolume: 0.8
 --- !u!114 &633486875115474805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,3 +179,29 @@ PolygonCollider2D:
       - {x: -0.14467868, y: -0.05439678}
       - {x: -0.08293372, y: -0.15390366}
       - {x: 0.084522024, y: -0.15330252}
+--- !u!114 &2388218530470035940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683104010946518865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e822ab1117843234b8f31b3f5f162302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  armour:
+    baseValue: 0
+  shield:
+    baseValue: 0
+  speed:
+    baseValue: 5
+  damage:
+    baseValue: 0
+  auxiliary:
+    baseValue: 0
+  deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
+  deathSFXVolume: 0.2
