@@ -16,5 +16,6 @@ public class LootConfig : ScriptableObject
     public virtual void Use() { }
 }
 
-public enum DamageType { Laser, Ballistic, Bio }
-public enum ArmourType { Shield, Hull, Metal, Bio, Mineral }
+public enum DamageType { None, Laser, Ballistic, Bio }
+public enum ArmourType { None, Shield, Hull, Metal, Bio, Mineral }
+public enum BuffType { None, Hull, Shield, Engine, Weapon, Aux }

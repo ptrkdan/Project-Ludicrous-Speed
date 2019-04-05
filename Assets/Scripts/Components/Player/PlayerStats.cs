@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class PlayerStats : CharacterStats
 {
     [SerializeField] Slider healthBarSlider;
+    [SerializeField] bool isInvincible = false;
 
     [Header("VFX")]
     [SerializeField] ParticleSystem explosionVFX;
@@ -18,10 +19,13 @@ public class PlayerStats : CharacterStats
 
 
     public override void TakeDamage(int damage) {
-        base.TakeDamage(damage);
-        UpdateHealthBar();
-        if (currentHealth <= 0) {
-            Die();
+
+        if (!isInvincible) {
+            base.TakeDamage(damage);
+            UpdateHealthBar();
+            if (currentHealth <= 0) {
+                Die();
+            }
         }
     }
 
@@ -48,5 +52,9 @@ public class PlayerStats : CharacterStats
         // Load Run Result Scene
         FindObjectOfType<GameSession>().IsRunSuccessful = false;
         FindObjectOfType<SceneLoader>().WaitAndLoadRunResultsScene(gameOverDelay);
+    }
+
+    public void ToggleGodMode() {
+        isInvincible = !isInvincible;
     }
 }

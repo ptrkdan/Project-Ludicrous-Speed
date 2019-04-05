@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -9,7 +12,7 @@ public class CharacterStats : MonoBehaviour
     public Stat shield;     // SHLD
     public Stat speed;      // ENG
     public Stat damage;     // WPN
-    public Stat auxiliary;  // AUX
+    public Stat aux;        // AUX
 
     private void Awake() {
         currentHealth = maxHealth;
@@ -22,14 +25,68 @@ public class CharacterStats : MonoBehaviour
     }
 
     public virtual void TakeDamage(int damage) {
-        currentHealth -= CalculateDamage(damage);
+            currentHealth -= CalculateDamage(damage);
     }
 
     public virtual void RepairDamage(int repair) {
         currentHealth = Mathf.Clamp(currentHealth + repair, 0, maxHealth);
     }
 
+    public void SetBuff(BuffType type, float modifier, float duration) {
+        StartCoroutine(SetBuffForDuration(type, modifier, duration));
+    }
+
+    public void RemoveBuff(BuffType type, float modifier) {
+        switch (type) {
+            case BuffType.Hull:
+                armour.RemoveModifier(modifier);
+                break;
+            case BuffType.Shield:
+                shield.RemoveModifier(modifier);
+                break;
+            case BuffType.Engine:
+                speed.RemoveModifier(modifier);
+                break;
+            case BuffType.Weapon:
+                damage.RemoveModifier(modifier);
+                break;
+            case BuffType.Aux:
+                aux.RemoveModifier(modifier);
+                break;
+            case BuffType.None:
+            default:
+                break;
+        }
+    }
+
+    IEnumerator SetBuffForDuration(BuffType type, float modifier, float duration) {
+        switch (type) {
+            case BuffType.Hull:
+                armour.AddModifier(modifier);
+                break;
+            case BuffType.Shield:
+                shield.AddModifier(modifier);
+                break;
+            case BuffType.Engine:
+                speed.AddModifier(modifier);
+                break;
+            case BuffType.Weapon:
+                damage.AddModifier(modifier);
+                break;
+            case BuffType.Aux:
+                aux.AddModifier(modifier);
+                break;
+            case BuffType.None:
+            default:
+                break;
+        }
+        yield return new WaitForSeconds(duration);
+
+        RemoveBuff(type, modifier);
+    }
+
     public virtual void Die() { 
         Destroy(gameObject);
     }
 }
+

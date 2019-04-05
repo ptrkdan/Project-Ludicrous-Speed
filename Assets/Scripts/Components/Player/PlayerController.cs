@@ -75,11 +75,5 @@ public class PlayerController : LivingInteractable
             Mathf.Clamp(newPosition.y, movementYMin, movementYMax),
             0); 
         rigidBody.MovePosition(newPosition);
-    }
-    
-    public void ToggleGodMode() {
-        isInvincible = !isInvincible;
-    }
-
-    
+    }    
 }

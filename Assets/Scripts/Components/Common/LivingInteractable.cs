@@ -2,8 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterStats))]
-public class LivingInteractable : Interactable
-{
+public class LivingInteractable : Interactable {
     protected CharacterStats stats;
 
     private void Awake() {
@@ -15,5 +14,9 @@ public class LivingInteractable : Interactable
     }
     public virtual void RepairDamage(int repair) {
         stats.RepairDamage(repair);
+    }
+
+    public void SetBuff(BuffType stat, float modifier, float duration) {
+        stats.SetBuff(stat, modifier, duration);
     }
 }

@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4224309646166513146}
+      - m_Target: {fileID: 1283762654}
         m_MethodName: ToggleGodMode
         m_Mode: 1
         m_Arguments:
@@ -5850,6 +5850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpLootList:
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
+  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
 --- !u!4 &1111196473
 Transform:
   m_ObjectHideFlags: 0
@@ -5966,6 +5967,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1283762654 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2580719223997610714, guid: fb612b7c636b0ae468ea0de6795fba46,
+    type: 3}
+  m_PrefabInstance: {fileID: 4224309646166513145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09608aacbb1245e49adeecd675a2782c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1481981294 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8219195255739587880, guid: 1f84f9120ef5e3b4e924d66315d3f353,
