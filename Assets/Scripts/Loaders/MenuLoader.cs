@@ -9,6 +9,7 @@ public class MenuLoader : MonoBehaviour {
     [SerializeField] Canvas contractSelectCanvas;
     [SerializeField] Canvas contractDetailsCanvas;
     [SerializeField] Canvas apartmentCanvas;
+    [SerializeField] Canvas hangarCanvas;
 
     Stack<Canvas> overlayStack;     // Current overlay will always be on the top of the stack
 
@@ -37,6 +38,7 @@ public class MenuLoader : MonoBehaviour {
         contractSelectCanvas.gameObject.SetActive(false);
         contractDetailsCanvas.gameObject.SetActive(false);
         apartmentCanvas.gameObject.SetActive(false);
+        hangarCanvas.gameObject.SetActive(false);
 
         overlayStack.Push(worldCanvas);
     }

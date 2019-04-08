@@ -8,9 +8,7 @@ public class PlayerController : LivingInteractable
 {
     [Header("Projectile")]
     [SerializeField] Projectile projectile;
-
-    [SerializeField] bool isInvincible = false;
-
+    
     private float movementXMin;
     private float movementXMax;
     private float movementYMin;
