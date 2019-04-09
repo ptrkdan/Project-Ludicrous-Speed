@@ -57,7 +57,7 @@ public class PlayerSingleton : MonoBehaviour
     }
 
 
-    public Equipment GetEquipment(EquipmentSlot slot) {
+    public EquipmentConfig GetEquipment(EquipmentSlot slot) {
         return EquipmentManager.instance.GetEquipment(slot);
     }
 

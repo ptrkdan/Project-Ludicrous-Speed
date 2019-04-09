@@ -424,7 +424,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   credits: 200
   inventory:
-  - {fileID: 11400000, guid: f9c941995084f4f4590abd0e48bc78a3, type: 2}
+  - {fileID: 11400000, guid: dfef42255ec8adb46ab05ba0e3d106f9, type: 2}
+  - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
 --- !u!4 &1637190317
 Transform:
   m_ObjectHideFlags: 0

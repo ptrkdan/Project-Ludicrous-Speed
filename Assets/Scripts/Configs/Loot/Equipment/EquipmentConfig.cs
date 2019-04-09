@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
-public class Equipment : Interactable 
+public class EquipmentConfig : LootConfig
 {
     [SerializeField] EquipmentSlot equipSlot;
 
     public EquipmentSlot EquipSlot { get => equipSlot; }
 
-    public override void Interact(Interactable other) {
-        base.Interact(other);
+    public override void Use() {
+        base.Use();
         EquipmentManager.instance.EquipItem(this);
     }
 }
 
+public enum EquipmentSlot { PrimaryWeapon, SecondaryWeapon, Support }

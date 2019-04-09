@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efe90a0c415d9a4ea2d3cd6a51d05c5, type: 3}
   m_Name: Laser Cannon
   m_EditorClassIdentifier: 
+  lootName: Emerald Laser Cannon Mk. I
+  type: 1
   icon: {fileID: 0}
+  lootValue: 100
+  lootDescription: Will most likely damage eyesight
   equipmentSlot: 0
   damage:
     baseValue: 50

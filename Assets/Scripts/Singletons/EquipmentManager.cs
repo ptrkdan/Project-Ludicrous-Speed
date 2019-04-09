@@ -12,17 +12,17 @@ public class EquipmentManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] Equipment[] equipments 
-        = new Equipment[System.Enum.GetNames(typeof(EquipmentSlot)).Length];
+    [SerializeField] EquipmentConfig[] equipments 
+        = new EquipmentConfig[System.Enum.GetNames(typeof(EquipmentSlot)).Length];
 
 
-    public Equipment GetEquipment(EquipmentSlot slot) {
+    public EquipmentConfig GetEquipment(EquipmentSlot slot) {
         return equipments[(int)slot];
     }
 
-    public void EquipItem(Equipment newItem) {
+    public void EquipItem(EquipmentConfig newItem) {
         int slotIndex = (int)newItem.EquipSlot;
         equipments[slotIndex] = newItem;
-
+        Debug.Log($"<color=green>{newItem.LootName}</color> equipped as <color=green>{newItem.EquipSlot}</color>");
     }
 }

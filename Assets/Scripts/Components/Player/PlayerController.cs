@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class PlayerController : LivingInteractable
 {
     [Header("Equipments")]
-    [SerializeField] Equipment primaryWpn;
-    [SerializeField] Equipment secondaryWpn;
-    [SerializeField] Equipment supportEquip;
+    [SerializeField] WeaponConfig primaryWpn;
+    [SerializeField] WeaponConfig secondaryWpn;
+    [SerializeField] SupportEquipConfig supportEquip;
     [SerializeField] Projectile projectile;
     
     private float movementXMin;
@@ -34,9 +34,9 @@ public class PlayerController : LivingInteractable
     }
 
     private void SetEquipment() {
-        primaryWpn = player.GetEquipment(EquipmentSlot.PrimaryWeapon);
-        secondaryWpn = player.GetEquipment(EquipmentSlot.SecondaryWeapon);
-        supportEquip = player.GetEquipment(EquipmentSlot.Support);
+        primaryWpn = (WeaponConfig) player.GetEquipment(EquipmentSlot.PrimaryWeapon);
+        secondaryWpn = (WeaponConfig) player.GetEquipment(EquipmentSlot.SecondaryWeapon);
+        supportEquip = (SupportEquipConfig) player.GetEquipment(EquipmentSlot.Support);
     }
 
     private void SetMovementBoundaries() {

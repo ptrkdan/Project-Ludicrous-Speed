@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efe90a0c415d9a4ea2d3cd6a51d05c5, type: 3}
   m_Name: Rockets
   m_EditorClassIdentifier: 
-  lootName: 
-  type: 0
-  icon: {fileID: 0}
-  lootValue: 0
-  lootDescription: 
+  lootName: Rockets
+  type: 2
+  icon: {fileID: 21300000, guid: 128fc6fe209e3254e9192850274b7cb1, type: 3}
+  lootValue: 25
+  lootDescription: One goes BOOM, the other ones go KA-BLAAM.
   equipmentSlot: 0
   damage:
-    baseValue: 0
+    baseValue: 150
   speed:
-    baseValue: 0
+    baseValue: 20
   cooldown:
-    baseValue: 0
+    baseValue: 0.3
   projectile: {fileID: 0}
-  projectileOffset: {x: 0, y: 0, z: 0}
+  projectileOffset: {x: 1, y: 0, z: 0}
   shootSFX: {fileID: 0}
   shootSFXVolume: 0

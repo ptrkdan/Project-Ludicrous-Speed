@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Weapon Config")]
-public class WeaponConfig : LootConfig
+public class WeaponConfig : EquipmentConfig
 {
-    [SerializeField] EquipmentSlot equipmentSlot;
-
     [Header("Stats")]
     [SerializeField] Stat damage;
     [SerializeField] Stat speed;
@@ -18,5 +16,3 @@ public class WeaponConfig : LootConfig
     [SerializeField] AudioClip shootSFX;
     [SerializeField] [Range(0, 1)] float shootSFXVolume = 0;
 }
-
-public enum EquipmentSlot { PrimaryWeapon, SecondaryWeapon, Support }

@@ -15,7 +15,10 @@ public class LootConfig : ScriptableObject
     public Sprite Icon { get => icon; set => icon = value; }
     public int LootValue { get => lootValue; set => lootValue = value; }
 
-    public virtual void Use() { }
+    public virtual void Use() {
+        Debug.Log($"Using {lootName}...");
+
+    }
 }
 
 public enum LootType { Currency, Loot, Equipment }
