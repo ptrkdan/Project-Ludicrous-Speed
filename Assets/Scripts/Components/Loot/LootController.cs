@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LootController : MonoBehaviour
+public class LootController : Interactable
 {
     [SerializeField] float moveSpeed = 5f;
 
@@ -21,8 +21,12 @@ public class LootController : MonoBehaviour
         rigidBody.MovePosition(transform.position - Vector3.right * moveSpeed * Time.fixedDeltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    protected override void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Despawner")) {
             Destroy(gameObject);
+        } else {
+            base.OnTriggerEnter2D(other);
+        }
     }
 
     public void Drop(LootConfig config, Vector3 position) {

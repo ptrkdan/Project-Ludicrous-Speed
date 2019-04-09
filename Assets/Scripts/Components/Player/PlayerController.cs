@@ -67,7 +67,7 @@ public class PlayerController : LivingInteractable
 
     private void Move() {   
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector3 newPosition = transform.position + movement * stats.speed.GetCalculatedValue() * Time.fixedDeltaTime;
+        Vector3 newPosition = transform.position + movement * stats.speed.GetCalcValue() * Time.fixedDeltaTime;
         newPosition.Set(
             Mathf.Clamp(newPosition.x, movementXMin, movementXMax), 
             Mathf.Clamp(newPosition.y, movementYMin, movementYMax),

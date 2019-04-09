@@ -1,13 +1,14 @@
 ﻿using System;
 using UnityEngine;
 
-public class Buffer : Interactable
+public class Buffer : PickUp
 {
-    [SerializeField] float modifier = 1f;
+    [SerializeField] float buffValue = 1f;
     [SerializeField] float duration = 5f;
-    [SerializeField] BuffType buffType = BuffType.None;
+    [SerializeField] StatModType modType;
+    [SerializeField] BuffType buffType;
 
-    public float Modifier { get => modifier; set => modifier = value; }
+    public float BuffValue { get => buffValue; set => this.buffValue = value; }
     public float Duration { get => duration; set => duration = value; }
 
     public override void Interact(Interactable other) {
@@ -18,6 +19,7 @@ public class Buffer : Interactable
     }
 
     private void Buff(LivingInteractable other) {
-        other.SetBuff(buffType, modifier, duration);
+        StatModifier mod = new StatModifier(buffValue, modType, duration);
+        other.SetBuff(buffType, mod);
     }
 }

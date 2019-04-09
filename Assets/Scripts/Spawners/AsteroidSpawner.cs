@@ -10,7 +10,7 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField] float randomSpeedMin = 0.1f;
     [SerializeField] float randomSpeedMax = 5f;
     [SerializeField] int maxMeteor = 10;                    // Needed?
-    [SerializeField] List<AsteroidController> meteorList;
+    [SerializeField] List<AsteroidController> asteroidList;
 
     private float spawnPointX;
     private float spawnPointYMin;
@@ -39,15 +39,17 @@ public class AsteroidSpawner : MonoBehaviour
     private void SpawnMeteor() {
         Vector3 spawnPosition = new Vector3(spawnPointX, Random.Range(spawnPointYMin, spawnPointYMax));
         float randomSpin = Random.Range(0, 180f);
-        float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
         int randomScale = Random.Range(randomScaleMin, randomScaleMax);
-        int randomMeteor = Random.Range(0, meteorList.Count);
+        int randomMeteor = Random.Range(0, asteroidList.Count);
 
-        AsteroidController newMeteor = Instantiate(meteorList[randomMeteor], spawnPosition, Quaternion.identity);
-        newMeteor.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
-        newMeteor.transform.localScale = new Vector3(randomScale, randomScale, 0);
-        newMeteor.MoveSpeed = randomMoveSpeed;
-        newMeteor.Health *= randomScale;
+        float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
+        StatModifier speedMod = new StatModifier(randomMoveSpeed, StatModType.Flat);
+
+        AsteroidController newAsteroid = Instantiate(asteroidList[randomMeteor], spawnPosition, Quaternion.identity);
+        newAsteroid.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
+        newAsteroid.transform.localScale = new Vector3(randomScale, randomScale, 0);
+        newAsteroid.SetMoveSpeed(speedMod);
+        newAsteroid.Health *= randomScale;
     }
 
     public void SetDifficulty(int difficulty) {

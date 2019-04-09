@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e73aa355ced30447a0a22a39fc405d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifier: 5
+  spawnRate: 0.2
+  buffValue: 0.1
   duration: 5
+  modType: 1
   buffType: 3

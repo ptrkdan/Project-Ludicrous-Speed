@@ -16,7 +16,7 @@ public class LivingInteractable : Interactable {
         stats.RepairDamage(repair);
     }
 
-    public void SetBuff(BuffType stat, float modifier, float duration) {
-        stats.SetBuff(stat, modifier, duration);
+    public void SetBuff(BuffType stat, StatModifier modifier) {
+        stats.SetBuff(stat, modifier);
     }
 }

@@ -21,7 +21,7 @@ public class CharacterStats : MonoBehaviour
     public int Health { get => currentHealth; set => currentHealth = value; }
 
     protected virtual int CalculateDamage(int damage) {
-        return Mathf.Clamp(damage - Mathf.FloorToInt(armour.GetCalculatedValue()), 0, int.MaxValue);
+        return Mathf.Clamp(damage - Mathf.FloorToInt(armour.GetCalcValue()), 0, int.MaxValue);
     }
 
     public virtual void TakeDamage(int damage) {
@@ -32,11 +32,11 @@ public class CharacterStats : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + repair, 0, maxHealth);
     }
 
-    public void SetBuff(BuffType type, float modifier, float duration) {
-        StartCoroutine(SetBuffForDuration(type, modifier, duration));
+    public void SetBuff(BuffType type, StatModifier modifier) {
+        StartCoroutine(SetBuffForDuration(type, modifier));
     }
 
-    public void RemoveBuff(BuffType type, float modifier) {
+    public void RemoveBuff(BuffType type, StatModifier modifier) {
         switch (type) {
             case BuffType.Hull:
                 armour.RemoveModifier(modifier);
@@ -59,7 +59,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    IEnumerator SetBuffForDuration(BuffType type, float modifier, float duration) {
+    IEnumerator SetBuffForDuration(BuffType type, StatModifier modifier) {
         switch (type) {
             case BuffType.Hull:
                 armour.AddModifier(modifier);
@@ -80,9 +80,11 @@ public class CharacterStats : MonoBehaviour
             default:
                 break;
         }
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(modifier.Duration);
 
-        RemoveBuff(type, modifier);
+        if (modifier.Duration > 0) {        // If duration <= 0, mod is permanent
+            RemoveBuff(type, modifier);
+        }
     }
 
     public virtual void Die() { 
