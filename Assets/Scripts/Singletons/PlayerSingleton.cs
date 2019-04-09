@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +9,8 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] int experiencePoints;
     [SerializeField] int playerLevel = 1;
 
-    [SerializeField] int credits;
-    [SerializeField] List<LootConfig> inventory;
+    [SerializeField] InventoryManager inventory;
+    [SerializeField] EquipmentManager equipments;
 
     [Header("Career")]
     [SerializeField] string title = "Cannon Fodder";
@@ -32,14 +33,32 @@ public class PlayerSingleton : MonoBehaviour
         experiencePoints -= 100; // TODO: Required points depend on level
     }
 
-    public int Credits { get => credits; set => credits = value; }
-    public void AddToCredits(int amount) { credits += amount; }
-    public void DeductFromCredits(int amount) { credits -= amount; }
+    public int GetCredits() {
+        return InventoryManager.instance.Credits;
+    }
 
-    public List<LootConfig> Inventory { get => inventory; set => inventory = value; }
-    public void AddToInventory(LootConfig item) { inventory.Add(item); }
-    public void RemoveFromInventory(LootConfig item) {
-        // TODO: Implement
+    public void AddToCredits(int amount) {
+        InventoryManager.instance.AddToCredits(amount);
+    }
+
+    public bool DeductFromCredits(int amount) {
+        return InventoryManager.instance.DeductFromCredits(amount);
+    }
+
+    public List<LootConfig> GetInventory() {
+        return InventoryManager.instance.Inventory;
+    }
+    
+    public void AddToInventory(LootConfig item) {
+        InventoryManager.instance.AddToInventory(item);
+    }
+    public bool RemoveFromInventory(LootConfig item) {
+        return InventoryManager.instance.RemoveFromInventory(item);
+    }
+
+
+    public Equipment GetEquipment(EquipmentSlot slot) {
+        return EquipmentManager.instance.GetEquipment(slot);
     }
 
     public string Title { get => title; set => title = value; }

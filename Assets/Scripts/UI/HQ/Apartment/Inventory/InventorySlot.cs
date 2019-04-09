@@ -16,7 +16,7 @@ public class InventorySlot : MonoBehaviour
 
     public void DisplayLoot(LootConfig newLoot) {
         config = newLoot;
-        lootImage.sprite = config.LootSprite;
+        lootImage.sprite = config.Icon;
 
 
     }

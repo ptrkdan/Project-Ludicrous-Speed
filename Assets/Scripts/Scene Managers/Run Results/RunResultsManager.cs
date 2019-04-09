@@ -8,6 +8,7 @@ public class RunResultsManager : MonoBehaviour
 {
     [Header("Cached")]
     [SerializeField] GameSession session;
+    [SerializeField] PlayerSingleton player;
     [SerializeField] SceneLoader sceneLoader;
 
     [Header("UI References")]
@@ -25,6 +26,7 @@ public class RunResultsManager : MonoBehaviour
             sceneLoader.GoToPreload();
         }
 
+        player = session.Player;
         FinalizeResults(session.IsRunSuccessful);
     }
 
@@ -55,9 +57,9 @@ public class RunResultsManager : MonoBehaviour
                 newLoot.DisplayLoot(lootList[i]);
                 
                 if (lootList[i].LootName == "Credits") {
-                    session.Player.AddToCredits(lootList[i].LootValue);
+                    player.AddToCredits(lootList[i].LootValue);
                 } else {
-                    session.Player.AddToInventory(lootList[i]);
+                    player.AddToInventory(lootList[i]);
                 }
             }
         } else {

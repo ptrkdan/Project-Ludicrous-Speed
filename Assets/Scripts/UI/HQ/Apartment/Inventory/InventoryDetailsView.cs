@@ -12,6 +12,7 @@ public class InventoryDetailsView : OverlayView
     [SerializeField] Image lootImage;
     [SerializeField] TextMeshProUGUI lootName;
     [SerializeField] TextMeshProUGUI lootDescription;
+    [SerializeField] Button equipButton;
 
     private void Start() {
         ClearDetails();
@@ -21,12 +22,17 @@ public class InventoryDetailsView : OverlayView
         lootImage.gameObject.SetActive(false);
         lootName.text = "";
         lootDescription.text = "";
+        equipButton.gameObject.SetActive(false);
     }
 
     public void DisplayLootDetails(LootConfig config) {
-        lootImage.sprite = config.LootSprite;
+        ClearDetails();
+        lootImage.sprite = config.Icon;
         lootImage.gameObject.SetActive(true);
         lootName.text = config.LootName;
         lootDescription.text = config.LootDescription;
+        if (config.Type == LootType.Equipment) {
+            equipButton.gameObject.SetActive(true);
+        }
     }
 }

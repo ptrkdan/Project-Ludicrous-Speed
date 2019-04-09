@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerController : LivingInteractable
 {
-    [Header("Projectile")]
+    [Header("Equipments")]
+    [SerializeField] Equipment primaryWpn;
+    [SerializeField] Equipment secondaryWpn;
+    [SerializeField] Equipment supportEquip;
     [SerializeField] Projectile projectile;
     
     private float movementXMin;
@@ -18,18 +21,31 @@ public class PlayerController : LivingInteractable
     Vector3 movement = new Vector2();
 
     GameSession session;
+    PlayerSingleton player;
     Rigidbody2D rigidBody;
 
     void Start() {
         session = FindObjectOfType<GameSession>();
+        player = session.Player;
         rigidBody = GetComponent<Rigidbody2D>();
 
+        SetEquipment();
+        SetMovementBoundaries();
+    }
+
+    private void SetEquipment() {
+        primaryWpn = player.GetEquipment(EquipmentSlot.PrimaryWeapon);
+        secondaryWpn = player.GetEquipment(EquipmentSlot.SecondaryWeapon);
+        supportEquip = player.GetEquipment(EquipmentSlot.Support);
+    }
+
+    private void SetMovementBoundaries() {
         Camera gameCamera = Camera.main;
         RectTransform hudPanel = FindObjectOfType<HudPanel>().GetComponent<RectTransform>();
         movementXMin = gameCamera.ViewportToWorldPoint(Vector3.zero).x;
         movementXMax = gameCamera.ViewportToWorldPoint(Vector3.right).x;
         movementYMin = gameCamera.ViewportToWorldPoint(Vector3.zero).y;
-        movementYMax = gameCamera.ViewportToWorldPoint(Vector3.up).y - hudPanel.localScale.y; 
+        movementYMax = gameCamera.ViewportToWorldPoint(Vector3.up).y - hudPanel.localScale.y;
     }
 
     void Update() {

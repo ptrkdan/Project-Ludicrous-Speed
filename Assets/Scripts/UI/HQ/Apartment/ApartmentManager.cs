@@ -67,7 +67,7 @@ public class ApartmentManager : MonoBehaviour {
                 InventoryListView inventoryList = Instantiate(inventoryListView, contentArea);
                 InventoryDetailsView inventoryDetails = Instantiate(inventoryDetailsView, contentArea);
                 CreditsView credits = Instantiate(creditsView, contentArea);
-                credits.SetCreditsText(player.Credits); // TODO: Make view handle this when starting
+                credits.SetCreditsText(player.GetCredits()); // TODO: Make view handle this when starting
                 break;
             default:
                 break;

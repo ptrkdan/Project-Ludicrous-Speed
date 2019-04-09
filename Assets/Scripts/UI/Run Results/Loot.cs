@@ -10,7 +10,7 @@ public class Loot : MonoBehaviour
     [SerializeField] TextMeshProUGUI lootName;
 
     public void DisplayLoot(LootConfig config) {
-        lootImage.sprite = config.LootSprite;
+        lootImage.sprite = config.Icon;
         if (config.LootName == "Credits") {
             lootName.text = $"{config.LootName} x {config.LootValue}";
         } else {

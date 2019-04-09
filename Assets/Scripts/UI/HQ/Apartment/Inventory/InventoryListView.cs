@@ -20,8 +20,9 @@ public class InventoryListView : OverlayView
     }
 
     private void DisplayInventory() {
-        for (int i = 0; i < player.Inventory.Count - 1; i++) {
-            LootConfig lootConfig = player.Inventory[i];
+        List<LootConfig> inventory = player.GetInventory();
+        for (int i = 0; i < inventory.Count; i++) {
+            LootConfig lootConfig = inventory[i];
             InventorySlot inventorySlot = Instantiate(inventorySlotPrefab, inventoryGrid.transform);
             inventorySlot.DisplayLoot(lootConfig);
             
