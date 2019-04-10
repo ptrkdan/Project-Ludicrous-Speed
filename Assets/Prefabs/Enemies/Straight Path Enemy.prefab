@@ -97,8 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotCounter: 0
-  projectile: {fileID: 5864462768340966210, guid: 49d8ff3424d299244be5bccee4c581e2,
-    type: 3}
+  weapon: {fileID: 11400000, guid: 7162c489106693245b60bb14a83cca5e, type: 2}
 --- !u!114 &1298490598032868000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,14 +190,19 @@ MonoBehaviour:
   currentHealth: 0
   armour:
     baseValue: 0
+    isDirty: 1
   shield:
     baseValue: 0
+    isDirty: 1
   speed:
-    baseValue: 25
+    baseValue: 30
+    isDirty: 1
   damage:
     baseValue: 0
-  auxiliary:
+    isDirty: 1
+  aux:
     baseValue: 0
+    isDirty: 1
   explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
     type: 3}
   explosionDuration: 1

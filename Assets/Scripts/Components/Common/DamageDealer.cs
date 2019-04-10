@@ -4,7 +4,8 @@ public class DamageDealer : Interactable
 {
     [SerializeField] int damage = 100;
 
-    public int Damage { get => damage; set => damage = value; }
+    public int Damage { get => damage;
+        set => damage = value; }
 
     public override void Interact(Interactable target) {
         base.Interact(target);

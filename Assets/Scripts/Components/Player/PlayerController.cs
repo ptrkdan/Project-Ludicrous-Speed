@@ -16,7 +16,7 @@ public class PlayerController : LivingInteractable
     private float movementXMax;
     private float movementYMin;
     private float movementYMax;
-    private Coroutine fireLaserCoroutine;
+    private Coroutine primaryWeaponCoroutine;
 
     Vector3 movement = new Vector2();
 
@@ -62,22 +62,18 @@ public class PlayerController : LivingInteractable
 
     private void Fire() {
         if (Input.GetButtonDown("Fire1")) {
-            fireLaserCoroutine = StartCoroutine(FireLaser());
+            primaryWeaponCoroutine = StartCoroutine(FirePrimaryWeapon());
         }
         if (Input.GetButtonUp("Fire1")) {
-            StopCoroutine(fireLaserCoroutine);
+            StopCoroutine(primaryWeaponCoroutine);
         }
     }
 
-    IEnumerator FireLaser() {
+    IEnumerator FirePrimaryWeapon() {
         while (true) {
-            Projectile laser = Instantiate(
-                projectile, 
-                transform.position + projectile.Config.Offset,
-                Quaternion.AngleAxis(-90, Vector3.forward));
-            laser.Fire();
+            primaryWpn.Fire(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
-            yield return new WaitForSeconds(projectile.Config.ShotCooldown);
+            yield return new WaitForSeconds(primaryWpn.Cooldown.GetCalcValue());
         }
     }
 

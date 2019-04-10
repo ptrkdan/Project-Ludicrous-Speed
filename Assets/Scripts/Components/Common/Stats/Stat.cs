@@ -5,12 +5,10 @@ using UnityEngine;
 [Serializable]
 public class Stat
 {
-    [SerializeField]
-    private float baseValue = 0;
-    private readonly List<StatModifier> modifiers = new List<StatModifier>();
-    private bool isDirty = true;
+    [SerializeField] private float baseValue = 0;
     private float currValue;
-    private float maxValue = 30;        // TODO: This will vary on the stat
+    [SerializeField] private bool isDirty = true;
+    private readonly List<StatModifier> modifiers = new List<StatModifier>();
 
     public float GetBaseValue() => baseValue;
     public float GetCalcValue() {
@@ -37,7 +35,7 @@ public class Stat
             finalValue *= 1 + sumPercentAdd;
         });
 
-        return (float) Math.Round(Mathf.Clamp(finalValue, 0, maxValue), 4);
+        return (float) Math.Round(finalValue, 4);
     }
 
     public void AddModifier(StatModifier modifier) {

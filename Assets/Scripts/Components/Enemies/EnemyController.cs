@@ -4,7 +4,7 @@ public abstract class EnemyController : LivingInteractable
 {
     [Header("Weaponry")]
     [SerializeField] float shotCounter; 
-    [SerializeField] Projectile projectile;
+    [SerializeField] EnemyWeaponConfig weapon;
     
     protected Rigidbody2D rigidBody;
 
@@ -13,6 +13,7 @@ public abstract class EnemyController : LivingInteractable
     private void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         FindObjectOfType<EnemySpawner>().IncreaseEnemyCount();
+
         ResetShotCooldown();
     }
 
@@ -33,22 +34,18 @@ public abstract class EnemyController : LivingInteractable
     private void CountDownAndShoot() {
         shotCounter -= Time.deltaTime;
         if (shotCounter <= 0) {
-            FireLaser();
+            FireWeapon();
             ResetShotCooldown();
         }
     }
 
-    private void FireLaser() {
-        Projectile laser = Instantiate(
-            projectile, 
-            transform.position + projectile.Config.Offset, 
-            Quaternion.AngleAxis(90, Vector3.forward));
-        laser.Fire();
+    private void FireWeapon() {
+        weapon.Fire(transform.position, Quaternion.AngleAxis(90, Vector3.forward));
     }
 
     private void ResetShotCooldown() {
         shotCounter = Random.Range(
-                    projectile.Config.ShotCooldown - projectile.Config.ShotCooldownVariation,
-                    projectile.Config.ShotCooldown + projectile.Config.ShotCooldownVariation);
+                     weapon.Cooldown.GetCalcValue() - weapon.CooldownVariation,
+                     weapon.Cooldown.GetCalcValue() + weapon.CooldownVariation);
     }
 }
