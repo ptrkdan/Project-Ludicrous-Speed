@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d169a78c210dcf84eb2c799336ab1715, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4ddd8a371af2b45b348e489eff615e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
 --- !u!114 &3713397412735857831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,13 +194,18 @@ MonoBehaviour:
   currentHealth: 0
   armour:
     baseValue: 0
+    isDirty: 1
   shield:
     baseValue: 0
+    isDirty: 1
   speed:
     baseValue: 5
+    isDirty: 1
   damage:
     baseValue: 0
-  auxiliary:
+    isDirty: 1
+  aux:
     baseValue: 0
+    isDirty: 1
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.2
