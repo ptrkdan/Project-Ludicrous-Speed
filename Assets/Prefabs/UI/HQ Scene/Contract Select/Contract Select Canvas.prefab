@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 7625850055008442533}
   - component: {fileID: 1064204093}
   m_Layer: 5
-  m_Name: 12 Contract Select Canvas
+  m_Name: Contract Select Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,6 +325,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c5751d0085771be47befcb4172e264fc, type: 2}
   - {fileID: 11400000, guid: edbb73662b4468d4b9fe3b2af1a629ce, type: 2}
   - {fileID: 11400000, guid: b2c891a630891394da9e1e92cce61ac3, type: 2}
+  - {fileID: 11400000, guid: c724f3a85bc1a7344b5965c365982691, type: 2}
 --- !u!1 &7625850055300131599
 GameObject:
   m_ObjectHideFlags: 0

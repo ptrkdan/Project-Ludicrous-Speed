@@ -5,7 +5,7 @@ public class InventorySlot : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField] InventoryDetailsView detailsView;
-    [SerializeField] Image lootImage;
+    [SerializeField] Image icon;
 
     [Space]
     [SerializeField] LootConfig config;
@@ -16,9 +16,11 @@ public class InventorySlot : MonoBehaviour
 
     public void DisplayLoot(LootConfig newLoot) {
         config = newLoot;
-        lootImage.sprite = config.Icon;
+        icon.sprite = config.Icon;
+    }
 
-
+    public void ClearSlot() {
+        Destroy(gameObject);
     }
 
     public void DisplayLootDetails() {

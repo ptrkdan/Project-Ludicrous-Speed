@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c735692d1e7d34296d7f113273b957, type: 3}
-  m_Name: Enemy Laser
+  m_Name: Enemy Laser Cannon
   m_EditorClassIdentifier: 
-  lootName: 
-  type: 0
-  icon: {fileID: 0}
+  lootName: Emerald Laser Cannon MkI
+  type: 2
+  icon: {fileID: 21300000, guid: 5c659554cb862d84c9c8ecdb9dba50db, type: 3}
   lootValue: 0
-  lootDescription: 
+  lootDescription: Will most likely damage eyesight
   equipSlot: 0
-  projectilePrefab: {fileID: 0}
-  projectileOffset: {x: 0, y: 0, z: 0}
+  projectilePrefab: {fileID: 5864462768340966210, guid: 2e8224a8e03dd9044961408ecfc4b3ef,
+    type: 3}
+  projectileOffset: {x: -1, y: 0, z: 0}
   damage:
-    baseValue: 0
-    isDirty: 1
+    baseValue: 100
+    isDirty: 0
   speed:
-    baseValue: 0
-    isDirty: 1
+    baseValue: -30
+    isDirty: 0
   cooldown:
-    baseValue: 0
-    isDirty: 1
-  shootSFX: {fileID: 0}
+    baseValue: 0.75
+    isDirty: 0
+  shootSFX: {fileID: 8300000, guid: 024fce0d4011d4844abdcb71f641dfb9, type: 3}
   shootSFXVolume: 0
-  cooldownVariation: 0
+  cooldownVariation: 0.5

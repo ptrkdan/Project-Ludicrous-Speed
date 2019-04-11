@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryListView : OverlayView
 {
     [Header("Cached")]
-    [SerializeField] PlayerSingleton player;
+    [SerializeField] InventoryManager inventory;
 
     [Header("UI References")]
     [SerializeField] InventoryGrid inventoryGrid;
@@ -14,18 +14,26 @@ public class InventoryListView : OverlayView
     [Header("UI Prefabs")]
     [SerializeField] InventorySlot inventorySlotPrefab;
 
-    private void Start() {
-        player = FindObjectOfType<PlayerSingleton>();
-        DisplayInventory();
+    private void Awake() {
+        inventory = InventoryManager.instance;
+        inventory.onItemChangedCallback += UpdateInventory;
+
+        UpdateInventory();
     }
 
-    private void DisplayInventory() {
-        List<LootConfig> inventory = player.GetInventory();
-        for (int i = 0; i < inventory.Count; i++) {
-            LootConfig lootConfig = inventory[i];
+    private void UpdateInventory() {
+        ClearInventory();
+        for (int i = 0; i < inventory.Inventory.Count; i++) {
+            LootConfig lootConfig = inventory.Inventory[i];
             InventorySlot inventorySlot = Instantiate(inventorySlotPrefab, inventoryGrid.transform);
-            inventorySlot.DisplayLoot(lootConfig);
-            
+            inventorySlot.DisplayLoot(lootConfig);            
+        }
+    }
+
+    private void ClearInventory() {
+        InventorySlot[] slots = inventoryGrid.GetComponentsInChildren<InventorySlot>();
+        foreach(InventorySlot slot in slots) {
+            slot.ClearSlot();
         }
     }
 }

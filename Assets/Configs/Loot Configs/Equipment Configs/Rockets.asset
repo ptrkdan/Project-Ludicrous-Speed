@@ -14,17 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootName: Rockets
   type: 2
-  icon: {fileID: 21300000, guid: 128fc6fe209e3254e9192850274b7cb1, type: 3}
+  icon: {fileID: 21300000, guid: 8a75af55fd2dc0c41939e36d7d4eef4b, type: 3}
   lootValue: 25
   lootDescription: One goes BOOM, the other ones go KA-BLAAM.
-  equipmentSlot: 0
+  equipSlot: 0
+  projectilePrefab: {fileID: 0}
+  projectileOffset: {x: 0, y: 0, z: 0}
   damage:
     baseValue: 150
+    isDirty: 1
   speed:
     baseValue: 20
+    isDirty: 1
   cooldown:
     baseValue: 0.3
-  projectile: {fileID: 0}
-  projectileOffset: {x: 1, y: 0, z: 0}
+    isDirty: 1
   shootSFX: {fileID: 0}
   shootSFXVolume: 0

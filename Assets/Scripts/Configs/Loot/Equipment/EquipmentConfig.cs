@@ -8,7 +8,8 @@ public class EquipmentConfig : LootConfig
 
     public override void Use() {
         base.Use();
-        EquipmentManager.instance.EquipItem(this);
+        EquipmentManager.instance.Equip(this);
+        RemoveFromInventory();
     }
 
     public virtual void Fire(Vector3 projectileOrigin, Quaternion rotation) {

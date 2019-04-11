@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(LootController))]
-public class PickUp : Interactable
+public class PickUp : LootController
 {
     [SerializeField] [Range(0,1f)] float spawnRate = 0;
 

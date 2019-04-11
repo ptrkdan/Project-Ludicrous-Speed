@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1453917834626249548}
   - component: {fileID: 1453917834626249554}
+  - component: {fileID: 5620419517286222635}
   - component: {fileID: 1602923531691745237}
   - component: {fileID: 2530698550767001534}
   m_Layer: 5
@@ -47,6 +48,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453917834626249549}
   m_CullTransparentMesh: 0
+--- !u!114 &5620419517286222635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453917834626249549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 9aad71bad743d3f41a6f826320d60698, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
 --- !u!114 &1602923531691745237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +113,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 5002396760759201749}
+  m_TargetGraphic: {fileID: 5620419517286222635}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -112,8 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e661bc5f4e47d4ba48884ea44d679f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detailsView: {fileID: 0}
-  lootImage: {fileID: 5002396760759201749}
+  detailsView: {fileID: 4659335265440816830, guid: 97010642f180676408b36cb3adb2522a,
+    type: 3}
+  icon: {fileID: 5002396760759201749}
   config: {fileID: 0}
 --- !u!1 &5806891858559192338
 GameObject:
@@ -126,7 +157,6 @@ GameObject:
   - component: {fileID: 735553623931293945}
   - component: {fileID: 5913625280564056657}
   - component: {fileID: 5002396760759201749}
-  - component: {fileID: 7853388022362324697}
   m_Layer: 5
   m_Name: Inventory Image
   m_TagString: Untagged
@@ -190,18 +220,3 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &7853388022362324697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5806891858559192338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e661bc5f4e47d4ba48884ea44d679f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detailsView: {fileID: 0}
-  lootImage: {fileID: 0}
-  config: {fileID: 0}

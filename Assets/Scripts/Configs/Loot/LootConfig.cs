@@ -19,6 +19,11 @@ public class LootConfig : ScriptableObject
         Debug.Log($"Using {lootName}...");
 
     }
+
+    public void RemoveFromInventory() {
+        InventoryManager.instance.RemoveFromInventory(this);
+        Debug.Log($"{this} is removed from Inventory");
+    }
 }
 
 public enum LootType { Currency, Loot, Equipment }
