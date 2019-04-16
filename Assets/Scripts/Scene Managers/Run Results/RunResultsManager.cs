@@ -26,7 +26,7 @@ public class RunResultsManager : MonoBehaviour
             sceneLoader.GoToPreload();
         }
 
-        player = session.Player;
+        player = FindObjectOfType<PlayerSingleton>();
         FinalizeResults(session.IsRunSuccessful);
     }
 

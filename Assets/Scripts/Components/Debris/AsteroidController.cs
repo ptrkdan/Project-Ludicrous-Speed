@@ -2,22 +2,26 @@
 
 public class AsteroidController : LivingInteractable
 {
-    
-    public int Health {
-        get => stats.Health;
-        set => stats.Health = value; }
-    public float MoveSpeed {
-        get => stats.speed.GetCalcValue();
-    }
-
     Rigidbody2D rigidBody;
 
-    public override void Interact(Interactable other) {
-        GetComponent<DamageDealer>().Interact(other);
+    public int GetCurrentHealth() {
+        return stats.GetCurrentHealth();
+    }
+
+    public void SetCurrentHealth(int currentHealth) {
+        stats.SetCurrentHealth(currentHealth);
+    }
+
+    public float GetMoveSpeed() {
+        return stats.GetStat(StatType.Engine).GetCalcValue();
     }
 
     public void SetMoveSpeed(StatModifier mod) {
-        stats.speed.AddModifier(mod);
+        stats.GetStat(StatType.Engine).AddModifier(mod);
+    }
+
+    public override void Interact(Interactable other) {
+        GetComponent<DamageDealer>().Interact(other);
     }
 
     private void Start() {
@@ -39,6 +43,6 @@ public class AsteroidController : LivingInteractable
     }
 
     private void Move() {
-        rigidBody.MovePosition(transform.position - Vector3.right * stats.speed.GetCalcValue() * Time.fixedDeltaTime);
+        rigidBody.MovePosition(transform.position - Vector3.right * GetMoveSpeed() * Time.fixedDeltaTime);
     }
 }

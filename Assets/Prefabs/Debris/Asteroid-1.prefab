@@ -192,20 +192,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  armour:
+  hull:
+    name: Hull
     baseValue: 0
-    isDirty: 1
   shield:
+    name: Shield
     baseValue: 0
-    isDirty: 1
-  speed:
-    baseValue: 5
-    isDirty: 1
-  damage:
+  engine:
+    name: Engine
     baseValue: 0
-    isDirty: 1
+  weapon:
+    name: Weapon
+    baseValue: 0
   aux:
+    name: Aux
     baseValue: 0
-    isDirty: 1
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.2

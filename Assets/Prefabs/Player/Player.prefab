@@ -97,24 +97,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09608aacbb1245e49adeecd675a2782c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 1000
   currentHealth: 0
-  armour:
-    baseValue: 0
-  shield:
-    baseValue: 0
-  speed:
-    baseValue: 10
-  damage:
-    baseValue: 0
-  auxiliary:
-    baseValue: 0
-  healthBarSlider: {fileID: 0}
+  hull: 0
+  shield: 0
+  engine: 15
+  weapon: 0
+  aux: 0
   explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
     type: 3}
   explosionDuration: 1
   deathSFX: {fileID: 8300000, guid: 121a3a90d64dea84f852138e89b6d5f3, type: 3}
   deathSFXVolume: 0.2
+  isInvincible: 0
   gameOverDelay: 2
 --- !u!114 &4224309644902741305
 MonoBehaviour:
@@ -128,9 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878abcaff5e968d4997d4d864590b31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  primaryWpn: {fileID: 11400000, guid: 51c423a711ebc9f4faa71bd4ee8265c4, type: 2}
+  secondaryWpn: {fileID: 0}
+  supportEquip: {fileID: 0}
   projectile: {fileID: 132911436509490290, guid: 85bd18dba23267c4693eb7e9c3f22119,
     type: 3}
-  isInvincible: 0
 --- !u!114 &7085491111313075989
 MonoBehaviour:
   m_ObjectHideFlags: 0

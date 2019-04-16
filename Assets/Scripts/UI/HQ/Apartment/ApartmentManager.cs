@@ -49,7 +49,6 @@ public class ApartmentManager : MonoBehaviour {
         ClearContentArea();
         switch (nextTab) {
             case PILOT_TAB:
-                Debug.Log("Changed to Pilot Tab");
                 CareerView career = Instantiate(careerView, contentArea);
                 // TODO: career.SetCareerIcon = ???
                 career.SetPlayerTitle(player.Title);
@@ -58,12 +57,10 @@ public class ApartmentManager : MonoBehaviour {
                 Instantiate(perksView, contentArea);
                 break;
             case SHIP_TAB:
-                Debug.Log("Changed to Ship Tab");
                 ShipView ship = Instantiate(shipView, contentArea);
                 StatsView stats = Instantiate(statsView, contentArea);
                 break;
             case INVENTORY_TAB:
-                Debug.Log("Changed to Inventory Tab");
                 InventoryListView inventoryList = Instantiate(inventoryListView, contentArea);
                 InventoryDetailsView inventoryDetails = Instantiate(inventoryDetailsView, contentArea);
                 CreditsView credits = Instantiate(creditsView, contentArea);

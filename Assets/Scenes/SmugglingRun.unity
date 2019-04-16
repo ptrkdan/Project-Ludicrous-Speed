@@ -371,10 +371,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   session: {fileID: 0}
   sceneLoader: {fileID: 1481981294}
-  player: {fileID: 4224309646166513146}
   asteroidSpawner: {fileID: 1944009525}
-  enemySpanwer: {fileID: 828068932}
+  enemySpawner: {fileID: 828068932}
   distanceRemainingText: {fileID: 363944776}
+  healthBarSlider: {fileID: 506446233}
 --- !u!4 &61561149
 Transform:
   m_ObjectHideFlags: 0
@@ -10867,6 +10867,7 @@ MonoBehaviour:
   spawnRateMax: 3
   randomScaleMin: 2
   randomScaleMax: 20
+  baseSpeed: 5
   randomSpeedMin: 1
   randomSpeedMax: 5
   maxMeteor: 10
@@ -11265,18 +11266,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb612b7c636b0ae468ea0de6795fba46, type: 3}
---- !u!114 &4224309646166513146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4224309644902741305, guid: fb612b7c636b0ae468ea0de6795fba46,
-    type: 3}
-  m_PrefabInstance: {fileID: 4224309646166513145}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 878abcaff5e968d4997d4d864590b31c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8219195255791964882
 PrefabInstance:
   m_ObjectHideFlags: 0

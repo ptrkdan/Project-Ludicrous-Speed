@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterStats))]
+[RequireComponent(typeof(InteractableStats))]
 public class LivingInteractable : Interactable {
-    protected CharacterStats stats;
+    protected InteractableStats stats;
     private float onCollisionGlowDuration = 0.15f;
 
     private void Awake() {
-        stats = GetComponent<CharacterStats>();
+        stats = GetComponent<InteractableStats>();
     }
 
     public virtual void TakeDamage(int damage) {
@@ -17,7 +17,7 @@ public class LivingInteractable : Interactable {
         stats.RepairDamage(repair);
     }
 
-    public void SetBuff(BuffType stat, StatModifier modifier) {
+    public void SetBuff(StatType stat, StatModifier modifier) {
         stats.SetBuff(stat, modifier);
     }
 

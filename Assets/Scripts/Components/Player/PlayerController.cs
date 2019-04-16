@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : LivingInteractable
-{
+public class PlayerController : LivingInteractable 
+{ 
+
     [Header("Equipments")]
     [SerializeField] WeaponConfig primaryWpn;
     [SerializeField] WeaponConfig secondaryWpn;
@@ -20,16 +21,23 @@ public class PlayerController : LivingInteractable
 
     Vector3 movement = new Vector2();
 
-    GameSession session;
     PlayerSingleton player;
     Rigidbody2D rigidBody;
 
-    void Start() {
-        session = FindObjectOfType<GameSession>();
-        player = session.Player;
+    public override void Interact(Interactable other) {
+        GetComponent<DamageDealer>().Interact(other);
+    }
+
+    public override void TakeDamage(int damage) {
+            base.TakeDamage(damage);
+    }
+
+    private void Start() {
+        player = FindObjectOfType<PlayerSingleton>();
         rigidBody = GetComponent<Rigidbody2D>();
 
         SetEquipment();
+        SetStats();
         SetMovementBoundaries();
     }
 
@@ -37,6 +45,10 @@ public class PlayerController : LivingInteractable
         primaryWpn = (WeaponConfig) player.GetEquipment(EquipmentSlot.PrimaryWeapon);
         secondaryWpn = (WeaponConfig) player.GetEquipment(EquipmentSlot.SecondaryWeapon);
         supportEquip = (SupportEquipConfig) player.GetEquipment(EquipmentSlot.Support);
+    }
+
+    private void SetStats() {
+
     }
 
     private void SetMovementBoundaries() {
@@ -54,10 +66,6 @@ public class PlayerController : LivingInteractable
 
     private void FixedUpdate() {
         Move();
-    }
-    
-    public override void Interact(Interactable other) {
-        GetComponent<DamageDealer>().Interact(other);
     }
 
     private void Fire() {
@@ -79,7 +87,7 @@ public class PlayerController : LivingInteractable
 
     private void Move() {   
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector3 newPosition = transform.position + movement * stats.speed.GetCalcValue() * Time.fixedDeltaTime;
+        Vector3 newPosition = transform.position + movement * stats.GetStat(StatType.Engine).GetCalcValue() * Time.fixedDeltaTime;
         newPosition.Set(
             Mathf.Clamp(newPosition.x, movementXMin, movementXMax), 
             Mathf.Clamp(newPosition.y, movementYMin, movementYMax),

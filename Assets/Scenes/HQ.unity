@@ -675,11 +675,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apartment Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5676042254994167831, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5676042254994167827, guid: 6c3ff0dee59d2f7439546ea74ca84527,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -795,61 +790,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795578721}
-    - target: {fileID: 3542606086052724761, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606085871115668, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606085871115668, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5676042256356889804, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5676042256356889804, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606085706509849, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606085706509849, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606085964792154, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606085964792154, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606086765430762, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3542606086765430762, guid: 6c3ff0dee59d2f7439546ea74ca84527,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c3ff0dee59d2f7439546ea74ca84527, type: 3}
 --- !u!223 &6300625452106137936 stripped

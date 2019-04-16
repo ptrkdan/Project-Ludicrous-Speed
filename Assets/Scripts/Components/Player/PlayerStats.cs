@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStats : CharacterStats
-{
-    [SerializeField] Slider healthBarSlider;
-    [SerializeField] bool isInvincible = false;
+public class PlayerStats : InteractableStats {
+
 
     [Header("VFX")]
     [SerializeField] ParticleSystem explosionVFX;
@@ -15,11 +15,14 @@ public class PlayerStats : CharacterStats
     [SerializeField] [Range(0, 1)] float deathSFXVolume = 1f;
 
     [Header("Misc.")]
+    [SerializeField] bool isInvincible = false;
     [SerializeField] float gameOverDelay = 2f;
 
-
+    private void Start() {
+        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+    }
+    
     public override void TakeDamage(int damage) {
-
         if (!isInvincible) {
             base.TakeDamage(damage);
             UpdateHealthBar();
@@ -32,10 +35,6 @@ public class PlayerStats : CharacterStats
     public override void RepairDamage(int repair) {
         base.RepairDamage(repair);
         UpdateHealthBar();
-    }
-
-    private void UpdateHealthBar() {
-        healthBarSlider.value = (float)currentHealth / maxHealth;
     }
 
     public override void Die() {
@@ -56,5 +55,29 @@ public class PlayerStats : CharacterStats
 
     public void ToggleGodMode() {
         isInvincible = !isInvincible;
+    }
+
+    private void OnEquipmentChanged(EquipmentConfig newEquip, EquipmentConfig oldEquip) {
+        if (newEquip != null) {
+            foreach (StatType type in Enum.GetValues(typeof(StatType))) {
+                if (type != StatType.None) {
+                    StatModifier newMod = new StatModifier(
+                        newEquip, type, StatModType.Flat, newEquip.GetStatModValue(type));
+                    stats[type].AddModifier(newMod);
+                } 
+            }
+        }
+
+        if (oldEquip != null) {
+            foreach (StatType type in Enum.GetValues(typeof(StatType))) {
+                if (type != StatType.None) {
+                    stats[type].RemoveModifier(oldEquip);
+                }
+            }
+        }
+    }
+
+    private void UpdateHealthBar() {
+        RunManager.instance.UpdateHealthBar((float)currentHealth, (float)maxHealth);
     }
 }

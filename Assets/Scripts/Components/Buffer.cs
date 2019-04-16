@@ -6,7 +6,7 @@ public class Buffer : PickUp
     [SerializeField] float buffValue = 1f;
     [SerializeField] float duration = 5f;
     [SerializeField] StatModType modType;
-    [SerializeField] BuffType buffType;
+    [SerializeField] StatType buffType;
 
     public float BuffValue { get => buffValue; set => this.buffValue = value; }
     public float Duration { get => duration; set => duration = value; }
@@ -19,7 +19,7 @@ public class Buffer : PickUp
     }
 
     private void Buff(LivingInteractable other) {
-        StatModifier mod = new StatModifier(buffValue, modType, duration);
+        StatModifier mod = new StatModifier(gameObject, buffType, modType, buffValue, duration);
         other.SetBuff(buffType, mod);
     }
 }

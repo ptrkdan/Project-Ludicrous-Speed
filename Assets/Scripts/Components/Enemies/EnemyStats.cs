@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class EnemyStats : CharacterStats
+public class EnemyStats : InteractableStats
+
 {
     [Header("VFX")]
     [SerializeField] ParticleSystem explosionVFX;

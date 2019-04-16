@@ -9,13 +9,11 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] int experiencePoints;
     [SerializeField] int playerLevel = 1;
 
-    [SerializeField] InventoryManager inventory;
-    [SerializeField] EquipmentManager equipments;
-
     [Header("Career")]
     [SerializeField] string title = "Cannon Fodder";
     [SerializeField] [TextArea] string titleDescription = "You're as expendable as the tissue they hand out at stations.";
     [SerializeField] List<GameObject> perks;    // TODO: Make Perks GameObject
+
 
     public string PlayerName { get => playerName; set => playerName = value; }
 
@@ -33,6 +31,7 @@ public class PlayerSingleton : MonoBehaviour
         experiencePoints -= 100; // TODO: Required points depend on level
     }
 
+    #region InventoryMananger
     public int GetCredits() {
         return InventoryManager.instance.Credits;
     }
@@ -55,12 +54,18 @@ public class PlayerSingleton : MonoBehaviour
     public bool RemoveFromInventory(LootConfig item) {
         return InventoryManager.instance.RemoveFromInventory(item);
     }
+    #endregion
 
-
+    #region EquipmentManager
     public EquipmentConfig GetEquipment(EquipmentSlot slot) {
         return EquipmentManager.instance.GetEquipment(slot);
     }
+    #endregion
 
+    public Stat GetStat(StatType type) {
+        return StatsManager.instance.GetStat(type);
+    }
+    
     public string Title { get => title; set => title = value; }
     public string TitleDescription { get => titleDescription; set => titleDescription = value; }
 }

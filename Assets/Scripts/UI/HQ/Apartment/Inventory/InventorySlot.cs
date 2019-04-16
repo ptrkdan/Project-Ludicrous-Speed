@@ -24,7 +24,6 @@ public class InventorySlot : MonoBehaviour
     }
 
     public void DisplayLootDetails() {
-        Debug.Log($"Displaying details for {config.LootName}");
         detailsView.DisplayLootDetails(config);
     }
 }

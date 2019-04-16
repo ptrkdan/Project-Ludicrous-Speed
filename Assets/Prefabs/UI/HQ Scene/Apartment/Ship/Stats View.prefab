@@ -1165,6 +1165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd290dc5f43701459f251d0528d6648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hull: {fileID: 3115128655548553595}
+  shield: {fileID: 4575531700584620309}
+  engine: {fileID: 8807418690282538017}
+  weapon: {fileID: 3318481667668415695}
+  aux: {fileID: 5733755013309248869}
 --- !u!1 &5620119311161314069
 GameObject:
   m_ObjectHideFlags: 0

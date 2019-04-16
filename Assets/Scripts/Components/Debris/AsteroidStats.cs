@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class AsteroidStats : CharacterStats
+public class AsteroidStats : InteractableStats
 {
     [Header("Audio")]
     [SerializeField] AudioClip deathSFX;
@@ -27,7 +27,7 @@ public class AsteroidStats : CharacterStats
 
     private void DropLoot() {
         PickUpLootConfig lootConfig = LootManager.instance.DropLoot();
-        if (lootConfig) {
+        if (lootConfig != null) {
             LootController loot = Instantiate(lootConfig.LootPrefab, gameObject.transform.parent);
             loot.Drop(lootConfig, transform.position);
         }

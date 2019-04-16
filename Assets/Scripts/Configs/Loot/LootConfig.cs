@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Loot/Generic Loot")]
+[InitializeOnLoad]
 public class LootConfig : ScriptableObject
 {
     [SerializeField] string lootName;
@@ -29,4 +31,4 @@ public class LootConfig : ScriptableObject
 public enum LootType { Currency, Loot, Equipment }
 public enum DamageType { None, Laser, Ballistic, Bio }
 public enum ArmourType { None, Shield, Hull, Metal, Bio, Mineral }
-public enum BuffType { None, Hull, Shield, Engine, Weapon, Aux }
+public enum StatType { None, Hull, Shield, Engine, Weapon, Aux }

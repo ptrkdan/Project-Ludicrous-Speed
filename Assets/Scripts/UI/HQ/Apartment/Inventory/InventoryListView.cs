@@ -16,13 +16,13 @@ public class InventoryListView : OverlayView
 
     private void Awake() {
         inventory = InventoryManager.instance;
-        inventory.onItemChangedCallback += UpdateInventory;
+        inventory.onItemChangedCallback += UpdateInventory;     
 
         UpdateInventory();
     }
 
     private void UpdateInventory() {
-        ClearInventory();
+        ClearInventory(); 
         for (int i = 0; i < inventory.Inventory.Count; i++) {
             LootConfig lootConfig = inventory.Inventory[i];
             InventorySlot inventorySlot = Instantiate(inventorySlotPrefab, inventoryGrid.transform);
@@ -31,6 +31,9 @@ public class InventoryListView : OverlayView
     }
 
     private void ClearInventory() {
+        if (!inventoryGrid) {       // Is there a clearer way to do this?
+            inventoryGrid = FindObjectOfType<InventoryGrid>();
+        }
         InventorySlot[] slots = inventoryGrid.GetComponentsInChildren<InventorySlot>();
         foreach(InventorySlot slot in slots) {
             slot.ClearSlot();

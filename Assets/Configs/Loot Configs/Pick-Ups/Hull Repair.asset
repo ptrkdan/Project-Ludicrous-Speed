@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Hull Repair
   m_EditorClassIdentifier: 
   lootName: Hull Repair
-  lootSprite: {fileID: 21300000, guid: 211af7b9ea6f3a24d96e3e8e66cc1992, type: 3}
+  type: 0
+  icon: {fileID: 0}
   lootValue: 0
   lootDescription: MEDIIIC!
-  lootPrefab: {fileID: 4047980251234503735, guid: 7f1002a5606f73d43a5ba539cb6e3e74,
+  lootPrefab: {fileID: 2385472785505812105, guid: 7f1002a5606f73d43a5ba539cb6e3e74,
     type: 3}
   spawnRate: 0.2
   damageValue: 0

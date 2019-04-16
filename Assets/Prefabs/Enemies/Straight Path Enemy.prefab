@@ -188,21 +188,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  armour:
-    baseValue: 0
-    isDirty: 1
-  shield:
-    baseValue: 0
-    isDirty: 1
-  speed:
-    baseValue: 30
-    isDirty: 1
-  damage:
-    baseValue: 0
-    isDirty: 1
-  aux:
-    baseValue: 0
-    isDirty: 1
+  hull: 0
+  shield: 0
+  engine: 35
+  weapon: 0
+  aux: 0
   explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
     type: 3}
   explosionDuration: 1

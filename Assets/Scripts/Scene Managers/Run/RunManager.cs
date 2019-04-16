@@ -1,21 +1,34 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class RunManager : MonoBehaviour
 {
+    #region Singleton
+    public static RunManager instance;
+    public RunManager() {
+        if (instance) return;
+        instance = this;
+    }
+    #endregion
+
     [Header("Cached")]
     [SerializeField] GameSession session;
     [SerializeField] SceneLoader sceneLoader;
-    [SerializeField] PlayerController player;
 
     [Header("Spawners")]
     [SerializeField] AsteroidSpawner asteroidSpawner;
-    [SerializeField] EnemySpawner enemySpanwer;
+    [SerializeField] EnemySpawner enemySpawner;
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI distanceRemainingText;
+    [SerializeField] Slider healthBarSlider;
 
     private int distanceRemaining;
+
+    public void UpdateHealthBar(float currentHealth, float maxHealth) {
+        healthBarSlider.value = currentHealth / maxHealth;
+    }
 
     private void Start()
     {
@@ -47,7 +60,7 @@ public class RunManager : MonoBehaviour
     }
 
     private void ConfigureEnemySpawner(int difficulty) {
-        enemySpanwer.SetDifficulty(difficulty);
+        enemySpawner.SetDifficulty(difficulty);
     }
     
     private void UpdateDistanceRemaining() {

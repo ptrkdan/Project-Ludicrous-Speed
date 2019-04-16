@@ -5,8 +5,10 @@ public class AsteroidSpawner : MonoBehaviour
 {
     [SerializeField] float spawnRateMin = 1f;
     [SerializeField] float spawnRateMax = 3f;
+    [SerializeField] int baseHealth = 100;
     [SerializeField] int randomScaleMin = 2;
     [SerializeField] int randomScaleMax = 8;
+    [SerializeField] float baseSpeed = 5f;
     [SerializeField] float randomSpeedMin = 0.1f;
     [SerializeField] float randomSpeedMax = 5f;
     [SerializeField] int maxMeteor = 10;                    // Needed?
@@ -43,13 +45,13 @@ public class AsteroidSpawner : MonoBehaviour
         int randomMeteor = Random.Range(0, asteroidList.Count);
 
         float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
-        StatModifier speedMod = new StatModifier(randomMoveSpeed, StatModType.Flat);
+        StatModifier speedMod = new StatModifier(gameObject, StatType.Engine,StatModType.Flat, baseSpeed + randomMoveSpeed);
 
         AsteroidController newAsteroid = Instantiate(asteroidList[randomMeteor], spawnPosition, Quaternion.identity);
         newAsteroid.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
         newAsteroid.transform.localScale = new Vector3(randomScale, randomScale, 0);
         newAsteroid.SetMoveSpeed(speedMod);
-        newAsteroid.Health *= randomScale;
+        newAsteroid.SetCurrentHealth(baseHealth * randomScale);
     }
 
     public void SetDifficulty(int difficulty) {
