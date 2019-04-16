@@ -18,19 +18,11 @@ MonoBehaviour:
   lootValue: 120
   lootDescription: One goes BOOM, the other ones go KA-BLAAM.
   equipSlot: 0
-  statMods:
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
+  hullMod: 1
+  shieldMod: 0
+  engineMod: 2
+  weaponMod: 10
+  auxMod: 0
   projectilePrefab: {fileID: 529413652948833886, guid: 7a84190af031d224485dc565092c7204,
     type: 3}
   projectileOffset: {x: 1, y: 0, z: 0}

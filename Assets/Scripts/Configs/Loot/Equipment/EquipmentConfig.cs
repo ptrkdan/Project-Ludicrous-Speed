@@ -15,7 +15,7 @@ public class EquipmentConfig : LootConfig
     public EquipmentSlot EquipSlot { get => equipSlot; }
     
     public int GetStatModValue(StatType type) {
-        switch (type) {
+        switch (type) { 
             case StatType.Hull:
                 return hullMod;
             case StatType.Shield:
@@ -28,7 +28,7 @@ public class EquipmentConfig : LootConfig
                 return auxMod;
             default:
                 return 0;
-        }
+                }
     }
     
     public override void Use() {
@@ -40,4 +40,4 @@ public class EquipmentConfig : LootConfig
     public virtual void Fire(Vector3 projectileOrigin, Quaternion rotation) { }
 }
 
-public enum EquipmentSlot { PrimaryWeapon, SecondaryWeapon, Support, Hull, Shield, Mod }
+public enum EquipmentSlot { PrimaryWeapon, SecondaryWeapon, Support, PrimaryMod, SecondaryMod}

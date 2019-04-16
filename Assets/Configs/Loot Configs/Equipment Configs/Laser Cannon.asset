@@ -18,19 +18,11 @@ MonoBehaviour:
   lootValue: 100
   lootDescription: Will most likely damage eyesight
   equipSlot: 0
-  statMods:
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
-  - Value: 0
-    Duration: 0
+  hullMod: 0
+  shieldMod: 0
+  engineMod: 2
+  weaponMod: 5
+  auxMod: 0
   projectilePrefab: {fileID: 132911436509490290, guid: 85bd18dba23267c4693eb7e9c3f22119,
     type: 3}
   projectileOffset: {x: 1, y: 0, z: 0}
