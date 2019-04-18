@@ -13,6 +13,12 @@ public class MenuLoader : MonoBehaviour {
 
     Stack<Canvas> overlayStack;     // Current overlay will always be on the top of the stack
 
+    public Canvas WorldCanvas { get => worldCanvas; }
+    public Canvas ContractSelectCanvas { get => contractSelectCanvas; }
+    public Canvas ContractDetailsCanvas { get => contractDetailsCanvas; }
+    public Canvas ApartmentCanvas { get => apartmentCanvas; }
+    public Canvas HangarCanvas { get => hangarCanvas; }
+
     private void Start() {
         session = FindObjectOfType<GameSession>();
         if(!session) {
@@ -34,13 +40,13 @@ public class MenuLoader : MonoBehaviour {
     private void ResetHQScene() { 
         // TODO: Deactive overlays from stack instead
 
-        worldCanvas.gameObject.SetActive(true);
+        WorldCanvas.gameObject.SetActive(true);
         contractSelectCanvas.gameObject.SetActive(false);
-        contractDetailsCanvas.gameObject.SetActive(false);
-        apartmentCanvas.gameObject.SetActive(false);
-        hangarCanvas.gameObject.SetActive(false);
+        ContractDetailsCanvas.gameObject.SetActive(false);
+        ApartmentCanvas.gameObject.SetActive(false);
+        HangarCanvas.gameObject.SetActive(false);
 
-        overlayStack.Push(worldCanvas);
+        overlayStack.Push(WorldCanvas);
     }
 
     public void GoToNextOverlay(Canvas nextCanvas) {
@@ -54,7 +60,7 @@ public class MenuLoader : MonoBehaviour {
     }
 
     public void OpenContractDetails() {
-        GoToNextOverlay(contractDetailsCanvas);
+        GoToNextOverlay(ContractDetailsCanvas);
     }
 
     public void GoBack() {
