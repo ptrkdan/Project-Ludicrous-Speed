@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Configs/Weapon Config")]
+[CreateAssetMenu(menuName = "Configs/Equipment/Weapon")]
 public class WeaponConfig : EquipmentConfig
 {
     [Header("Projectile")]
