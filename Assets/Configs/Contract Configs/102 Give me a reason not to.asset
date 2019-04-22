@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: New Contract Config
+  m_Name: 102 Give me a reason not to
   m_EditorClassIdentifier: 
-  contractTitle: 
-  contractDetails: 
-  runDistance: 100
+  contractTitle: Give me a reason not to
+  contractDetails: 'An angry syndicate boss wants his cup of coffee. Better fetch
+    it before he reaches somebody gets hurt. '
+  runDistance: 5000
   availablePickUps: []
   contractRewards: []
-  contractLootLevel: 1
-  contractDifficultyLevel: 1
-  pickupDropRate: 1
+  contractLootLevel: 3
+  contractDifficultyLevel: 2
+  pickupDropRate: 0.1

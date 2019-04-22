@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6656762581a5b43a085324a12ed8b2, type: 3}
-  m_Name: Shield
+  m_Name: Cloaking Field
   m_EditorClassIdentifier: 
-  lootName: 
-  type: 0
-  icon: {fileID: 0}
-  lootValue: 0
-  lootDescription: 
-  equipSlot: 0
-  hullMod: 0
-  shieldMod: 0
-  engineMod: 0
+  lootName: Cloacking Field
+  type: 2
+  icon: {fileID: 21300000, guid: a55b12c079b859843b87c0d6b2aad461, type: 3}
+  lootValue: 120
+  lootDescription: "\t"
+  equipSlot: 2
+  hullMod: 2
+  shieldMod: 2
+  engineMod: 1
   weaponMod: 0
-  auxMod: 0
+  auxMod: 2

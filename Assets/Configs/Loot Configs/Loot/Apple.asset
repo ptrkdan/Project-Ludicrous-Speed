@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49db622687276b24594d3e0192f91bf6, type: 3}
-  m_Name: New Loot Config
+  m_Name: Apple
   m_EditorClassIdentifier: 
-  lootName: 
-  type: 0
-  icon: {fileID: 0}
-  lootValue: 0
-  lootDescription: 
+  lootName: Apple
+  type: 1
+  icon: {fileID: 21300000, guid: 5f62c8d6eba45324fab1e32e4681489d, type: 3}
+  lootValue: 10
+  lootDescription: Did you just ask why it look like a big cherry? Don't you know
+    how an apple looks like?

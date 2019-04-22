@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: Covert Oops
+  m_Name: 002 Covert Oops
   m_EditorClassIdentifier: 
-  contractTitle: 
-  contractDetails: 
-  runDistance: 100
+  contractTitle: Covert Oops
+  contractDetails: 'A smuggling run gone wrong needs assistance in a nearby system.
+    By assistance, I mean the crew''s dead and there''s valuable loot ripe for the
+    picking. Just... make sure you don''t attract the attention of the locals. '
+  runDistance: 5000
   availablePickUps: []
-  contractRewards: []
-  contractLootLevel: 1
-  contractDifficultyLevel: 1
-  pickupDropRate: 1
+  contractRewards:
+  - {fileID: 11400000, guid: d976cbbd60848714893b61e044865fed, type: 2}
+  contractLootLevel: 3
+  contractDifficultyLevel: 3
+  pickupDropRate: 0.2

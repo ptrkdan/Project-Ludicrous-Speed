@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HangarShipView : MonoBehaviour
+public class HangarShipView : OverlayView
 {
     [Header("Equipment Points")]
     [SerializeField] EquipmentPoint primaryWpnPoint;
@@ -22,5 +22,9 @@ public class HangarShipView : MonoBehaviour
         supportPoint.SetInfo(player.GetEquipment(EquipmentSlot.Support));
         primaryModPoint.SetInfo(player.GetEquipment(EquipmentSlot.PrimaryMod));
         secondaryModPoint.SetInfo(player.GetEquipment(EquipmentSlot.SecondaryMod));
+    }
+
+    public void OnEquipmentClick(EquipmentPoint equipment) {
+        // HangarManager.instance.OnEquipmentClick(equipment);
     }
 }

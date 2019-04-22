@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49db622687276b24594d3e0192f91bf6, type: 3}
   m_Name: Sapling
   m_EditorClassIdentifier: 
-  lootName: 
-  type: 0
-  icon: {fileID: 0}
-  lootValue: 0
-  lootDescription: 
+  lootName: Sapling
+  type: 1
+  icon: {fileID: 21300000, guid: 0fbd0ab191c7320468a346b76cb694c6, type: 3}
+  lootValue: 100
+  lootDescription: Do you think it has a name?
