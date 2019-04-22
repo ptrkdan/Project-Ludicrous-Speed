@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Loot/Generic Loot")]
-[InitializeOnLoad]
+// [InitializeOnLoad]
 public class LootConfig : ScriptableObject
 {
     [SerializeField] string lootName;
