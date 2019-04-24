@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72786fc27bfb7844c927cad02653ba93, type: 3}
   m_Name: Hull Plating MkI
   m_EditorClassIdentifier: 
-  lootName: 
-  type: 0
-  icon: {fileID: 0}
-  lootValue: 0
+  lootName: Hull Plating MkI
+  type: 2
+  icon: {fileID: 21300000, guid: ce9e9ae0e3d1d764da624e5b7a1a19c9, type: 3}
+  lootValue: 125
   lootDescription: 
-  equipSlot: 0
-  hullMod: 0
+  equipSlot: 3
+  hullMod: 10
   shieldMod: 0
   engineMod: 0
   weaponMod: 0
