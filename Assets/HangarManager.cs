@@ -17,7 +17,6 @@ public class HangarManager : MonoBehaviour
 
     private void OnEnable() {
         player = FindObjectOfType<PlayerSingleton>();
-        ClearContentArea();
         DisplayShipView();
     }
 
@@ -29,12 +28,19 @@ public class HangarManager : MonoBehaviour
     }
 
     private void DisplayShipView() {
+        ClearContentArea();
         HangarShipView ship = Instantiate(shipView, contentArea);
     }
 
-    // TODO: Move this to HangarShipView
-    public void OnEquipmentClick (EquipmentPoint equipment) {
+    private void DisplayEquipmentDetails(EquipmentPoint equipment) {
+        ClearContentArea();
         EquipmentDetailsView equipmentDetails = Instantiate(equipmentDetailsView, contentArea);
-        equipmentDetails.Set(equipment.Config);     
+        equipmentDetails.Set(equipment.Config);
+        EquipmentListView equipmentList = Instantiate(equipmentListView, contentArea);
+        equipmentList.DisplayLootForEquipmentSlot(equipment.Config.EquipSlot);
+    }
+    
+    public void OnEquipmentClick (EquipmentPoint equipment) {
+        DisplayEquipmentDetails(equipment);
     }
 }

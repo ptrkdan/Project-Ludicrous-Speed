@@ -2,6 +2,7 @@
 
 public class HangarShipView : OverlayView
 {
+
     [Header("Equipment Points")]
     [SerializeField] EquipmentPoint primaryWpnPoint;
     [SerializeField] EquipmentPoint secondaryWpnPoint;
@@ -10,9 +11,11 @@ public class HangarShipView : OverlayView
     [SerializeField] EquipmentPoint secondaryModPoint;
 
     PlayerSingleton player;
+    HangarManager hangarManager;
 
     private void OnEnable() {
         player = FindObjectOfType<PlayerSingleton>();
+        hangarManager = FindObjectOfType<HangarManager>();
         SetEquipInfo();
     }
 
@@ -25,6 +28,6 @@ public class HangarShipView : OverlayView
     }
 
     public void OnEquipmentClick(EquipmentPoint equipment) {
-        // HangarManager.instance.OnEquipmentClick(equipment);
+        hangarManager.OnEquipmentClick(equipment);
     }
 }
