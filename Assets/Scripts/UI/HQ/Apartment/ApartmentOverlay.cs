@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class ApartmentManager : MonoBehaviour {
+public class ApartmentOverlay : Overlay {
     const string PILOT_TAB = "Pilot Tab Button";
     const string SHIP_TAB = "Ship Tab Button";
     const string INVENTORY_TAB = "Inventory Tab Button";
@@ -21,7 +21,7 @@ public class ApartmentManager : MonoBehaviour {
 
     [Header("UI Prefabs")]
     [SerializeField] CareerView careerView;
-    [SerializeField] OverlayView perksView;
+    [SerializeField] Overlay perksView;
     [SerializeField] ShipView shipView;
     [SerializeField] StatsView statsView;
     [SerializeField] InventoryListView inventoryListView;
@@ -32,6 +32,10 @@ public class ApartmentManager : MonoBehaviour {
     [SerializeField] string activeTab;
 
     public string ActiveTab { get => activeTab; set => activeTab = value; }
+
+    public override void Display() {
+        base.Display();
+    }
 
     private void OnEnable() {
         player = FindObjectOfType<PlayerSingleton>();
@@ -73,7 +77,7 @@ public class ApartmentManager : MonoBehaviour {
     }
 
     private void ClearContentArea() {
-        foreach (OverlayView view in contentArea.GetComponentsInChildren<OverlayView>()) {
+        foreach (Overlay view in contentArea.GetComponentsInChildren<Overlay>()) {
             Destroy(view.gameObject);
         }
     }

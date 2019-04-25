@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentListView : OverlayView
+public class EquipmentListView : Overlay
 {
     [Header("UI References")]
     [SerializeField] InventoryGrid equipmentGrid

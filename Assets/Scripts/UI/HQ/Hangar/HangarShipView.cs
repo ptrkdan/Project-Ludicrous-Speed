@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HangarShipView : OverlayView
+public class HangarShipView : Overlay
 {
 
     [Header("Equipment Points")]
@@ -11,11 +11,11 @@ public class HangarShipView : OverlayView
     [SerializeField] EquipmentPoint secondaryModPoint;
 
     PlayerSingleton player;
-    HangarManager hangarManager;
+    HangarOverlay hangarManager;
 
     private void OnEnable() {
         player = FindObjectOfType<PlayerSingleton>();
-        hangarManager = FindObjectOfType<HangarManager>();
+        hangarManager = FindObjectOfType<HangarOverlay>();
         SetEquipInfo();
     }
 

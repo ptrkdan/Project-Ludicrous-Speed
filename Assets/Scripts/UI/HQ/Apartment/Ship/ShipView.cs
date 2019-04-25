@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipView : OverlayView
+public class ShipView : Overlay
 {
-    MenuLoader menuLoader;
-
-    private void Start() {
-        menuLoader = FindObjectOfType<MenuLoader>();
-    }
 
     public void GoToHangar() {
-        menuLoader.GoToNextOverlay(menuLoader.HangarCanvas);
+        FindObjectOfType<OverlayLoader>().OpenHangarOverlay();
     }
 }

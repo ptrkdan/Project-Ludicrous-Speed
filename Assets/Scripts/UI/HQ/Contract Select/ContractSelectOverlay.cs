@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ContractSelectManager : MonoBehaviour
+public class ContractSelectOverlay : Overlay
 {
     [Header("UI Prefabs")]
     [SerializeField] ContractSelection contractSelectionPrefab;
@@ -16,6 +16,10 @@ public class ContractSelectManager : MonoBehaviour
     [SerializeField] List<ContractConfig> contractConfigList;
 
     private bool contractsDisplayed = false;
+
+    public override void Display() {
+        base.Display();
+    }
 
     private void OnEnable() {
         if (!contractsDisplayed) {

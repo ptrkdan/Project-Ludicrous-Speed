@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class HangarManager : MonoBehaviour
+public class HangarOverlay : Overlay
 {
     [Header("UI References")]
     [SerializeField] Transform contentArea;
@@ -15,6 +12,10 @@ public class HangarManager : MonoBehaviour
 
     PlayerSingleton player;
 
+    public override void Display() {
+        base.Display();
+    }
+
     private void OnEnable() {
         player = FindObjectOfType<PlayerSingleton>();
         DisplayShipView();
@@ -22,7 +23,7 @@ public class HangarManager : MonoBehaviour
 
 
     private void ClearContentArea() {
-        foreach (OverlayView view in contentArea.GetComponentsInChildren<OverlayView>()) {
+        foreach (Overlay view in contentArea.GetComponentsInChildren<Overlay>()) {
             Destroy(view.gameObject);
         }
     }

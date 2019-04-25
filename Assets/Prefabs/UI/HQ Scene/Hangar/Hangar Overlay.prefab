@@ -189,7 +189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 947711613370280964}
         m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
@@ -216,12 +216,12 @@ GameObject:
   - component: {fileID: 8269821067548279401}
   - component: {fileID: 947711613370280964}
   m_Layer: 5
-  m_Name: Hangar Canvas
+  m_Name: Hangar Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8269821067548279402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_text: Hangar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e1c6142c769ad04482632a41906e050, type: 2}
-  m_sharedMaterial: {fileID: 21704896227110792, guid: 84ed1e5a38fbcab49b53c1e0295e74e3,
+  m_sharedMaterial: {fileID: 21090435621177072, guid: 5e1c6142c769ad04482632a41906e050,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -539,11 +539,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 1
   m_subTextObjects:
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 8269821069186347468}
   - component: {fileID: 8269821069186347469}
   m_Layer: 5
-  m_Name: Hangar Overlay
+  m_Name: Overlay Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

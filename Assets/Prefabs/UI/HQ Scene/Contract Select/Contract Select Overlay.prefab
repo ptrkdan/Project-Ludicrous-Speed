@@ -115,7 +115,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5428072058059673010}
         m_MethodName: GoBack
         m_Mode: 1
         m_Arguments:
@@ -215,14 +215,14 @@ GameObject:
   - component: {fileID: 7625850055008442535}
   - component: {fileID: 7625850055008442532}
   - component: {fileID: 7625850055008442533}
-  - component: {fileID: 1064204093}
+  - component: {fileID: 5428072058059673010}
   m_Layer: 5
-  m_Name: Contract Select Canvas
+  m_Name: Contract Select Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7625850055008442534
 RectTransform:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1064204093
+--- !u!114 &5428072058059673010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,8 +318,8 @@ MonoBehaviour:
   contractSelectionPrefab: {fileID: 3753037359948416298, guid: 2a7b395738b58fb4e9784fec90990a83,
     type: 3}
   contractSelectXOffset: 0
-  contractSelectYOffset: 100
-  contractSelectHeight: 150
+  contractSelectYOffset: 60
+  contractSelectHeight: 100
   displayedContractCount: 3
   contractConfigList:
   - {fileID: 11400000, guid: c5751d0085771be47befcb4172e264fc, type: 2}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 7625850055300131584}
   - component: {fileID: 7625850055300131585}
   m_Layer: 5
-  m_Name: Contract Select Overlay
+  m_Name: Overlay Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,11 +550,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

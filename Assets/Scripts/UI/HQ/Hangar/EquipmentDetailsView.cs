@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class EquipmentDetailsView : OverlayView
+public class EquipmentDetailsView : Overlay
 {
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI equipmentName;

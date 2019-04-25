@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CareerView : OverlayView
+public class CareerView : Overlay
 {
     [Header("UI References")]
     [SerializeField] Image careerIcon;

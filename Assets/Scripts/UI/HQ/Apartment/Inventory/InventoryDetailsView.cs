@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventoryDetailsView : OverlayView 
+public class InventoryDetailsView : Overlay 
 {
 
     [Header("UI References")]

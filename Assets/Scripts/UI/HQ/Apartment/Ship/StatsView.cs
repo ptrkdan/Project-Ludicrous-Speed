@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 
-public class StatsView : OverlayView
+public class StatsView : Overlay
 {
     [SerializeField] TextMeshProUGUI hull; 
     [SerializeField] TextMeshProUGUI shield; 
