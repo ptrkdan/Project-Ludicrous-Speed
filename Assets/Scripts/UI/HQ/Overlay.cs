@@ -8,7 +8,7 @@ public class Overlay : MonoBehaviour
         Debug.Log($"Displaying {GetType()}");
     }
 
-    public void GoBack() {
+    public virtual void GoBack() {
         FindObjectOfType<OverlayLoader>().GoBack(this);
     }
 }

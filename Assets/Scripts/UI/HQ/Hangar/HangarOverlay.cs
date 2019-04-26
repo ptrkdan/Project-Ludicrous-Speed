@@ -11,6 +11,7 @@ public class HangarOverlay : Overlay
     [SerializeField] EquipmentDetailsView equipmentDetailsView;
 
     PlayerSingleton player;
+    bool isDisplayingEquipmentDetail = false;
 
     public override void Display() {
         base.Display();
@@ -31,17 +32,27 @@ public class HangarOverlay : Overlay
     private void DisplayShipView() {
         ClearContentArea();
         HangarShipView ship = Instantiate(shipView, contentArea);
+        isDisplayingEquipmentDetail = false;
     }
 
     private void DisplayEquipmentDetails(EquipmentPoint equipment) {
         ClearContentArea();
         EquipmentDetailsView equipmentDetails = Instantiate(equipmentDetailsView, contentArea);
-        equipmentDetails.Set(equipment.Config);
+        equipmentDetails.DisplayEquipmentDetails(equipment.Config);
         EquipmentListView equipmentList = Instantiate(equipmentListView, contentArea);
-        equipmentList.DisplayLootForEquipmentSlot(equipment.Config.EquipSlot);
+        equipmentList.DisplayLootForEquipmentSlot(equipment.EquipSlot);
+        isDisplayingEquipmentDetail = true;
     }
     
     public void OnEquipmentClick (EquipmentPoint equipment) {
         DisplayEquipmentDetails(equipment);
+    }
+
+    public override void GoBack() {
+        if (isDisplayingEquipmentDetail) {
+            DisplayShipView();
+        } else {
+            base.GoBack();
+        }
     }
 }

@@ -5,8 +5,9 @@ public class OverlayLoader : MonoBehaviour {
 
     [SerializeField] Canvas worldCanvas;
     [SerializeField] ContractSelectOverlay contractSelectOverlayPrefab;
+    [SerializeField] ContractDetailsOverlay contractDetailsOverlayPrefab;
     [SerializeField] ApartmentOverlay apartmentOverlayPrefab;
-    [SerializeField] HangarOverlay hangarOverlayPrefab;
+    [SerializeField] HangarOverlay hangarShipOverlayPrefab;
     [SerializeField] MarketOverlay marketOverlayPrefab;
     [SerializeField] OfficeOverlay officeOverlayPrefab;
 
@@ -61,14 +62,18 @@ public class OverlayLoader : MonoBehaviour {
         GoToNextOverlay(contractSelectOverlayPrefab);
     }
 
+    public void OpenContractDetailsOverlay() {
+        GoToNextOverlay(contractDetailsOverlayPrefab);
+    }
+
     public void OpenApartmentOverlay() {
         GoToNextOverlay(apartmentOverlayPrefab);
     }
 
     public void OpenHangarOverlay() {
-        GoToNextOverlay(hangarOverlayPrefab);
+        GoToNextOverlay(hangarShipOverlayPrefab);
     }
-
+    
     public void OpenMarketOverlay() {
         GoToNextOverlay(marketOverlayPrefab);
     }

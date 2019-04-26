@@ -7,7 +7,7 @@ public class ContractSelection : MonoBehaviour
 
     [Header("Cached")]
     [SerializeField] GameSession session;
-    [SerializeField] OverlayLoader menuLoader;
+    [SerializeField] OverlayLoader overlayLoader;
     [SerializeField] Canvas contractDetailsOverlay;
     [SerializeField] ContractConfig contract;
 
@@ -27,7 +27,7 @@ public class ContractSelection : MonoBehaviour
 
     private void Start() {
         session = FindObjectOfType<GameSession>();
-        menuLoader = FindObjectOfType<OverlayLoader>();
+        overlayLoader = FindObjectOfType<OverlayLoader>();
     }
 
     private void SetContractTitle(string title) {
@@ -59,6 +59,6 @@ public class ContractSelection : MonoBehaviour
 
     public void SelectContract() {
         session.ActiveContract = contract;
-        //menuLoader.OpenContractDetails();
+        overlayLoader.OpenContractDetailsOverlay();
     }
 }

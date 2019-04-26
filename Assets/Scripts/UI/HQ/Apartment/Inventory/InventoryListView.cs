@@ -12,7 +12,7 @@ public class InventoryListView : Overlay
     [SerializeField] InventoryGrid inventoryGrid;
 
     [Header("UI Prefabs")]
-    [SerializeField] InventorySlot inventorySlotPrefab;
+    [SerializeField] ApartmentInventorySlot inventorySlotPrefab;
 
     private void Awake() {
         inventory = InventoryManager.instance;
@@ -25,7 +25,7 @@ public class InventoryListView : Overlay
         ClearInventory(); 
         for (int i = 0; i < inventory.Inventory.Count; i++) {
             LootConfig lootConfig = inventory.Inventory[i];
-            InventorySlot inventorySlot = Instantiate(inventorySlotPrefab, inventoryGrid.transform);
+            ApartmentInventorySlot inventorySlot = Instantiate(inventorySlotPrefab, inventoryGrid.transform);
             inventorySlot.DisplayLoot(lootConfig);            
         }
     }
@@ -34,8 +34,8 @@ public class InventoryListView : Overlay
         if (!inventoryGrid) {       // Is there a clearer way to do this?
             inventoryGrid = FindObjectOfType<InventoryGrid>();
         }
-        InventorySlot[] slots = inventoryGrid.GetComponentsInChildren<InventorySlot>();
-        foreach(InventorySlot slot in slots) {
+        ApartmentInventorySlot[] slots = inventoryGrid.GetComponentsInChildren<ApartmentInventorySlot>();
+        foreach(ApartmentInventorySlot slot in slots) {
             slot.ClearSlot();
         }
     }

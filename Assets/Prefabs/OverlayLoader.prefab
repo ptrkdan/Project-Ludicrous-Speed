@@ -47,9 +47,13 @@ MonoBehaviour:
     type: 3}
   contractSelectOverlayPrefab: {fileID: 5428072058059673010, guid: 6e4a7ec6e627f084280c05f7c95659e5,
     type: 3}
+  contractDetailsOverlayPrefab: {fileID: 1597523404, guid: a80943d244032f74fb84451cc575d97e,
+    type: 3}
   apartmentOverlayPrefab: {fileID: 5676042254994167830, guid: 6c3ff0dee59d2f7439546ea74ca84527,
     type: 3}
-  hangarOverlayPrefab: {fileID: 947711613370280964, guid: 64f2a236dad458e4280300ff9f56a9ca,
+  hangarShipOverlayPrefab: {fileID: 947711613370280964, guid: b3443ba67673ed244a736e6bb5efb322,
+    type: 3}
+  hangarEquipmentOverlayPrefab: {fileID: 2123886121583831482, guid: 64f2a236dad458e4280300ff9f56a9ca,
     type: 3}
   marketOverlayPrefab: {fileID: 0}
   officeOverlayPrefab: {fileID: 0}

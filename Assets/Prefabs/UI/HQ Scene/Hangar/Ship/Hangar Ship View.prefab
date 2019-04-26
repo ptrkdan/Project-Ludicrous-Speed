@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 6664807782340933291}
   equipmentName: {fileID: 5308242431691704715}
+  equipSlot: 3
 --- !u!1 &1465015246929543837
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 3722795242361349706}
   equipmentName: {fileID: 3722795241969706748}
+  equipSlot: 2
 --- !u!1 &3722795240492764667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 3722795240492764665}
   equipmentName: {fileID: 3722795240582023974}
+  equipSlot: 1
 --- !u!1 &3722795241708581518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 3722795240883988650}
   equipmentName: {fileID: 3722795241708581516}
+  equipSlot: 0
 --- !u!1 &3722795242231055340
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,6 +2353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 8641363934890082561}
   equipmentName: {fileID: 3796402218758010290}
+  equipSlot: 4
 --- !u!1 &8453767643754160177
 GameObject:
   m_ObjectHideFlags: 0

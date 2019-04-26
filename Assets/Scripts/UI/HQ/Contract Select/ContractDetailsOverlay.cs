@@ -2,7 +2,7 @@
 using TMPro;
 using System;
 
-public class ContractDetailsManager : MonoBehaviour
+public class ContractDetailsOverlay : Overlay
 {
     [Header("Cached")]
     [SerializeField] GameSession session;

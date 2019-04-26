@@ -9,7 +9,7 @@ public class EquipmentListView : Overlay
         ;
 
     [Header("UI Prefabs")]
-    [SerializeField] InventorySlot inventorySlotPrefab;
+    [SerializeField] HangarInventorySlot inventorySlotPrefab;
 
     PlayerSingleton player;
 
@@ -21,8 +21,8 @@ public class EquipmentListView : Overlay
         if (!equipmentGrid) {
             equipmentGrid = FindObjectOfType<InventoryGrid>();
         }
-        InventorySlot[] slots = equipmentGrid.GetComponentsInChildren<InventorySlot>();
-        foreach (InventorySlot slot in slots) {
+        HangarInventorySlot[] slots = equipmentGrid.GetComponentsInChildren<HangarInventorySlot>();
+        foreach (HangarInventorySlot slot in slots) {
             slot.ClearSlot();
         }
     }
@@ -34,10 +34,9 @@ public class EquipmentListView : Overlay
         for (int i = 0; i < equipments.Count; i++) {
             EquipmentConfig equipment = equipments[i] as EquipmentConfig;
             if (equipment.EquipSlot == slot) {
-                InventorySlot inventorySlot = Instantiate(inventorySlotPrefab, equipmentGrid.transform);
+                HangarInventorySlot inventorySlot = Instantiate(inventorySlotPrefab, equipmentGrid.transform);
                 inventorySlot.DisplayLoot(equipment);
             }
         }
     }
-
 }

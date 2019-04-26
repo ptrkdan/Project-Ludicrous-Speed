@@ -2116,7 +2116,7 @@ GameObject:
   - component: {fileID: 1233730220470410690}
   - component: {fileID: 4414798046692764416}
   m_Layer: 5
-  m_Name: Unequip Button
+  m_Name: Equip/Unequip Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2139,7 +2139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -16.2, y: -90}
+  m_AnchoredPosition: {x: -125, y: -90}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4357869971410340773

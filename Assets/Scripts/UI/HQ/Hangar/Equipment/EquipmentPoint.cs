@@ -6,9 +6,11 @@ public class EquipmentPoint : MonoBehaviour
 {
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI equipmentName;
+    [SerializeField] EquipmentSlot equipSlot;
 
     EquipmentConfig config;
 
+    public EquipmentSlot EquipSlot { get => equipSlot; }
     public EquipmentConfig Config { get => config; }
 
     private void SetIcon(Sprite icon) {
@@ -27,3 +29,5 @@ public class EquipmentPoint : MonoBehaviour
         }
     }
 }
+
+// On empty slots, it cannot retrieve EquipSlot enum
