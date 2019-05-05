@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotCounter: 0
-  weapon: {fileID: 11400000, guid: 7162c489106693245b60bb14a83cca5e, type: 2}
+  weaponConfig: {fileID: 11400000, guid: 7162c489106693245b60bb14a83cca5e, type: 2}
 --- !u!114 &1298490598032868000
 MonoBehaviour:
   m_ObjectHideFlags: 0

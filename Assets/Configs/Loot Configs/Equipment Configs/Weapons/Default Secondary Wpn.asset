@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3efe90a0c415d9a4ea2d3cd6a51d05c5, type: 3}
-  m_Name: Energy Ball
+  m_Name: Default Secondary Wpn
   m_EditorClassIdentifier: 
   lootName: Energy Ball
   lootType: 2

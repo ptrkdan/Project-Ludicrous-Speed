@@ -8,10 +8,10 @@ public class EquipmentPoint : MonoBehaviour
     [SerializeField] TextMeshProUGUI equipmentName;
     [SerializeField] EquipmentSlot equipSlot;
 
-    EquipmentConfig config;
+    Equipment equipment;
 
     public EquipmentSlot EquipSlot { get => equipSlot; }
-    public EquipmentConfig Config { get => config; }
+    public Equipment Equipment { get => equipment; }
 
     private void SetIcon(Sprite icon) {
         this.icon.sprite = icon;
@@ -21,11 +21,11 @@ public class EquipmentPoint : MonoBehaviour
         this.equipmentName.text = equipmentName;
     }
 
-    public void SetInfo(EquipmentConfig config) {
-        if (config) {
-            this.config = config;
-            SetIcon(config.Icon);
-            SetName(config.LootName);
+    public void SetInfo(Equipment equipment
+        ) {
+        if (this.equipment != null) {
+            SetIcon(this.equipment.GetIcon());
+            SetName(this.equipment.GetName());
         }
     }
 }

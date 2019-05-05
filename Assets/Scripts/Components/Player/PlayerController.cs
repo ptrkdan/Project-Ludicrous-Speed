@@ -8,8 +8,8 @@ public class PlayerController : LivingInteractable
 { 
 
     [Header("Equipments")]
-    [SerializeField] WeaponConfig primaryWpn;
-    [SerializeField] WeaponConfig secondaryWpn;
+    [SerializeField] Weapon primaryWpn;
+    [SerializeField] Weapon secondaryWpn;
     [SerializeField] SupportEquipConfig supportEquip;
     [SerializeField] Projectile projectile;
     
@@ -42,9 +42,9 @@ public class PlayerController : LivingInteractable
     }
 
     private void SetEquipment() {
-        primaryWpn = (WeaponConfig) player.GetEquipment(EquipmentSlot.PrimaryWeapon);
-        secondaryWpn = (WeaponConfig) player.GetEquipment(EquipmentSlot.SecondaryWeapon);
-        supportEquip = (SupportEquipConfig) player.GetEquipment(EquipmentSlot.Support);
+        primaryWpn = (Weapon) player.GetEquipment(EquipmentSlot.PrimaryWeapon);
+        secondaryWpn = (Weapon) player.GetEquipment(EquipmentSlot.SecondaryWeapon);
+        //supportEquip = (SupportEquipConfig) player.GetEquipment(EquipmentSlot.Support);
     }
 
     private void SetStats() {
@@ -81,7 +81,7 @@ public class PlayerController : LivingInteractable
         while (true) {
             primaryWpn.Fire(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
-            yield return new WaitForSeconds(primaryWpn.Cooldown.GetCalcValue());
+            yield return new WaitForSeconds(primaryWpn.GetCooldown().GetCalcValue());
         }
     }
 

@@ -50,16 +50,12 @@ public class RunResultsManager : MonoBehaviour
         if (success) {
             for (int i = 0; i < lootList.Count; i++) {
                 RunResultsLootRow newLoot = Instantiate(lootRowPrefab, lootGrid);
-                //newLoot.transform.Translate(
-                //    lootIconPaddingX, 
-                //    -lootIconPaddingY - (lootIconOffsetY*i), 
-                //    0);
                 newLoot.DisplayLoot(lootList[i]);
                 
                 if (lootList[i].LootName == "Credits") {
-                    player.AddToCredits(lootList[i].LootValue);
+                    player.AddToCredits(lootList[i].CreditValue);
                 } else {
-                    player.AddToInventory(lootList[i]);
+                    player.AddToInventory(lootList[i].Create());
                 }
             }
         } else {

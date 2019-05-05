@@ -12,7 +12,7 @@ public class RunResultsLootRow : MonoBehaviour
     public void DisplayLoot(LootConfig config) {
         lootImage.sprite = config.Icon;
         if (config.LootName == "Credits") {
-            lootName.text = $"{config.LootName} x {config.LootValue}";
+            lootName.text = $"{config.LootName} x {config.CreditValue}";
         } else {
             lootName.text = config.LootName;
         }

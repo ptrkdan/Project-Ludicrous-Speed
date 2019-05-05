@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6656762581a5b43a085324a12ed8b2, type: 3}
-  m_Name: Cloaking Field
+  m_Name: Default Support
   m_EditorClassIdentifier: 
   lootName: Cloacking Field
   lootType: 2
@@ -19,8 +19,8 @@ MonoBehaviour:
   lootDescription: What cloaking field? I don't see anything.
   equipSlot: 2
   isEquipped: 0
-  hullModRange: {x: 1, y: 10}
-  shieldModRange: {x: 1, y: 10}
-  engineModRange: {x: 0, y: 3}
-  weaponModRange: {x: 0, y: 2}
-  auxModRange: {x: 0, y: 5}
+  hullModRange: {x: 0, y: 0}
+  shieldModRange: {x: 0, y: 0}
+  engineModRange: {x: 0, y: 0}
+  weaponModRange: {x: 0, y: 0}
+  auxModRange: {x: 2, y: 2}

@@ -8,15 +8,15 @@ public class HangarInventorySlot : MonoBehaviour
     [SerializeField] Image icon;
 
     [Space]
-    [SerializeField] EquipmentConfig config;
+    [SerializeField] Equipment equipment;
 
     private void Start() {
         detailsView = FindObjectOfType<EquipmentDetailsView>();
     }
 
-    public void DisplayLoot(EquipmentConfig newLoot) {
-        config = newLoot;
-        icon.sprite = config.Icon;
+    public void DisplayLoot(Equipment newLoot) {
+        equipment = newLoot;
+        icon.sprite = equipment.GetIcon();
     }
 
     public void ClearSlot() {
@@ -24,6 +24,6 @@ public class HangarInventorySlot : MonoBehaviour
     }
 
     public void DisplayLootDetails() {
-        detailsView.DisplayEquipmentDetails(config);
+        detailsView.DisplayEquipmentDetails(equipment);
     }
 }

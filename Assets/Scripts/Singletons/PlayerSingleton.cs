@@ -44,20 +44,20 @@ public class PlayerSingleton : MonoBehaviour
         return InventoryManager.instance.DeductFromCredits(amount);
     }
 
-    public List<LootConfig> GetInventory() {
+    public List<Loot> GetInventory() {
         return InventoryManager.instance.Inventory;
     }
     
-    public void AddToInventory(LootConfig item) {
+    public void AddToInventory(Loot item) {
         InventoryManager.instance.AddToInventory(item);
     }
-    public bool RemoveFromInventory(LootConfig item) {
+    public bool RemoveFromInventory(Loot item) {
         return InventoryManager.instance.RemoveFromInventory(item);
     }
     #endregion
 
     #region EquipmentManager
-    public EquipmentConfig GetEquipment(EquipmentSlot slot) {
+    public Equipment GetEquipment(EquipmentSlot slot) {
         return EquipmentManager.instance.GetEquipment(slot);
     }
     #endregion

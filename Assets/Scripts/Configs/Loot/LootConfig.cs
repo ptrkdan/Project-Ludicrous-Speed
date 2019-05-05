@@ -6,26 +6,59 @@ using UnityEngine;
 public class LootConfig : ScriptableObject
 {
     [SerializeField] string lootName;
-    [SerializeField] LootType type;
+    [SerializeField] LootType lootType;
     [SerializeField] Sprite icon;
-    [SerializeField] int lootValue = 0;
+    [SerializeField] int creditValue = 0;
     [SerializeField] [TextArea (3,5)] string lootDescription;
 
-    public string LootName { get => lootName; set => lootName = value; }
-    public LootType Type { get => type; }
-    public string LootDescription { get => lootDescription; set => lootDescription = value; }
-    public Sprite Icon { get => icon; set => icon = value; }
-    public int LootValue { get => lootValue; set => lootValue = value; }
+    public string LootName { get => lootName; }
+    public LootType LootType { get => lootType; }
+    public string LootDescription { get => lootDescription; }
+    public Sprite Icon { get => icon; }
+    public int CreditValue { get => creditValue; }
 
-    public virtual void Use() {
-        Debug.Log($"Using {lootName}...");
+    public virtual Loot Create()
+    {
+        return new Loot(this);
+    }
+}
 
+public class Loot : ScriptableObject
+{
+    new string name;
+    string description;
+    int creditValue;
+    LootType lootType;
+    Sprite icon;
+
+    public Loot() { }
+
+    public Loot(LootConfig config)
+    {
+        name = config.LootName;
+        description = config.LootDescription;
+        creditValue = config.CreditValue;
+        lootType = config.LootType;
+        icon = config.Icon;
     }
 
-    public void RemoveFromInventory() {
+    public string GetName() => name;
+    public string GetDescription() => description;
+    public int GetCreditValue() => creditValue;
+    public LootType GetLootType() => lootType;
+    public Sprite GetIcon() => icon;
+    
+    public virtual void Use()
+    {
+        Debug.Log($"Using {name}...");
+    }
+
+    public void RemoveFromInventory()
+    {
         InventoryManager.instance.RemoveFromInventory(this);
         Debug.Log($"{this} is removed from Inventory");
     }
+
 }
 
 public enum LootType { Currency, Loot, Equipment }

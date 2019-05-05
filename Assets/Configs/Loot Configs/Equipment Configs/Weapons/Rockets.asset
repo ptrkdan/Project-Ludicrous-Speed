@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Rockets
   m_EditorClassIdentifier: 
   lootName: Sapphire Rockets
-  type: 2
+  lootType: 2
   icon: {fileID: 21300000, guid: ecf11e954b1f2254ead977c4d0e9122a, type: 3}
-  lootValue: 120
+  creditValue: 120
   lootDescription: One goes BOOM, the other ones go KA-BLAAM.
   equipSlot: 0
   isEquipped: 0
-  hullMod: 0
-  shieldMod: 0
-  engineMod: 2
-  weaponMod: 10
-  auxMod: 0
+  hullModRange: {x: 0, y: 3}
+  shieldModRange: {x: 0, y: 3}
+  engineModRange: {x: 0, y: 5}
+  weaponModRange: {x: 5, y: 20}
+  auxModRange: {x: 2, y: 5}
   projectilePrefab: {fileID: 529413652948833886, guid: 7a84190af031d224485dc565092c7204,
     type: 3}
   projectileOffset: {x: 1, y: 0, z: 0}

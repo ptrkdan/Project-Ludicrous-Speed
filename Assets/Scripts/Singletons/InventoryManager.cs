@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     [SerializeField] int credits;
-    [SerializeField] List<LootConfig> inventory;
+    [SerializeField] List<Loot> inventory;
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -31,14 +31,14 @@ public class InventoryManager : MonoBehaviour
         return didDeduct;
     }
 
-    public List<LootConfig> Inventory { get => inventory; }
-    public void AddToInventory(LootConfig item) {
+    public List<Loot> Inventory { get => inventory; }
+    public void AddToInventory(Loot item) {
         inventory.Add(item);
         if (onItemChangedCallback != null) {
             onItemChangedCallback.Invoke();
         }
     }
-    public bool RemoveFromInventory(LootConfig item) {
+    public bool RemoveFromInventory(Loot item) {
         bool didRemove = false;
         if (inventory.Remove(item)) {
             if (onItemChangedCallback != null) {

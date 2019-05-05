@@ -4,14 +4,16 @@ public abstract class EnemyController : LivingInteractable
 {
     [Header("Weaponry")]
     [SerializeField] float shotCounter; 
-    [SerializeField] EnemyWeaponConfig weapon;
+    [SerializeField] EnemyWeaponConfig weaponConfig;
     
     protected Rigidbody2D rigidBody;
+    protected EnemyWeapon weapon;
 
     protected abstract void Move();
 
     private void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
+        weapon = (EnemyWeapon) weaponConfig.Create();
         FindObjectOfType<EnemySpawner>().IncreaseEnemyCount();
 
         ResetShotCooldown();
@@ -44,8 +46,8 @@ public abstract class EnemyController : LivingInteractable
     }
 
     private void ResetShotCooldown() {
-        shotCounter = Random.Range(
-                     weapon.Cooldown.GetCalcValue() - weapon.CooldownVariation,
-                     weapon.Cooldown.GetCalcValue() + weapon.CooldownVariation);
+        float cooldown = weapon.GetCooldown().GetCalcValue();
+        float variation = weapon.GetCoolDownVariation();
+        shotCounter = Random.Range(cooldown - variation, cooldown + variation);
     }
 }

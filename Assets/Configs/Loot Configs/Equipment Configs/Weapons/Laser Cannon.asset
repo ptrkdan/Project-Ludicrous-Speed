@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Laser Cannon
   m_EditorClassIdentifier: 
   lootName: Emerald Laser Cannon MkI
-  type: 2
+  lootType: 2
   icon: {fileID: 21300000, guid: 62168761a439c3f43b382112801c0b46, type: 3}
-  lootValue: 100
+  creditValue: 0
   lootDescription: Will most likely damage eyesight
   equipSlot: 0
   isEquipped: 0
-  hullMod: 0
-  shieldMod: 0
-  engineMod: 2
-  weaponMod: 5
-  auxMod: 0
+  hullModRange: {x: 0, y: 0}
+  shieldModRange: {x: 0, y: 0}
+  engineModRange: {x: 0, y: 0}
+  weaponModRange: {x: 0, y: 0}
+  auxModRange: {x: 0, y: 0}
   projectilePrefab: {fileID: 132911436509490290, guid: 85bd18dba23267c4693eb7e9c3f22119,
     type: 3}
   projectileOffset: {x: 1, y: 0, z: 0}

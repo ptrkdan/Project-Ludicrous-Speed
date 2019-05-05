@@ -13,19 +13,19 @@ public class EquipmentDetailsView : Overlay
     [SerializeField] TextMeshProUGUI auxValue;
     [SerializeField] Button equipButton;
 
-    EquipmentConfig config;
+    Equipment equipment;
 
-    public void DisplayEquipmentDetails(EquipmentConfig equipment) {
+    public void DisplayEquipmentDetails(Equipment equipment) {
         if (equipment == null) return;
-        this.config = equipment;
-        equipmentName.text = equipment.LootName;
+        this.equipment = equipment;
+        equipmentName.text = equipment.GetName();
         hullValue.text = equipment.GetStatModValue(StatType.Hull).ToString();
         shieldValue.text = equipment.GetStatModValue(StatType.Shield).ToString();
         engineValue.text = equipment.GetStatModValue(StatType.Engine).ToString();
         weaponValue.text = equipment.GetStatModValue(StatType.Weapon).ToString();
         auxValue.text = equipment.GetStatModValue(StatType.Aux).ToString();
         equipButton.gameObject.SetActive(true);
-        if (equipment.IsEquipped) {
+        if (equipment.IsEquipped()) {
             equipButton.GetComponentInChildren<TextMeshProUGUI>().text = "Unequip";
         } else {
             equipButton.GetComponentInChildren<TextMeshProUGUI>().text = "Equip";

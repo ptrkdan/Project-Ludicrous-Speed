@@ -28,12 +28,12 @@ public class EquipmentListView : Overlay
     }
     public void DisplayLootForEquipmentSlot(EquipmentSlot slot) {
         ClearInventoryGrid();
-        List<LootConfig> equipments = player.GetInventory().FindAll(
+        List<Loot> equipments = player.GetInventory().FindAll(
             (loot) => loot.GetType().BaseType == typeof(EquipmentConfig)
         );
         for (int i = 0; i < equipments.Count; i++) {
-            EquipmentConfig equipment = equipments[i] as EquipmentConfig;
-            if (equipment.EquipSlot == slot) {
+            Equipment equipment = equipments[i] as Equipment;
+            if (equipment.GetEquipSlot() == slot) {
                 HangarInventorySlot inventorySlot = Instantiate(inventorySlotPrefab, equipmentGrid.transform);
                 inventorySlot.DisplayLoot(equipment);
             }

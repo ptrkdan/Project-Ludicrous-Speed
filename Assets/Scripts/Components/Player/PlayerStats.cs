@@ -57,7 +57,7 @@ public class PlayerStats : InteractableStats {
         isInvincible = !isInvincible;
     }
 
-    private void OnEquipmentChanged(EquipmentConfig newEquip, EquipmentConfig oldEquip) {
+    private void OnEquipmentChanged(Equipment newEquip, Equipment oldEquip) {
         if (newEquip != null) {
             foreach (StatType type in Enum.GetValues(typeof(StatType))) {
                 if (type != StatType.None) {

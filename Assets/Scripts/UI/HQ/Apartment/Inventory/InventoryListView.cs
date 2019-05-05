@@ -14,17 +14,22 @@ public class InventoryListView : Overlay
     [Header("UI Prefabs")]
     [SerializeField] ApartmentInventorySlot inventorySlotPrefab;
 
-    private void Awake() {
+    private void OnEnable () {
         inventory = InventoryManager.instance;
         inventory.onItemChangedCallback += UpdateInventory;     
 
         UpdateInventory();
     }
 
+    private void OnDisable()
+    {
+        inventory.onItemChangedCallback -= UpdateInventory;
+    }
+
     private void UpdateInventory() {
         ClearInventory(); 
         for (int i = 0; i < inventory.Inventory.Count; i++) {
-            LootConfig lootConfig = inventory.Inventory[i];
+            Loot lootConfig = inventory.Inventory[i];
             ApartmentInventorySlot inventorySlot = Instantiate(inventorySlotPrefab, inventoryGrid.transform);
             inventorySlot.DisplayLoot(lootConfig);            
         }

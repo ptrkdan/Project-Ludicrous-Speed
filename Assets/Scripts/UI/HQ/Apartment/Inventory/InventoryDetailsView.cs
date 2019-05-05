@@ -21,7 +21,7 @@ public class InventoryDetailsView : Overlay
     [SerializeField] TextMeshProUGUI weaponValue;
     [SerializeField] TextMeshProUGUI auxValue;
 
-    LootConfig config;
+    Loot loot;
 
     private void Start() {
         ClearDetails();
@@ -36,16 +36,16 @@ public class InventoryDetailsView : Overlay
         statsPanel.gameObject.SetActive(false);
     }
 
-    public void DisplayLootDetails(LootConfig config) {
+    public void DisplayLootDetails(Loot loot) {
         ClearDetails();
-        this.config = config;
-        lootImage.GetComponentsInChildren<Image>()[1].sprite = config.Icon;
+        this.loot = loot;
+        lootImage.GetComponentsInChildren<Image>()[1].sprite = loot.GetIcon();
         lootImage.gameObject.SetActive(true);
         sellButton.gameObject.SetActive(true);
-        lootName.text = config.LootName;
-        lootDescription.text = config.LootDescription;
-        if (config.Type == LootType.Equipment) {
-            EquipmentConfig equipment = config as EquipmentConfig;
+        lootName.text = loot.GetName();
+        lootDescription.text = loot.GetDescription();
+        if (loot.GetLootType() == LootType.Equipment) {
+            Equipment equipment = loot as Equipment;
             equipButton.gameObject.SetActive(true);
             statsPanel.gameObject.SetActive(true);
             hullValue.text = equipment.GetStatModValue(StatType.Hull).ToString();
@@ -57,6 +57,6 @@ public class InventoryDetailsView : Overlay
     }
 
     public void OnEquip() {
-        config.Use();
+        loot.Use();
     }
 }

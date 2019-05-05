@@ -35,12 +35,12 @@ public class HangarOverlay : Overlay
         isDisplayingEquipmentDetail = false;
     }
 
-    private void DisplayEquipmentDetails(EquipmentPoint equipment) {
+    private void DisplayEquipmentDetails(EquipmentPoint equipPoint) {
         ClearContentArea();
         EquipmentDetailsView equipmentDetails = Instantiate(equipmentDetailsView, contentArea);
-        equipmentDetails.DisplayEquipmentDetails(equipment.Config);
+        equipmentDetails.DisplayEquipmentDetails(equipPoint.Equipment);
         EquipmentListView equipmentList = Instantiate(equipmentListView, contentArea);
-        equipmentList.DisplayLootForEquipmentSlot(equipment.EquipSlot);
+        equipmentList.DisplayLootForEquipmentSlot(equipPoint.EquipSlot);
         isDisplayingEquipmentDetail = true;
     }
     

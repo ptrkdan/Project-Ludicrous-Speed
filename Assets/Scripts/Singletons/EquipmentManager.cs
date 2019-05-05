@@ -12,11 +12,18 @@ public class EquipmentManager : MonoBehaviour
     }
     #endregion
 
-    public delegate void OnEquipmentChanged(EquipmentConfig newEquip, EquipmentConfig oldEquip);
+    [Header("Default Equipment")]
+    [SerializeField] WeaponConfig primaryWeapon;
+    [SerializeField] WeaponConfig secondaryWeapon;
+    [SerializeField] SupportEquipConfig supportEquipment;
+    [SerializeField] ModEquipConfig primaryMod;
+    [SerializeField] ModEquipConfig secondaryMod;
+
+    public delegate void OnEquipmentChanged(Equipment newEquip, Equipment oldEquip);
     public OnEquipmentChanged onEquipmentChanged;
 
-    [SerializeField] EquipmentConfig[] equipment =
-        new EquipmentConfig[System.Enum.GetNames(typeof(EquipmentSlot)).Length];
+    [SerializeField] Equipment[] currentEquipment =
+        new Equipment[System.Enum.GetNames(typeof(EquipmentSlot)).Length];
 
     InventoryManager inventory;
 
@@ -24,29 +31,34 @@ public class EquipmentManager : MonoBehaviour
         inventory = InventoryManager.instance;
     }
 
-    public EquipmentConfig GetEquipment(EquipmentSlot slot) {
-        return equipment[(int)slot];
+    public Equipment GetEquipment(EquipmentSlot slot) {
+        Equipment equipment = currentEquipment[(int)slot];
+        if (equipment == null)
+        {
+            return GetDefaultEquipment(slot);
+        }
+        return equipment;
     }
 
-    public void Equip(EquipmentConfig newEquip) {
-        int slotIndex = (int)newEquip.EquipSlot;
-        EquipmentConfig oldEquip = equipment[slotIndex];
+    public void Equip(Equipment newEquip) {
+        int slotIndex = (int)newEquip.GetEquipSlot();
+        Equipment oldEquip = currentEquipment[slotIndex];
         if (oldEquip) {
             inventory.AddToInventory(oldEquip);
         }
-        equipment[slotIndex] = newEquip;
+        currentEquipment[slotIndex] = newEquip;
 
         if (onEquipmentChanged != null) {
             onEquipmentChanged.Invoke(newEquip, oldEquip);
         }
-        Debug.Log($"<color=green>{newEquip.LootName}</color> equipped as <color=green>{newEquip.EquipSlot}</color>");
+        Debug.Log($"<color=green>{newEquip.GetName()}</color> equipped as <color=green>{newEquip.GetEquipSlot()}</color>");
     }
 
     public void UnEquip(int slotIndex) {
-        EquipmentConfig oldEquip = equipment[slotIndex];
+        Equipment oldEquip = currentEquipment[slotIndex];
         if (oldEquip) {
-            inventory.AddToInventory(equipment[slotIndex]);
-            equipment[slotIndex] = null;
+            inventory.AddToInventory(currentEquipment[slotIndex]);
+            currentEquipment[slotIndex] = null;
             
             if(onEquipmentChanged != null) {
                 onEquipmentChanged.Invoke(null, oldEquip);
@@ -55,8 +67,27 @@ public class EquipmentManager : MonoBehaviour
     }
 
     public void UnEquipAll() {
-        for (int i = 0; i < equipment.Length; i++) {
+        for (int i = 0; i < currentEquipment.Length; i++) {
             UnEquip(i);
         }
+    }
+
+    private Equipment GetDefaultEquipment(EquipmentSlot slot)
+    {
+        Equipment equipment;
+        switch(slot)
+        {
+            case (EquipmentSlot.PrimaryWeapon):
+                equipment = (Weapon) primaryWeapon.Create();
+                break;
+            case (EquipmentSlot.SecondaryWeapon):
+                equipment = (Weapon)secondaryWeapon.Create();
+                break;
+            case (EquipmentSlot.Support):
+            case (EquipmentSlot.PrimaryMod):
+            case (EquipmentSlot.SecondaryMod):
+            default: return null;
+        }
+        return equipment;
     }
 }
