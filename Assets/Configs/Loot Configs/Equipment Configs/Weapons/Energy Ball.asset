@@ -18,6 +18,7 @@ MonoBehaviour:
   lootValue: 125
   lootDescription: Area of effect projectile that detonates after X seconds.
   equipSlot: 1
+  isEquipped: 0
   hullMod: 0
   shieldMod: 0
   engineMod: 0

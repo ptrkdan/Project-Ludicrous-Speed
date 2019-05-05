@@ -4,6 +4,7 @@ using UnityEngine;
 public class EquipmentConfig : LootConfig
 {
     [SerializeField] EquipmentSlot equipSlot;
+    [SerializeField] bool isEquipped;
 
     [Header("Stat Mod values")]
     [SerializeField] int hullMod;
@@ -13,6 +14,7 @@ public class EquipmentConfig : LootConfig
     [SerializeField] int auxMod;
 
     public EquipmentSlot EquipSlot { get => equipSlot; }
+    public bool IsEquipped { get => isEquipped; }
     
     public int GetStatModValue(StatType type) {
         switch (type) { 

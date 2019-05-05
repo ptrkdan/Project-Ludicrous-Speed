@@ -18,7 +18,8 @@ MonoBehaviour:
   lootValue: 120
   lootDescription: One goes BOOM, the other ones go KA-BLAAM.
   equipSlot: 0
-  hullMod: 1
+  isEquipped: 0
+  hullMod: 0
   shieldMod: 0
   engineMod: 2
   weaponMod: 10

@@ -18,7 +18,7 @@ public class RunResultsManager : MonoBehaviour
     [SerializeField] Button hqButton;
 
     [Header("UI Prefabs")]
-    [SerializeField] Loot loot;
+    [SerializeField] RunResultsLootRow lootRowPrefab;
 
     private void Start() {
         session = FindObjectOfType<GameSession>();
@@ -49,7 +49,7 @@ public class RunResultsManager : MonoBehaviour
         List<LootConfig> lootList = session.ActiveContract.GetContractRewards();
         if (success) {
             for (int i = 0; i < lootList.Count; i++) {
-                Loot newLoot = Instantiate(loot, lootGrid);
+                RunResultsLootRow newLoot = Instantiate(lootRowPrefab, lootGrid);
                 //newLoot.transform.Translate(
                 //    lootIconPaddingX, 
                 //    -lootIconPaddingY - (lootIconOffsetY*i), 

@@ -18,6 +18,7 @@ MonoBehaviour:
   lootValue: 100
   lootDescription: Will most likely damage eyesight
   equipSlot: 0
+  isEquipped: 0
   hullMod: 0
   shieldMod: 0
   engineMod: 2

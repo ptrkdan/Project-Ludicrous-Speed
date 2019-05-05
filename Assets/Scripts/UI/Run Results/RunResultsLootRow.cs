@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Loot : MonoBehaviour
+public class RunResultsLootRow : MonoBehaviour
 {
     [SerializeField] Image lootImage;
     [SerializeField] TextMeshProUGUI lootName;

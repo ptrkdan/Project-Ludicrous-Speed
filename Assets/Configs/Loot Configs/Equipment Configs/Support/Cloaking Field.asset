@@ -16,10 +16,11 @@ MonoBehaviour:
   type: 2
   icon: {fileID: 21300000, guid: a55b12c079b859843b87c0d6b2aad461, type: 3}
   lootValue: 120
-  lootDescription: "\t"
+  lootDescription: What cloaking field? I don't see anything.
   equipSlot: 2
+  isEquipped: 0
   hullMod: 2
   shieldMod: 2
   engineMod: 1
   weaponMod: 0
-  auxMod: 2
+  auxMod: 1

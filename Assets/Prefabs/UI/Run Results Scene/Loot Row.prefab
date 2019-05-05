@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 1453917834626249548}
   - component: {fileID: 5110519985297897347}
   m_Layer: 5
-  m_Name: Loot
+  m_Name: Loot Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

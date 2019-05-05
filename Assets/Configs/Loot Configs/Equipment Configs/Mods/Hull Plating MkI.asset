@@ -18,6 +18,7 @@ MonoBehaviour:
   lootValue: 125
   lootDescription: 
   equipSlot: 3
+  isEquipped: 0
   hullMod: 10
   shieldMod: 0
   engineMod: 0
