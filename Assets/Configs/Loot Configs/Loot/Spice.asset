@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spice
   m_EditorClassIdentifier: 
   lootName: Spice
-  type: 1
+  lootType: 1
   icon: {fileID: 21300000, guid: db7821aca6dd3864591103dd45f68331, type: 3}
-  lootValue: 1000
+  creditValue: 0
   lootDescription: Let it flow.

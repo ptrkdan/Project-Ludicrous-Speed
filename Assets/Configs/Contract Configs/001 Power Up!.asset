@@ -18,8 +18,14 @@ MonoBehaviour:
   availablePickUps:
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
+  availablePickUpDropRates:
+  - 10
+  - 10
   contractRewards:
   - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
+  - {fileID: 11400000, guid: 5d9112bcb211a06479053e9cc8a8fcba, type: 2}
+  contractRewardDropRates:
+  - 100
+  - 50
   contractLootLevel: 1
   contractDifficultyLevel: 2
-  pickupDropRate: 0.3

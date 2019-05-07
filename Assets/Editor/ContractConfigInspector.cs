@@ -28,6 +28,13 @@ public class ContractConfigInspector : Editor
         EditorGUILayout.TextArea(config.GetContractDetails());
         EditorGUILayout.IntField("Run Distance", config.GetRunDistance());
 
+        // Run Parameters
+        EditorGUILayout.Space();
+        EditorGUILayout.Slider(new GUIContent("Loot Level"),
+            config.GetContractLootLevel(), 0f, 10f);
+        EditorGUILayout.Slider(new GUIContent("Difficulty Level"),
+            config.GetContractDifficultyLevel(), 0f, 10f);
+
         // Pick Ups
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Pick-Ups", EditorStyles.boldLabel);
@@ -101,6 +108,7 @@ public class ContractConfigInspector : Editor
             }
             EditorGUI.indentLevel--;
         }
+
 
         serializedObject.ApplyModifiedProperties();
     }

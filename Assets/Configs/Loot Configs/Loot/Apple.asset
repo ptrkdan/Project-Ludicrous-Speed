@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Apple
   m_EditorClassIdentifier: 
   lootName: Apple
-  type: 1
+  lootType: 1
   icon: {fileID: 21300000, guid: 5f62c8d6eba45324fab1e32e4681489d, type: 3}
-  lootValue: 10
-  lootDescription: "Did you just ask why it look like a big cherry? Don't you know\r\n
-    \   how an apple looks like?"
+  creditValue: 10
+  lootDescription: "Did you just ask why it look like a big cherry? Don't you know\r
+    how an apple looks like?"
