@@ -21,13 +21,12 @@ public class EquipmentPoint : MonoBehaviour
         this.equipmentName.text = equipmentName;
     }
 
-    public void SetInfo(Equipment equipment
-        ) {
-        if (this.equipment != null) {
-            SetIcon(this.equipment.GetIcon());
-            SetName(this.equipment.GetName());
+    public void SetInfo(Equipment equipment) {
+        if (equipment != null)
+        {
+            this.equipment = equipment;
+            SetIcon(equipment.GetIcon());
+            SetName(equipment.GetName());
         }
     }
 }
-
-// On empty slots, it cannot retrieve EquipSlot enum

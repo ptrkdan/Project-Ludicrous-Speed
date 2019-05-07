@@ -38,7 +38,7 @@ public class Equipment : Loot
     float weaponMod;
     float auxMod;
 
-    public bool IsEquipped() => isEquipped;
+    public bool IsEquipped { get; set; }
     public EquipmentSlot GetEquipSlot() => equipSlot;
     public float GetStatModValue(StatType type)
     {

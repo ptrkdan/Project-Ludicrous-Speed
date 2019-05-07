@@ -45,12 +45,15 @@ public class EquipmentManager : MonoBehaviour
         Equipment oldEquip = currentEquipment[slotIndex];
         if (oldEquip) {
             inventory.AddToInventory(oldEquip);
+            oldEquip.IsEquipped = false;
         }
         currentEquipment[slotIndex] = newEquip;
+        newEquip.IsEquipped = true;
 
         if (onEquipmentChanged != null) {
             onEquipmentChanged.Invoke(newEquip, oldEquip);
         }
+
         Debug.Log($"<color=green>{newEquip.GetName()}</color> equipped as <color=green>{newEquip.GetEquipSlot()}</color>");
     }
 
@@ -59,6 +62,7 @@ public class EquipmentManager : MonoBehaviour
         if (oldEquip) {
             inventory.AddToInventory(currentEquipment[slotIndex]);
             currentEquipment[slotIndex] = null;
+            oldEquip.IsEquipped = false;
             
             if(onEquipmentChanged != null) {
                 onEquipmentChanged.Invoke(null, oldEquip);
@@ -88,6 +92,7 @@ public class EquipmentManager : MonoBehaviour
             case (EquipmentSlot.SecondaryMod):
             default: return null;
         }
+        Equip(equipment);
         return equipment;
     }
 }
