@@ -53,6 +53,8 @@ public class RunManager : MonoBehaviour
         // Configure spawners with contract difficulty
         ConfigureAsteroidSpawner(difficulty);
         ConfigureEnemySpawner(difficulty);
+        ConfigureLootManager();
+        
     }
 
     private void ConfigureAsteroidSpawner(int difficulty) {
@@ -61,6 +63,13 @@ public class RunManager : MonoBehaviour
 
     private void ConfigureEnemySpawner(int difficulty) {
         enemySpawner.SetDifficulty(difficulty);
+    }
+
+    private void ConfigureLootManager()
+    {
+        LootManager.instance.ConfigureAvailableLoot(
+            session.ActiveContract.GetAvailablePickUps(),
+            session.ActiveContract.GetAvailablePickUpDropRates());
     }
     
     private void UpdateDistanceRemaining() {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LootManager : MonoBehaviour
@@ -15,14 +16,34 @@ public class LootManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] List<PickUpLootConfig> pickUpLootList = new List<PickUpLootConfig>();
+    [SerializeField] List<PickUpLootConfig> availableLoot;
+    [SerializeField] List<float> availableLootDropRate;
 
-    public PickUpLootConfig DropLoot() {
+    public void ConfigureAvailableLoot(List<PickUpLootConfig> availableLoot, List<float> availableLootDropRate) 
+    {
+        this.availableLoot = availableLoot;
+        this.availableLootDropRate = availableLootDropRate;
+    }
 
-        PickUpLootConfig loot = pickUpLootList[Random.Range(0, pickUpLootList.Count)];
-        if (Random.Range(0f, 1f) >= 1 - loot.SpawnRate) {
-            return loot;
-        } 
+    public PickUpLootConfig DropLoot()
+    {
+        List<PickUpLootConfig> droppedLoot = new List<PickUpLootConfig>();
+
+        // Check if each possible loot drops
+        for (int i = 0; i < availableLoot.Count; i++)
+        {
+            float dropRoll = Random.Range(0f, 100f);
+            if (dropRoll >= 100f - availableLootDropRate[i])
+            {
+                droppedLoot.Add(availableLoot[i]);
+            }
+        }
+
+        // Select one "dropped" loot
+        if (droppedLoot.Count >= 1)
+        {
+            return droppedLoot[Random.Range(0, droppedLoot.Count)];
+        }
         return null;
     }
 }
