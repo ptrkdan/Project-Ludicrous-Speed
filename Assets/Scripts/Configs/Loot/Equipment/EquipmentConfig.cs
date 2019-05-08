@@ -21,6 +21,11 @@ public class EquipmentConfig : LootConfig
     public Vector2 WeaponModRange { get => weaponModRange; }
     public Vector2 AuxModRange { get => auxModRange; }
 
+    public virtual Loot Create(bool isDefault)
+    {
+        return new Equipment(this, isDefault);
+    }
+
     public override Loot Create()
     {
         return new Equipment(this);
@@ -31,6 +36,7 @@ public class EquipmentConfig : LootConfig
 public class Equipment : Loot
 {
     bool isEquipped;
+    bool isDefault;
     EquipmentSlot equipSlot;
     float hullMod;
     float shieldMod;
@@ -39,6 +45,7 @@ public class Equipment : Loot
     float auxMod;
 
     public bool IsEquipped { get; set; }
+    public bool IsDefault { get; set; }
     public EquipmentSlot GetEquipSlot() => equipSlot;
     public float GetStatModValue(StatType type)
     {
@@ -61,8 +68,9 @@ public class Equipment : Loot
 
     public Equipment() : base() { }
 
-    public Equipment(EquipmentConfig config) : base(config)
-    { 
+    public Equipment(EquipmentConfig config, bool isDefault = false) : base(config)
+    {
+        this.isDefault = isDefault;
         isEquipped = false;
         equipSlot = config.EquipSlot;
         hullMod = Mathf.Floor(Random.Range(config.HullModRange.x, config.HullModRange.y));

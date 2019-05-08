@@ -24,6 +24,11 @@ public class WeaponConfig : EquipmentConfig
     public AudioClip ShootSFX { get => shootSFX; set => shootSFX = value; }
     public float ShootSFXVolume { get => shootSFXVolume; set => shootSFXVolume = value; }
 
+    public override Loot Create(bool isDefault)
+    {
+        return new Weapon(this, isDefault);
+    }
+
     public override Loot Create()
     {
         return new Weapon(this);
@@ -50,8 +55,10 @@ public class Weapon : Equipment
 
     public Weapon() : base() { }
 
-    public Weapon(WeaponConfig config) : base(config)
+    public Weapon(WeaponConfig config, bool isDefault = false) 
+        : base(config, isDefault)
     {
+        IsDefault = isDefault;
         projectilePrebab = config.ProjectilePrefab;
         projectileOffset = config.ProjectileOffset;
         damage = config.Damage;
