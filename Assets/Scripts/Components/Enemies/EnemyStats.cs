@@ -5,7 +5,7 @@ public class EnemyStats : InteractableStats
 {
     [Header("VFX")]
     [SerializeField] ParticleSystem explosionVFX;
-    [SerializeField] float explosionDuration = 1;
+    [SerializeField] float explosionDuration = 1f;
 
     [Header("Audio")]
     [SerializeField] AudioClip deathSFX;
@@ -25,7 +25,7 @@ public class EnemyStats : InteractableStats
 
         // Death VFX
         ParticleSystem explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
-        Destroy(explosion, explosionDuration);
+        Destroy(explosion.gameObject, explosionDuration);
 
         // Death SFX
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);

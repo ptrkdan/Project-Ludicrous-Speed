@@ -42,7 +42,7 @@ public class PlayerStats : InteractableStats {
 
         // Death VFX
         ParticleSystem explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
-        Destroy(explosion, explosionDuration);
+        Destroy(explosion.gameObject, explosionDuration);
 
         // Death SFX
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
