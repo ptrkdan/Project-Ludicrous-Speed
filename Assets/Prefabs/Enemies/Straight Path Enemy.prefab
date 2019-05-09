@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8402688160538775878}
   - component: {fileID: 507616555979316925}
   - component: {fileID: 1298490598032868000}
+  - component: {fileID: 1719441985581814819}
   - component: {fileID: 2623521241850326822}
   - component: {fileID: 762805762130988418}
-  - component: {fileID: 1719441985581814819}
   m_Layer: 9
   m_Name: Straight Path Enemy
   m_TagString: Non-Friendly
@@ -111,6 +111,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 250
+--- !u!114 &1719441985581814819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402688160538775879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a50833f475fe644e8956ceb1b1341af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  hull:
+    type: 1
+    baseValue: 10
+  shield:
+    type: 2
+    baseValue: 10
+  engine:
+    type: 3
+    baseValue: 40
+  weapon:
+    type: 4
+    baseValue: 10
+  aux:
+    type: 5
+    baseValue: 10
+  explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
+    type: 3}
+  explosionDuration: 1
+  deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
+  deathSFXVolume: 0.2
 --- !u!50 &2623521241850326822
 Rigidbody2D:
   serializedVersion: 4
@@ -174,27 +208,3 @@ PolygonCollider2D:
       - {x: 0.28151044, y: -0.30944133}
       - {x: 0.28256217, y: -0.30833438}
       - {x: 0.24121404, y: -0.4153077}
---- !u!114 &1719441985581814819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8402688160538775879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a50833f475fe644e8956ceb1b1341af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  hull: 0
-  shield: 0
-  engine: 35
-  weapon: 0
-  aux: 0
-  explosionVFX: {fileID: 2671381771632184650, guid: 00e9b45f78bbdbb4999dc9ae1a2691b5,
-    type: 3}
-  explosionDuration: 1
-  deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
-  deathSFXVolume: 0.2

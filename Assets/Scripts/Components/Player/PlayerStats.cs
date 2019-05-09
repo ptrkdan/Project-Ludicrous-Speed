@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStats : InteractableStats {
-
-
+public class PlayerStats : InteractableStats
+{
     [Header("VFX")]
     [SerializeField] ParticleSystem explosionVFX;
     [SerializeField] float explosionDuration = 1;
@@ -19,9 +18,20 @@ public class PlayerStats : InteractableStats {
     [SerializeField] float gameOverDelay = 2f;
 
     private void Start() {
-        EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+        RetrieveStats();
     }
-    
+
+    private void RetrieveStats()
+    {
+        maxHealth = StatsManager.instance.GetMaxHealth();
+        currentHealth = maxHealth;
+        hull = StatsManager.instance.GetStat(StatType.Hull);
+        shield = StatsManager.instance.GetStat(StatType.Shield);
+        engine = StatsManager.instance.GetStat(StatType.Engine);
+        weapon = StatsManager.instance.GetStat(StatType.Weapon);
+        aux = StatsManager.instance.GetStat(StatType.Aux);
+    }
+
     public override void TakeDamage(int damage) {
         if (!isInvincible) {
             base.TakeDamage(damage);
@@ -55,26 +65,6 @@ public class PlayerStats : InteractableStats {
 
     public void ToggleGodMode() {
         isInvincible = !isInvincible;
-    }
-
-    private void OnEquipmentChanged(Equipment newEquip, Equipment oldEquip) {
-        if (newEquip != null) {
-            foreach (StatType type in Enum.GetValues(typeof(StatType))) {
-                if (type != StatType.None) {
-                    StatModifier newMod = new StatModifier(
-                        newEquip, type, StatModType.Flat, newEquip.GetStatModValue(type));
-                    stats[type].AddModifier(newMod);
-                } 
-            }
-        }
-
-        if (oldEquip != null) {
-            foreach (StatType type in Enum.GetValues(typeof(StatType))) {
-                if (type != StatType.None) {
-                    stats[type].RemoveModifier(oldEquip);
-                }
-            }
-        }
     }
 
     private void UpdateHealthBar() {

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7324584772527344298}
   - component: {fileID: 6056505322050605548}
   - component: {fileID: 656363543974232943}
-  - component: {fileID: 1165103383743052537}
   m_Layer: 0
   m_Name: StatsManager
   m_TagString: Untagged
@@ -57,28 +56,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fff49e4d4d55ce45a4c9efead2f393f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1165103383743052537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6208566806840720522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09608aacbb1245e49adeecd675a2782c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  hull: 10
-  shield: 10
-  engine: 10
-  weapon: 10
-  aux: 10
-  explosionVFX: {fileID: 0}
-  explosionDuration: 1
-  deathSFX: {fileID: 0}
-  deathSFXVolume: 1
-  isInvincible: 0
-  gameOverDelay: 2
+  maxHealth: 1000
+  hull:
+    type: 1
+    baseValue: 10
+  shield:
+    type: 2
+    baseValue: 10
+  engine:
+    type: 3
+    baseValue: 25
+  weapon:
+    type: 4
+    baseValue: 10
+  aux:
+    type: 5
+    baseValue: 10

@@ -11,11 +11,9 @@ public class RunManager : MonoBehaviour
         instance = this;
     }
     #endregion
-
-    [Header("Cached")]
-    [SerializeField] GameSession session;
     [SerializeField] SceneLoader sceneLoader;
-
+    [SerializeField] BackgroundParticleManager bgParticleManager;
+    
     [Header("Spawners")]
     [SerializeField] AsteroidSpawner asteroidSpawner;
     [SerializeField] EnemySpawner enemySpawner;
@@ -24,7 +22,10 @@ public class RunManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI distanceRemainingText;
     [SerializeField] Slider healthBarSlider;
 
-    private int distanceRemaining;
+    GameSession session;
+    PlayerSingleton player;
+    int distanceRemaining;
+    float playerEngineStatFactor;
 
     public void UpdateHealthBar(float currentHealth, float maxHealth) {
         healthBarSlider.value = currentHealth / maxHealth;
@@ -33,28 +34,30 @@ public class RunManager : MonoBehaviour
     private void Start()
     {
         session = FindObjectOfType<GameSession>();
-        if (!session) {
+        if (session == null) {
             sceneLoader.GoToPreload();
         }
+        player = FindObjectOfType<PlayerSingleton>();
         ConfigureRun();
     }
 
     private void FixedUpdate() {
+        UpdateSpeed();
         UpdateDistanceRemaining();
     }
 
     private void ConfigureRun() {
-        int difficulty = session.ActiveContract.GetContractDifficultyLevel();
-        
         // Set remaining distance on UI
         distanceRemaining = session.ActiveContract.GetRunDistance();
         distanceRemainingText.text = distanceRemaining.ToString();
 
         // Configure spawners with contract difficulty
+        int difficulty = session.ActiveContract.GetContractDifficultyLevel();
         ConfigureAsteroidSpawner(difficulty);
         ConfigureEnemySpawner(difficulty);
         ConfigureLootManager();
         
+        UpdateSpeed();
     }
 
     private void ConfigureAsteroidSpawner(int difficulty) {
@@ -72,10 +75,17 @@ public class RunManager : MonoBehaviour
             session.ActiveContract.GetAvailablePickUpDropRates());
     }
     
+    private void UpdateSpeed()
+    {
+        float playerEngineStat = player.GetStat(StatType.Engine).GetCalcValue();
+        playerEngineStatFactor = playerEngineStat / 20;        // TODO: Create factor formula
+        bgParticleManager.AddVelocity(playerEngineStatFactor);
+    }
+
     private void UpdateDistanceRemaining() {
         if (distanceRemaining > 0) {
-            distanceRemaining -= 1;
-            distanceRemainingText.text = distanceRemaining.ToString();
+            distanceRemaining -= (int)(1 + 1 * playerEngineStatFactor);
+            distanceRemainingText.text = Mathf.Clamp(distanceRemaining, 0, float.MaxValue).ToString();
         } else {
             session.IsRunSuccessful = true;
             sceneLoader.WaitAndLoadRunResultsScene(2f);

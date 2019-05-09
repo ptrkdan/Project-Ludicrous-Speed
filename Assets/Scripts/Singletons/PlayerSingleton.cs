@@ -14,7 +14,6 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] [TextArea] string titleDescription = "You're as expendable as the tissue they hand out at stations.";
     [SerializeField] List<GameObject> perks;    // TODO: Make Perks GameObject
 
-
     public string PlayerName { get => playerName; set => playerName = value; }
 
     public int ExperiencePoints { get => experiencePoints; set => experiencePoints = value; }

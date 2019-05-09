@@ -12,7 +12,9 @@ public class PlayerController : LivingInteractable
     [SerializeField] Weapon secondaryWpn;
     [SerializeField] SupportEquipConfig supportEquip;
     [SerializeField] Projectile projectile;
-    
+
+    [Space]
+    [SerializeField] float engineValueFactor = 0.5f;
     private float movementXMin;
     private float movementXMax;
     private float movementYMin;
@@ -37,7 +39,6 @@ public class PlayerController : LivingInteractable
         rigidBody = GetComponent<Rigidbody2D>();
 
         SetEquipment();
-        SetStats();
         SetMovementBoundaries();
     }
 
@@ -47,9 +48,6 @@ public class PlayerController : LivingInteractable
         //supportEquip = (SupportEquipConfig) player.GetEquipment(EquipmentSlot.Support);
     }
 
-    private void SetStats() {
-
-    }
 
     private void SetMovementBoundaries() {
         Camera gameCamera = Camera.main;
@@ -87,7 +85,8 @@ public class PlayerController : LivingInteractable
 
     private void Move() {   
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Vector3 newPosition = transform.position + movement * stats.GetStat(StatType.Engine).GetCalcValue() * Time.fixedDeltaTime;
+        float playerEngineValue = StatsManager.instance.GetStat(StatType.Engine).GetCalcValue() * engineValueFactor; ;
+        Vector3 newPosition = transform.position + movement * playerEngineValue * Time.fixedDeltaTime;
         newPosition.Set(
             Mathf.Clamp(newPosition.x, movementXMin, movementXMax), 
             Mathf.Clamp(newPosition.y, movementYMin, movementYMax),

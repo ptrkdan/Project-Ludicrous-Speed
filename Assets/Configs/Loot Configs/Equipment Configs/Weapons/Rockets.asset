@@ -19,9 +19,9 @@ MonoBehaviour:
   lootDescription: One goes BOOM, the other ones go KA-BLAAM.
   equipSlot: 0
   isEquipped: 0
-  hullModRange: {x: 0, y: 3}
-  shieldModRange: {x: 0, y: 3}
-  engineModRange: {x: 0, y: 5}
+  hullModRange: {x: 1, y: 5}
+  shieldModRange: {x: 1, y: 3}
+  engineModRange: {x: 1, y: 5}
   weaponModRange: {x: 5, y: 20}
   auxModRange: {x: 2, y: 5}
   projectilePrefab: {fileID: 529413652948833886, guid: 7a84190af031d224485dc565092c7204,

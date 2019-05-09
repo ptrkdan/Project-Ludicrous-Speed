@@ -59,8 +59,6 @@ MonoBehaviour:
   playerName: TEST PILOT
   experiencePoints: 25
   playerLevel: 1
-  inventory: {fileID: 0}
-  equipments: {fileID: 0}
   title: Cannon Fodder
   titleDescription: You're as expendable as the tissue they hand out at stations.
   perks: []

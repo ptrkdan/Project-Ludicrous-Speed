@@ -19,8 +19,8 @@ MonoBehaviour:
   lootDescription: 
   equipSlot: 3
   isEquipped: 0
-  hullModRange: {x: 0, y: 0}
-  shieldModRange: {x: 0, y: 0}
-  engineModRange: {x: 0, y: 0}
-  weaponModRange: {x: 0, y: 0}
-  auxModRange: {x: 0, y: 0}
+  hullModRange: {x: 1, y: 10}
+  shieldModRange: {x: 1, y: 5}
+  engineModRange: {x: 1, y: 5}
+  weaponModRange: {x: 1, y: 5}
+  auxModRange: {x: 1, y: 5}

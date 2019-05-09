@@ -15,4 +15,14 @@ public class BackgroundScroller : MonoBehaviour
     private void Update() {
         backgroundMaterial.mainTextureOffset += offset * Time.deltaTime;
     }
+
+    public void AddVelocity(float speed)
+    {
+        scrollSpeed += speed;
+    }
+
+    public void RemoveVelocity(float speed)
+    {
+        scrollSpeed -= speed;
+    }
 }

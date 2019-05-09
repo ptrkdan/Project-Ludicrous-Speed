@@ -9,29 +9,53 @@ public class InteractableStats : MonoBehaviour
     [SerializeField] protected int currentHealth;
 
     [Header("Base Stats")]
-    [SerializeField] float hull = 0;
-    [SerializeField] float shield = 0;
-    [SerializeField] float engine = 0;
-    [SerializeField] float weapon = 0;
-    [SerializeField] float aux = 0;
+    [SerializeField] protected Stat hull;
+    [SerializeField] protected Stat shield;
+    [SerializeField] protected Stat engine;
+    [SerializeField] protected Stat weapon;
+    [SerializeField] protected Stat aux;
 
-    protected Dictionary<StatType, Stat> stats = new Dictionary<StatType, Stat>();
-    
-    private void Awake() {
-        currentHealth = maxHealth;
-        stats[StatType.Hull] = new Stat(StatType.Hull, hull);
-        stats[StatType.Shield] = new Stat(StatType.Shield, shield);
-        stats[StatType.Engine] = new Stat(StatType.Engine, engine);
-        stats[StatType.Weapon] = new Stat(StatType.Weapon, weapon);
-        stats[StatType.Aux] = new Stat(StatType.Aux, aux);
+    List<StatModifier> modifiers = new List<StatModifier>();
+
+    public int GetCurrentHealth() => currentHealth;
+    public void SetCurrentHealth(int currentHealth) => this.currentHealth = currentHealth;
+    public Stat GetStat(StatType type) {
+        Stat stat;
+        switch(type)
+        {
+            case (StatType.Hull):
+                stat = hull;
+                break;
+            case (StatType.Shield):
+                stat = shield;
+                break;
+            case (StatType.Engine):
+                stat = engine;
+                break;
+            case (StatType.Weapon):
+                stat = weapon;
+                break;
+            case (StatType.Aux):
+                stat = aux;
+                break;
+            default:
+                stat = null;
+                break;
+        }
+
+        return stat;
     }
 
-    public int GetCurrentHealth() { return currentHealth; }
-    public void SetCurrentHealth(int currentHealth) { this.currentHealth = currentHealth; }
-    public Stat GetStat(StatType type) { return stats[type]; }
+    private void OnDisable()
+    { 
+        foreach(StatModifier modifier in modifiers)
+        {
+            RemoveBuff(modifier.StatType, modifier);
+        }
+    }
 
     protected virtual int CalculateDamage(int damage) {
-        int finalDamage = damage - Mathf.FloorToInt(stats[StatType.Hull].GetCalcValue());
+        int finalDamage = damage - Mathf.FloorToInt(GetStat(StatType.Hull).GetCalcValue());
         return Mathf.Clamp(finalDamage, 0, int.MaxValue);
     }
 
@@ -44,24 +68,32 @@ public class InteractableStats : MonoBehaviour
     }
 
     public void SetBuff(StatType type, StatModifier modifier) {
-        StartCoroutine(SetBuffForDuration(type, modifier));
+        if (modifier.Duration > 0)
+        {
+            StartCoroutine(SetBuffForDuration(type, modifier));
+            modifiers.Add(modifier);
+        }
+        else
+        {
+            Debug.Log($"Adding buff({modifier.Value}) to {type}");
+            GetStat(type).AddModifier(modifier);    // FIXME: value * 4? * 2?
+        }
     }
 
     public void RemoveBuff(StatType type, StatModifier modifier) {
-        stats[type].RemoveModifier(modifier.Source);
+        GetStat(type).RemoveModifier(modifier.Source);
     }
 
     IEnumerator SetBuffForDuration(StatType type, StatModifier modifier) {
-        stats[type].AddModifier(modifier);
+        GetStat(type).AddModifier(modifier);
         yield return new WaitForSeconds(modifier.Duration);
-        if (modifier.Duration > 0) {        // If duration <= 0, mod is permanent
-            RemoveBuff(type, modifier);
-        }
+        modifiers.Remove(modifier);
+        RemoveBuff(type, modifier);     
     }
 
     public void UpdateStats() {
         foreach(StatType type in Enum.GetValues(typeof(StatType))) {
-            stats[type].UpdateCalcValue();
+            GetStat(type).UpdateCalcValue();
         }
     }
 

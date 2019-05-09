@@ -12,6 +12,7 @@ public class Stat {
     private bool isDirty;
 
     public float GetBaseValue() => baseValue;
+    public void SetBaseValue(float newValue) => baseValue = newValue;
     public float GetCalcValue() {
         if (isDirty || baseValue != _baseValue) calcValue = CalculateFinalValue();
         return calcValue;
