@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
   availablePickUpDropRates:
   - 15
-  - 15
+  - 25
   contractRewards:
   - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
   - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}

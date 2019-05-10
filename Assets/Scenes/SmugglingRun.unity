@@ -290,7 +290,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 332730199}
         m_MethodName: ToggleGodMode
         m_Mode: 1
         m_Arguments:
@@ -478,6 +478,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39468c171216e4549b2f3622afac8251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &332730199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2580719223997610714, guid: fb612b7c636b0ae468ea0de6795fba46,
+    type: 3}
+  m_PrefabInstance: {fileID: 4224309646166513145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09608aacbb1245e49adeecd675a2782c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &363944774
@@ -6143,9 +6155,10 @@ MonoBehaviour:
   starfieldFar: {fileID: 1820324919}
   starfieldNear: {fileID: 429285760}
   bgScroller: {fileID: 876703464}
-  starfieldFarVelocityFactor: 1
-  starfieldNearVelocityFactor: 1
-  backgroundScrollerVelocityFactor: 1
+  masterSpeedFactor: 1
+  starfieldFarVelocityFactor: 5
+  starfieldNearVelocityFactor: 5
+  backgroundScrollerVelocityFactor: 10
 --- !u!1 &1349514783
 GameObject:
   m_ObjectHideFlags: 0
@@ -7378,7 +7391,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -7431,7 +7444,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -7996,7 +8009,7 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
