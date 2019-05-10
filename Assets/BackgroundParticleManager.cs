@@ -7,6 +7,7 @@ public class BackgroundParticleManager : MonoBehaviour
     [SerializeField] BackgroundScroller bgScroller;
 
     [Header("Factors")]
+    [SerializeField] float masterSpeedFactor = 1f;
     [SerializeField] float starfieldFarVelocityFactor = 1f;
     [SerializeField] float starfieldNearVelocityFactor = 1f;
     [SerializeField] float backgroundScrollerVelocityFactor = 1f;
@@ -21,16 +22,16 @@ public class BackgroundParticleManager : MonoBehaviour
 
     public void AddVelocity(float speed)
     {
-        starfieldFarVelocity.speedModifierMultiplier += speed * starfieldFarVelocityFactor;
-        starfieldNearVelocity.speedModifierMultiplier += speed * starfieldNearVelocityFactor;
-        bgScroller.AddVelocity(speed * backgroundScrollerVelocityFactor);
+        starfieldFarVelocity.speedModifierMultiplier += speed * masterSpeedFactor * starfieldFarVelocityFactor;
+        starfieldNearVelocity.speedModifierMultiplier += speed * masterSpeedFactor* starfieldNearVelocityFactor;
+        bgScroller.AddVelocity(speed * masterSpeedFactor * backgroundScrollerVelocityFactor);
     }
 
     public void RemoveVelocity(float speed)
     {
-        starfieldFarVelocity.speedModifierMultiplier -= speed * starfieldFarVelocityFactor;
-        starfieldNearVelocity.speedModifierMultiplier -= speed * starfieldNearVelocityFactor;
-        bgScroller.RemoveVelocity(speed * backgroundScrollerVelocityFactor);
+        starfieldFarVelocity.speedModifierMultiplier -= speed * masterSpeedFactor * starfieldFarVelocityFactor;
+        starfieldNearVelocity.speedModifierMultiplier -= speed * masterSpeedFactor * starfieldNearVelocityFactor;
+        bgScroller.RemoveVelocity(speed * masterSpeedFactor * backgroundScrollerVelocityFactor);
     }
 
 }

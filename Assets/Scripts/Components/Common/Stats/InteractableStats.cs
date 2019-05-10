@@ -17,6 +17,9 @@ public class InteractableStats : MonoBehaviour
 
     List<StatModifier> modifiers = new List<StatModifier>();
 
+    public delegate void OnStatChange(StatType type);
+    public OnStatChange onStatChange;
+
     public int GetCurrentHealth() => currentHealth;
     public void SetCurrentHealth(int currentHealth) => this.currentHealth = currentHealth;
     public Stat GetStat(StatType type) {
@@ -67,7 +70,7 @@ public class InteractableStats : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + repair, 0, maxHealth);
     }
 
-    public void SetBuff(StatType type, StatModifier modifier) {
+    public virtual void SetBuff(StatType type, StatModifier modifier) {
         if (modifier.Duration > 0)
         {
             StartCoroutine(SetBuffForDuration(type, modifier));
@@ -76,12 +79,14 @@ public class InteractableStats : MonoBehaviour
         else
         {
             Debug.Log($"Adding buff({modifier.Value}) to {type}");
-            GetStat(type).AddModifier(modifier);    // FIXME: value * 4? * 2?
+            GetStat(type).AddModifier(modifier);
         }
+        onStatChange?.Invoke(type);
     }
 
-    public void RemoveBuff(StatType type, StatModifier modifier) {
+    public virtual void RemoveBuff(StatType type, StatModifier modifier) {
         GetStat(type).RemoveModifier(modifier.Source);
+        onStatChange?.Invoke(type);
     }
 
     IEnumerator SetBuffForDuration(StatType type, StatModifier modifier) {

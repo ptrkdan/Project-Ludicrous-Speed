@@ -10,7 +10,7 @@ public class PlayerController : LivingInteractable
     [Header("Equipments")]
     [SerializeField] Weapon primaryWpn;
     [SerializeField] Weapon secondaryWpn;
-    [SerializeField] SupportEquipConfig supportEquip;
+    [SerializeField] SupportEquipment supportEquip;
     [SerializeField] Projectile projectile;
 
     [Space]
@@ -45,7 +45,7 @@ public class PlayerController : LivingInteractable
     private void SetEquipment() {
         primaryWpn = (Weapon) player.GetEquipment(EquipmentSlot.PrimaryWeapon);
         secondaryWpn = (Weapon) player.GetEquipment(EquipmentSlot.SecondaryWeapon);
-        //supportEquip = (SupportEquipConfig) player.GetEquipment(EquipmentSlot.Support);
+        supportEquip = (SupportEquipment) player.GetEquipment(EquipmentSlot.Support);
     }
 
 
@@ -85,8 +85,10 @@ public class PlayerController : LivingInteractable
 
     private void Move() {   
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        float playerEngineValue = StatsManager.instance.GetStat(StatType.Engine).GetCalcValue() * engineValueFactor; ;
-        Vector3 newPosition = transform.position + movement * playerEngineValue * Time.fixedDeltaTime;
+        float playerEngineValue = 
+            StatsManager.instance.GetStat(StatType.Engine).GetCalcValue() * engineValueFactor;
+        Vector3 newPosition = 
+            transform.position + movement * playerEngineValue * Time.fixedDeltaTime;
         newPosition.Set(
             Mathf.Clamp(newPosition.x, movementXMin, movementXMax), 
             Mathf.Clamp(newPosition.y, movementYMin, movementYMax),

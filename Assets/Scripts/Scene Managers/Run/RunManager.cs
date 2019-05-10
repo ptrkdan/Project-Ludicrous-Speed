@@ -23,7 +23,7 @@ public class RunManager : MonoBehaviour
     [SerializeField] Slider healthBarSlider;
 
     GameSession session;
-    PlayerSingleton player;
+    PlayerController player;
     int distanceRemaining;
     float playerEngineStatFactor;
 
@@ -37,12 +37,12 @@ public class RunManager : MonoBehaviour
         if (session == null) {
             sceneLoader.GoToPreload();
         }
-        player = FindObjectOfType<PlayerSingleton>();
+        player = FindObjectOfType<PlayerController>();
+        player.GetComponent<PlayerStats>().onStatChange += onStatChange;
         ConfigureRun();
     }
 
     private void FixedUpdate() {
-        UpdateSpeed();
         UpdateDistanceRemaining();
     }
 
@@ -74,10 +74,19 @@ public class RunManager : MonoBehaviour
             session.ActiveContract.GetAvailablePickUps(),
             session.ActiveContract.GetAvailablePickUpDropRates());
     }
+
+    private void onStatChange(StatType type)
+    {
+        if (type == StatType.Engine)
+        {
+            UpdateSpeed();
+        }
+    }
     
     private void UpdateSpeed()
     {
-        float playerEngineStat = player.GetStat(StatType.Engine).GetCalcValue();
+        float playerEngineStat = 
+            player.GetComponent<PlayerStats>().GetStat(StatType.Engine).GetCalcValue();
         playerEngineStatFactor = playerEngineStat / 20;        // TODO: Create factor formula
         bgParticleManager.AddVelocity(playerEngineStatFactor);
     }
