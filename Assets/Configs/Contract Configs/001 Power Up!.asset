@@ -24,8 +24,10 @@ MonoBehaviour:
   contractRewards:
   - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
   - {fileID: 11400000, guid: 5d9112bcb211a06479053e9cc8a8fcba, type: 2}
+  - {fileID: 11400000, guid: 2baa1c6af360c0745b21ff2dc1e7259d, type: 2}
   contractRewardDropRates:
   - 100
   - 50
+  - 100
   contractLootLevel: 1
   contractDifficultyLevel: 2
