@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Engine Booster
   m_EditorClassIdentifier: 
   lootName: Engine Booster
-  type: 0
-  icon: {fileID: 0}
-  lootValue: 0
+  lootType: 0
+  icon: {fileID: 21300000, guid: f2f8ae45b9710744481bfe9f423e0999, type: 3}
+  creditValue: 0
   lootDescription: Zoom Zoom Zoom
   lootPrefab: {fileID: 5427071964568407011, guid: 8d8ed2595309559408c0d9603a819987,
     type: 3}
@@ -25,4 +25,4 @@ MonoBehaviour:
   healValue: 0
   healType: 0
   boostValue: 1.5
-  buffType: 0
+  buffType: 3

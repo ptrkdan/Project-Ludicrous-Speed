@@ -56,8 +56,7 @@ public class RunManager : MonoBehaviour
         ConfigureAsteroidSpawner(difficulty);
         ConfigureEnemySpawner(difficulty);
         ConfigureLootManager();
-        
-        UpdateSpeed();
+        ConfigureStats();
     }
 
     private void ConfigureAsteroidSpawner(int difficulty) {
@@ -82,18 +81,24 @@ public class RunManager : MonoBehaviour
             UpdateSpeed();
         }
     }
-    
+
+    private void ConfigureStats()
+    {
+        UpdateSpeed();
+    }
+
+
     private void UpdateSpeed()
     {
         float playerEngineStat = 
             player.GetComponent<PlayerStats>().GetStat(StatType.Engine).GetCalcValue();
-        playerEngineStatFactor = playerEngineStat / 20;        // TODO: Create factor formula
-        bgParticleManager.AddVelocity(playerEngineStatFactor);
+        playerEngineStatFactor = playerEngineStat / 25;        // TODO: Create factor formula
+        bgParticleManager.UpdateVelocity(playerEngineStatFactor);
     }
 
     private void UpdateDistanceRemaining() {
         if (distanceRemaining > 0) {
-            distanceRemaining -= (int)(1 + 1 * playerEngineStatFactor);
+            distanceRemaining -= Mathf.RoundToInt(1 + 1 * playerEngineStatFactor);
             distanceRemainingText.text = Mathf.Clamp(distanceRemaining, 0, float.MaxValue).ToString();
         } else {
             session.IsRunSuccessful = true;

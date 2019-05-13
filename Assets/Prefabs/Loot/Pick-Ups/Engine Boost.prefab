@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   spawnRate: 0.2
-  buffValue: 0.1
+  buffValue: 15
   duration: 5
-  modType: 1
+  modType: 0
   buffType: 3
