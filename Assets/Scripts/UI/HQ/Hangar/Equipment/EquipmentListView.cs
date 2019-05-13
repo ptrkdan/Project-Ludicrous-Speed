@@ -5,7 +5,7 @@ using UnityEngine;
 public class EquipmentListView : Overlay
 {
     [Header("UI References")]
-    [SerializeField] InventoryGrid equipmentGrid;
+    [SerializeField] ItemGrid equipmentGrid;
 
     [Header("UI Prefabs")]
     [SerializeField] HangarInventorySlot inventorySlotPrefab;
@@ -30,7 +30,7 @@ public class EquipmentListView : Overlay
 
     private void ClearInventoryGrid() {
         if (!equipmentGrid) {
-            equipmentGrid = FindObjectOfType<InventoryGrid>();
+            equipmentGrid = FindObjectOfType<ItemGrid>();
         }
         HangarInventorySlot[] slots = equipmentGrid.GetComponentsInChildren<HangarInventorySlot>();
         foreach (HangarInventorySlot slot in slots) {

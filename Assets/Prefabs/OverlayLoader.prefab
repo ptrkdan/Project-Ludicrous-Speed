@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e2307c5d261194d83ec05ca362389c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldCanvas: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
-    type: 3}
+  worldCanvas: {fileID: 0}
   contractSelectOverlayPrefab: {fileID: 5428072058059673010, guid: 6e4a7ec6e627f084280c05f7c95659e5,
     type: 3}
   contractDetailsOverlayPrefab: {fileID: 1597523404, guid: a80943d244032f74fb84451cc575d97e,
@@ -53,7 +52,6 @@ MonoBehaviour:
     type: 3}
   hangarShipOverlayPrefab: {fileID: 947711613370280964, guid: b3443ba67673ed244a736e6bb5efb322,
     type: 3}
-  hangarEquipmentOverlayPrefab: {fileID: 2123886121583831482, guid: 64f2a236dad458e4280300ff9f56a9ca,
+  marketOverlayPrefab: {fileID: 4216622875364741935, guid: 3dbb7e5fb003d2c48add7970dc9a784a,
     type: 3}
-  marketOverlayPrefab: {fileID: 0}
   officeOverlayPrefab: {fileID: 0}

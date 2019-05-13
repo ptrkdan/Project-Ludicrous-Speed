@@ -8,15 +8,15 @@ public class ApartmentInventorySlot : MonoBehaviour
     [SerializeField] Image icon;
 
     [Space]
-    [SerializeField] Loot config;
+    [SerializeField] Loot loot;
 
     private void Start() {
         detailsView = FindObjectOfType<InventoryDetailsView>();
     }
 
     public void DisplayLoot(Loot newLoot) {
-        config = newLoot;
-        icon.sprite = config.GetIcon();
+        loot = newLoot;
+        icon.sprite = loot.GetIcon();
     }
 
     public void ClearSlot() {
@@ -24,6 +24,6 @@ public class ApartmentInventorySlot : MonoBehaviour
     }
 
     public void DisplayLootDetails() {
-        detailsView.DisplayLootDetails(config);
+        detailsView.DisplayLootDetails(loot);
     }
 }

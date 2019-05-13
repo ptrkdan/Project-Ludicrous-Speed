@@ -277,6 +277,12 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!223 &1609007656 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
+    type: 3}
+  m_PrefabInstance: {fileID: 7787167998134595469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1795578721 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8275232182527182941, guid: c1f6929635450f744afa10fa056d84b3,
@@ -578,6 +584,10 @@ PrefabInstance:
       propertyPath: m_UiScaleMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95632683, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
+      propertyPath: m_Name
+      value: Home Base Logo [PH]
+      objectReference: {fileID: 0}
     - target: {fileID: 5507420996666546847, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_Name
@@ -611,6 +621,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795578721}
+    - target: {fileID: 8225333270536186474, guid: 1049ef64a97cecd4497f52466320ff15,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5171649516698237539, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -801,6 +816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverlayLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 8275232182527182941, guid: c1f6929635450f744afa10fa056d84b3,
+        type: 3}
+      propertyPath: worldCanvas
+      value: 
+      objectReference: {fileID: 1609007656}
     - target: {fileID: 8275232182527182942, guid: c1f6929635450f744afa10fa056d84b3,
         type: 3}
       propertyPath: m_LocalPosition.x
