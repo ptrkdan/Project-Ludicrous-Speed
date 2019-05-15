@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MarketBuyItemDetailsView : Overlay
+public class MarketSellItemDetailsView : Overlay
 {
     [Header("UI References - Item Info")]
     [SerializeField] TextMeshProUGUI itemName;
@@ -21,9 +21,8 @@ public class MarketBuyItemDetailsView : Overlay
 
     [Header("UI References - Controls")]
     [SerializeField] RectTransform controlsPanel;
-    [SerializeField] Button buyButton;
+    [SerializeField] Button sellButton;
     [SerializeField] Button compareButton;
-    [SerializeField] Button buyAndEquipButton;
 
     Loot item;
 
@@ -37,7 +36,7 @@ public class MarketBuyItemDetailsView : Overlay
         ClearDetails();
         this.item = item;
         itemName.text = item.GetName();
-        itemCost.text = $"${item.GetCreditValue() * 4}";    // TODO: Refactor to constant
+        itemCost.text = $"${item.GetCreditValue()}";
         itemDescription.text = item.GetDescription();
         itemIcon.gameObject.SetActive(true);
         itemIcon.GetComponentsInChildren<Image>()[1].sprite = item.GetIcon();
@@ -46,7 +45,6 @@ public class MarketBuyItemDetailsView : Overlay
         {
             Equipment equipment = item as Equipment;
             compareButton.gameObject.SetActive(true);
-            buyAndEquipButton.gameObject.SetActive(true);
             statsPanel.gameObject.SetActive(true);
             hullValue.text = equipment.GetStatModValue(StatType.Hull).ToString();
             shieldValue.text = equipment.GetStatModValue(StatType.Shield).ToString();
@@ -57,24 +55,17 @@ public class MarketBuyItemDetailsView : Overlay
         else
         {
             compareButton.gameObject.SetActive(false);
-            buyAndEquipButton.gameObject.SetActive(false);
         }
     }
 
-    public void OnBuy()
+    public void OnSell()
     {
-        Debug.Log($"{item.GetName()} purchased");
+        Debug.Log($"{item.GetName()} sold for ${item.GetCreditValue()}");
     }
 
     public void OnCompare()
     {
         Debug.Log($"Comparing {item.GetName()} with currently equipped item ");
-    }
-
-    public void OnBuyAndEquip()
-    {
-        Debug.Log($"{item.GetName()} is purchased and equipped");
-
     }
 
     private void ClearDetails()

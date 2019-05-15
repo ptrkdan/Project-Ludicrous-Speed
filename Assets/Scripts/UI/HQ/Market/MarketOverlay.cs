@@ -8,9 +8,12 @@ public class MarketOverlay : Overlay
     [SerializeField] RectTransform contentArea;
     [SerializeField] TextMeshProUGUI credits;
 
-    [Header("UI Prefabs")]
+    [Header("UI Prefabs - Buy")]
     [SerializeField] MarketBuyItemListView buyItemListView;
     [SerializeField] MarketBuyItemDetailsView buyItemDetailsView;
+    [Header("UI Prefabs - Sell")]
+    [SerializeField] MarketSellItemListView sellItemListView;
+    [SerializeField] MarketSellItemDetailsView sellItemDetailsView;
 
     MarketTab activeTab;
 
@@ -31,6 +34,9 @@ public class MarketOverlay : Overlay
                 MarketBuyItemDetailsView buyItemDetails = Instantiate(buyItemDetailsView, contentArea);
                 break;
             case MarketTab.Sell:
+                MarketSellItemListView sellItemList = Instantiate(sellItemListView, contentArea);
+                MarketSellItemDetailsView sellItemDetails = Instantiate(sellItemDetailsView, contentArea);
+                break;
             case MarketTab.Buyback:
             default:
                 break;
