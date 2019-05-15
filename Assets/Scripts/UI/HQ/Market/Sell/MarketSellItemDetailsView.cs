@@ -36,7 +36,7 @@ public class MarketSellItemDetailsView : Overlay
         ClearDetails();
         this.item = item;
         itemName.text = item.GetName();
-        itemCost.text = $"${item.GetCreditValue()}";
+        itemCost.text = $"{item.GetCreditValue()} Cr";
         itemDescription.text = item.GetDescription();
         itemIcon.gameObject.SetActive(true);
         itemIcon.GetComponentsInChildren<Image>()[1].sprite = item.GetIcon();
@@ -60,6 +60,12 @@ public class MarketSellItemDetailsView : Overlay
 
     public void OnSell()
     {
+        InventoryManager inventory = InventoryManager.instance;
+        inventory.AddToCredits(item.GetCreditValue());
+        inventory.RemoveFromPlayerInventory(item);
+        inventory.AddToBuybackInventory(item);
+        ClearDetails();
+
         Debug.Log($"{item.GetName()} sold for ${item.GetCreditValue()}");
     }
 

@@ -15,12 +15,12 @@ public class EquipmentListView : Overlay
 
     private void OnEnable() {
         player = FindObjectOfType<PlayerSingleton>();
-        InventoryManager.instance.onItemChangedCallback += UpdateEquipmentList;
+        InventoryManager.instance.onPlayerInventoryChangedCallback += UpdateEquipmentList;
     }
 
     private void OnDisable()
     {
-        InventoryManager.instance.onItemChangedCallback -= UpdateEquipmentList;
+        InventoryManager.instance.onPlayerInventoryChangedCallback -= UpdateEquipmentList;
     }
 
     private void UpdateEquipmentList()

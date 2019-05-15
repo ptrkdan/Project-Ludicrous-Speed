@@ -14,6 +14,9 @@ public class MarketOverlay : Overlay
     [Header("UI Prefabs - Sell")]
     [SerializeField] MarketSellItemListView sellItemListView;
     [SerializeField] MarketSellItemDetailsView sellItemDetailsView;
+    [Header("UI Prefabs - Buyback")]
+    [SerializeField] MarketBuybackItemListView buybackItemListView;
+    [SerializeField] MarketBuybackItemDetailsView buybackItemDetailsView;
 
     MarketTab activeTab;
 
@@ -30,14 +33,17 @@ public class MarketOverlay : Overlay
         switch (nextTab)
         {
             case MarketTab.Buy:
-                MarketBuyItemListView buyItemList = Instantiate(buyItemListView, contentArea);
-                MarketBuyItemDetailsView buyItemDetails = Instantiate(buyItemDetailsView, contentArea);
+                Instantiate(buyItemListView, contentArea);
+                Instantiate(buyItemDetailsView, contentArea);
                 break;
             case MarketTab.Sell:
-                MarketSellItemListView sellItemList = Instantiate(sellItemListView, contentArea);
-                MarketSellItemDetailsView sellItemDetails = Instantiate(sellItemDetailsView, contentArea);
+                Instantiate(sellItemListView, contentArea);
+                Instantiate(sellItemDetailsView, contentArea);
                 break;
             case MarketTab.Buyback:
+                Instantiate(buybackItemListView, contentArea);
+                Instantiate(buybackItemDetailsView, contentArea);
+                break;
             default:
                 break;
         }
@@ -59,7 +65,7 @@ public class MarketOverlay : Overlay
 
     private void OnEnable()
     {
-        InventoryManager.instance.onItemChangedCallback += UpdateCredits;
+        InventoryManager.instance.onPlayerInventoryChangedCallback += UpdateCredits;
         UpdateCredits();
         ChangeTab((int)MarketTab.Buy);
     }

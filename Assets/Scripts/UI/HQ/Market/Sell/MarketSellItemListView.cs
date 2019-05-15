@@ -14,22 +14,22 @@ public class MarketSellItemListView : Overlay
     private void OnEnable()
     {
         inventory = InventoryManager.instance;
-        inventory.onItemChangedCallback += UpdateInventory;
+        inventory.onPlayerInventoryChangedCallback += UpdateInventory;
 
         UpdateInventory();
     }
 
     private void OnDisable()
     {
-        inventory.onItemChangedCallback -= UpdateInventory;
+        inventory.onPlayerInventoryChangedCallback -= UpdateInventory;
     }
 
     private void UpdateInventory()
     {
         ClearInventory();
-        for (int i = 0; i < inventory.Inventory.Count; i++)
+        for (int i = 0; i < inventory.GetPlayerInventory().Count; i++)
         {
-            Loot loot = inventory.Inventory[i];
+            Loot loot = inventory.GetPlayerInventory()[i];
             MarketSellItemSlot itemSlot = Instantiate(itemSlotPrefab, itemGrid.transform);
             itemSlot.DisplayLoot(loot);
         }

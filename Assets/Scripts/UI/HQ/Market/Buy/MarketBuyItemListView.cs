@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MarketBuyItemListView : Overlay
@@ -10,13 +9,6 @@ public class MarketBuyItemListView : Overlay
     [Header("UI Prefabs")]
     [SerializeField] MarketBuyItemSlot itemSlotPrefab;
 
-    [Header("Item list properties")]
-    [SerializeField] int numItems = 9;
-
-    [Header("[DEBUG]")]
-    [SerializeField] List<LootConfig> availableItems;
-
-
     List<Loot> itemList;
 
     private void OnEnable()
@@ -24,19 +16,15 @@ public class MarketBuyItemListView : Overlay
         if (itemList == null)       // TODO: the item list will only be renewed on specific times
         {
             itemList = new List<Loot>();
-            PopulateItemList();
+            StockMarket();
         }
+        InventoryManager.instance.onMarketInvetoryChangedCallback += UpdateItemList;
         UpdateItemList();
     }
 
-    private void PopulateItemList()
+    private void StockMarket()
     {
-        if (availableItems.Count == 0) return;
-        for (int i = 0; i < numItems; i++)
-        {
-            Loot item = availableItems[Random.Range(0, availableItems.Count)].Create();
-            itemList.Add(item);
-        }
+        itemList = InventoryManager.instance.GetMarketInventory();
     }
 
     private void UpdateItemList()
@@ -52,6 +40,14 @@ public class MarketBuyItemListView : Overlay
 
     private void ClearItemList()
     {
+        if (itemGrid == null)
+        {
+            itemGrid = FindObjectOfType<ItemGrid>();
+        }
         MarketBuyItemSlot[] slots = itemGrid.GetComponentsInChildren<MarketBuyItemSlot>();
+        foreach (MarketBuyItemSlot slot in slots)
+        {
+            slot.ClearSlot();
+        }
     }
 }

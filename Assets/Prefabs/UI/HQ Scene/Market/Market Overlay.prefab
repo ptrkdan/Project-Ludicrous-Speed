@@ -1262,6 +1262,10 @@ MonoBehaviour:
     type: 3}
   sellItemDetailsView: {fileID: 8243151233504748535, guid: c8b7431a1ea541b44836b7846e33460a,
     type: 3}
+  buybackItemListView: {fileID: 434805204781482951, guid: 45190aedb04eea441b6262bfbd608b29,
+    type: 3}
+  buybackItemDetailsView: {fileID: 658249857899962000, guid: 8b5f6a97dba47c24ba16999041891dd6,
+    type: 3}
 --- !u!1 &5676042255244856164
 GameObject:
   m_ObjectHideFlags: 0

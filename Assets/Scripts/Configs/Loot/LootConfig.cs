@@ -55,7 +55,7 @@ public class Loot : ScriptableObject
 
     public void RemoveFromInventory()
     {
-        InventoryManager.instance.RemoveFromInventory(this);
+        InventoryManager.instance.RemoveFromPlayerInventory(this);
     }
 
 }

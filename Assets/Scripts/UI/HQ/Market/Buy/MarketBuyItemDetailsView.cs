@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
@@ -25,6 +24,9 @@ public class MarketBuyItemDetailsView : Overlay
     [SerializeField] Button compareButton;
     [SerializeField] Button buyAndEquipButton;
 
+    [Space]
+    [SerializeField] int itemCostFactor = 4;
+
     Loot item;
 
     private void Start()
@@ -37,11 +39,14 @@ public class MarketBuyItemDetailsView : Overlay
         ClearDetails();
         this.item = item;
         itemName.text = item.GetName();
-        itemCost.text = $"${item.GetCreditValue() * 4}";    // TODO: Refactor to constant
+        itemCost.text = $"{item.GetCreditValue() * itemCostFactor} Cr";
         itemDescription.text = item.GetDescription();
         itemIcon.gameObject.SetActive(true);
         itemIcon.GetComponentsInChildren<Image>()[1].sprite = item.GetIcon();
         controlsPanel.gameObject.SetActive(true);
+        TextMeshProUGUI buyButtonText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+        buyButtonText.text = "Buy";
+        buyButtonText.color = new Color(0, 0, 0);
         if (item.GetLootType() == LootType.Equipment)
         {
             Equipment equipment = item as Equipment;
@@ -63,7 +68,22 @@ public class MarketBuyItemDetailsView : Overlay
 
     public void OnBuy()
     {
-        Debug.Log($"{item.GetName()} purchased");
+        InventoryManager inventory = InventoryManager.instance;
+        int itemCost = item.GetCreditValue() * itemCostFactor;
+        if (inventory.Credits >= itemCost)
+        {
+            inventory.DeductFromCredits(itemCost);
+            inventory.RemoveFromMarketInventory(item);
+            inventory.AddToPlayerInventory(item);
+            ClearDetails();
+            Debug.Log($"{item.GetName()} purchased for ${itemCost}");
+        }
+        else
+        {
+            TextMeshProUGUI buyButtonText = buyButton.GetComponentInChildren<TextMeshProUGUI>();
+            buyButtonText.text = "Not enough credits";
+            buyButtonText.color = new Color(1, 0, 0);
+        }
     }
 
     public void OnCompare()

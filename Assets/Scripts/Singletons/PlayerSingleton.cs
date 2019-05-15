@@ -44,14 +44,14 @@ public class PlayerSingleton : MonoBehaviour
     }
 
     public List<Loot> GetInventory() {
-        return InventoryManager.instance.Inventory;
+        return InventoryManager.instance.GetPlayerInventory();
     }
     
     public void AddToInventory(Loot item) {
-        InventoryManager.instance.AddToInventory(item);
+        InventoryManager.instance.AddToPlayerInventory(item);
     }
     public bool RemoveFromInventory(Loot item) {
-        return InventoryManager.instance.RemoveFromInventory(item);
+        return InventoryManager.instance.RemoveFromPlayerInventory(item);
     }
     #endregion
 

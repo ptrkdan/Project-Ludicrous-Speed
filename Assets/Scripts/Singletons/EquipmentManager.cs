@@ -58,7 +58,7 @@ public class EquipmentManager : MonoBehaviour
             else
             {
                 oldEquip.IsEquipped = false;
-                inventory.AddToInventory(oldEquip);
+                inventory.AddToPlayerInventory(oldEquip);
             }
         }
         currentEquipment[slotIndex] = newEquip;
@@ -84,7 +84,7 @@ public class EquipmentManager : MonoBehaviour
             else
             {
                 oldEquip.IsEquipped = false;
-                inventory.AddToInventory(oldEquip);
+                inventory.AddToPlayerInventory(oldEquip);
             }
             currentEquipment[slotIndex] = null;
 
