@@ -61,14 +61,13 @@ public class ApartmentOverlay : Overlay {
                 Instantiate(perksView, contentArea);
                 break;
             case SHIP_TAB:
-                ShipView ship = Instantiate(shipView, contentArea);
-                StatsView stats = Instantiate(statsView, contentArea);
+                Instantiate(shipView, contentArea);
+                Instantiate(statsView, contentArea);
                 break;
             case INVENTORY_TAB:
-                InventoryListView inventoryList = Instantiate(inventoryListView, contentArea);
-                InventoryDetailsView inventoryDetails = Instantiate(inventoryDetailsView, contentArea);
-                CreditsView credits = Instantiate(creditsView, contentArea);
-                credits.SetCreditsText(player.GetCredits()); // TODO: Make view handle this when starting
+                Instantiate(inventoryListView, contentArea);
+                Instantiate(inventoryDetailsView, contentArea);
+                Instantiate(creditsView, contentArea);
                 break;
             default:
                 break;

@@ -69,6 +69,11 @@ public class MarketOverlay : Overlay
         UpdateCredits();
         ChangeTab((int)MarketTab.Buy);
     }
+
+    private void OnDisable()
+    {
+        InventoryManager.instance.onPlayerInventoryChangedCallback -= UpdateCredits;
+    }
 }
 
 public enum MarketTab { Buy, Sell, Buyback }

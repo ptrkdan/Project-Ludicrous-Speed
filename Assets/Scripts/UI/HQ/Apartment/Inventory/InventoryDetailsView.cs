@@ -8,44 +8,41 @@ using TMPro;
 public class InventoryDetailsView : Overlay 
 {
 
-    [Header("UI References")]
-    [SerializeField] Image lootImage;
-    [SerializeField] Button equipButton;
-    [SerializeField] Button sellButton;
-    [SerializeField] TextMeshProUGUI lootName;
-    [SerializeField] TextMeshProUGUI lootDescription;
-    [SerializeField] Transform statsPanel;
+    [Header("UI References - Item Info")]
+    [SerializeField] TextMeshProUGUI itemName;
+    [SerializeField] TextMeshProUGUI itemCost;
+    [SerializeField] TextMeshProUGUI itemDescription;
+    [SerializeField] Image itemIcon;
+
+    [Header("UI References - Item Stats")]
+    [SerializeField] RectTransform statsPanel;
     [SerializeField] TextMeshProUGUI hullValue;
     [SerializeField] TextMeshProUGUI shieldValue;
     [SerializeField] TextMeshProUGUI engineValue;
     [SerializeField] TextMeshProUGUI weaponValue;
     [SerializeField] TextMeshProUGUI auxValue;
 
-    Loot loot;
+    [Header("UI References - Controls")]
+    [SerializeField] RectTransform controlsPanel;
+    [SerializeField] Button sellButton;
+    [SerializeField] Button compareButton;
+    [SerializeField] Button equipButton;
 
-    private void Start() {
+    Loot item;
+
+    public void DisplayLootDetails(Loot item) {
         ClearDetails();
-    }
-
-    private void ClearDetails() {
-        lootImage.gameObject.SetActive(false);
-        equipButton.gameObject.SetActive(false);
-        sellButton.gameObject.SetActive(false);
-        lootName.text = "";
-        lootDescription.text = "";
-        statsPanel.gameObject.SetActive(false);
-    }
-
-    public void DisplayLootDetails(Loot loot) {
-        ClearDetails();
-        this.loot = loot;
-        lootImage.GetComponentsInChildren<Image>()[1].sprite = loot.GetIcon();
-        lootImage.gameObject.SetActive(true);
-        sellButton.gameObject.SetActive(true);
-        lootName.text = loot.GetName();
-        lootDescription.text = loot.GetDescription();
-        if (loot.GetLootType() == LootType.Equipment) {
-            Equipment equipment = loot as Equipment;
+        this.item = item;
+        itemName.text = item.GetName();
+        itemCost.text = $"Value: {item.GetCreditValue()} Cr";
+        itemIcon.gameObject.SetActive(true);
+        itemDescription.text = item.GetDescription();
+        itemIcon.GetComponentsInChildren<Image>()[1].sprite = item.GetIcon();
+        controlsPanel.gameObject.SetActive(true);
+        if (item.GetLootType() == LootType.Equipment)
+        {
+            Equipment equipment = item as Equipment;
+            compareButton.gameObject.SetActive(true);
             equipButton.gameObject.SetActive(true);
             statsPanel.gameObject.SetActive(true);
             hullValue.text = equipment.GetStatModValue(StatType.Hull).ToString();
@@ -53,10 +50,45 @@ public class InventoryDetailsView : Overlay
             engineValue.text = equipment.GetStatModValue(StatType.Engine).ToString();
             weaponValue.text = equipment.GetStatModValue(StatType.Weapon).ToString();
             auxValue.text = equipment.GetStatModValue(StatType.Aux).ToString();            
-        }        
+        }
+        else
+        {
+            compareButton.gameObject.SetActive(false);
+            equipButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void OnSell()
+    {
+        InventoryManager inventory = InventoryManager.instance;
+        inventory.AddToCredits(item.GetCreditValue());
+        inventory.RemoveFromPlayerInventory(item);
+        inventory.AddToBuybackInventory(item);
+        ClearDetails();
+    }
+
+    public void OnCompare()
+    {
+        Debug.Log($"Comparing {item.GetName()} with currently equipped item ");
     }
 
     public void OnEquip() {
-        loot.Use();
+        item.Use();
+        ClearDetails();
+    }
+
+    private void OnEnable()
+    {
+        ClearDetails();
+    }
+
+    private void ClearDetails()
+    {
+        itemName.text = "";
+        itemCost.text = "";
+        itemDescription.text = "";
+        itemIcon.gameObject.SetActive(false);
+        statsPanel.gameObject.SetActive(false);
+        controlsPanel.gameObject.SetActive(false);
     }
 }
