@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MarketBuybackItemListView : MonoBehaviour
+public class MarketBuybackItemListView : Overlay
 {
     [Header("UI References")]
     [SerializeField] ItemGrid itemGrid;
@@ -20,6 +20,11 @@ public class MarketBuybackItemListView : MonoBehaviour
         }
         InventoryManager.instance.onBuybackInventoryChangedCallback += UpdateItemList;
         UpdateItemList();
+    }
+
+    private void OnDisable()
+    {
+        InventoryManager.instance.onBuybackInventoryChangedCallback -= UpdateItemList;
     }
 
     private void StockMarket()
