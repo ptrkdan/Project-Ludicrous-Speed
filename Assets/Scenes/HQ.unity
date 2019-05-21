@@ -224,59 +224,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &746520381 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4930874395604751849, guid: 1049ef64a97cecd4497f52466320ff15,
-    type: 3}
-  m_PrefabInstance: {fileID: 7787167998134595469}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &746520386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746520381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6415399083604975807}
-          m_MethodName: StartFadeApartment
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6415399083604975807}
-          m_MethodName: EndFade
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!223 &1609007656 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
@@ -430,18 +377,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6bb662656c968444bd980afbe10c7aa, type: 3}
---- !u!114 &6415399083604975807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6415399083604975807, guid: 1049ef64a97cecd4497f52466320ff15,
-    type: 3}
-  m_PrefabInstance: {fileID: 7787167998134595469}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3371fa30cbacb2c4abe0908cb88043b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7787167998134595469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -449,26 +384,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_PixelPerfect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7787167998140391180, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_Name
       value: World Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -574,43 +499,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7787167998140391182, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_ReferencePixelsPerUnit
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7787167998140391182, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 95632683, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
-      propertyPath: m_Name
-      value: Home Base Logo [PH]
-      objectReference: {fileID: 0}
-    - target: {fileID: 5507420996666546847, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_Name
-      value: Watchtower Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 6415399083604975807, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: fadeDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6415399083604975807, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: fadeAlpha
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 95632685, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 95632685, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3303585922773732406, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -621,119 +509,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795578721}
-    - target: {fileID: 8225333270536186474, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5171649516698237539, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795578721}
-    - target: {fileID: 3650810935724959194, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_Name
-      value: Watchtower
-      objectReference: {fileID: 0}
     - target: {fileID: 3127659718944203490, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795578721}
-    - target: {fileID: 1126950557, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6415399083604975807}
-    - target: {fileID: 1126950557, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6415399083604975807}
-    - target: {fileID: 1126950557, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartFadeWatchtower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1126950557, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndFade
-      objectReference: {fileID: 0}
     - target: {fileID: 3595978081995963055, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795578721}
-    - target: {fileID: 4539080203596521830, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539080203596521830, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5614118228081521178, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5614118228081521178, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9063130828992993003, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9063130828992993003, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363477362542222601, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363477362542222601, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363477362542222601, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_text
-      value: Watchtower
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363477362542222601, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363477362542222601, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363477362542222601, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3944892685583813315, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3944892685583813315, guid: 1049ef64a97cecd4497f52466320ff15,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5058663771794102660, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1049ef64a97cecd4497f52466320ff15, type: 3}
 --- !u!1001 &8219195255791964882
 PrefabInstance:
