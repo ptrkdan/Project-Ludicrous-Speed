@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnStraightLineEnemy() {
         if (Time.time >= nextTimeToSpawn) {
             Vector3 spawnPosition = new Vector3(-spawnPointX, Random.Range(spawnPointYMin, spawnPointYMax));
-            Instantiate(EnemyPrefab, spawnPosition, rotateRight);
+            Instantiate(EnemyPrefab, spawnPosition, Quaternion.identity);
             nextTimeToSpawn = Time.time + 1f / Random.Range(spawnRateMin, spawnRateMax);
         }
     }

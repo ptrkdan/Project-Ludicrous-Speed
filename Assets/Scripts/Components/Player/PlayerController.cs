@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerController : LivingInteractable 
-{ 
+public class PlayerController : LivingInteractable
+{
 
     [Header("Equipments")]
     [SerializeField] Weapon primaryWpn;
@@ -26,15 +23,8 @@ public class PlayerController : LivingInteractable
     PlayerSingleton player;
     Rigidbody2D rigidBody;
 
-    public override void Interact(Interactable other) {
-        GetComponent<DamageDealer>().Interact(other);
-    }
-
-    public override void TakeDamage(int damage) {
-            base.TakeDamage(damage);
-    }
-
-    private void Start() {
+    private void Start()
+    {
         player = FindObjectOfType<PlayerSingleton>();
         rigidBody = GetComponent<Rigidbody2D>();
 
@@ -42,14 +32,36 @@ public class PlayerController : LivingInteractable
         SetMovementBoundaries();
     }
 
-    private void SetEquipment() {
-        primaryWpn = (Weapon) player.GetEquipment(EquipmentSlot.PrimaryWeapon);
-        secondaryWpn = (Weapon) player.GetEquipment(EquipmentSlot.SecondaryWeapon);
-        supportEquip = (SupportEquipment) player.GetEquipment(EquipmentSlot.Support);
+    private void Update()
+    {
+        Fire();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+    }
+
+    public override void Interact(Interactable other)
+    {
+        GetComponent<DamageDealer>().Interact(other);
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+    }
+
+    private void SetEquipment()
+    {
+        primaryWpn = (Weapon)player.GetEquipment(EquipmentSlot.PrimaryWeapon);
+        secondaryWpn = (Weapon)player.GetEquipment(EquipmentSlot.SecondaryWeapon);
+        supportEquip = (SupportEquipment)player.GetEquipment(EquipmentSlot.Support);
     }
 
 
-    private void SetMovementBoundaries() {
+    private void SetMovementBoundaries()
+    {
         Camera gameCamera = Camera.main;
         RectTransform hudPanel = FindObjectOfType<HudPanel>().GetComponent<RectTransform>();
         movementXMin = gameCamera.ViewportToWorldPoint(Vector3.zero).x;
@@ -58,41 +70,39 @@ public class PlayerController : LivingInteractable
         movementYMax = gameCamera.ViewportToWorldPoint(Vector3.up).y - hudPanel.localScale.y;
     }
 
-    void Update() {
-        Fire();
-    }
-
-    private void FixedUpdate() {
-        Move();
-    }
-
-    private void Fire() {
-        if (Input.GetButtonDown("Fire1")) {
-            primaryWeaponCoroutine = StartCoroutine(FirePrimaryWeapon());
+    private void Fire()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            primaryWeaponCoroutine = StartCoroutine(UsePrimaryWeapon());
         }
-        if (Input.GetButtonUp("Fire1")) {
+        if (Input.GetButtonUp("Fire1"))
+        {
             StopCoroutine(primaryWeaponCoroutine);
         }
     }
 
-    IEnumerator FirePrimaryWeapon() {
-        while (true) {
-            primaryWpn.Fire(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+    IEnumerator UsePrimaryWeapon()
+    {
+        while (true)
+        {
+            primaryWpn.Interact(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
             yield return new WaitForSeconds(primaryWpn.GetCooldown().GetCalcValue());
         }
     }
 
-    private void Move() {   
+    private void Move()
+    {
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        float playerEngineValue = 
+        float playerEngineValue =
             StatsManager.instance.GetStat(StatType.Engine).GetCalcValue() * engineValueFactor;
-        Vector3 newPosition = 
+        Vector3 newPosition =
             transform.position + movement * playerEngineValue * Time.fixedDeltaTime;
         newPosition.Set(
-            Mathf.Clamp(newPosition.x, movementXMin, movementXMax), 
+            Mathf.Clamp(newPosition.x, movementXMin, movementXMax),
             Mathf.Clamp(newPosition.y, movementYMin, movementYMax),
-            0); 
+            0);
         rigidBody.MovePosition(newPosition);
-    }    
+    }
 }
