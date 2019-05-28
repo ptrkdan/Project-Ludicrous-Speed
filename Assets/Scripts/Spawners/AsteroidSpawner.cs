@@ -47,7 +47,8 @@ public class AsteroidSpawner : MonoBehaviour
         float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
         StatModifier speedMod = new StatModifier(gameObject, StatType.Engine,StatModType.Flat, baseSpeed + randomMoveSpeed);
 
-        AsteroidController newAsteroid = Instantiate(asteroidList[randomMeteor], spawnPosition, Quaternion.identity);
+        AsteroidController newAsteroid = Instantiate(asteroidList[randomMeteor], spawnPosition, Quaternion.identity) as AsteroidController;
+        newAsteroid.transform.parent = transform;
         newAsteroid.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
         newAsteroid.transform.localScale = new Vector3(randomScale, randomScale, 0);
         newAsteroid.SetMoveSpeed(speedMod);
