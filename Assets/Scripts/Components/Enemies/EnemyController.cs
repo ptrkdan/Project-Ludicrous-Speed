@@ -53,7 +53,7 @@ public abstract class EnemyController : LivingInteractable
 
     private void FireWeapon()
     {
-        weapon.Interact(transform.position, Quaternion.AngleAxis(90, Vector3.forward));
+        weapon.Use(transform.position, Quaternion.AngleAxis(90, Vector3.forward));
     }
 
     private void ResetShotCooldown()

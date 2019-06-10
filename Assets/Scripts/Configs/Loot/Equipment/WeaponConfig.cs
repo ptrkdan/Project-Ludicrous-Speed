@@ -68,9 +68,9 @@ public class Weapon : Equipment
         shootSFXVolume = config.ShootSFXVolume;
     }
 
-    public override void Interact(Vector3 projectileOrigin, Quaternion rotation)
+    public override void Use(Vector3 projectileOrigin, Quaternion rotation)
     {
-        base.Interact(projectileOrigin, rotation);
+        base.Use(projectileOrigin, rotation);
         Projectile projectile = Instantiate(
                 projectilePrebab,
                 projectileOrigin + projectileOffset,

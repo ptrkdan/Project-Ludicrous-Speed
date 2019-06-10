@@ -16,12 +16,13 @@ public class PlayerController : LivingInteractable
     private float movementXMax;
     private float movementYMin;
     private float movementYMax;
-    private Coroutine primaryWeaponCoroutine;
 
     Vector3 movement = new Vector2();
 
     PlayerSingleton player;
     Rigidbody2D rigidBody;
+    bool isFiringPrimaryWpn = false;
+    bool isFiringSecondaryWpn = false;
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class PlayerController : LivingInteractable
 
     private void Update()
     {
-        Fire();
+        CheckInput();
     }
 
     private void FixedUpdate()
@@ -65,25 +66,56 @@ public class PlayerController : LivingInteractable
         movementYMax = gameCamera.ViewportToWorldPoint(Vector3.up).y - hudPanel.localScale.y;
     }
 
-    private void Fire()
+    private void CheckInput()
+    {
+        CheckFirePrimaryWeaponInput();
+        CheckFireSecondaryWeaponInput();
+    }
+
+    private void CheckFirePrimaryWeaponInput()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            primaryWeaponCoroutine = StartCoroutine(UsePrimaryWeapon());
+            isFiringPrimaryWpn = true;
+            StartCoroutine(UsePrimaryWeapon());
         }
         if (Input.GetButtonUp("Fire1"))
         {
-            StopCoroutine(primaryWeaponCoroutine);
+            isFiringPrimaryWpn = false;
+        }
+    }
+
+    private void CheckFireSecondaryWeaponInput()
+    {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            isFiringSecondaryWpn = true;
+            Debug.LogAssertion($"isFiringSecondaryWpn: {isFiringSecondaryWpn}");
+            StartCoroutine(UseSecondaryWeapon());
+        }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            isFiringSecondaryWpn = false;
         }
     }
 
     IEnumerator UsePrimaryWeapon()
     {
-        while (true)
+        while (isFiringPrimaryWpn)
         {
-            primaryWpn.Interact(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+            primaryWpn.Use(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
             yield return new WaitForSeconds(primaryWpn.GetCooldown().GetCalcValue());
+        }
+    }
+
+    IEnumerator UseSecondaryWeapon()
+    {
+        while (isFiringPrimaryWpn)
+        {
+            secondaryWpn.Use(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+
+            yield return new WaitForSeconds(secondaryWpn.GetCooldown().GetCalcValue());
         }
     }
 
