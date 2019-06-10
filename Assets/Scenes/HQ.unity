@@ -394,6 +394,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7787167998140391177, guid: 1049ef64a97cecd4497f52466320ff15,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -407,7 +412,7 @@ PrefabInstance:
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
@@ -462,12 +467,12 @@ PrefabInstance:
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1365.1863
       objectReference: {fileID: 0}
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
@@ -492,12 +497,27 @@ PrefabInstance:
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0234375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0234375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787167998140391176, guid: 1049ef64a97cecd4497f52466320ff15,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.0234375
       objectReference: {fileID: 0}
     - target: {fileID: 3303585922773732406, guid: 1049ef64a97cecd4497f52466320ff15,
         type: 3}
