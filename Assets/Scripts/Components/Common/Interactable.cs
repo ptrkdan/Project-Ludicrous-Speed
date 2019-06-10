@@ -20,7 +20,10 @@ public class Interactable : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other) {
         Interactable target = other.GetComponent<Interactable>();
-        Interact(target);
+        if (target)
+        {
+            Interact(target);
+        }
     }
 
 }

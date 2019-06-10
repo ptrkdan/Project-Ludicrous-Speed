@@ -14,14 +14,6 @@ public class AsteroidController : DebrisController
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Despawner"))
-        {
-            FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
-            Destroy(gameObject);
-        }
-        else
-        {
-            base.OnTriggerEnter2D(other);
-        }
+       base.OnTriggerEnter2D(other);
     }
 }

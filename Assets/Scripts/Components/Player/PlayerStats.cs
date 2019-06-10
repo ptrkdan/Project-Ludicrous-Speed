@@ -34,6 +34,7 @@ public class PlayerStats : InteractableStats
 
     public override void TakeDamage(int damage) {
         if (!isInvincible) {
+            // Check for shield
             base.TakeDamage(damage);
             UpdateHealthBar();
             if (currentHealth <= 0) {

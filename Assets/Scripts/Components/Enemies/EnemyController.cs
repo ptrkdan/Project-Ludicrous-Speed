@@ -1,25 +1,32 @@
 ﻿using UnityEngine;
 
-public abstract class EnemyController : LivingInteractable 
+public abstract class EnemyController : LivingInteractable
 {
     [Header("Weaponry")]
-    [SerializeField] float shotCounter; 
+    [SerializeField] float shotCounter;
     [SerializeField] EnemyWeaponConfig weaponConfig;
-    
+
     protected Rigidbody2D rigidBody;
     protected EnemyWeapon weapon;
 
     protected abstract void Move();
 
-    private void Start() {
+    private void Start()
+    {
         rigidBody = GetComponent<Rigidbody2D>();
-        weapon = (EnemyWeapon) weaponConfig.Create();
         FindObjectOfType<EnemySpawner>().IncreaseEnemyCount();
 
+        weapon = (EnemyWeapon)weaponConfig.Create();
         ResetShotCooldown();
     }
 
-    private void Update() {
+    private void OnDestroy()
+    {
+        FindObjectOfType<EnemySpawner>().DecreaseEnemyCount();
+    }
+
+    private void Update()
+    {
         Move();
         CountDownAndShoot();
     }
@@ -29,28 +36,28 @@ public abstract class EnemyController : LivingInteractable
         GetComponent<DamageDealer>().DealDamage(other);
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Despawner")) {
-            FindObjectOfType<EnemySpawner>().DecreaseEnemyCount();
-            Destroy(gameObject);
-        } else {
-            base.OnTriggerEnter2D(other);
-        }
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
     }
 
-    private void CountDownAndShoot() {
+    private void CountDownAndShoot()
+    {
         shotCounter -= Time.deltaTime;
-        if (shotCounter <= 0) {
+        if (shotCounter <= 0)
+        {
             FireWeapon();
             ResetShotCooldown();
         }
     }
 
-    private void FireWeapon() {
+    private void FireWeapon()
+    {
         weapon.Interact(transform.position, Quaternion.AngleAxis(90, Vector3.forward));
     }
 
-    private void ResetShotCooldown() {
+    private void ResetShotCooldown()
+    {
         float cooldown = weapon.GetCooldown().GetCalcValue();
         float variation = weapon.GetCoolDownVariation();
         shotCounter = Random.Range(cooldown - variation, cooldown + variation);
