@@ -11446,7 +11446,7 @@ MonoBehaviour:
   randomSpeedMax: 10
   maxMeteor: 10
   asteroidList:
-  - {fileID: 1918596753867978311, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
+  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
 --- !u!4 &1944009526
 Transform:

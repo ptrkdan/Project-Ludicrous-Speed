@@ -8,7 +8,10 @@ public class LivingInteractable : Interactable {
 
     private void Awake() {
         stats = GetComponent<InteractableStats>();
+        Initialize();
     }
+
+    protected virtual void Initialize() { }
 
     public virtual void TakeDamage(int damage) {
         stats.TakeDamage(damage);

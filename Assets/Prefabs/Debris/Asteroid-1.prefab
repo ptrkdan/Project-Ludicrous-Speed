@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1478005667491048972}
-  - component: {fileID: 5149399161067919081}
-  - component: {fileID: 1918596753867978311}
+  - component: {fileID: 5675900306870086891}
+  - component: {fileID: 2388218530470035940}
   - component: {fileID: 633486875115474805}
   - component: {fileID: 548153165716921930}
+  - component: {fileID: 5149399161067919081}
   - component: {fileID: 1861776107454265273}
   - component: {fileID: 407411544729675367}
-  - component: {fileID: 2388218530470035940}
   m_Layer: 12
   m_Name: Asteroid-1
   m_TagString: Non-Friendly
@@ -37,6 +37,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5675900306870086891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683104010946518865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4ddd8a371af2b45b348e489eff615e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2388218530470035940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683104010946518865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e822ab1117843234b8f31b3f5f162302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  hull:
+    type: 0
+    baseValue: 0
+  shield:
+    type: 0
+    baseValue: 0
+  engine:
+    type: 0
+    baseValue: 0
+  weapon:
+    type: 0
+    baseValue: 0
+  aux:
+    type: 0
+    baseValue: 0
+  deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
+  deathSFXVolume: 0.2
+--- !u!114 &633486875115474805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683104010946518865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9be1d8463c5e044a3124ff800f4eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeedMin: -90
+  rotateSpeedMax: 90
+--- !u!114 &548153165716921930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683104010946518865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814b70ab7be09f945b470cfc5daed902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
 --- !u!212 &5149399161067919081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,45 +155,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1918596753867978311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6683104010946518865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed4ddd8a371af2b45b348e489eff615e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &633486875115474805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6683104010946518865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e9be1d8463c5e044a3124ff800f4eed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeedMin: -90
-  rotateSpeedMax: 90
---- !u!114 &548153165716921930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6683104010946518865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 814b70ab7be09f945b470cfc5daed902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 100
 --- !u!50 &1861776107454265273
 Rigidbody2D:
   serializedVersion: 4
@@ -178,34 +209,3 @@ PolygonCollider2D:
       - {x: -0.14467868, y: -0.05439678}
       - {x: -0.08293372, y: -0.15390366}
       - {x: 0.084522024, y: -0.15330252}
---- !u!114 &2388218530470035940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6683104010946518865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e822ab1117843234b8f31b3f5f162302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  hull:
-    name: Hull
-    baseValue: 0
-  shield:
-    name: Shield
-    baseValue: 0
-  engine:
-    name: Engine
-    baseValue: 0
-  weapon:
-    name: Weapon
-    baseValue: 0
-  aux:
-    name: Aux
-    baseValue: 0
-  deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
-  deathSFXVolume: 0.2
