@@ -1,11 +1,29 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(DamageDealer))]
-public abstract class Projectile : MonoBehaviour
+public abstract class Projectile : Interactable
 {
+    const string PROJECTILE_PARENT_NAME = "Projectiles";
+
     [SerializeField] protected float speed;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void Awake()
+    {
+        GameObject projectileParent = GameObject.Find(PROJECTILE_PARENT_NAME);
+        if(!projectileParent)
+        {
+            projectileParent = new GameObject(PROJECTILE_PARENT_NAME);
+        }
+
+        transform.parent = projectileParent.transform;
+    }
+
+    public override void Interact(Interactable other)
+    {
+        GetComponent<DamageDealer>().DealDamage(other);
+    }
+    protected override void OnTriggerEnter2D(Collider2D other) {
+        base.OnTriggerEnter2D(other);
         Destroy(gameObject);
     }
 

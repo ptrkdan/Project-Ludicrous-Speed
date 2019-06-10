@@ -24,6 +24,11 @@ public abstract class EnemyController : LivingInteractable
         CountDownAndShoot();
     }
 
+    public override void Interact(Interactable other)
+    {
+        GetComponent<DamageDealer>().DealDamage(other);
+    }
+
     protected override void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Despawner")) {
             FindObjectOfType<EnemySpawner>().DecreaseEnemyCount();

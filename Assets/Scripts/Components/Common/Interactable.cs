@@ -13,12 +13,14 @@ public class Interactable : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
+    public virtual void Interact(Interactable other)
+    {
+        // Debug.Log($"<color=green>{name}</color>Interacting with <color=red>{other.gameObject.name}</color>");
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D other) {
         Interactable target = other.GetComponent<Interactable>();
         Interact(target);
     }
 
-    public virtual void Interact(Interactable other) {
-        // Debug.Log($"<color=green>{name}</color>Interacting with <color=red>{other.gameObject.name}</color>");
-    }
 }

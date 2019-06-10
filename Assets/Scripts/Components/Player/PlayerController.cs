@@ -44,12 +44,7 @@ public class PlayerController : LivingInteractable
 
     public override void Interact(Interactable other)
     {
-        GetComponent<DamageDealer>().Interact(other);
-    }
-
-    public override void TakeDamage(int damage)
-    {
-        base.TakeDamage(damage);
+        GetComponent<DamageDealer>().DealDamage(other);
     }
 
     private void SetEquipment()

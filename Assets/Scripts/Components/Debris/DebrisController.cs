@@ -19,7 +19,7 @@ public class DebrisController : LivingInteractable
 
     public override void Interact(Interactable other)
     {
-        GetComponent<DamageDealer>().Interact(other);
+        GetComponent<DamageDealer>().DealDamage(other);
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
