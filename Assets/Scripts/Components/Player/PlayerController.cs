@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class PlayerController : LivingInteractable
 {
+    [SerializeField] Transform weaponPosition;
 
     [Header("Equipments")]
     [SerializeField] Weapon primaryWpn;
     [SerializeField] Weapon secondaryWpn;
     [SerializeField] SupportEquipment supportEquip;
-    [SerializeField] Projectile projectile;
 
     [Space]
     [SerializeField] float engineValueFactor = 0.5f;
@@ -103,7 +103,7 @@ public class PlayerController : LivingInteractable
     {
         while (isFiringPrimaryWpn)
         {
-            primaryWpn.Use(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+            primaryWpn.Activate(weaponPosition.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
             yield return new WaitForSeconds(primaryWpn.GetCooldown().GetCalcValue());
         }
@@ -113,7 +113,7 @@ public class PlayerController : LivingInteractable
     {
         while (isFiringPrimaryWpn)
         {
-            secondaryWpn.Use(transform.position, Quaternion.AngleAxis(-90, Vector3.forward));
+            secondaryWpn.Activate(weaponPosition.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
             yield return new WaitForSeconds(secondaryWpn.GetCooldown().GetCalcValue());
         }

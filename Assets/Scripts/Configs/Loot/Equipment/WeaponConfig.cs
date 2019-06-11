@@ -5,7 +5,6 @@ public class WeaponConfig : EquipmentConfig
 {
     [Header("Projectile")]
     [SerializeField] Projectile projectilePrefab;
-    [SerializeField] Vector3 projectileOffset;
 
     [Header("Projectile Stats")]
     [SerializeField] Stat damage;
@@ -20,7 +19,6 @@ public class WeaponConfig : EquipmentConfig
     public Stat Speed { get => speed; set => speed = value; }
     public Stat Cooldown { get => cooldown; set => cooldown = value; }
     public Projectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
-    public Vector3 ProjectileOffset { get => projectileOffset; set => projectileOffset = value; }
     public AudioClip ShootSFX { get => shootSFX; set => shootSFX = value; }
     public float ShootSFXVolume { get => shootSFXVolume; set => shootSFXVolume = value; }
 

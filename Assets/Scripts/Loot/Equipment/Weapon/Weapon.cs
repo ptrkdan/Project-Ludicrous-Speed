@@ -3,7 +3,6 @@
 public class Weapon : Equipment
 {
     Projectile projectilePrebab;
-    Vector3 projectileOffset;
     Stat damage;
     Stat speed;
     Stat cooldown;
@@ -11,7 +10,6 @@ public class Weapon : Equipment
     float shootSFXVolume;
 
     public Projectile GetProjectile() => projectilePrebab;
-    public Vector3 GetProjectileOffset() => projectileOffset;
     public Stat GetDamage() => damage;
     public Stat GetSpeed() => speed;
     public Stat GetCooldown() => cooldown;
@@ -25,7 +23,6 @@ public class Weapon : Equipment
     {
         IsDefault = isDefault;
         projectilePrebab = config.ProjectilePrefab;
-        projectileOffset = config.ProjectileOffset;
         damage = config.Damage;
         speed = config.Speed;
         cooldown = config.Cooldown;
@@ -33,13 +30,13 @@ public class Weapon : Equipment
         shootSFXVolume = config.ShootSFXVolume;
     }
 
-    public override void Use(Vector3 projectileOrigin, Quaternion rotation)
+    public override void Activate(Vector3 weaponPosition, Quaternion weaponRotation)
     {
-        base.Use(projectileOrigin, rotation);
+        base.Activate(weaponPosition, weaponRotation);
         Projectile projectile = Instantiate(
                 projectilePrebab,
-                projectileOrigin + projectileOffset,
-                rotation);
+                weaponPosition,
+                weaponRotation);
         projectile.WithDamage((int)damage.GetCalcValue())
             .WithSpeed(speed.GetCalcValue());
         projectile.Fire();

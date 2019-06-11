@@ -55,7 +55,9 @@ public class Equipment : Loot
         RemoveFromInventory();
     }
 
-    public virtual void Use(Vector3 projectileOrigin, Quaternion rotation) { }
+    public virtual void Activate(Vector3 projectileOrigin, Quaternion rotation) { }
+
+    public virtual void Deactivate() { }
 }
 
 public enum EquipmentSlot { PrimaryWeapon, SecondaryWeapon, Support, PrimaryMod, SecondaryMod }
