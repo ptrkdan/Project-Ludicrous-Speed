@@ -13,14 +13,3 @@ public class SupportEquipConfig : EquipmentConfig
         return new SupportEquipment(this);
     }
 }
-
-public class SupportEquipment : Equipment
-{
-    public SupportEquipment() : base() { }
-
-    public SupportEquipment(SupportEquipConfig config, bool isDefault = false) 
-        : base(config, isDefault)
-    {
-
-    }
-}

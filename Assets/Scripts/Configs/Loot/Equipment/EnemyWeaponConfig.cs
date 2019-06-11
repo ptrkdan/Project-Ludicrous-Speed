@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Enemy Weapon Config")]
-public class EnemyWeaponConfig : WeaponConfig 
+public class EnemyWeaponConfig : WeaponConfig
 {
     [Header("Misc.")]
     [SerializeField] float cooldownVariation;
@@ -11,19 +11,5 @@ public class EnemyWeaponConfig : WeaponConfig
     public override Loot Create()
     {
         return new EnemyWeapon(this);
-    }
-}
-
-public class EnemyWeapon : Weapon
-{
-    float cooldownVariation;
-
-    public float GetCoolDownVariation() => cooldownVariation;
-
-    public EnemyWeapon() : base() { }
-
-    public EnemyWeapon(EnemyWeaponConfig config) : base(config)
-    {
-        cooldownVariation = config.CooldownVariation;
     }
 }
