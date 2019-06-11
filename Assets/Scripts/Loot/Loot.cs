@@ -27,7 +27,7 @@ public class Loot : ScriptableObject
 
     public virtual void Use()
     {
-        Debug.Log($"Using {name}...");
+        //Debug.Log($"Using {name}...");
     }
 
     public void RemoveFromInventory()

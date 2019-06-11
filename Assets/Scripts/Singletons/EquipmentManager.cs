@@ -69,7 +69,7 @@ public class EquipmentManager : MonoBehaviour
             onEquipmentChanged.Invoke(newEquip, oldEquip);
         }
 
-        Debug.Log($"<color=green>{newEquip.GetName()}</color> equipped as <color=green>{newEquip.GetEquipSlot()}</color>");
+        // Debug.Log($"<color=green>{newEquip.GetName()}</color> equipped as <color=green>{newEquip.GetEquipSlot()}</color>");
     }
 
     public void UnEquip(int slotIndex)
