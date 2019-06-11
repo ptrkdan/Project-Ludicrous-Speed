@@ -2,18 +2,14 @@
 
 public class AsteroidController : DebrisController
 {
-    private void Start()
+    protected override void Initialize()
     {
+        base.Initialize();
         FindObjectOfType<AsteroidSpawner>().IncreaseAsteroidCount();
     }
 
     private void OnDestroy()
     {
-        FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();
-    }
-
-    protected override void OnTriggerEnter2D(Collider2D other)
-    {
-       base.OnTriggerEnter2D(other);
+        FindObjectOfType<AsteroidSpawner>()?.DecreaseAsteroidCount();
     }
 }
