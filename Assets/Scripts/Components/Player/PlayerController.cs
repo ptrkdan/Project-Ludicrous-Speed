@@ -20,9 +20,12 @@ public class PlayerController : LivingInteractable
     Vector3 movement = new Vector2();
 
     PlayerSingleton player;
+    Animator animator;
     Rigidbody2D rigidBody;
     bool isFiringPrimaryWpn = false;
     bool isFiringSecondaryWpn = false;
+    Coroutine primaryWpnCoroutine;
+    Coroutine secondaryWpnCoroutine;
 
     private void Start()
     {
@@ -76,12 +79,12 @@ public class PlayerController : LivingInteractable
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            isFiringPrimaryWpn = true;
-            StartCoroutine(UsePrimaryWeapon());
+            primaryWpnCoroutine = StartCoroutine(ActivatePrimaryWeapon());
         }
-        if (Input.GetButtonUp("Fire1"))
+        else if (Input.GetButtonUp("Fire1"))
         {
-            isFiringPrimaryWpn = false;
+            StopCoroutine(primaryWpnCoroutine);
+            DeactivatePrimaryWeapon();
         }
     }
 
@@ -90,33 +93,61 @@ public class PlayerController : LivingInteractable
         if (Input.GetButtonDown("Fire2"))
         {
             isFiringSecondaryWpn = true;
-            Debug.LogAssertion($"isFiringSecondaryWpn: {isFiringSecondaryWpn}");
-            StartCoroutine(UseSecondaryWeapon());
+            secondaryWpnCoroutine = StartCoroutine(ActivateSecondaryWeapon());
         }
         if (Input.GetButtonUp("Fire2"))
         {
-            isFiringSecondaryWpn = false;
+            StopCoroutine(secondaryWpnCoroutine);
+            DeactivateSecondaryWeapon();
         }
     }
 
-    IEnumerator UsePrimaryWeapon()
+    IEnumerator ActivatePrimaryWeapon()
     {
-        while (isFiringPrimaryWpn)
+        while (true)
         {
             primaryWpn.Activate(weaponPosition.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
-            yield return new WaitForSeconds(primaryWpn.GetCooldown().GetCalcValue());
+            if (primaryWpn.GetWeaponType() == WeaponType.Auto)
+            {
+                yield return new WaitForSeconds(primaryWpn.GetCooldown().GetCalcValue());
+            }
+            else if (primaryWpn.GetWeaponType() == WeaponType.Charged)
+            {
+                yield return 0;
+            }
+
+            yield return 0;
         }
     }
 
-    IEnumerator UseSecondaryWeapon()
+    private void DeactivatePrimaryWeapon()
     {
-        while (isFiringPrimaryWpn)
+        primaryWpn.Deactivate();
+    }
+
+    IEnumerator ActivateSecondaryWeapon()
+    {
+        while (true)
         {
             secondaryWpn.Activate(weaponPosition.position, Quaternion.AngleAxis(-90, Vector3.forward));
 
-            yield return new WaitForSeconds(secondaryWpn.GetCooldown().GetCalcValue());
+            if (secondaryWpn.GetWeaponType() == WeaponType.Auto)
+            {
+                yield return new WaitForSeconds(secondaryWpn.GetCooldown().GetCalcValue());
+            }
+            else if (secondaryWpn.GetWeaponType() == WeaponType.Charged)
+            {
+                yield return 0;
+            }
+
+            yield return 0;
         }
+    }
+
+    private void DeactivateSecondaryWeapon()
+    {
+        secondaryWpn.Deactivate();
     }
 
     private void Move()

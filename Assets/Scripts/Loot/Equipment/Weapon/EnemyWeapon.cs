@@ -1,4 +1,4 @@
-﻿public class EnemyWeapon : Weapon
+﻿public class EnemyWeapon : AutoWeapon
 {
     float cooldownVariation;
 

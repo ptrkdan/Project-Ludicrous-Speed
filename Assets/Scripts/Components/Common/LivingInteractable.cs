@@ -30,10 +30,10 @@ public class LivingInteractable : Interactable {
     }
 
     IEnumerator Glow() {
-        GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0, 0, 1);
+        GetComponentInChildren<SpriteRenderer>().color = Color.HSVToRGB(0, 0, 1);
 
         yield return new WaitForSeconds(onCollisionGlowDuration);
 
-        GetComponent<SpriteRenderer>().color = Color.HSVToRGB(0, 0, 0.8f);
+        GetComponentInChildren<SpriteRenderer>().color = Color.HSVToRGB(0, 0, 0.8f);
     }
 }

@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 
-public class EnergyBall : Projectile
+public class EnergyBall : ChargedProjectile
 {
     float size = 1f;
-    
+    float maxSize = 5f;
+
     public void IncreaseSize(float amount)
     {
-        size += amount;
-        GetComponentInChildren<Transform>().localScale = new Vector2(size, size);
-        if (size > 10f)
+        if (size < maxSize)
         {
-            Fire();
+            size += amount;
+            GetComponentInChildren<Transform>().localScale += new Vector3(size, size);
+        }
+        else
+        {
+            isCharged = true;
         }
     }
 }

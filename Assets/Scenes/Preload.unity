@@ -287,12 +287,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b482a8fb29da1f54faf710ddbadaa55b,
         type: 2}
-    - target: {fileID: 453103975835575823, guid: 493f62394dee81343a86025d56033463,
-        type: 3}
-      propertyPath: secondaryMod
-      value: 
-      objectReference: {fileID: 11400000, guid: d265bb99f91ce1e46a9c2f9227efeca1,
-        type: 2}
     - target: {fileID: 453103975835575820, guid: 493f62394dee81343a86025d56033463,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -5,7 +5,7 @@ public abstract class Projectile : Interactable
 {
     const string PROJECTILE_PARENT_NAME = "Projectiles";
 
-    [SerializeField] protected float speed;
+    protected float speed;
 
     private void Awake()
     {
@@ -33,13 +33,11 @@ public abstract class Projectile : Interactable
         return this;
     }
 
-    public virtual Projectile WithDamage(int value) {
+    public virtual void SetDamage(int value) {
         GetComponent<DamageDealer>().Damage = value;
-        return this;
     }
 
-    public virtual Projectile WithSpeed(float value) {
+    public virtual void SetSpeed(float value) {
         speed = value;
-        return this;
     }
 }

@@ -22,7 +22,7 @@ public abstract class EnemyController : LivingInteractable
 
     private void OnDestroy()
     {
-        FindObjectOfType<EnemySpawner>().DecreaseEnemyCount();
+        FindObjectOfType<EnemySpawner>()?.DecreaseEnemyCount();
     }
 
     private void Update()

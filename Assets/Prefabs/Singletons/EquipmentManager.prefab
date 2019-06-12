@@ -56,11 +56,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81faac7679b4edc46a265f9ff3d4c7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 11400000, guid: fc2b6fb8656b0f74aaf9bb4113573667, type: 2}
-  secondaryWeapon: {fileID: 11400000, guid: 259cbd7c2cc639c48948a0e06580768d, type: 2}
+  primaryWeapon: {fileID: 11400000, guid: 13724efe53d9a0e43a672effc986b6c2, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: a52979261cb24dc478482b18d424ea63, type: 2}
   supportEquipment: {fileID: 11400000, guid: 13f3ae5e00826fe47b0f7e21d847f233, type: 2}
   primaryMod: {fileID: 11400000, guid: e31e90ae25aade04eaff39f1ca536c98, type: 2}
-  secondaryMod: {fileID: 0}
+  secondaryMod: {fileID: 11400000, guid: d265bb99f91ce1e46a9c2f9227efeca1, type: 2}
   currentEquipment:
   - {fileID: 0}
   - {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5014908032946307428}
   - component: {fileID: 5014908032946307429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,11 +90,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5014908033285724094}
   - component: {fileID: 5014908033285724093}
-  - component: {fileID: 5014908033285724092}
+  - component: {fileID: 3219988274400633304}
   - component: {fileID: 5014908033285724091}
   - component: {fileID: 5014908033285724090}
   - component: {fileID: 675487506950579350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnergyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 5014908033285724089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 5014908032946307428}
   m_Father: {fileID: 0}
@@ -135,7 +135,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5014908033285724092
+--- !u!114 &3219988274400633304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b37b7646cc22ec4390ab06dd8e95640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
 --- !u!114 &5014908033285724091
 MonoBehaviour:
   m_ObjectHideFlags: 0

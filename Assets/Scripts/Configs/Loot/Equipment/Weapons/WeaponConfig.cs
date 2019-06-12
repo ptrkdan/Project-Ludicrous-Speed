@@ -1,15 +1,11 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Configs/Equipment/Weapon")]
+
 public class WeaponConfig : EquipmentConfig
 {
-    [Header("Projectile")]
-    [SerializeField] Projectile projectilePrefab;
-
     [Header("Projectile Stats")]
     [SerializeField] Stat damage;
     [SerializeField] Stat speed;
-    [SerializeField] Stat cooldown;
 
     [Header("Audio")]
     [SerializeField] AudioClip shootSFX;
@@ -17,19 +13,7 @@ public class WeaponConfig : EquipmentConfig
 
     public Stat Damage { get => damage; set => damage = value; }
     public Stat Speed { get => speed; set => speed = value; }
-    public Stat Cooldown { get => cooldown; set => cooldown = value; }
-    public Projectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
     public AudioClip ShootSFX { get => shootSFX; set => shootSFX = value; }
     public float ShootSFXVolume { get => shootSFXVolume; set => shootSFXVolume = value; }
-
-    public override Loot Create(bool isDefault)
-    {
-        return new Weapon(this, isDefault);
-    }
-
-    public override Loot Create()
-    {
-        return new Weapon(this);
-    }
 }
 

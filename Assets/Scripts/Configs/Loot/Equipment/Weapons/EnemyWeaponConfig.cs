@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Enemy Weapon Config")]
-public class EnemyWeaponConfig : WeaponConfig
+public class EnemyWeaponConfig : AutoWeaponConfig
 {
     [Header("Misc.")]
     [SerializeField] float cooldownVariation;
