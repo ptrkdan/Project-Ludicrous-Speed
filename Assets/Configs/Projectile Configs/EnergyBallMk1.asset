@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: EnergyBallMk1
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
-  speed: 20
+  speed: 15
   shotCooldown: 0.5
   shotCooldownVariation: 1
   shootSFX: {fileID: 8300000, guid: c7980882e7b8df74b9e24e923e4d3904, type: 3}
   shootSFXVolume: 0.3
-  offset: {x: 1, y: 0, z: 0}

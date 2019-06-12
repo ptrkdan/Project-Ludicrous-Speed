@@ -36,4 +36,4 @@ MonoBehaviour:
     type: 3}
   cooldown:
     type: 0
-    baseValue: 15
+    baseValue: 0.1
