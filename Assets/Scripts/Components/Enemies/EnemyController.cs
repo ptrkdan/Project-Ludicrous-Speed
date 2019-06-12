@@ -5,6 +5,7 @@ public abstract class EnemyController : LivingInteractable
     [Header("Weaponry")]
     [SerializeField] float shotCounter;
     [SerializeField] EnemyWeaponConfig weaponConfig;
+    [SerializeField] Transform turret;
 
     protected Rigidbody2D rigidBody;
     protected EnemyWeapon weapon;
@@ -53,7 +54,7 @@ public abstract class EnemyController : LivingInteractable
 
     private void FireWeapon()
     {
-        weapon.Activate(transform.position, Quaternion.AngleAxis(90, Vector3.forward));
+        weapon.Activate(turret.position, Quaternion.AngleAxis(90, Vector3.forward));
     }
 
     private void ResetShotCooldown()
