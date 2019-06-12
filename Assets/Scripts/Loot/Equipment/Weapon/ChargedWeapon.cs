@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ChargedWeapon : Weapon
 {
@@ -9,7 +7,7 @@ public class ChargedWeapon : Weapon
 
     public ChargedWeapon() : base() { }
 
-    public ChargedWeapon(ChargedWeaponConfig config, bool isDefault = false) 
+    public ChargedWeapon(ChargedWeaponConfig config, bool isDefault = false)
         : base(config, isDefault)
     {
         weaponType = WeaponType.Charged;
@@ -26,18 +24,26 @@ public class ChargedWeapon : Weapon
                 projectilePrefab,
                 weaponPosition,
                 weaponRotation) as ChargedProjectile;
+            chargingProjectile.DisableCollider();
             chargingProjectile.SetDamage((int)damage.GetCalcValue());
             chargingProjectile.SetSpeed(speed.GetCalcValue());
         }
-        
+
+        // Keep projectile attached to ship
+        chargingProjectile.transform.position = weaponPosition;
     }
 
     public override void Deactivate()
     {
         if (chargingProjectile.IsCharged)
         {
-            projectilePrefab.Fire();
+            chargingProjectile.EnableCollider();
+            chargingProjectile.Fire();
             PlayFireSFX();
+        }
+        else
+        {
+            Destroy(chargingProjectile.gameObject);
         }
     }
 }

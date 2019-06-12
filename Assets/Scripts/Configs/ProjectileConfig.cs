@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Projectile Config")]
-public class ProjectileConfig : ScriptableObject {
+public class ProjectileConfig : ScriptableObject
+{
     [Header("Prefab")]
     [SerializeField] Projectile projectile;
 
@@ -13,7 +14,7 @@ public class ProjectileConfig : ScriptableObject {
     [Header("Audio")]
     [SerializeField] AudioClip shootSFX;
     [SerializeField] [Range(0, 1)] float shootSFXVolume = 0.3f;
-    
+
     public Projectile Projectile { get => projectile; set => projectile = value; }
     public float Speed { get => speed; set => speed = value; }
     public float ShotCooldown { get => shotCooldown; set => shotCooldown = value; }

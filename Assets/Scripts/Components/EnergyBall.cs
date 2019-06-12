@@ -3,7 +3,12 @@
 public class EnergyBall : ChargedProjectile
 {
     float size = 1f;
-    float maxSize = 5f;
+    [SerializeField] float maxSize = 3f;
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        // Create explosion field that will expand in time around point of collision
+    }
 
     public void IncreaseSize(float amount)
     {
@@ -16,5 +21,15 @@ public class EnergyBall : ChargedProjectile
         {
             isCharged = true;
         }
+    }
+
+    public override void DisableCollider()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+    public override void EnableCollider()
+    {
+        GetComponent<CircleCollider2D>().enabled = true;
     }
 }
