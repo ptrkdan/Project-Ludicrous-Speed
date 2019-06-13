@@ -17,7 +17,8 @@ public class EnergyBall : ChargedProjectile
             size += amount;
             GetComponentInChildren<Transform>().localScale += new Vector3(size, size);
         }
-        else
+        
+        if (size >= maxSize)
         {
             isCharged = true;
         }

@@ -39,6 +39,7 @@ public class ChargedWeapon : Weapon
         {
             chargingProjectile.EnableCollider();
             chargingProjectile.Fire();
+            chargingProjectile = null;
             PlayFireSFX();
         }
         else
