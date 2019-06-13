@@ -46,6 +46,12 @@ public class RunManager : MonoBehaviour
         UpdateDistanceRemaining();
     }
 
+    public void StartRun()
+    {
+        asteroidSpawner.gameObject.SetActive(true);
+        enemySpawner.gameObject.SetActive(true);
+    }
+
     private void ConfigureRun() {
         // Set remaining distance on UI
         distanceRemaining = session.ActiveContract.GetRunDistance();

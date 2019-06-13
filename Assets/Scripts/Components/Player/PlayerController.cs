@@ -27,6 +27,8 @@ public class PlayerController : LivingInteractable
     Coroutine primaryWpnCoroutine;
     Coroutine secondaryWpnCoroutine;
 
+    bool isControllable = false;
+
     private void Start()
     {
         player = FindObjectOfType<PlayerSingleton>();
@@ -38,12 +40,28 @@ public class PlayerController : LivingInteractable
 
     private void Update()
     {
-        CheckInput();
+        if (isControllable)
+        {
+            CheckInput();
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (isControllable)
+        {
+            Move();
+        }
+    }
+
+    public void EnableControls()
+    {
+        isControllable = true;
+    }
+
+    public void DisableControls()
+    {
+        isControllable = false;
     }
 
     public override void Interact(Interactable other)
