@@ -7,7 +7,7 @@ public class SecuritySpawner : MonoBehaviour
     Quaternion rotateLeft = Quaternion.Euler(new Vector3(0, 0, -90));
 
     [SerializeField] int spawnDistanceToPlayer = 2;
-    [SerializeField] Vector2 spawnDelay = new Vector2(1, 10);
+    [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
     [SerializeField] EnemyController SecurityUnitPrefab;
     [SerializeField] List<WaveConfig> waveConfigs;
 
@@ -18,30 +18,32 @@ public class SecuritySpawner : MonoBehaviour
     //int startingWave = 0;
     //private Quaternion rotateRight = Quaternion.Euler(new Vector3(0, 0, 90));
 
-    private IEnumerator Start() {
+    private IEnumerator Start()
+    {
         player = FindObjectOfType<PlayerController>();
         spawnPoints = GetComponentsInChildren<Transform>();
 
-        do {
-            yield return new WaitForSeconds(Random.Range(spawnDelay.x, spawnDelay.y));
+        while (spawning)
+        {
+            yield return new WaitForSeconds(Random.Range(spawnDelayRange.x, spawnDelayRange.y));
             SpawnUnit();
         }
-        while (spawning);
 
     }
 
-    private void SpawnUnit() {
+    private void SpawnUnit()
+    {
         // Get Player location
         int playerPosition = Mathf.RoundToInt(player.GetComponent<Transform>().position.y);
         // Select spawn point +/- spawnDistanceToPlayer
         currentSpawnPoint = spawnPoints[
             Random.Range(playerPosition - spawnDistanceToPlayer, playerPosition + spawnDistanceToPlayer)];
 
-        Debug.Log($"Spawning security unit at vector {currentSpawnPoint.position.y}");
+        //Debug.Log($"Spawning security unit at vector {currentSpawnPoint.position.y}");
 
         // Create new unit
         EnemyController newUnit = Instantiate(SecurityUnitPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation) as EnemyController;
-        newUnit.transform.parent = transform;
+        newUnit.transform.parent = currentSpawnPoint.transform;
     }
 
     //private IEnumerator SpawnAllWaves() {
@@ -63,7 +65,8 @@ public class SecuritySpawner : MonoBehaviour
     //    }
     //}
 
-    public void SetDifficulty(int difficulty) {
+    public void SetDifficulty(int difficulty)
+    {
 
-    }    
+    }
 }

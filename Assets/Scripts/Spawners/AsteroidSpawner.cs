@@ -1,74 +1,66 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    [SerializeField] float spawnRateMin = 1f;
-    [SerializeField] float spawnRateMax = 3f;
-    [SerializeField] int baseHealth = 100;
-    [SerializeField] int randomScaleMin = 2;
-    [SerializeField] int randomScaleMax = 8;
-    [SerializeField] float baseSpeed = 5f;
-    [SerializeField] float randomSpeedMin = 0.1f;
-    [SerializeField] float randomSpeedMax = 5f;
-    [SerializeField] int maxMeteor = 10;                    // Needed?
+    [Header("Spawn parameters")]
+    [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
     [SerializeField] List<AsteroidController> asteroidList;
 
-    private float spawnPointX;
-    private float spawnPointYMin;
-    private float spawnPointYMax;
-    private float nextTimeToSpawn = 0f;
-    private int activeMeteorCount;
+    [Header("Asteroid stats")]
+    [SerializeField] int baseHealth = 100;
+    [SerializeField] Vector2 scaleRange = new Vector2(1, 10);
+    [SerializeField] float baseSpeed = 5f;
+    [SerializeField] Vector2 speedRange = new Vector2(0.1f, 5);
+    [SerializeField] float randomSpeedMin = 0.1f;
+    [SerializeField] float randomSpeedMax = 5f;
 
-    private void Start() {
-        SetSpawningArea();
-    }
+    bool spawning = true;
+    Transform[] spawnPoints;
+    Transform currentSpawnPoint;
 
-    private void Update() {
-        if (Time.time >= nextTimeToSpawn) {
-            SpawnMeteor();
-            nextTimeToSpawn = Time.time + 1f / Random.Range(spawnRateMin, spawnRateMax);
+    private IEnumerator Start()
+    {
+        spawnPoints = GetComponentsInChildren<Transform>();
+
+        while (spawning)
+        {
+            yield return new WaitForSeconds(
+                Random.Range(spawnDelayRange.x, spawnDelayRange.y)
+            );
+            SpawnAsteroid();
         }
     }
 
-    private void SetSpawningArea() {
-        Camera gameCamera = Camera.main;
-        spawnPointX = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x;
-        spawnPointYMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y;
-        spawnPointYMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
-    }
-
-    private void SpawnMeteor() {
-        Vector3 spawnPosition = new Vector3(spawnPointX, Random.Range(spawnPointYMin, spawnPointYMax));
+    private void SpawnAsteroid()
+    {
+        currentSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         float randomSpin = Random.Range(0, 180f);
-        int randomScale = Random.Range(randomScaleMin, randomScaleMax);
+        float randomScale = Random.Range(scaleRange.x, scaleRange.y);
         int randomMeteor = Random.Range(0, asteroidList.Count);
 
         float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
-        StatModifier speedMod = new StatModifier(gameObject, StatType.Engine,StatModType.Flat, baseSpeed + randomMoveSpeed);
+        StatModifier speedMod = new StatModifier(gameObject, StatType.Engine, StatModType.Flat, baseSpeed + randomMoveSpeed);
 
-        AsteroidController newAsteroid = 
-            Instantiate(asteroidList[randomMeteor], spawnPosition, Quaternion.identity) as AsteroidController;
-        newAsteroid.transform.parent = transform;
+        //Debug.Log($"Spawning asteroid at vector {currentSpawnPoint.position.y}");
+
+        AsteroidController newAsteroid =
+            Instantiate(asteroidList[randomMeteor],
+            currentSpawnPoint.position,
+            currentSpawnPoint.rotation) as AsteroidController;
+        newAsteroid.transform.parent = currentSpawnPoint.transform;
         newAsteroid.transform.localScale = new Vector3(randomScale, randomScale, 0);
         newAsteroid.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
         newAsteroid.GetComponent<AsteroidStats>().GetStat(StatType.Engine).AddModifier(speedMod);
-        newAsteroid.GetComponent<AsteroidStats>().SetCurrentHealth(baseHealth * randomScale);
+        newAsteroid.GetComponent<AsteroidStats>().SetCurrentHealth(baseHealth * (int)randomScale / 3);
     }
 
-    public void SetDifficulty(int difficulty) {
-        spawnRateMin = difficulty * 0.5f;
-        spawnRateMax = difficulty + 2.5f;
-        randomScaleMax = difficulty;
-        randomScaleMax = difficulty + 5;
+    public void SetDifficulty(int difficulty)
+    {
+        spawnDelayRange.x = 5 / (difficulty + 2) - 0.3f;  // TODO Set const
+        spawnDelayRange.y = 10 / (difficulty + 2) - 0.5f;  // TODO Set const
+        scaleRange.x = difficulty;              // TODO Set const
+        scaleRange.y = difficulty + 8;          // TODO Set const
     }
-
-    public void IncreaseAsteroidCount() {
-        activeMeteorCount += 1;
-    }
-
-    public void DecreaseAsteroidCount() {
-        activeMeteorCount -= 1;
-    }
-
 }

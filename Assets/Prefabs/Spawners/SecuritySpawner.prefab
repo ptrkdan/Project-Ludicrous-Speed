@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 5722974970853839563}
   - component: {fileID: 5722974970853839560}
   m_Layer: 0
-  m_Name: SecuritySpawners
+  m_Name: SecuritySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDistanceToPlayer: 2
-  spawnDelay: {x: 1, y: 5}
+  spawnDelayRange: {x: 1, y: 10}
   SecurityUnitPrefab: {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c,
     type: 3}
   waveConfigs: []

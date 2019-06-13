@@ -16,8 +16,6 @@ public class AsteroidStats : InteractableStats
     public override void Die() {
         base.Die();
 
-        FindObjectOfType<AsteroidSpawner>().DecreaseAsteroidCount();    // Make into a static method
-
         DropLoot();
 
         // TODO: Add explosion vfx
