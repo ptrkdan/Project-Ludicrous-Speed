@@ -16,7 +16,7 @@ public class RunManager : MonoBehaviour
     
     [Header("Spawners")]
     [SerializeField] AsteroidSpawner asteroidSpawner;
-    [SerializeField] EnemySpawner enemySpawner;
+    [SerializeField] GameObject securitySpawnerParent;
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI distanceRemainingText;
@@ -49,7 +49,7 @@ public class RunManager : MonoBehaviour
     public void StartRun()
     {
         asteroidSpawner.gameObject.SetActive(true);
-        enemySpawner.gameObject.SetActive(true);
+        securitySpawnerParent.gameObject.SetActive(true);
     }
 
     private void ConfigureRun() {
@@ -70,7 +70,11 @@ public class RunManager : MonoBehaviour
     }
 
     private void ConfigureEnemySpawner(int difficulty) {
-        enemySpawner.SetDifficulty(difficulty);
+        SecuritySpawner[] spawners = securitySpawnerParent.GetComponentsInChildren<SecuritySpawner>();
+        foreach (SecuritySpawner spawner in spawners)
+        {
+            spawner.SetDifficulty(difficulty);
+        }
     }
 
     private void ConfigureLootManager()

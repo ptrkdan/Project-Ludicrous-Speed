@@ -21,8 +21,6 @@ public class EnemyStats : InteractableStats
     public override void Die() {
         base.Die();
 
-        FindObjectOfType<EnemySpawner>().DecreaseEnemyCount();
-
         // Death VFX
         ParticleSystem explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
         Destroy(explosion.gameObject, explosionDuration);

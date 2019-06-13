@@ -15,15 +15,9 @@ public abstract class EnemyController : LivingInteractable
     private void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        FindObjectOfType<EnemySpawner>().IncreaseEnemyCount();
 
         weapon = (EnemyWeapon)weaponConfig.Create();
         ResetShotCooldown();
-    }
-
-    private void OnDestroy()
-    {
-        FindObjectOfType<EnemySpawner>()?.DecreaseEnemyCount();
     }
 
     private void Update()
