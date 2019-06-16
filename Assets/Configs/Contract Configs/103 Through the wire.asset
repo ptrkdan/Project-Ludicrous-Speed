@@ -26,8 +26,8 @@ MonoBehaviour:
   contractRewards:
   - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
   - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
-  - {fileID: 11400000, guid: 8f39b5f3e444bdb488b688000f5526a1, type: 2}
-  - {fileID: 11400000, guid: 51c423a711ebc9f4faa71bd4ee8265c4, type: 2}
+  - {fileID: 11400000, guid: 1224dc43bff033b408d180ffc4a5e645, type: 2}
+  - {fileID: 11400000, guid: ce6ded74fab213a4591e15e3601afa4a, type: 2}
   - {fileID: 11400000, guid: 9ba90212b47677a4386e7f29e3744dc6, type: 2}
   - {fileID: 11400000, guid: 9b2c0d0f022acda449810d852fe33c84, type: 2}
   contractRewardDropRates:

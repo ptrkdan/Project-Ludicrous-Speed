@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerController : LivingInteractable
 {
+    const float START_POS_X = 10f;
+    const float START_POS_Y = 8f;
+
     [SerializeField] Transform weaponPosition;
 
     [Header("Equipments")]
@@ -62,6 +65,15 @@ public class PlayerController : LivingInteractable
     public void DisableControls()
     {
         isControllable = false;
+
+        // Stop any weapon coroutines
+        StopAllCoroutines();
+    }
+
+    public void MoveToStartPosition()
+    {
+        Vector3 startPosition = new Vector3(START_POS_X, START_POS_Y);
+        transform.TransformPoint(startPosition);
     }
 
     public override void Interact(Interactable other)
@@ -181,4 +193,5 @@ public class PlayerController : LivingInteractable
             0);
         rigidBody.MovePosition(newPosition);
     }
+
 }

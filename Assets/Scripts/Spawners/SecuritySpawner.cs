@@ -31,6 +31,16 @@ public class SecuritySpawner : MonoBehaviour
 
     }
 
+    public void StartSpawning()
+    {
+        spawning = true;
+    }
+
+    public void StopSpawning()
+    {
+        spawning = false;
+    }
+
     private void SpawnUnit()
     {
         // Get Player location

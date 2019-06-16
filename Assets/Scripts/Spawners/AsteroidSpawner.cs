@@ -33,6 +33,16 @@ public class AsteroidSpawner : MonoBehaviour
         }
     }
 
+    public void StartSpawning()
+    {
+        spawning = true;
+    }
+
+    public void StopSpawning()
+    {
+        spawning = false;
+    }
+
     private void SpawnAsteroid()
     {
         currentSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];

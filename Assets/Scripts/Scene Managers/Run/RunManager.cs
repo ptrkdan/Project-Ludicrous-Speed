@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 using TMPro;
 
 public class RunManager : MonoBehaviour
@@ -13,7 +14,8 @@ public class RunManager : MonoBehaviour
     #endregion
     [SerializeField] SceneLoader sceneLoader;
     [SerializeField] BackgroundParticleManager bgParticleManager;
-    
+    [SerializeField] PlayableDirector runEndTimeline;
+
     [Header("Spawners")]
     [SerializeField] AsteroidSpawner asteroidSpawner;
     [SerializeField] GameObject securitySpawnerParent;
@@ -25,6 +27,7 @@ public class RunManager : MonoBehaviour
     GameSession session;
     PlayerController player;
     int distanceRemaining;
+    bool isFinished = false;
     float playerEngineStatFactor;
 
     public void UpdateHealthBar(float currentHealth, float maxHealth) {
@@ -43,7 +46,10 @@ public class RunManager : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        UpdateDistanceRemaining();
+        if (!isFinished)
+        {
+            UpdateDistanceRemaining();
+        }
     }
 
     public void StartRun()
@@ -52,6 +58,8 @@ public class RunManager : MonoBehaviour
         securitySpawnerParent.gameObject.SetActive(true);
     }
 
+
+    #region Run Configuration
     private void ConfigureRun() {
         // Set remaining distance on UI
         distanceRemaining = session.ActiveContract.GetRunDistance();
@@ -83,6 +91,7 @@ public class RunManager : MonoBehaviour
             session.ActiveContract.GetAvailablePickUps(),
             session.ActiveContract.GetAvailablePickUpDropRates());
     }
+    #endregion
 
     private void onStatChange(StatType type)
     {
@@ -110,9 +119,34 @@ public class RunManager : MonoBehaviour
         if (distanceRemaining > 0) {
             distanceRemaining -= Mathf.RoundToInt(1 + 1 * playerEngineStatFactor);
             distanceRemainingText.text = Mathf.Clamp(distanceRemaining, 0, float.MaxValue).ToString();
-        } else {
+        } else
+        {
+            isFinished = true;
             session.IsRunSuccessful = true;
-            sceneLoader.WaitAndLoadRunResultsScene(2f);
+            EndRun();
         }
+    }
+
+    private void EndRun()
+    {
+        // Disable player controllers
+        player.DisableControls();
+
+        // Move player to starting point
+        //player.MoveToStartPosition();
+        // Stop spawners
+        
+        // Play Cutscene
+        PlayRunEndCutscene();
+    }
+
+    private void PlayRunEndCutscene()
+    {
+        runEndTimeline.Play();
+    }
+
+    public void LoadRunResultsScene()
+    {
+            sceneLoader.WaitAndLoadRunResultsScene(0f);
     }
 }
