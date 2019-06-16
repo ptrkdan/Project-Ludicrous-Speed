@@ -2,7 +2,11 @@
 
 public class AsteroidStats : InteractableStats
 {
-    [Header("Audio")]
+    [Header("VFX")]
+    [SerializeField] ParticleSystem deathVFXPrefab;
+    [SerializeField] float deathVFXDuration;
+
+    [Header("SFX")]
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathSFXVolume;
 
@@ -19,7 +23,10 @@ public class AsteroidStats : InteractableStats
         DropLoot();
 
         // TODO: Add explosion vfx
-
+        ParticleSystem deathVFX
+            = Instantiate(deathVFXPrefab, transform.position, transform.rotation);
+        Destroy(deathVFX.gameObject, deathVFXDuration);
+        
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
     }
 

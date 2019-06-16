@@ -157,6 +157,9 @@ MonoBehaviour:
   aux:
     type: 0
     baseValue: 0
+  deathVFXPrefab: {fileID: 7531527187818732839, guid: 2f3fbb63a7eb63c48a1f7039aca31853,
+    type: 3}
+  deathVFXDuration: 0.5
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.2
 --- !u!114 &3713397412735857831
