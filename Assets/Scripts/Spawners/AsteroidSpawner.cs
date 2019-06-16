@@ -45,7 +45,7 @@ public class AsteroidSpawner : MonoBehaviour
 
     private void SpawnAsteroid()
     {
-        currentSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        currentSpawnPoint = spawnPoints[Random.Range(1, spawnPoints.Length)]; // spawnPoints[0] = this
         float randomSpin = Random.Range(0, 180f);
         float randomScale = Random.Range(scaleRange.x, scaleRange.y);
         int randomMeteor = Random.Range(0, asteroidList.Count);
