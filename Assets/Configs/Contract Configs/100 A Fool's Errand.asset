@@ -17,9 +17,14 @@ MonoBehaviour:
   runDistance: 2500
   availablePickUps:
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
+  availablePickUpDropRates:
+  - 0
+  baseCreditReward: 0
   contractRewards:
-  - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
+  - {fileID: 11400000, guid: dae10d44c3a7fcd419fe11c260bc51cd, type: 2}
   - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
+  contractRewardDropRates:
+  - 0
+  - 0
   contractLootLevel: 2
   contractDifficultyLevel: 3
-  pickupDropRate: 0.15

@@ -21,8 +21,9 @@ MonoBehaviour:
   availablePickUpDropRates:
   - 10
   - 10
+  baseCreditReward: 0
   contractRewards:
-  - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
+  - {fileID: 11400000, guid: dae10d44c3a7fcd419fe11c260bc51cd, type: 2}
   - {fileID: 11400000, guid: 5d9112bcb211a06479053e9cc8a8fcba, type: 2}
   - {fileID: 11400000, guid: 2baa1c6af360c0745b21ff2dc1e7259d, type: 2}
   contractRewardDropRates:

@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49db622687276b24594d3e0192f91bf6, type: 3}
-  m_Name: Credits
-  m_EditorClassIdentifier: Assembly-CSharp::Loot
+  m_Script: {fileID: 11500000, guid: 4741e3ca79d9e0e49b8a04e8e000df2f, type: 3}
+  m_Name: Credits Level 1
+  m_EditorClassIdentifier: 
   lootName: Credits
   lootType: 0
   icon: {fileID: 21300000, guid: 3f439fb1ec5feef41a6fafa46bbdd8e3, type: 3}
-  creditValue: 100
+  creditValue: 0
   lootDescription: Credits make the galaxy go 'round. At least in this know universe.
+  creditValueRange: {x: 10, y: 50}

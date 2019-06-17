@@ -23,7 +23,7 @@ MonoBehaviour:
     Haaaahahahaha...
 
 '
-  runDistance: 1000
+  runDistance: 700
   availablePickUps:
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
