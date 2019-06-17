@@ -6,8 +6,10 @@ public class ContractConfig : ScriptableObject {
     [SerializeField] string contractTitle;
     [SerializeField] [TextArea] string contractDetails;
     [SerializeField] int runDistance = 100;
+
     [SerializeField] List<PickUpLootConfig> availablePickUps;
     [SerializeField] List<float> availablePickUpDropRates;
+    [SerializeField] int baseCreditReward;
     [SerializeField] List<LootConfig> contractRewards;
     [SerializeField] List<float> contractRewardDropRates;
 
@@ -21,6 +23,7 @@ public class ContractConfig : ScriptableObject {
     public int GetRunDistance() => runDistance;
     public List<PickUpLootConfig> GetAvailablePickUps() => availablePickUps;
     public List<float> GetAvailablePickUpDropRates() => availablePickUpDropRates;
+    public int GetBaseCreditReward() => baseCreditReward;
     public List<LootConfig> GetContractRewards() => contractRewards;
     public List<float> GetContractRewardDropRates() => contractRewardDropRates;
     public int GetContractLootLevel() => contractLootLevel;

@@ -20,25 +20,26 @@ MonoBehaviour:
     Don'' tell me yer goin'' chicken on me!
 
 
-    Haaaahahahaha'
-  runDistance: 5
+    Haaaahahahaha...
+
+'
+  runDistance: 1000
   availablePickUps:
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
   availablePickUpDropRates:
-  - 100
-  - 100
+  - 20
+  - 20
+  baseCreditReward: 0
   contractRewards:
-  - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
+  - {fileID: 11400000, guid: dae10d44c3a7fcd419fe11c260bc51cd, type: 2}
   - {fileID: 11400000, guid: 05c7b5da2d3b9b64c96732cc2d55634d, type: 2}
   - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
   - {fileID: 11400000, guid: 9ba90212b47677a4386e7f29e3744dc6, type: 2}
-  - {fileID: 11400000, guid: b482a8fb29da1f54faf710ddbadaa55b, type: 2}
   contractRewardDropRates:
   - 100
   - 100
   - 5
   - 25
-  - 50
-  contractLootLevel: 2
+  contractLootLevel: 1
   contractDifficultyLevel: 1

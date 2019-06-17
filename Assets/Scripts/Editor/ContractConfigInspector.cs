@@ -13,6 +13,7 @@ public class ContractConfigInspector : Editor
 
     SerializedProperty pickUps;
     SerializedProperty pickUpDropRates;
+    SerializedProperty baseCreditReward;
     SerializedProperty contractRewards;
     SerializedProperty contractRewardDropRates;
 
@@ -31,6 +32,7 @@ public class ContractConfigInspector : Editor
         pickUpDropRates = serializedObject.FindProperty("availablePickUpDropRates");
 
         // Contract reward drop rate properties
+        baseCreditReward = serializedObject.FindProperty("baseCreditReward");
         contractRewards = serializedObject.FindProperty("contractRewards");
         contractRewardDropRates = serializedObject.FindProperty("contractRewardDropRates");
 
@@ -61,6 +63,7 @@ public class ContractConfigInspector : Editor
 
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Contract Rewards", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(baseCreditReward);
         DrawArrayWithDropRates(contractRewards, contractRewardDropRates);
 
         //EditorGUILayout.PropertyField(pickUpDropRates);

@@ -2,11 +2,11 @@
 
 public class Loot : ScriptableObject
 {
-    new string name;
-    string description;
-    int creditValue;
-    LootType lootType;
-    Sprite icon;
+    protected new string name;
+    protected string description;
+    protected int creditValue;
+    protected LootType lootType;
+    protected Sprite icon;
 
     public Loot() { }
 

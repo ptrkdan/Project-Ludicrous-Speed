@@ -5,11 +5,11 @@ using UnityEngine;
 // [InitializeOnLoad]
 public class LootConfig : ScriptableObject
 {
-    [SerializeField] string lootName;
-    [SerializeField] LootType lootType;
-    [SerializeField] Sprite icon;
-    [SerializeField] int creditValue = 0;
-    [SerializeField] [TextArea (3,5)] string lootDescription;
+    [SerializeField] protected string lootName;
+    [SerializeField] protected LootType lootType;
+    [SerializeField] protected Sprite icon;
+    [SerializeField] protected int creditValue = 0;
+    [SerializeField] [TextArea (3,5)] protected string lootDescription;
 
     public string LootName { get => lootName; }
     public LootType LootType { get => lootType; }

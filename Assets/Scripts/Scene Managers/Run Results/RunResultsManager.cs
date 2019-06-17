@@ -50,6 +50,7 @@ public class RunResultsManager : MonoBehaviour
         List<float> contractRewardsDropRate = session.ActiveContract.GetContractRewardDropRates();
         if (success) {
             List<LootConfig> receivedRewards = new List<LootConfig>();
+
             for (int i = 0; i < contractRewards.Count; i++)
             {
                 float dropRoll = Random.Range(0f, 100f);
@@ -63,7 +64,7 @@ public class RunResultsManager : MonoBehaviour
                 RunResultsLootRow newLoot = Instantiate(lootRowPrefab, lootGrid);
                 newLoot.DisplayLoot(receivedRewards[i]);
                 
-                if (receivedRewards[i].LootName == "Credits") {
+                if (receivedRewards[i].LootType == LootType.Currency) {
                     player.AddToCredits(receivedRewards[i].CreditValue);
                 } else {
                     player.AddToInventory(receivedRewards[i].Create());
