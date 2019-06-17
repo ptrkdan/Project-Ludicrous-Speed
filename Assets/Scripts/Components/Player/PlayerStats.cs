@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PlayerStats : InteractableStats
 {
@@ -17,38 +14,80 @@ public class PlayerStats : InteractableStats
     [SerializeField] bool isInvincible = false;
     [SerializeField] float gameOverDelay = 2f;
 
-    private void Start() {
+    float maxShield;
+    float currentShield;
+    float shieldRegenDelay;
+    float shieldRegenAmount;
+    float timeUntilShieldRegen;
+
+    private void Start()
+    {
         RetrieveStats();
+    }
+
+    private void Update()
+    {
+        UpdateShieldRegen();
     }
 
     private void RetrieveStats()
     {
-        maxHealth = StatsManager.instance.GetMaxHealth();
-        currentHealth = maxHealth;
         hull = StatsManager.instance.GetStat(StatType.Hull);
         shield = StatsManager.instance.GetStat(StatType.Shield);
         engine = StatsManager.instance.GetStat(StatType.Engine);
         weapon = StatsManager.instance.GetStat(StatType.Weapon);
         aux = StatsManager.instance.GetStat(StatType.Aux);
+        maxHealth = StatsManager.instance.GetMaxHealth();
+        currentHealth = maxHealth;
+        maxShield = Mathf.FloorToInt(shield.GetCalcValue()) * 100;  // TODO Make shield factor const
+        currentShield = maxShield;
+        shieldRegenDelay = 200;                                     // TODO Finalize shield regen formula
+        shieldRegenAmount = aux.GetCalcValue();                 // TODO Make shield regen amount formula
+        timeUntilShieldRegen = shieldRegenDelay;
     }
 
-    public override void TakeDamage(int damage) {
-        if (!isInvincible) {
+    public override void TakeDamage(int damage)
+    {
+        if (!isInvincible)
+        {
+            float remainingDamage = damage;
             // Check for shield
-            base.TakeDamage(damage);
-            UpdateHealthBar();
-            if (currentHealth <= 0) {
-                Die();
+            if (currentShield > 0)
+            {
+                ResetShieldRegen();
+                currentShield -= damage;
+                if (currentShield < 0)
+                {
+                    remainingDamage = currentShield * -1; // Get the inverse of current shield value
+                    currentShield = 0;
+                }
+                else
+                {
+                    remainingDamage = 0;
+                }
+                UpdateShieldBar();
+            }
+
+            if (remainingDamage > 0)
+            {   // if there is still remaining daamge after shield, take hull damage
+                base.TakeDamage(Mathf.FloorToInt(remainingDamage));
+                UpdateHullArmouBar();
+                if (currentHealth <= 0)
+                {
+                    Die();
+                }
             }
         }
     }
 
-    public override void RepairDamage(int repair) {
+    public override void RepairDamage(int repair)
+    {
         base.RepairDamage(repair);
-        UpdateHealthBar();
+        UpdateHullArmouBar();
     }
 
-    public override void Die() {
+    public override void Die()
+    {
         base.Die();
 
         // Death VFX
@@ -64,11 +103,40 @@ public class PlayerStats : InteractableStats
         FindObjectOfType<SceneLoader>().WaitAndLoadRunResultsScene(gameOverDelay);
     }
 
-    public void ToggleGodMode() {
+    public void ToggleGodMode()
+    {
         isInvincible = !isInvincible;
     }
 
-    private void UpdateHealthBar() {
-        RunManager.instance.UpdateHullArmouBar((float)currentHealth, (float)maxHealth);
+    private void ResetShieldRegen()
+    {
+        timeUntilShieldRegen = shieldRegenDelay;
+    }
+
+    private void UpdateShieldRegen()
+    {
+        if (timeUntilShieldRegen > 0)
+        {
+            timeUntilShieldRegen -= 1;      // TODO Create shield regen formula
+        }
+        else
+        {
+            if (currentShield < maxShield)
+            {
+                currentShield = Mathf.Clamp(currentShield + Mathf.FloorToInt(shieldRegenAmount), 0, maxShield);
+                UpdateShieldBar();
+            }
+        }
+
+    }
+
+    private void UpdateHullArmouBar()
+    {
+        RunManager.instance.UpdateHullArmouBar((float)currentHealth / maxHealth);
+    }
+
+    private void UpdateShieldBar()
+    {
+        RunManager.instance.UpdateShieldBar((float)currentShield / maxShield);
     }
 }

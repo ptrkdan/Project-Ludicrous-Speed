@@ -59,9 +59,14 @@ public class RunManager : MonoBehaviour
         securitySpawnerParent.gameObject.SetActive(true);
     }
 
-    public void UpdateHullArmouBar(float currentHealth, float maxHealth)
+    public void UpdateHullArmouBar(float value)
     {
-        FindObjectOfType<HullArmourSlider>().UpdateValue(currentHealth / maxHealth);
+        FindObjectOfType<HullArmourSlider>().UpdateValue(value);
+    }
+
+    public void UpdateShieldBar(float value)
+    {
+        FindObjectOfType<ShieldSlider>().UpdateValue(value);
     }
 
 
