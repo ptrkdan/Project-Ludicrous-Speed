@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Playables;
-using TMPro;
 
 public class RunManager : MonoBehaviour
 {
     #region Singleton
     public static RunManager instance;
-    public RunManager() {
+    public RunManager()
+    {
         if (instance) return;
         instance = this;
     }
@@ -22,30 +22,31 @@ public class RunManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI distanceRemainingText;
-    [SerializeField] Slider healthBarSlider;
+
+
 
     GameSession session;
     PlayerController player;
+
     int distanceRemaining;
+
     bool isFinished = false;
     float playerEngineStatFactor;
-
-    public void UpdateHealthBar(float currentHealth, float maxHealth) {
-        healthBarSlider.value = currentHealth / maxHealth;
-    }
-
     private void Start()
     {
         session = FindObjectOfType<GameSession>();
-        if (session == null) {
+        if (session == null)
+        {
             sceneLoader.GoToPreload();
         }
         player = FindObjectOfType<PlayerController>();
         player.GetComponent<PlayerStats>().onStatChange += onStatChange;
+
         ConfigureRun();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         if (!isFinished)
         {
             UpdateDistanceRemaining();
@@ -58,9 +59,16 @@ public class RunManager : MonoBehaviour
         securitySpawnerParent.gameObject.SetActive(true);
     }
 
+    public void UpdateHullArmouBar(float currentHealth, float maxHealth)
+    {
+        FindObjectOfType<HullArmourSlider>().UpdateValue(currentHealth / maxHealth);
+    }
+
+
 
     #region Run Configuration
-    private void ConfigureRun() {
+    private void ConfigureRun()
+    {
         // Set remaining distance on UI
         distanceRemaining = session.ActiveContract.GetRunDistance();
         distanceRemainingText.text = distanceRemaining.ToString();
@@ -73,11 +81,13 @@ public class RunManager : MonoBehaviour
         ConfigureStats();
     }
 
-    private void ConfigureAsteroidSpawner(int difficulty) {
+    private void ConfigureAsteroidSpawner(int difficulty)
+    {
         asteroidSpawner.SetDifficulty(difficulty);
     }
 
-    private void ConfigureEnemySpawner(int difficulty) {
+    private void ConfigureEnemySpawner(int difficulty)
+    {
         SecuritySpawner[] spawners = securitySpawnerParent.GetComponentsInChildren<SecuritySpawner>();
         foreach (SecuritySpawner spawner in spawners)
         {
@@ -109,17 +119,20 @@ public class RunManager : MonoBehaviour
 
     private void UpdateSpeed()
     {
-        float playerEngineStat = 
+        float playerEngineStat =
             player.GetComponent<PlayerStats>().GetStat(StatType.Engine).GetCalcValue();
         playerEngineStatFactor = playerEngineStat / 25;        // TODO: Create factor formula
         bgParticleManager.UpdateVelocity(playerEngineStatFactor);
     }
 
-    private void UpdateDistanceRemaining() {
-        if (distanceRemaining > 0) {
+    private void UpdateDistanceRemaining()
+    {
+        if (distanceRemaining > 0)
+        {
             distanceRemaining -= Mathf.RoundToInt(1 + 1 * playerEngineStatFactor);
             distanceRemainingText.text = Mathf.Clamp(distanceRemaining, 0, float.MaxValue).ToString();
-        } else
+        }
+        else
         {
             isFinished = true;
             session.IsRunSuccessful = true;
@@ -135,7 +148,7 @@ public class RunManager : MonoBehaviour
         // Move player to starting point
         //player.MoveToStartPosition();
         // Stop spawners
-        
+
         // Play Cutscene
         PlayRunEndCutscene();
     }
@@ -147,6 +160,6 @@ public class RunManager : MonoBehaviour
 
     public void LoadRunResultsScene()
     {
-            sceneLoader.WaitAndLoadRunResultsScene(0f);
+        sceneLoader.WaitAndLoadRunResultsScene(0f);
     }
 }

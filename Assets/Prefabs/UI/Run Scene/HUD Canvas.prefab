@@ -1254,6 +1254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3353923090728786843}
+  - component: {fileID: 2293109680426063959}
   - component: {fileID: 3353923090728786842}
   m_Layer: 5
   m_Name: Hull Slider
@@ -1283,6 +1284,18 @@ RectTransform:
   m_AnchoredPosition: {x: 55, y: 0}
   m_SizeDelta: {x: 85, y: 5}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &2293109680426063959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353923090728786836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0f4603fd604af4dbcc7825629cbb01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3353923090728786842
 MonoBehaviour:
   m_ObjectHideFlags: 0

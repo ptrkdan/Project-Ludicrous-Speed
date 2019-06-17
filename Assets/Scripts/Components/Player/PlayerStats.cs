@@ -69,6 +69,6 @@ public class PlayerStats : InteractableStats
     }
 
     private void UpdateHealthBar() {
-        RunManager.instance.UpdateHealthBar((float)currentHealth, (float)maxHealth);
+        RunManager.instance.UpdateHullArmouBar((float)currentHealth, (float)maxHealth);
     }
 }
