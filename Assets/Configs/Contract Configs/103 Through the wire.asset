@@ -24,7 +24,7 @@ MonoBehaviour:
   - 15
   - 25
   contractRewards:
-  - {fileID: 11400000, guid: 0635e6109ece63b4c91607f3a5dd2bc4, type: 2}
+  - {fileID: 11400000, guid: d1d9eb6f0dd0bc54db659820584500e0, type: 2}
   - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
   - {fileID: 11400000, guid: 1224dc43bff033b408d180ffc4a5e645, type: 2}
   - {fileID: 11400000, guid: ce6ded74fab213a4591e15e3601afa4a, type: 2}

@@ -15,5 +15,5 @@ MonoBehaviour:
   lootName: Banana
   lootType: 1
   icon: {fileID: 21300000, guid: ad13178cc22dba34193490cd514e4c58, type: 3}
-  creditValue: 0
+  creditValue: 10
   lootDescription: What were you expecting exactly?

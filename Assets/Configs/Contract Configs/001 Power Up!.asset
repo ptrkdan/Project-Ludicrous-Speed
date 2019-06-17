@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contractTitle: Power Up!
   contractDetails: Go, go, airplane!
-  runDistance: 5000
+  runDistance: 1000
   availablePickUps:
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
   availablePickUpDropRates:
   - 10
   - 10
-  baseCreditReward: 0
   contractRewards:
   - {fileID: 11400000, guid: dae10d44c3a7fcd419fe11c260bc51cd, type: 2}
   - {fileID: 11400000, guid: 5d9112bcb211a06479053e9cc8a8fcba, type: 2}

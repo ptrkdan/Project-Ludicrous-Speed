@@ -15,7 +15,7 @@ MonoBehaviour:
   lootName: Hull Plating MkI
   lootType: 2
   icon: {fileID: 21300000, guid: ce9e9ae0e3d1d764da624e5b7a1a19c9, type: 3}
-  creditValue: 0
+  creditValue: 120
   lootDescription: 
   equipSlot: 3
   isEquipped: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sapling
   m_EditorClassIdentifier: 
   lootName: Sapling
-  type: 1
+  lootType: 1
   icon: {fileID: 21300000, guid: 0fbd0ab191c7320468a346b76cb694c6, type: 3}
-  lootValue: 100
+  creditValue: 250
   lootDescription: Do you think it has a name?
