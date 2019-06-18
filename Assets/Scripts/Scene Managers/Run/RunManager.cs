@@ -18,7 +18,7 @@ public class RunManager : MonoBehaviour
 
     [Header("Spawners")]
     [SerializeField] AsteroidSpawner asteroidSpawner;
-    [SerializeField] GameObject securitySpawnerParent;
+    [SerializeField] SecuritySpawner securitySpawner;
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI distanceRemainingText;
@@ -30,6 +30,7 @@ public class RunManager : MonoBehaviour
 
     int distanceRemaining;
 
+    bool isStarted = false;
     bool isFinished = false;
     float playerEngineStatFactor;
     private void Start()
@@ -47,7 +48,7 @@ public class RunManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isFinished)
+        if (!isFinished && isStarted)
         {
             UpdateDistanceRemaining();
         }
@@ -55,8 +56,15 @@ public class RunManager : MonoBehaviour
 
     public void StartRun()
     {
+        isStarted = true;
         asteroidSpawner.gameObject.SetActive(true);
-        securitySpawnerParent.gameObject.SetActive(true);
+        securitySpawner.gameObject.SetActive(true);
+    }
+
+    public void StopSpawners()
+    {
+        asteroidSpawner.StopSpawning();
+        securitySpawner.StopSpawning();
     }
 
     public void UpdateHullArmouBar(float value)
@@ -68,9 +76,7 @@ public class RunManager : MonoBehaviour
     {
         FindObjectOfType<ShieldSlider>().UpdateValue(value);
     }
-
-
-
+       
     #region Run Configuration
     private void ConfigureRun()
     {
@@ -93,7 +99,7 @@ public class RunManager : MonoBehaviour
 
     private void ConfigureEnemySpawner(int difficulty)
     {
-        SecuritySpawner[] spawners = securitySpawnerParent.GetComponentsInChildren<SecuritySpawner>();
+        SecuritySpawner[] spawners = securitySpawner.GetComponentsInChildren<SecuritySpawner>();
         foreach (SecuritySpawner spawner in spawners)
         {
             spawner.SetDifficulty(difficulty);
@@ -139,20 +145,44 @@ public class RunManager : MonoBehaviour
         }
         else
         {
-            isFinished = true;
-            session.IsRunSuccessful = true;
-            EndRun();
+            StopSpawners();
+            if (IsMapClear())
+            {
+                isFinished = true;
+                session.IsRunSuccessful = true;
+                EndRun();
+            }
         }
+    }
+
+    private bool IsMapClear()
+    {
+        SecuritySpawnPoint[] securitySpawnPoints = 
+            securitySpawner.GetComponentsInChildren<SecuritySpawnPoint>();
+        foreach (SecuritySpawnPoint spawnPoint in securitySpawnPoints)
+        {
+            if (spawnPoint.HasChildren())
+            {
+                return false;// Spawner has children; map is not cleared
+            }      
+        }
+        AsteroidSpawnPoint[] asteroidSpawnPoints =
+            asteroidSpawner.GetComponentsInChildren<AsteroidSpawnPoint>();
+        foreach (AsteroidSpawnPoint spawnPoint in asteroidSpawnPoints)
+        {
+            if (spawnPoint.HasChildren())
+            {
+                return false;
+            }
+        }
+
+        return true;    // All spawners have no children
     }
 
     private void EndRun()
     {
         // Disable player controllers
         player.DisableControls();
-
-        // Move player to starting point
-        //player.MoveToStartPosition();
-        // Stop spawners
 
         // Play Cutscene
         PlayRunEndCutscene();

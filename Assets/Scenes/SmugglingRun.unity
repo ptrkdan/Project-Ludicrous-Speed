@@ -510,8 +510,6 @@ PlayableDirector:
     value: {fileID: 6401467596651120019}
   - key: {fileID: -6414739272122224529, guid: 139aa1a5bad620248a22485ffc7bc31d, type: 2}
     value: {fileID: 6401467596651120018}
-  - key: {fileID: 5827078109799854632, guid: 139aa1a5bad620248a22485ffc7bc31d, type: 2}
-    value: {fileID: 770103729}
   m_ExposedReferences:
     m_References:
     - 761eca4bfe1e81b4b98c0db31f5bfdc2: {fileID: 4224309646166513147}
@@ -1716,16 +1714,21 @@ PrefabInstance:
     - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
         type: 3}
       propertyPath: m_Events.m_Signals.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
         type: 3}
       propertyPath: m_Events.m_Events.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
         type: 3}
       propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
@@ -1765,6 +1768,43 @@ PrefabInstance:
       value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Signals.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b96c0cb3583e5e48aa7a22bdce61655,
+        type: 2}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1027516571}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopSpawners
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733867357581898326, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[2].m_TypeName
+      value: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 8733867357581898324, guid: ef50cdabf0d8be041b20681948c46287,
         type: 3}
       propertyPath: sceneLoader
@@ -1800,6 +1840,11 @@ PrefabInstance:
       propertyPath: runEndTimeline
       value: 
       objectReference: {fileID: 1085419753}
+    - target: {fileID: 8733867357581898324, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: securitySpawner
+      value: 
+      objectReference: {fileID: 661863054}
     - target: {fileID: 8733867357581898325, guid: ef50cdabf0d8be041b20681948c46287,
         type: 3}
       propertyPath: m_LocalPosition.x
