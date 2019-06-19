@@ -52,9 +52,9 @@ public class ContractSelection : MonoBehaviour
 
     public void SetContractConfig(ContractConfig contract) {
         this.contract = contract;
-        SetContractTitle(contract.GetContractTitle());
-        SetLootLevel(contract.GetContractLootLevel());
-        SetDifficultyLevel(contract.GetContractDifficultyLevel());
+        SetContractTitle(contract.ContractTitle);
+        SetLootLevel(contract.LootLevel);
+        SetDifficultyLevel(contract.DifficultyLevel);
     }
 
     public void SelectContract() {

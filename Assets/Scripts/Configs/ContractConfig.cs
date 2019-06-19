@@ -2,29 +2,65 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Contract Config")]
-public class ContractConfig : ScriptableObject {
-    [SerializeField] string contractTitle;
-    [SerializeField] [TextArea] string contractDetails;
-    [SerializeField] int runDistance = 100;
+public class ContractConfig : ScriptableObject
+{
+    [Header("Basic Details")]
+    [SerializeField] string contractTitle = "New contract";
+    [SerializeField] ContractType contractType = ContractType.Standard;
+    [SerializeField] [TextArea] string contractDetails = "So here's the story...";
+    [SerializeField] int runDistance = 1000;
+    [SerializeField] AssociatedFaction associatedFaction = AssociatedFaction.None;
+    [SerializeField] int[] unlockPrerequisite = new int[5];
 
-    [SerializeField] List<PickUpLootConfig> availablePickUps;
-    [SerializeField] List<float> availablePickUpDropRates;
-    [SerializeField] List<LootConfig> contractRewards;
-    [SerializeField] List<float> contractRewardDropRates;
+    [Header("Non-Friendlies Parameters")]
+    [SerializeField] [Range(1, 10)] int difficultyLevel = 1;
+    [Space]
+    [SerializeField] [Range(1, 10)] int securityLevel = 1;
+    [SerializeField] List<EnemyController> securityUnits;               // TODO Change to SecurityController
+    [SerializeField] bool hasSecurityBoss = false;
+    [SerializeField] List<EnemyController> potentialSecurityBoss;       // TODO Change to SecurityBossController
+    [Space]
+    [SerializeField] [Range(1, 10)] int creatureLevel = 1;
+    [SerializeField] List<EnemyController> creatures;                   // TODO Change to CreatureController
+    [SerializeField] bool hasCreatureBoss = false;
+    [SerializeField] List<EnemyController> potentialCreatureBoss;       // TODO Change to CreatureBossController
+    [Space]
+    [SerializeField] [Range(1, 10)] int debrisLevel = 1;
+    [SerializeField] List<DebrisController> debris;
 
-    [Header("Run Parameters")]
-    [SerializeField] [Range(1, 10)] int contractLootLevel = 1;
-    [SerializeField] [Range(1, 10)] int contractDifficultyLevel = 1;
+    [Header("Rewards")]
+    [SerializeField] [Range(1, 10)] int lootLevel = 1;
+    [SerializeField] [Range(1, 10)] int creditRewardLevel = 1;
+    [SerializeField] List<LootFactory> lootDrops;
+    [SerializeField] List<LootConfig> specialLootDrops;
 
+    [Header("Misc.")]
+    [SerializeField] List<PickUpLootConfig> pickUps;
+    [SerializeField] List<float> pickUpDropRates;           // TODO Refactor
 
-    public string GetContractTitle() => contractTitle;
-    public string GetContractDetails() => contractDetails;
-    public int GetRunDistance() => runDistance;
-    public List<PickUpLootConfig> GetAvailablePickUps() => availablePickUps;
-    public List<float> GetAvailablePickUpDropRates() => availablePickUpDropRates;
-    public List<LootConfig> GetContractRewards() => contractRewards;
-    public List<float> GetContractRewardDropRates() => contractRewardDropRates;
-    public int GetContractLootLevel() => contractLootLevel;
-    public int GetContractDifficultyLevel() => contractDifficultyLevel;
-
+    public ContractType ContractType { get => contractType; set => contractType = value; }
+    public string ContractTitle { get => contractTitle; set => contractTitle = value; }
+    public string ContractDetails { get => contractDetails; set => contractDetails = value; }
+    public int RunDistance { get => runDistance; set => runDistance = value; }
+    public AssociatedFaction AssociatedFaction { get => associatedFaction; set => associatedFaction = value; }
+    public int[] UnlockPrerequisite { get => unlockPrerequisite; set => unlockPrerequisite = value; }
+    public int DifficultyLevel { get => difficultyLevel; set => difficultyLevel = value; }
+    public int SecurityLevel { get => securityLevel; set => securityLevel = value; }
+    public List<EnemyController> SecurityUnits { get => securityUnits; set => securityUnits = value; }
+    public List<EnemyController> PotentialSecurityBoss { get => potentialSecurityBoss; set => potentialSecurityBoss = value; }
+    public int CreatureLevel { get => creatureLevel; set => creatureLevel = value; }
+    public List<EnemyController> Creatures { get => creatures; set => creatures = value; }
+    public List<EnemyController> PotentialCreatureBoss { get => potentialCreatureBoss; set => potentialCreatureBoss = value; }
+    public int DebrisLevel { get => debrisLevel; set => debrisLevel = value; }
+    public List<DebrisController> Debris { get => debris; set => debris = value; }
+    public int LootLevel { get => lootLevel; set => lootLevel = value; }
+    public int CreditRewardLevel { get => creditRewardLevel; set => creditRewardLevel = value; }
+    public List<LootFactory> LootDrops { get => lootDrops; set => lootDrops = value; }
+    public List<LootConfig> SpecialLootDrops { get => specialLootDrops; set => specialLootDrops = value; }
+    public List<PickUpLootConfig> PickUps { get => pickUps; set => pickUps = value; }
+    public List<float> PickUpDropRates { get => pickUpDropRates; set => pickUpDropRates = value; }
 }
+
+public enum ContractType { Campaign, Standard, Special }
+public enum UnlockPrerequisiteType { PlayerLevel, CareerLevel, ReputationLevel, ShipPowerLevel, CompletedCampaignLevel }
+public enum AssociatedFaction { None, Smugglers, FactionA, FactionB, FactionC }

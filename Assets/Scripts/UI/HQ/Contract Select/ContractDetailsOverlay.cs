@@ -28,8 +28,8 @@ public class ContractDetailsOverlay : Overlay
 
     public void SetContractConfig(ContractConfig contract) {
         this.contract = contract;
-        contractTitleText.text = contract.GetContractTitle();
-        contractDetailsText.text = contract.GetContractDetails();
+        contractTitleText.text = contract.ContractTitle;
+        contractDetailsText.text = contract.ContractDetails;
     }
 
     public void LoadContract() {

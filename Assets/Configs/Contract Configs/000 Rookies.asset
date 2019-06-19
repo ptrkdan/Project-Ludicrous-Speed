@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 000 Rookies
   m_EditorClassIdentifier: 
   contractTitle: Rookies
+  contractType: 0
   contractDetails: 'Look...Just grab the loot, dodge some rocks, get back home...
     easy as pie, no?
 
@@ -23,23 +24,27 @@ MonoBehaviour:
     Haaaahahahaha...
 
 '
-  runDistance: 700
-  availablePickUps:
-  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
-  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
-  availablePickUpDropRates:
-  - 20
-  - 20
-  baseCreditReward: 0
-  contractRewards:
-  - {fileID: 11400000, guid: dae10d44c3a7fcd419fe11c260bc51cd, type: 2}
-  - {fileID: 11400000, guid: 05c7b5da2d3b9b64c96732cc2d55634d, type: 2}
-  - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
-  - {fileID: 11400000, guid: 9ba90212b47677a4386e7f29e3744dc6, type: 2}
-  contractRewardDropRates:
-  - 100
-  - 100
-  - 5
-  - 25
-  contractLootLevel: 1
-  contractDifficultyLevel: 1
+  runDistance: 2500
+  associatedFaction: 0
+  unlockPrerequisite: 0000000000000000000000000000000000000000
+  difficultyLevel: 1
+  securityLevel: 1
+  securityUnits:
+  - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
+  hasSecurityBoss: 0
+  potentialSecurityBoss: []
+  creatureLevel: 1
+  creatures: []
+  hasCreatureBoss: 0
+  potentialCreatureBoss: []
+  debrisLevel: 1
+  debris:
+  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
+  - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
+  lootLevel: 1
+  creditRewardLevel: 1
+  lootDrops:
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
+  specialLootDrops: []
+  pickUps: []
+  pickUpDropRates: []

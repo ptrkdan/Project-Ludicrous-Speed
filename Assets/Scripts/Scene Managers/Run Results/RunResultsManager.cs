@@ -35,8 +35,7 @@ public class RunResultsManager : MonoBehaviour
 
     private void FinalizeResults(bool success) {
         SetResultsText(success);
-        //SetLoot(success);
-        SetLoot();
+        SetLoot(success);
     }
 
     private void SetResultsText(bool success) {
@@ -48,69 +47,45 @@ public class RunResultsManager : MonoBehaviour
             resultsText.text = "Busted!";
         }
     }
+    
+    private void SetLoot(bool success)
+    {
+        if (success)
+        {
+            // Get LootFactory list from active contract
 
-    private void SetLoot(bool success) {
-        List<LootConfig> contractRewards = session.ActiveContract.GetContractRewards();
-        List<float> contractRewardsDropRate = session.ActiveContract.GetContractRewardDropRates();
-        if (success) {
+            // Get loot drop rate from active contract?
+
+            // Loot rolls
             List<LootConfig> receivedRewards = new List<LootConfig>();
-
-            for (int i = 0; i < contractRewards.Count; i++)
+            foreach (LootFactory factory in lootFactories)
             {
-                float dropRoll = Random.Range(0f, 100f);
-                if (dropRoll >= 100f - contractRewardsDropRate[i])
+                LootConfig droppedLoot = factory.DropLoot(LootRarity.Common, LootRarity.Rare);
+                if (droppedLoot)
                 {
-                    receivedRewards.Add(contractRewards[i]);
+                    receivedRewards.Add(droppedLoot);
                 }
             }
 
-            for (int i = 0; i < receivedRewards.Count; i++) {
+            // TODO SortLoot(receivedRewards);
+
+            for (int i = 0; i < receivedRewards.Count; i++)
+            {
                 RunResultsLootRow newLoot = Instantiate(lootRowPrefab, lootGrid);
                 newLoot.DisplayLoot(receivedRewards[i]);
-                
-                if (receivedRewards[i].LootType == LootType.Currency) {
+
+                if (receivedRewards[i].LootType == LootType.Currency)
+                {
                     player.AddToCredits(receivedRewards[i].CreditValue);
-                } else {
+                }
+                else
+                {
                     player.AddToInventory(receivedRewards[i].Create());
                 }
             }
-        } else {
-            // TODO: Give XP? Pay 10% of credit reward?
-        }
-    }
-
-    private void SetLoot()
-    {
-        // Get LootFactory list from active contract
-
-        // Get loot drop rate from active contract?
-
-        // Loot rolls
-        List<LootConfig> receivedRewards = new List<LootConfig>();
-        foreach (LootFactory factory in lootFactories)
+        } else
         {
-            LootConfig droppedLoot = factory.DropLoot(LootRarity.Common, LootRarity.Rare);
-            if (droppedLoot)
-            {
-                receivedRewards.Add(droppedLoot);
-            }
-        }
-
-        // TODO SortLoot(receivedRewards);
-
-        for (int i = 0; i < receivedRewards.Count; i++)
-        {
-            RunResultsLootRow newLoot = Instantiate(lootRowPrefab, lootGrid);
-            newLoot.DisplayLoot(receivedRewards[i]);
-
-            if (receivedRewards[i].LootType == LootType.Currency)
-            {
-                player.AddToCredits(receivedRewards[i].CreditValue);
-            }
-            else
-            {
-                player.AddToInventory(receivedRewards[i].Create());
-            }
+            // TODO Penalty? Give reduced credit reward?
         }
     }
 }

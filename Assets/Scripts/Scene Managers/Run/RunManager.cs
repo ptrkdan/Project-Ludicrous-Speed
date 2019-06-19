@@ -81,11 +81,11 @@ public class RunManager : MonoBehaviour
     private void ConfigureRun()
     {
         // Set remaining distance on UI
-        distanceRemaining = session.ActiveContract.GetRunDistance();
+        distanceRemaining = session.ActiveContract.RunDistance;
         distanceRemainingText.text = distanceRemaining.ToString();
 
         // Configure spawners with contract difficulty
-        int difficulty = session.ActiveContract.GetContractDifficultyLevel();
+        int difficulty = session.ActiveContract.DifficultyLevel;
         ConfigureAsteroidSpawner(difficulty);
         ConfigureEnemySpawner(difficulty);
         ConfigureLootManager();
@@ -109,8 +109,8 @@ public class RunManager : MonoBehaviour
     private void ConfigureLootManager()
     {
         LootManager.instance.ConfigureAvailableLoot(
-            session.ActiveContract.GetAvailablePickUps(),
-            session.ActiveContract.GetAvailablePickUpDropRates());
+            session.ActiveContract.PickUps,
+            session.ActiveContract.PickUpDropRates);
     }
     #endregion
 

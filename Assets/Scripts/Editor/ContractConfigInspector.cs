@@ -5,114 +5,185 @@ using UnityEngine;
 public class ContractConfigInspector : Editor
 {
     ContractConfig config;
+    // Basic Details
     SerializedProperty contractTitle;
+    SerializedProperty contractType;
     SerializedProperty contractDetails;
     SerializedProperty runDistance;
-    SerializedProperty contractLootLevel;
-    SerializedProperty contractDifficultyLevel;
+    SerializedProperty associatedFaction;
+    SerializedProperty unlockPrerequisite;
 
+    // Non-friendlies Parameters
+    SerializedProperty difficultyLevel;
+
+    SerializedProperty securityLevel;
+    SerializedProperty securityUnits;
+    SerializedProperty hasSecurityBoss;
+    SerializedProperty potentialSecurityBoss;
+
+    SerializedProperty creatureLevel;
+    SerializedProperty creatures;
+    SerializedProperty hasCreatureBoss;
+    SerializedProperty potentialCreatureBoss;
+
+    SerializedProperty debrisLevel;
+    SerializedProperty debris;
+
+    // Rewards
+    SerializedProperty lootLevel;
+    SerializedProperty creditRewardLevel;
+    SerializedProperty lootDrops;
+    SerializedProperty specialLootDrops;
+
+    // Misc.
     SerializedProperty pickUps;
     SerializedProperty pickUpDropRates;
-    SerializedProperty baseCreditReward;
-    SerializedProperty contractRewards;
-    SerializedProperty contractRewardDropRates;
 
     private void OnEnable()
     {
+        // Basic Details
         contractTitle = serializedObject.FindProperty("contractTitle");
+        contractType = serializedObject.FindProperty("contractType");
         contractDetails = serializedObject.FindProperty("contractDetails");
         runDistance = serializedObject.FindProperty("runDistance");
+        associatedFaction = serializedObject.FindProperty("associatedFaction");
+        unlockPrerequisite = serializedObject.FindProperty("unlockPrerequisite");
 
-        // Run Parameter properties
-        contractLootLevel = serializedObject.FindProperty("contractLootLevel");
-        contractDifficultyLevel = serializedObject.FindProperty("contractDifficultyLevel");
+        // Non-friendlies Parameters
+        difficultyLevel = serializedObject.FindProperty("difficultyLevel");
+
+        securityLevel = serializedObject.FindProperty("securityLevel");
+        securityUnits = serializedObject.FindProperty("securityUnits");
+        hasSecurityBoss = serializedObject.FindProperty("hasSecurityBoss");
+        potentialSecurityBoss = serializedObject.FindProperty("potentialSecurityBoss");
+
+        creatureLevel = serializedObject.FindProperty("creatureLevel");
+        creatures = serializedObject.FindProperty("creatures");
+        hasCreatureBoss = serializedObject.FindProperty("hasCreatureBoss");
+        potentialCreatureBoss = serializedObject.FindProperty("potentialCreatureBoss");
+
+        debrisLevel = serializedObject.FindProperty("debrisLevel");
+        debris = serializedObject.FindProperty("debris");
+
+        // Rewards
+        lootLevel = serializedObject.FindProperty("lootLevel");
+        creditRewardLevel = serializedObject.FindProperty("creditRewardLevel");
+        lootDrops = serializedObject.FindProperty("lootDrops");
+        specialLootDrops = serializedObject.FindProperty("specialLootDrops");
 
         // Pick-up drop rate properties
-        pickUps = serializedObject.FindProperty("availablePickUps");
-        pickUpDropRates = serializedObject.FindProperty("availablePickUpDropRates");
-
-        // Contract reward drop rate properties
-        contractRewards = serializedObject.FindProperty("contractRewards");
-        contractRewardDropRates = serializedObject.FindProperty("contractRewardDropRates");
+        pickUps = serializedObject.FindProperty("pickUps");
+        pickUpDropRates = serializedObject.FindProperty("pickUpDropRates");
 
     }
 
     public override void OnInspectorGUI()
     {
+
+        // Basic Details
         EditorGUI.BeginChangeCheck();
         EditorGUILayout.PropertyField(contractTitle);
-
+        EditorGUILayout.PropertyField(contractType);
         EditorGUILayout.PropertyField(contractDetails, GUILayout.MinHeight(150));
         EditorGUILayout.PropertyField(runDistance);
+        EditorGUILayout.PropertyField(associatedFaction);
+        EditorGUILayout.PropertyField(unlockPrerequisite);
+        if (unlockPrerequisite.isExpanded)
+        {
+            EditorGUI.indentLevel++;
+            for (int i = 0; i < unlockPrerequisite.arraySize; i++)
+            {
+                string label =
+                    ObjectNames.NicifyVariableName(((UnlockPrerequisiteType)i).ToString());
+                EditorGUILayout.PropertyField(
+                    unlockPrerequisite.GetArrayElementAtIndex(i),
+                    new GUIContent(label)
+                    );
+            }
+            EditorGUI.indentLevel--;
+        }
 
-        // Run Parameters
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Run Parameters", EditorStyles.boldLabel);
-        EditorGUILayout.IntSlider(contractLootLevel, 0, 10, new GUIContent("Loot Level"));
-        EditorGUILayout.IntSlider(contractDifficultyLevel, 0, 10, new GUIContent("Difficulty Level"));
+        // Non-Friendlies Parameters
+        EditorGUILayout.PropertyField(difficultyLevel);
+
+        //// Security Units
+        EditorGUILayout.PropertyField(securityLevel);
+        EditorGUILayout.PropertyField(securityUnits);
+        if (securityUnits.isExpanded)
+        {
+            ShowExpandedBasicList(securityUnits);
+        }
+        EditorGUILayout.PropertyField(hasSecurityBoss);
+        if (hasSecurityBoss.boolValue)
+        {
+            EditorGUILayout.PropertyField(potentialSecurityBoss);
+            if (potentialSecurityBoss.isExpanded)
+            {
+                ShowExpandedBasicList(potentialSecurityBoss);
+            }
+        }
+
+        //// Creatures
+        EditorGUILayout.PropertyField(creatureLevel);
+        EditorGUILayout.PropertyField(creatures);
+        if (creatures.isExpanded)
+        {
+            ShowExpandedBasicList(creatures);
+        }
+        EditorGUILayout.PropertyField(hasCreatureBoss);
+        if (hasCreatureBoss.boolValue)
+        {
+            EditorGUILayout.PropertyField(potentialCreatureBoss);
+            if (potentialCreatureBoss.isExpanded)
+            {
+                ShowExpandedBasicList(potentialCreatureBoss);
+            }
+        }
+
+        //// Debris
+        EditorGUILayout.PropertyField(debrisLevel);
+        EditorGUILayout.PropertyField(debris);
+        if (debris.isExpanded)
+        {
+            ShowExpandedBasicList(debris);
+        }
+
+        // Rewards
+        EditorGUILayout.PropertyField(lootLevel);
+        EditorGUILayout.PropertyField(creditRewardLevel);
+        EditorGUILayout.PropertyField(lootDrops);
+        if (lootDrops.isExpanded)
+        {
+            ShowExpandedBasicList(lootDrops);
+        }
+        EditorGUILayout.PropertyField(specialLootDrops);
+        if (specialLootDrops.isExpanded)
+        {
+            ShowExpandedBasicList(specialLootDrops);
+        }
+
 
         if (EditorGUI.EndChangeCheck())
         {
             serializedObject.ApplyModifiedProperties();
         }
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Pick-Ups", EditorStyles.boldLabel);
+        // Misc
         DrawArrayWithDropRates(pickUps, pickUpDropRates);
+    }
 
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Contract Rewards", EditorStyles.boldLabel);
-        DrawArrayWithDropRates(contractRewards, contractRewardDropRates);
-
-        //EditorGUILayout.PropertyField(pickUpDropRates);
-        //if (pickUpDropRates.isExpanded)
-        //{
-        //    EditorGUI.indentLevel++;
-        //    for (int i = 0; i < pickUpDropRates.arraySize; i++)
-        //    {
-        //        EditorGUILayout.Slider(pickUpDropRates.GetArrayElementAtIndex(i), 0f, 100f,
-        //            new GUIContent("Drop Rate " + i.ToString()));
-        //    }
-        //    EditorGUI.indentLevel--;
-        //}
-
-        //// Contract Rewards
-        //EditorGUILayout.Space();
-        //EditorGUILayout.LabelField("Contract Rewards", EditorStyles.boldLabel);
-        //EditorGUILayout.PropertyField(contractRewards);
-        //if (contractRewards.isExpanded)
-        //{
-        //    EditorGUI.indentLevel++;
-
-        //    EditorGUI.BeginChangeCheck();
-        //    EditorGUILayout.PropertyField(contractRewards.FindPropertyRelative("Array.size"));
-        //    for (int i = 0; i < contractRewards.arraySize; i++)
-        //    {
-        //        EditorGUILayout.PropertyField(
-        //            contractRewards.GetArrayElementAtIndex(i),
-        //            new GUIContent("Pick-up " + i.ToString()));
-        //    }
-
-        //    if (EditorGUI.EndChangeCheck())
-        //    {
-        //        contractRewardDropRates.arraySize = contractRewards.arraySize;
-        //    }
-        //    EditorGUI.indentLevel--;
-
-        //}
-
-        //EditorGUILayout.PropertyField(contractRewardDropRates);
-        //if (contractRewardDropRates.isExpanded)
-        //{
-        //    EditorGUI.indentLevel++;
-        //    for (int i = 0; i < contractRewardDropRates.arraySize; i++)
-        //    {
-        //        EditorGUILayout.Slider(contractRewardDropRates.GetArrayElementAtIndex(i), 0f, 100f,
-        //            new GUIContent("Drop Rate " + i.ToString()));
-        //    }
-        //    EditorGUI.indentLevel--;
-        //}
-
+    private void ShowExpandedBasicList(SerializedProperty list)
+    {
+        EditorGUI.indentLevel++;
+        EditorGUILayout.PropertyField(list.FindPropertyRelative("Array.size"));
+        for (int i = 0; i < list.arraySize; i++)
+        {
+            EditorGUILayout.PropertyField(
+                list.GetArrayElementAtIndex(i),
+                new GUIContent($"Element {i}")
+            );
+        }
+        EditorGUI.indentLevel--;
     }
 
     private void DrawArrayWithDropRates(SerializedProperty objList, SerializedProperty dropRateList)
@@ -150,7 +221,7 @@ public class ContractConfigInspector : Editor
     private void ShowArrayControls(SerializedProperty list, int index)
     {
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button(new GUIContent("-", "Delete"), EditorStyles.miniButtonLeft))
+        if (GUILayout.Button(new GUIContent("-", "Delete"), EditorStyles.miniButton))
         {
             int prevSize = list.arraySize;
             list.DeleteArrayElementAtIndex(index - 1);      // Clears index only
@@ -159,43 +230,11 @@ public class ContractConfigInspector : Editor
                 list.DeleteArrayElementAtIndex(index - 1);  // Deletes index
             }
         }
-        if (GUILayout.Button(new GUIContent("+", "Duplicate"), EditorStyles.miniButtonRight))
+        if (GUILayout.Button(new GUIContent("+", "Duplicate"), EditorStyles.miniButton))
         {
             list.InsertArrayElementAtIndex(index);
             list.DeleteArrayElementAtIndex(index);
         }
         EditorGUILayout.EndHorizontal();
-    }
-
-
-    // Drag and Drop tester
-    public void DragAndDropGUI<T>(SerializedProperty objArray)
-    {
-        Event currentEvent = Event.current;
-        Rect dropArea = GUILayoutUtility.GetRect(0f, 20f, GUILayout.ExpandWidth(true));
-        GUI.Box(dropArea, $"+ {typeof(T)}");
-
-        switch (currentEvent.type)
-        {
-            case EventType.DragUpdated:
-            case EventType.DragPerform:
-                if (!dropArea.Contains(currentEvent.mousePosition))
-                {
-                    return;
-                }
-
-                DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-
-                if (currentEvent.type == EventType.DragPerform)
-                {
-                    DragAndDrop.AcceptDrag();
-
-                    foreach (Object draggedObjs in DragAndDrop.objectReferences)
-                    {
-                        Debug.Log(draggedObjs);
-                    }
-                }
-                break;
-        }
     }
 }
