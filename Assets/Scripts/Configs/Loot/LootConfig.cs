@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Loot/Generic Loot")]
 // [InitializeOnLoad]
@@ -9,7 +8,7 @@ public class LootConfig : ScriptableObject
     [SerializeField] protected LootType lootType;
     [SerializeField] protected Sprite icon;
     [SerializeField] protected int creditValue = 0;
-    [SerializeField] [TextArea (3,5)] protected string lootDescription;
+    [SerializeField] [TextArea(3, 5)] protected string lootDescription;
 
     public string LootName { get => lootName; }
     public LootType LootType { get => lootType; }
@@ -22,3 +21,5 @@ public class LootConfig : ScriptableObject
         return new Loot(this);
     }
 }
+
+public enum LootRarity { Common, Uncommon, Rare, Epic, Unique }

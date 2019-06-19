@@ -20,6 +20,9 @@ public class RunResultsManager : MonoBehaviour
     [Header("UI Prefabs")]
     [SerializeField] RunResultsLootRow lootRowPrefab;
 
+    [Header("For Testing")]
+    [SerializeField] List<LootFactory> lootFactories;
+
     private void Start() {
         session = FindObjectOfType<GameSession>();
         if (!session) {
@@ -32,7 +35,8 @@ public class RunResultsManager : MonoBehaviour
 
     private void FinalizeResults(bool success) {
         SetResultsText(success);
-        SetLoot(success);
+        //SetLoot(success);
+        SetLoot();
     }
 
     private void SetResultsText(bool success) {
@@ -72,6 +76,41 @@ public class RunResultsManager : MonoBehaviour
             }
         } else {
             // TODO: Give XP? Pay 10% of credit reward?
+        }
+    }
+
+    private void SetLoot()
+    {
+        // Get LootFactory list from active contract
+
+        // Get loot drop rate from active contract?
+
+        // Loot rolls
+        List<LootConfig> receivedRewards = new List<LootConfig>();
+        foreach (LootFactory factory in lootFactories)
+        {
+            LootConfig droppedLoot = factory.DropLoot(LootRarity.Common, LootRarity.Rare);
+            if (droppedLoot)
+            {
+                receivedRewards.Add(droppedLoot);
+            }
+        }
+
+        // TODO SortLoot(receivedRewards);
+
+        for (int i = 0; i < receivedRewards.Count; i++)
+        {
+            RunResultsLootRow newLoot = Instantiate(lootRowPrefab, lootGrid);
+            newLoot.DisplayLoot(receivedRewards[i]);
+
+            if (receivedRewards[i].LootType == LootType.Currency)
+            {
+                player.AddToCredits(receivedRewards[i].CreditValue);
+            }
+            else
+            {
+                player.AddToInventory(receivedRewards[i].Create());
+            }
         }
     }
 }

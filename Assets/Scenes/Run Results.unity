@@ -1214,6 +1214,9 @@ MonoBehaviour:
   hqButton: {fileID: 397298695}
   lootRowPrefab: {fileID: 5110519985297897347, guid: a6ddefa404740d74e90782b36b8cc466,
     type: 3}
+  lootFactories:
+  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
 --- !u!4 &1203608175
 Transform:
   m_ObjectHideFlags: 0
