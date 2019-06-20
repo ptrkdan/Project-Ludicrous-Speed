@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2390c6b1cd52054d84b198067d6f9cb, type: 3}
   m_Name: Laser Cannon Factory
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   lootPools:
   - {fileID: 11400000, guid: 447f3d515d27f084781406733002ed7b, type: 2}
   - {fileID: 11400000, guid: 8df82d7b0ffa120428ce916ee14136d1, type: 2}

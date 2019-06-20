@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ContractDetailsOverlay : Overlay
 {
@@ -10,6 +11,11 @@ public class ContractDetailsOverlay : Overlay
     [SerializeField] TextMeshProUGUI contractDetailsText;
     [SerializeField] Transform lootLabel;
     [SerializeField] Transform difficultyLabel;
+    [SerializeField] Transform lootList;
+    [SerializeField] Transform specialLootList;
+
+    [Header("UI Prefabs")]
+    [SerializeField] ContractLootSlot contractLootSlotPrefab;
 
     GameSession session;
     SceneLoader sceneLoader;
@@ -47,6 +53,17 @@ public class ContractDetailsOverlay : Overlay
         for (int i = 0; i < contract.DifficultyLevel; i++)
         {
             difficultyLabel.GetChild(i).gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < contract.LootDrops.Count; i++)
+        {
+            ContractLootSlot newSlot = Instantiate(contractLootSlotPrefab, lootList.transform);
+            newSlot.SetIcon(contract.LootDrops[i].Icon);
+        }
+        for (int i = 0; i < contract.SpecialLootDrops.Count; i++)
+        {
+            ContractLootSlot newSlot = Instantiate(contractLootSlotPrefab, specialLootList.transform);
+            newSlot.SetIcon(contract.SpecialLootDrops[i].Icon);
         }
     }
 

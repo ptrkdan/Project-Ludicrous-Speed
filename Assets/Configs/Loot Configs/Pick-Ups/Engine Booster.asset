@@ -19,7 +19,7 @@ MonoBehaviour:
   lootDescription: Zoom Zoom Zoom
   lootPrefab: {fileID: 5427071964568407011, guid: 8d8ed2595309559408c0d9603a819987,
     type: 3}
-  spawnRate: 0.5
+  dropRate: 0.2
   damageValue: 0
   damageType: 0
   healValue: 0

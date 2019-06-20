@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8535766179766627076}
   - component: {fileID: 4223131131261234691}
   - component: {fileID: 8911148499345102856}
+  - component: {fileID: 2485064499245124672}
   m_Layer: 5
   m_Name: Contract Loot Slot
   m_TagString: Untagged
@@ -83,7 +84,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682473700458439036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -132,6 +133,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2485064499245124672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682473700458439036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce3360e67aa4b8409c21f1fbd5632c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 2187264380511854131}
 --- !u!1 &7365787360514739758
 GameObject:
   m_ObjectHideFlags: 0
