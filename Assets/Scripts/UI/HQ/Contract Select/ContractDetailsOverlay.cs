@@ -1,38 +1,57 @@
-﻿using UnityEngine;
+﻿using System;
 using TMPro;
-using System;
+using UnityEngine;
 
 public class ContractDetailsOverlay : Overlay
 {
-    [Header("Cached")]
-    [SerializeField] GameSession session;
-    [SerializeField] SceneLoader sceneLoader;
-    [SerializeField] ContractConfig contract;
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI contractTitleText;
     [SerializeField] TextMeshProUGUI contractDetailsText;
+    [SerializeField] Transform lootLabel;
+    [SerializeField] Transform difficultyLabel;
 
-    private void Awake() {
+    GameSession session;
+    SceneLoader sceneLoader;
+    ContractConfig contract;
+
+    private void Awake()
+    {
         session = FindObjectOfType<GameSession>();
         sceneLoader = FindObjectOfType<SceneLoader>();
     }
 
-    private void OnEnable() {
-        if (session) {
+    private void OnEnable()
+    {
+        if (session)
+        {
             SetContractConfig(session.ActiveContract);
-        } else {
+        }
+        else
+        {
             throw new Exception("Game Session not set. This overlay may have been accidentally left enabled.");
         }
     }
 
-    public void SetContractConfig(ContractConfig contract) {
+    public void SetContractConfig(ContractConfig contract)
+    {
         this.contract = contract;
         contractTitleText.text = contract.ContractTitle;
         contractDetailsText.text = contract.ContractDetails;
+
+        for (int i = 0; i < contract.LootLevel; i++)
+        {
+            lootLabel.GetChild(i).gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < contract.DifficultyLevel; i++)
+        {
+            difficultyLabel.GetChild(i).gameObject.SetActive(true);
+        }
     }
 
-    public void LoadContract() {
+    public void LoadContract()
+    {
         sceneLoader.LoadSmugglingRunScene();
     }
 }
