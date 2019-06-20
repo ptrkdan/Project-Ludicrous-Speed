@@ -13,29 +13,32 @@ MonoBehaviour:
   m_Name: 103 Through the wire
   m_EditorClassIdentifier: 
   contractTitle: Through the wire
+  contractType: 1
   contractDetails: This one's gonna be a stretch. Great loot at a terribly well-guarded
     sector. On top of that, it's at the centre of an asteroid cluster. You'd better
     bring your umbrella for this one, kid.
   runDistance: 20000
-  availablePickUps:
+  associatedFaction: 1
+  unlockPrerequisite: 0000000000000000000000000000000000000000
+  difficultyLevel: 8
+  securityLevel: 8
+  securityUnits: []
+  hasSecurityBoss: 0
+  potentialSecurityBoss: []
+  creatureLevel: 1
+  creatures: []
+  hasCreatureBoss: 0
+  potentialCreatureBoss: []
+  debrisLevel: 8
+  debris:
+  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
+  - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
+  lootLevel: 8
+  creditRewardLevel: 8
+  lootDrops:
+  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
+  specialLootDrops: []
+  pickUps:
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
-  availablePickUpDropRates:
-  - 15
-  - 25
-  contractRewards:
-  - {fileID: 11400000, guid: d1d9eb6f0dd0bc54db659820584500e0, type: 2}
-  - {fileID: 11400000, guid: 3f97e13102745d04cbc22353b8d47639, type: 2}
-  - {fileID: 11400000, guid: 1224dc43bff033b408d180ffc4a5e645, type: 2}
-  - {fileID: 11400000, guid: ce6ded74fab213a4591e15e3601afa4a, type: 2}
-  - {fileID: 11400000, guid: 9ba90212b47677a4386e7f29e3744dc6, type: 2}
-  - {fileID: 11400000, guid: 9b2c0d0f022acda449810d852fe33c84, type: 2}
-  contractRewardDropRates:
-  - 100
-  - 75
-  - 50
-  - 15
-  - 15
-  - 15
-  contractLootLevel: 8
-  contractDifficultyLevel: 8
+  pickUpDropRates: []

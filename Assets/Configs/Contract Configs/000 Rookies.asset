@@ -23,11 +23,31 @@ MonoBehaviour:
 
     Haaaahahahaha...
 
+
+
+    Look...Just grab the loot, dodge some rocks, get back home... easy as pie, no?
+
+
+    Don'' tell me yer goin'' chicken on me!
+
+
+    Haaaahahahaha...
+
+
+
+    Look...Just grab the loot, dodge some rocks, get back home... easy as pie, no?
+
+
+    Don'' tell me yer goin'' chicken on me!
+
+
+    Haaaahahahaha...
+
 '
   runDistance: 2500
   associatedFaction: 0
   unlockPrerequisite: 0000000000000000000000000000000000000000
-  difficultyLevel: 1
+  difficultyLevel: 10
   securityLevel: 1
   securityUnits:
   - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
@@ -41,10 +61,12 @@ MonoBehaviour:
   debris:
   - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
-  lootLevel: 1
+  lootLevel: 10
   creditRewardLevel: 1
   lootDrops:
   - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
-  specialLootDrops: []
+  specialLootDrops:
+  - {fileID: 11400000, guid: d976cbbd60848714893b61e044865fed, type: 2}
+  - {fileID: 11400000, guid: 9ba90212b47677a4386e7f29e3744dc6, type: 2}
   pickUps: []
   pickUpDropRates: []
