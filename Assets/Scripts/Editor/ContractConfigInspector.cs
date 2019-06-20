@@ -37,7 +37,6 @@ public class ContractConfigInspector : Editor
 
     // Misc.
     SerializedProperty pickUps;
-    SerializedProperty pickUpDropRates;
 
     private void OnEnable()
     {
@@ -73,8 +72,6 @@ public class ContractConfigInspector : Editor
 
         // Pick-up drop rate properties
         pickUps = serializedObject.FindProperty("pickUps");
-        pickUpDropRates = serializedObject.FindProperty("pickUpDropRates");
-
     }
 
     public override void OnInspectorGUI()
@@ -111,7 +108,7 @@ public class ContractConfigInspector : Editor
         EditorGUILayout.PropertyField(securityUnits);
         if (securityUnits.isExpanded)
         {
-            ShowExpandedBasicList(securityUnits);
+            DrawExpandedBasicList(securityUnits);
         }
         EditorGUILayout.PropertyField(hasSecurityBoss);
         if (hasSecurityBoss.boolValue)
@@ -119,7 +116,7 @@ public class ContractConfigInspector : Editor
             EditorGUILayout.PropertyField(potentialSecurityBoss);
             if (potentialSecurityBoss.isExpanded)
             {
-                ShowExpandedBasicList(potentialSecurityBoss);
+                DrawExpandedBasicList(potentialSecurityBoss);
             }
         }
 
@@ -128,7 +125,7 @@ public class ContractConfigInspector : Editor
         EditorGUILayout.PropertyField(creatures);
         if (creatures.isExpanded)
         {
-            ShowExpandedBasicList(creatures);
+            DrawExpandedBasicList(creatures);
         }
         EditorGUILayout.PropertyField(hasCreatureBoss);
         if (hasCreatureBoss.boolValue)
@@ -136,7 +133,7 @@ public class ContractConfigInspector : Editor
             EditorGUILayout.PropertyField(potentialCreatureBoss);
             if (potentialCreatureBoss.isExpanded)
             {
-                ShowExpandedBasicList(potentialCreatureBoss);
+                DrawExpandedBasicList(potentialCreatureBoss);
             }
         }
 
@@ -145,7 +142,7 @@ public class ContractConfigInspector : Editor
         EditorGUILayout.PropertyField(debris);
         if (debris.isExpanded)
         {
-            ShowExpandedBasicList(debris);
+            DrawExpandedBasicList(debris);
         }
 
         // Rewards
@@ -154,25 +151,23 @@ public class ContractConfigInspector : Editor
         EditorGUILayout.PropertyField(lootDrops);
         if (lootDrops.isExpanded)
         {
-            ShowExpandedBasicList(lootDrops);
+            DrawExpandedBasicList(lootDrops);
         }
         EditorGUILayout.PropertyField(specialLootDrops);
         if (specialLootDrops.isExpanded)
         {
-            ShowExpandedBasicList(specialLootDrops);
+            DrawExpandedBasicList(specialLootDrops);
         }
 
+        DrawArrayWithDropRates(pickUps);
 
         if (EditorGUI.EndChangeCheck())
         {
             serializedObject.ApplyModifiedProperties();
         }
-
-        // Misc
-        DrawArrayWithDropRates(pickUps, pickUpDropRates);
     }
 
-    private void ShowExpandedBasicList(SerializedProperty list)
+    private void DrawExpandedBasicList(SerializedProperty list)
     {
         EditorGUI.indentLevel++;
         EditorGUILayout.PropertyField(list.FindPropertyRelative("Array.size"));
@@ -186,55 +181,41 @@ public class ContractConfigInspector : Editor
         EditorGUI.indentLevel--;
     }
 
-    private void DrawArrayWithDropRates(SerializedProperty objList, SerializedProperty dropRateList)
+    private void DrawArrayWithDropRates(SerializedProperty objList)
     {
+        SerializedProperty dropRate = null;
+
         EditorGUILayout.PropertyField(objList);
         if (objList.isExpanded)
         {
             EditorGUI.indentLevel++;
 
-            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(objList.FindPropertyRelative("Array.size"));
-            dropRateList.arraySize = objList.arraySize;
             for (int i = 0; i < objList.arraySize; i++)
             {
                 EditorGUILayout.PropertyField(objList.GetArrayElementAtIndex(i));
 
-                EditorGUI.indentLevel++;
-                EditorGUILayout.Slider(dropRateList.GetArrayElementAtIndex(i), 0f, 100f,
-                    new GUIContent("Drop rate:"));
-                EditorGUI.indentLevel--;
+                if (objList.GetArrayElementAtIndex(i).objectReferenceValue)
+                {
+                    EditorGUI.BeginChangeCheck();
+                    EditorGUI.indentLevel++;
+                    SerializedObject item = 
+                        new SerializedObject(objList.GetArrayElementAtIndex(i).objectReferenceValue);
+                    dropRate = item.FindProperty("dropRate");
+                    EditorGUILayout.PropertyField(dropRate);
 
-            }
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        item.ApplyModifiedProperties();
+                        serializedObject.ApplyModifiedProperties();
+                    }
+                    EditorGUI.indentLevel--;
+                }
 
-            ShowArrayControls(objList, objList.arraySize);
-            if (EditorGUI.EndChangeCheck())
-            {
-                serializedObject.ApplyModifiedProperties();
             }
 
 
             EditorGUI.indentLevel--;
         }
-    }
-
-    private void ShowArrayControls(SerializedProperty list, int index)
-    {
-        EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button(new GUIContent("-", "Delete"), EditorStyles.miniButton))
-        {
-            int prevSize = list.arraySize;
-            list.DeleteArrayElementAtIndex(index - 1);      // Clears index only
-            if (list.arraySize == prevSize)
-            {
-                list.DeleteArrayElementAtIndex(index - 1);  // Deletes index
-            }
-        }
-        if (GUILayout.Button(new GUIContent("+", "Duplicate"), EditorStyles.miniButton))
-        {
-            list.InsertArrayElementAtIndex(index);
-            list.DeleteArrayElementAtIndex(index);
-        }
-        EditorGUILayout.EndHorizontal();
     }
 }

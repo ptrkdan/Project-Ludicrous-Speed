@@ -5,8 +5,7 @@ public class PickUpLootConfig : LootConfig
 {
     [SerializeField] LootController lootPrefab;
     
-    [Header("Stats")]
-    [SerializeField] [Range(0,1)] float spawnRate = 0.5f;
+    [SerializeField] [Range(0,1)] float dropRate = 0.5f;
     [SerializeField] float damageValue = 0;
     [SerializeField] DamageType damageType;
     [SerializeField] float healValue = 0;
@@ -15,7 +14,7 @@ public class PickUpLootConfig : LootConfig
     [SerializeField] StatType buffType;
 
     public LootController LootPrefab { get => lootPrefab; }
-    public float SpawnRate { get => spawnRate; set => spawnRate = value; }
+    public float DropRate { get => dropRate; set => dropRate = value; }
     public float DamageValue { get => damageValue; set => damageValue = value; }
     public DamageType DamageType { get => damageType; set => damageType = value; }
     public float HealValue { get => healValue; set => healValue = value; }
