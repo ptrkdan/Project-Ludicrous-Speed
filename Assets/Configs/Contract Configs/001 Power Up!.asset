@@ -15,7 +15,7 @@ MonoBehaviour:
   contractTitle: Power Up!
   contractType: 0
   contractDetails: Go, go, airplane!
-  runDistance: 5000
+  runDistance: 10000
   associatedFaction: 0
   unlockPrerequisite: 0000000000000000000000000000000001000000
   difficultyLevel: 1

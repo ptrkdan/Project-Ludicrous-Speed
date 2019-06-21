@@ -48,7 +48,7 @@ public abstract class EnemyController : LivingInteractable
 
     private void FireWeapon()
     {
-        weapon.Activate(turret.position, Quaternion.AngleAxis(90, Vector3.forward));
+        weapon.Activate(turret.position, turret.rotation);
     }
 
     private void ResetShotCooldown()

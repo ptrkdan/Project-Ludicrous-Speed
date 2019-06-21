@@ -136,7 +136,7 @@ public class PlayerController : LivingInteractable
     {
         while (true)
         {
-            primaryWpn.Activate(weaponPosition.position, Quaternion.AngleAxis(-90, Vector3.forward));
+            primaryWpn.Activate(weaponPosition.position, weaponPosition.rotation);
 
             if (primaryWpn.GetWeaponType() == WeaponType.Auto)
             {

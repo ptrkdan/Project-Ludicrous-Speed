@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(DamageDealer))]
-public abstract class Projectile : Interactable
+public class Projectile : Interactable
 {
     const string PROJECTILE_PARENT_NAME = "Projectiles";
 

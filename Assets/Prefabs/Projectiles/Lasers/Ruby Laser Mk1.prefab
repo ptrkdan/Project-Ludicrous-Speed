@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 463988885203287051}
   - component: {fileID: 5487579365987802768}
-  - component: {fileID: 5864462768340966210}
+  - component: {fileID: 1747218502393766121}
   - component: {fileID: 1459361831755179171}
   - component: {fileID: 1320040393673369860}
   - component: {fileID: 8670130846545440272}
   m_Layer: 11
-  m_Name: RubyLaserMk1
+  m_Name: Ruby Laser Mk1
   m_TagString: Non-Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f1e6d6dea4b659c408aa284a9e475f65, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d33d091d67a25b459e87132a5445653, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5864462768340966210
+--- !u!114 &1747218502393766121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +92,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6145836610078582202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94120fe74833ed4e843fee89565a899, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ccc20419556efc4ba7f6de960f4e5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 0a1f0f2a2e9db374a91f122fcc5382a8, type: 2}
 --- !u!114 &1459361831755179171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,5 +143,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.090000026, y: 0.3700001}
-  m_Direction: 0
+  m_Size: {x: 0.53378993, y: 0.11464828}
+  m_Direction: 1

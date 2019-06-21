@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 463988885203287051}
   - component: {fileID: 5487579365987802768}
-  - component: {fileID: 5864462768340966210}
+  - component: {fileID: 7820966588208491003}
   - component: {fileID: 1459361831755179171}
   - component: {fileID: 1320040393673369860}
   - component: {fileID: 8670130846545440272}
-  m_Layer: 11
-  m_Name: RubyLaserMk2
-  m_TagString: Non-Friendly
+  m_Layer: 10
+  m_Name: Citrine Laser Mk1
+  m_TagString: Friendly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f1e6d6dea4b659c408aa284a9e475f65, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad06a7b3b99f22847b5b924a1b490f34, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5864462768340966210
+--- !u!114 &7820966588208491003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,10 +92,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6145836610078582202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94120fe74833ed4e843fee89565a899, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ccc20419556efc4ba7f6de960f4e5ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 259dd340c9779cd40be2b7a77ee26889, type: 2}
 --- !u!114 &1459361831755179171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +142,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.090000026, y: 0.3700001}
-  m_Direction: 0
+  m_Offset: {x: -6.261658e-14, y: -0.000000525266}
+  m_Size: {x: 0.54000026, y: 0.11009457}
+  m_Direction: 1

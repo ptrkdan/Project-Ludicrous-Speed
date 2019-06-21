@@ -15,5 +15,9 @@ MonoBehaviour:
   rarity: 0
   dropRate: 1
   lootList:
+  - {fileID: 11400000, guid: fe62f4c0285fce5479b05f5e7a0ac100, type: 2}
+  - {fileID: 11400000, guid: ac4ff96073e7c5d4d8e2ffd6f4f35f65, type: 2}
   - {fileID: 11400000, guid: 72b751746f983fa4494cf5e2cdc69711, type: 2}
-  - {fileID: 11400000, guid: ce6ded74fab213a4591e15e3601afa4a, type: 2}
+  - {fileID: 11400000, guid: 234f042dabb850f44b99d24978590298, type: 2}
+  - {fileID: 11400000, guid: 6987824a29f1475409c25c7e502c2d3b, type: 2}
+  - {fileID: 11400000, guid: 69bfa0adefdb44a4b822d8364ac709d0, type: 2}
