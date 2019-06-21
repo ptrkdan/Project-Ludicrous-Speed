@@ -46,8 +46,11 @@ public class SecuritySpawner : MonoBehaviour
         // Get Player location
         int playerPosition = Mathf.RoundToInt(player.GetComponent<Transform>().position.y);
         // Select spawn point +/- spawnDistanceToPlayer
-        currentSpawnPoint = spawnPoints[
-            Random.Range(playerPosition - spawnDistanceToPlayer, playerPosition + spawnDistanceToPlayer)];
+        int minSpawnPosition = 
+            Mathf.Clamp(playerPosition - spawnDistanceToPlayer, 0, spawnPoints.Length-1);
+        int maxSpawnPosition = 
+            Mathf.Clamp(playerPosition + spawnDistanceToPlayer, 0, spawnPoints.Length-1);
+        currentSpawnPoint = spawnPoints[Random.Range(minSpawnPosition, maxSpawnPosition)];
 
         //Debug.Log($"Spawning security unit at vector {currentSpawnPoint.position.y}");
 
