@@ -109,8 +109,7 @@ public class RunManager : MonoBehaviour
     private void ConfigureLootManager()
     {
         LootManager.instance.ConfigureAvailableLoot(
-            session.ActiveContract.PickUps,
-            session.ActiveContract.PickUpDropRates);
+            session.ActiveContract.PickUps);
     }
     #endregion
 

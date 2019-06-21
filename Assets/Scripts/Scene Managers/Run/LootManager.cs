@@ -17,12 +17,10 @@ public class LootManager : MonoBehaviour
     #endregion
 
     [SerializeField] List<PickUpLootConfig> availableLoot;
-    [SerializeField] List<float> availableLootDropRate;
 
-    public void ConfigureAvailableLoot(List<PickUpLootConfig> availableLoot, List<float> availableLootDropRate) 
+    public void ConfigureAvailableLoot(List<PickUpLootConfig> availableLoot) 
     {
         this.availableLoot = availableLoot;
-        this.availableLootDropRate = availableLootDropRate;
     }
 
     public PickUpLootConfig DropLoot()
@@ -33,7 +31,7 @@ public class LootManager : MonoBehaviour
         for (int i = 0; i < availableLoot.Count; i++)
         {
             float dropRoll = Random.Range(0f, 100f);
-            if (dropRoll >= 100f - availableLootDropRate[i])
+            if (dropRoll >= 1f - availableLoot[i].DropRate)
             {
                 droppedLoot.Add(availableLoot[i]);
             }
