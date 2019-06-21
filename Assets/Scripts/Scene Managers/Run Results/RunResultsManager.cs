@@ -20,8 +20,8 @@ public class RunResultsManager : MonoBehaviour
     [Header("UI Prefabs")]
     [SerializeField] RunResultsLootRow lootRowPrefab;
 
-    [Header("For Testing")]
-    [SerializeField] List<LootFactory> lootFactories;
+    //[Header("For Testing")]
+    //[SerializeField] List<LootFactory> lootFactories;
 
     private void Start() {
         session = FindObjectOfType<GameSession>();
@@ -53,19 +53,27 @@ public class RunResultsManager : MonoBehaviour
         if (success)
         {
             // Get LootFactory list from active contract
+            ContractConfig contract = session.ActiveContract;
+            List<LootFactory> lootFactories = contract.LootDrops;
 
-            // Get loot drop rate from active contract?
+            // Special (guaranteed) loot drops
+            List<LootConfig> receivedRewards = new List<LootConfig>();
+            foreach (LootConfig loot in contract.SpecialLootDrops)
+            {
+                receivedRewards.Add(loot);
+            }
 
             // Loot rolls
-            List<LootConfig> receivedRewards = new List<LootConfig>();
             foreach (LootFactory factory in lootFactories)
             {
+                // TODO: Determine min and max rarity
                 LootConfig droppedLoot = factory.DropLoot(LootRarity.Common, LootRarity.Rare);
                 if (droppedLoot)
                 {
                     receivedRewards.Add(droppedLoot);
                 }
             }
+
 
             // TODO SortLoot(receivedRewards);
 
