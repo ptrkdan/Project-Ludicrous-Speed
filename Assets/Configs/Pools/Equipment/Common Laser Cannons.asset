@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Common Laser Cannons
   m_EditorClassIdentifier: 
   rarity: 0
-  dropRate: 1
+  dropRate: 0.5
   lootList:
   - {fileID: 11400000, guid: fe62f4c0285fce5479b05f5e7a0ac100, type: 2}
   - {fileID: 11400000, guid: ac4ff96073e7c5d4d8e2ffd6f4f35f65, type: 2}
