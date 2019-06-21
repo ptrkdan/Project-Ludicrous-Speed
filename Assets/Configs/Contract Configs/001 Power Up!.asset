@@ -15,7 +15,7 @@ MonoBehaviour:
   contractTitle: Power Up!
   contractType: 0
   contractDetails: Go, go, airplane!
-  runDistance: 10000
+  runDistance: 5000
   associatedFaction: 0
   unlockPrerequisite: 0000000000000000000000000000000001000000
   difficultyLevel: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
   creatures: []
   hasCreatureBoss: 0
   potentialCreatureBoss: []
-  debrisLevel: 1
+  debrisLevel: 5
   debris:
   - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 101 Vets Only
   m_EditorClassIdentifier: 
   contractTitle: Vets Only
+  contractType: 1
   contractDetails: 'Look...Just grab the loot, dodge some rocks, get back home...
     easy as pie, no?
 
@@ -21,18 +22,30 @@ MonoBehaviour:
 
 
     Haaaahahahaha'
-  runDistance: 5000
-  availablePickUps:
-  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
+  runDistance: 10000
+  associatedFaction: 1
+  unlockPrerequisite: 1400000014000000000000009600000003000000
+  difficultyLevel: 5
+  securityLevel: 4
+  securityUnits:
+  - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
+  hasSecurityBoss: 0
+  potentialSecurityBoss: []
+  creatureLevel: 1
+  creatures: []
+  hasCreatureBoss: 0
+  potentialCreatureBoss: []
+  debrisLevel: 7
+  debris:
+  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
+  - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
+  lootLevel: 4
+  creditRewardLevel: 5
+  lootDrops:
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
+  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
+  specialLootDrops: []
+  pickUps:
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
-  availablePickUpDropRates:
-  - 0
-  - 0
-  baseCreditReward: 0
-  contractRewards:
-  - {fileID: 11400000, guid: ce6ded74fab213a4591e15e3601afa4a, type: 2}
-  contractRewardDropRates:
-  - 0
-  - 0
-  contractLootLevel: 4
-  contractDifficultyLevel: 5
+  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
+  pickUpDropRates: []

@@ -36,6 +36,7 @@ MonoBehaviour:
   lootLevel: 8
   creditRewardLevel: 8
   lootDrops:
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
   - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
   specialLootDrops: []
   pickUps:

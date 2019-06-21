@@ -13,11 +13,33 @@ MonoBehaviour:
   m_Name: 102 Give me a reason not to
   m_EditorClassIdentifier: 
   contractTitle: Give me a reason not to
+  contractType: 1
   contractDetails: 'An angry syndicate boss wants his cup of coffee. Better fetch
     it before he reaches somebody gets hurt. '
-  runDistance: 5000
-  availablePickUps: []
-  contractRewards: []
-  contractLootLevel: 3
-  contractDifficultyLevel: 2
-  pickupDropRate: 0.1
+  runDistance: 10000
+  associatedFaction: 1
+  unlockPrerequisite: 0f0000000f000000000000000000000003000000
+  difficultyLevel: 5
+  securityLevel: 5
+  securityUnits:
+  - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
+  hasSecurityBoss: 0
+  potentialSecurityBoss: []
+  creatureLevel: 1
+  creatures: []
+  hasCreatureBoss: 0
+  potentialCreatureBoss: []
+  debrisLevel: 1
+  debris:
+  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
+  - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
+  lootLevel: 3
+  creditRewardLevel: 5
+  lootDrops:
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
+  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
+  specialLootDrops: []
+  pickUps:
+  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
+  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
+  pickUpDropRates: []

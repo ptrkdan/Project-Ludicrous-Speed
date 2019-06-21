@@ -19,7 +19,7 @@ MonoBehaviour:
   lootDescription: MEDIIIC!
   lootPrefab: {fileID: 2385472785505812105, guid: 7f1002a5606f73d43a5ba539cb6e3e74,
     type: 3}
-  dropRate: 0.3
+  dropRate: 0.1
   damageValue: 0
   damageType: 0
   healValue: 100
