@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: 102 Give me a reason not to
+  m_Name: 102 Give Me a Reason
   m_EditorClassIdentifier: 
-  contractTitle: Give me a reason not to
+  contractTitle: Give Me a Reason
   contractType: 1
   contractDetails: 'An angry syndicate boss wants his cup of coffee. Better fetch
     it before he reaches somebody gets hurt. '
   runDistance: 10000
   associatedFaction: 1
-  unlockPrerequisite: 0f0000000f000000000000000000000003000000
+  unlockPrereq:
+    criteria: ffffffffffffffffffffffffffffffffffffffff
   difficultyLevel: 5
   securityLevel: 5
   securityUnits:

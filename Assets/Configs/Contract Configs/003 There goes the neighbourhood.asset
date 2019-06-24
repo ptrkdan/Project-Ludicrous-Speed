@@ -18,7 +18,8 @@ MonoBehaviour:
     be used for certain... concoctions
   runDistance: 5000
   associatedFaction: 0
-  unlockPrerequisite: 0800000005000000000000000000000003000000
+  unlockPrereq:
+    criteria: ffffffffffffffffffffffffffffffff03000000
   difficultyLevel: 3
   securityLevel: 2
   securityUnits:

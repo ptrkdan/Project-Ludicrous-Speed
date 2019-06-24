@@ -17,7 +17,8 @@ MonoBehaviour:
   contractDetails: Go, go, airplane!
   runDistance: 5000
   associatedFaction: 0
-  unlockPrerequisite: 0000000000000000000000000000000001000000
+  unlockPrereq:
+    criteria: 0100000001000000010000000100000001000000
   difficultyLevel: 1
   securityLevel: 1
   securityUnits:

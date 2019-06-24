@@ -17,7 +17,8 @@ MonoBehaviour:
   contractDetails: Are you a fool? 'Cause I'm lookin' for one.
   runDistance: 2500
   associatedFaction: 0
-  unlockPrerequisite: 0000000000000000000000000000000001000000
+  unlockPrereq:
+    criteria: 0100000001000000000000000100000001000000
   difficultyLevel: 1
   securityLevel: 1
   securityUnits:
@@ -38,6 +39,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
   - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
   specialLootDrops: []
-  pickUps:
-  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
+  pickUps: []
   pickUpDropRates: []

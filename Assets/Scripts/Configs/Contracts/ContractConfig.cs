@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Configs/Contract Config")]
@@ -10,7 +11,7 @@ public class ContractConfig : ScriptableObject
     [SerializeField] [TextArea] string contractDetails = "So here's the story...";
     [SerializeField] int runDistance = 1000;
     [SerializeField] AssociatedFaction associatedFaction = AssociatedFaction.None;
-    [SerializeField] int[] unlockPrerequisite = new int[5];
+    [SerializeField] ContractPrereq unlockPrereq = new ContractPrereq();
 
     [Header("Non-Friendlies Parameters")]
     [SerializeField] [Range(1, 10)] int difficultyLevel = 1;
@@ -38,12 +39,14 @@ public class ContractConfig : ScriptableObject
     [SerializeField] List<PickUpLootConfig> pickUps;
     [SerializeField] List<float> pickUpDropRates;           // TODO Refactor
 
+    ContractFlags flags;
+
     public ContractType ContractType { get => contractType; set => contractType = value; }
     public string ContractTitle { get => contractTitle; set => contractTitle = value; }
     public string ContractDetails { get => contractDetails; set => contractDetails = value; }
     public int RunDistance { get => runDistance; set => runDistance = value; }
     public AssociatedFaction AssociatedFaction { get => associatedFaction; set => associatedFaction = value; }
-    public int[] UnlockPrerequisite { get => unlockPrerequisite; set => unlockPrerequisite = value; }
+    public ContractPrereq UnlockPrereq { get => unlockPrereq; set => unlockPrereq = value; }
     public int DifficultyLevel { get => difficultyLevel; set => difficultyLevel = value; }
     public int SecurityLevel { get => securityLevel; set => securityLevel = value; }
     public List<EnemyController> SecurityUnits { get => securityUnits; set => securityUnits = value; }
@@ -59,8 +62,12 @@ public class ContractConfig : ScriptableObject
     public List<LootConfig> SpecialLootDrops { get => specialLootDrops; set => specialLootDrops = value; }
     public List<PickUpLootConfig> PickUps { get => pickUps; set => pickUps = value; }
     public List<float> PickUpDropRates { get => pickUpDropRates; set => pickUpDropRates = value; }
+    public ContractFlags Flags { get => flags; set => flags = value; }
 }
 
 public enum ContractType { Campaign, Standard, Special }
-public enum UnlockPrerequisiteType { PlayerLevel, CareerLevel, ReputationLevel, ShipPowerLevel, CompletedCampaignLevel }
+public enum PrereqType { PlayerLevel, CareerLevel, ReputationLevel, ShipPowerLevel, CompletedCampaignLevel }
 public enum AssociatedFaction { None, Smugglers, FactionA, FactionB, FactionC }
+
+[Flags]
+public enum ContractFlags { None, isUnlocked, isCompleted };

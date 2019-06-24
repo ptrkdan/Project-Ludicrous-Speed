@@ -19,7 +19,8 @@ MonoBehaviour:
     picking. Just... make sure you don''t attract the attention of the locals. '
   runDistance: 5000
   associatedFaction: 1
-  unlockPrerequisite: 0500000002000000000000000000000002000000
+  unlockPrereq:
+    criteria: 0300000001000000010000000a00000002000000
   difficultyLevel: 2
   securityLevel: 3
   securityUnits:

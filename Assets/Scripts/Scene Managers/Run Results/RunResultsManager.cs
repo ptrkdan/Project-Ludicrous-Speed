@@ -52,8 +52,10 @@ public class RunResultsManager : MonoBehaviour
     {
         if (success)
         {
-            // Get LootFactory list from active contract
             ContractConfig contract = session.ActiveContract;
+            contract.Flags |= ContractFlags.isCompleted;
+
+            // Get LootFactory list from active contract
             List<LootFactory> lootFactories = contract.LootDrops;
 
             // Special (guaranteed) loot drops

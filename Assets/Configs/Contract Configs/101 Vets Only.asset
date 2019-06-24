@@ -14,17 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contractTitle: Vets Only
   contractType: 1
-  contractDetails: 'Look...Just grab the loot, dodge some rocks, get back home...
-    easy as pie, no?
-
-
-    Don'' tell me yer goin'' chicken on me!
-
-
-    Haaaahahahaha'
+  contractDetails: This one's gonna be bumpy ride.
   runDistance: 10000
   associatedFaction: 1
-  unlockPrerequisite: 1400000014000000000000009600000003000000
+  unlockPrereq:
+    criteria: 0f00000005000000000000001900000003000000
   difficultyLevel: 5
   securityLevel: 4
   securityUnits:

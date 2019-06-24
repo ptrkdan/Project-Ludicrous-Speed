@@ -44,9 +44,10 @@ MonoBehaviour:
     Haaaahahahaha...
 
 '
-  runDistance: 2500
+  runDistance: 1000
   associatedFaction: 0
-  unlockPrerequisite: 0000000000000000000000000000000000000000
+  unlockPrereq:
+    criteria: 0000000000000000000000000000000000000000
   difficultyLevel: 1
   securityLevel: 1
   securityUnits:

@@ -11,7 +11,7 @@ public class ContractConfigInspector : Editor
     SerializedProperty contractDetails;
     SerializedProperty runDistance;
     SerializedProperty associatedFaction;
-    SerializedProperty unlockPrerequisite;
+    SerializedProperty unlockPrereq;
 
     // Non-friendlies Parameters
     SerializedProperty difficultyLevel;
@@ -46,7 +46,7 @@ public class ContractConfigInspector : Editor
         contractDetails = serializedObject.FindProperty("contractDetails");
         runDistance = serializedObject.FindProperty("runDistance");
         associatedFaction = serializedObject.FindProperty("associatedFaction");
-        unlockPrerequisite = serializedObject.FindProperty("unlockPrerequisite");
+        unlockPrereq = serializedObject.FindProperty("unlockPrereq");
 
         // Non-friendlies Parameters
         difficultyLevel = serializedObject.FindProperty("difficultyLevel");
@@ -84,16 +84,17 @@ public class ContractConfigInspector : Editor
         EditorGUILayout.PropertyField(contractDetails, GUILayout.MinHeight(150));
         EditorGUILayout.PropertyField(runDistance);
         EditorGUILayout.PropertyField(associatedFaction);
-        EditorGUILayout.PropertyField(unlockPrerequisite);
-        if (unlockPrerequisite.isExpanded)
+        EditorGUILayout.PropertyField(unlockPrereq);
+        if (unlockPrereq.isExpanded)
         {
             EditorGUI.indentLevel++;
-            for (int i = 0; i < unlockPrerequisite.arraySize; i++)
+            SerializedProperty criteria = unlockPrereq.FindPropertyRelative("criteria");
+            for (int i = 0; i < criteria.arraySize; i++)
             {
                 string label =
-                    ObjectNames.NicifyVariableName(((UnlockPrerequisiteType)i).ToString());
+                    ObjectNames.NicifyVariableName(((PrereqType)i).ToString());
                 EditorGUILayout.PropertyField(
-                    unlockPrerequisite.GetArrayElementAtIndex(i),
+                    criteria.GetArrayElementAtIndex(i),
                     new GUIContent(label)
                     );
             }
