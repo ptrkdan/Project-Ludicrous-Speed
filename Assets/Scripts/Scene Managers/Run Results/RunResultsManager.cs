@@ -19,10 +19,7 @@ public class RunResultsManager : MonoBehaviour
 
     [Header("UI Prefabs")]
     [SerializeField] RunResultsLootRow lootRowPrefab;
-
-    //[Header("For Testing")]
-    //[SerializeField] List<LootFactory> lootFactories;
-
+    
     private void Start() {
         session = FindObjectOfType<GameSession>();
         if (!session) {
@@ -36,6 +33,7 @@ public class RunResultsManager : MonoBehaviour
     private void FinalizeResults(bool success) {
         SetResultsText(success);
         SetLoot(success);
+        UpdatePlayerLevel(success);
     }
 
     private void SetResultsText(bool success) {
@@ -98,4 +96,14 @@ public class RunResultsManager : MonoBehaviour
             // TODO Penalty? Give reduced credit reward?
         }
     }
+
+    private void UpdatePlayerLevel(bool success)
+    {
+        // TODO Determine experience point reward for successful and failed missions
+        if (success)
+        {
+            PlayerSingleton.instance.IncreaseExperiencePoints(100); 
+        }
+    }
+
 }
