@@ -17,11 +17,11 @@ public class StandardContractGate : ContractGate
     }
 
 
-    public override void UpdatePrereqs(ContractPrereq playerStatus)
+    public override void UpdatePlayerPrereqStatus(ContractPrereq playerPrereqStatus)
     {
         foreach (ContractPool pool in standardContractPools)
         {
-            pool.UpdatePrereqStatus(playerStatus);
+            pool.UpdatePrereqStatus(playerPrereqStatus);
         }
 
         isDirty = true;

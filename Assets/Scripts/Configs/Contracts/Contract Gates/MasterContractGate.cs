@@ -18,10 +18,10 @@ public class MasterContractGate : ContractGate
         return unlockedContracts;
     }
 
-    public override void UpdatePrereqs(ContractPrereq playerStatus)
+    public override void UpdatePlayerPrereqStatus(ContractPrereq playerPrereqStatus)
     {
-        campaignContractGate.UpdatePrereqs(playerStatus);
-        standardContractGate.UpdatePrereqs(playerStatus);
+        campaignContractGate.UpdatePlayerPrereqStatus(playerPrereqStatus);
+        standardContractGate.UpdatePlayerPrereqStatus(playerPrereqStatus);
         //specialContractGate.UpdatePrereqs(playerStatus);
 
         isDirty = true;

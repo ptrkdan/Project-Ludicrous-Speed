@@ -11,10 +11,10 @@ public class CampaignContractGate : ContractGate
         return campaignContractPool.GetContracts();
     }
 
-    public override void UpdatePrereqs(ContractPrereq playerStatus)
+    public override void UpdatePlayerPrereqStatus(ContractPrereq playerPrereqStatus)
     {
         ResetCampaign();
-        campaignContractPool.UpdatePrereqStatus(playerStatus);
+        campaignContractPool.UpdatePrereqStatus(playerPrereqStatus);
     }
 
     public void ResetCampaign()

@@ -24,6 +24,11 @@ public class ContractPrereq
         criteria[(int)PrereqType.CompletedCampaignLevel] = campaignLevel;
     }
 
+    public void Update(PrereqType type, int value)
+    {
+        criteria[(int)type] = value;            // TODO: Value check
+    }
+
     public bool Check(ContractPrereq playerStatus)          // OPTIM: Check only updated criteria
     {
         bool pass = true;

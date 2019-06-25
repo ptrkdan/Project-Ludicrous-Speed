@@ -13,7 +13,7 @@ public class ContractSelectOverlay : Overlay
 
     [Header("Contract Data")]
     [SerializeField] [Range(1, 3)] int displayedContractCount = 3;
-    [SerializeField] MasterContractGate masterContractGate;
+    MasterContractGate masterContractGate;
 
     private bool contractsDisplayed = false;
 
@@ -24,6 +24,7 @@ public class ContractSelectOverlay : Overlay
 
     private void OnEnable()
     {
+        masterContractGate = ContractManager.instance.GetMasterContractGate();
         if (!contractsDisplayed)
         {      // TODO Refresh on specified time? After certain criteria, such as contract complete?
             DisplayAllContracts();
@@ -32,7 +33,7 @@ public class ContractSelectOverlay : Overlay
 
     private void DisplayAllContracts()
     {
-        masterContractGate.UpdatePrereqs(new ContractPrereq(1, 1, 1, 1, 1));                // DEBUG
+        masterContractGate.UpdatePlayerPrereqStatus(new ContractPrereq(1, 1, 1, 1, 1));                // DEBUG
         List<ContractConfig> availableContracts = masterContractGate.GetContracts();
         for (int i = 0; i < displayedContractCount; i++)
         {

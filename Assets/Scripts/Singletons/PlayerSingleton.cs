@@ -5,6 +5,18 @@ using UnityEngine;
 
 public class PlayerSingleton : MonoBehaviour
 {
+    #region Singleton
+    public static PlayerSingleton instance;
+    private void Awake()
+    {
+        if (instance)
+        {
+            return;
+        }
+        instance = this;
+    }
+    #endregion
+
     [SerializeField] string playerName = "TEST PILOT";
     [SerializeField] int experiencePoints;
     [SerializeField] int playerLevel = 1;
@@ -13,6 +25,12 @@ public class PlayerSingleton : MonoBehaviour
     [SerializeField] string title = "Cannon Fodder";
     [SerializeField] [TextArea] string titleDescription = "You're as expendable as the tissue they hand out at stations.";
     [SerializeField] List<GameObject> perks;    // TODO: Make Perks GameObject
+
+    public delegate void OnPlayerLevelUp(int level);
+    public OnPlayerLevelUp onPlayerLevelUpCallback;
+
+    public delegate void OnCareerLevelUp(int level);
+    public OnCareerLevelUp onCareerLevelUpCallback;
 
     public string PlayerName { get => playerName; set => playerName = value; }
 
@@ -28,6 +46,7 @@ public class PlayerSingleton : MonoBehaviour
     private void LevelUp() {
         playerLevel += 1;
         experiencePoints -= 100; // TODO: Required points depend on level
+        onPlayerLevelUpCallback.Invoke(playerLevel);
     }
 
     #region InventoryMananger
