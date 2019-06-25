@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
   m_Name: 101 Vets Only
   m_EditorClassIdentifier: 
+  contractID: 1001
   contractTitle: Vets Only
   contractType: 1
   contractDetails: This one's gonna be bumpy ride.
   runDistance: 10000
   associatedFaction: 1
   unlockPrereq:
-    criteria: 0f00000005000000000000001900000003000000
+    criteria: 0f000000050000000000000019000000030000000300000003000000
   difficultyLevel: 5
   securityLevel: 4
   securityUnits:

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
   m_Name: 103 Through the wire
   m_EditorClassIdentifier: 
+  contractID: 1003
   contractTitle: Through the Wire
   contractType: 1
   contractDetails: This one's gonna be a stretch. Great loot at a terribly well-guarded
@@ -20,7 +21,7 @@ MonoBehaviour:
   runDistance: 20000
   associatedFaction: 1
   unlockPrereq:
-    criteria: 140000000a0000000a0000000a00000005000000
+    criteria: 140000000a0000000a0000000a000000050000000500000005000000
   difficultyLevel: 8
   securityLevel: 8
   securityUnits: []

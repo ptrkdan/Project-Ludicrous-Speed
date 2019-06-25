@@ -27,6 +27,14 @@ public class StandardContractGate : ContractGate
         isDirty = true;
     }
 
+    public override void ResetAllContractFlags()
+    {
+        foreach (ContractPool pool in standardContractPools)
+        {
+            pool.ResetFlags();
+        }
+    }
+
     private void UpdateUnlockedStandardContractsList()
     {
         unlockedStandardContracts.Clear();

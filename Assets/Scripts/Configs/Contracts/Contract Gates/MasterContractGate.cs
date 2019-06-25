@@ -27,6 +27,19 @@ public class MasterContractGate : ContractGate
         isDirty = true;
     }
 
+    public void ResetCampaign()
+    {
+        campaignContractGate.ResetCampaign();
+        isDirty = true;
+    }
+
+    public override void ResetAllContractFlags()
+    {
+        campaignContractGate.ResetAllContractFlags();
+        standardContractGate.ResetAllContractFlags();
+        unlockedContracts.Clear();
+    }
+
     private void UpdateUnlockedContracts()
     {
         unlockedContracts.Clear();

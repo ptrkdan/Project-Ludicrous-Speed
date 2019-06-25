@@ -6,6 +6,7 @@ using UnityEngine;
 public class ContractConfig : ScriptableObject
 {
     [Header("Basic Details")]
+    [SerializeField] int contractID = 0;
     [SerializeField] string contractTitle = "New contract";
     [SerializeField] ContractType contractType = ContractType.Standard;
     [SerializeField] [TextArea] string contractDetails = "So here's the story...";
@@ -41,6 +42,7 @@ public class ContractConfig : ScriptableObject
 
     ContractFlags flags;
 
+    public int ContractID { get => contractID; set => contractID = value; }
     public ContractType ContractType { get => contractType; set => contractType = value; }
     public string ContractTitle { get => contractTitle; set => contractTitle = value; }
     public string ContractDetails { get => contractDetails; set => contractDetails = value; }
@@ -66,7 +68,14 @@ public class ContractConfig : ScriptableObject
 }
 
 public enum ContractType { Campaign, Standard, Special }
-public enum PrereqType { PlayerLevel, CareerLevel, ReputationLevel, ShipPowerLevel, CompletedCampaignLevel }
+public enum PrereqType {
+    PlayerLevel,
+    SmugglerReputationLevel,
+    FactionAReputationLevel,
+    FactionBReputationLevel,
+    FactionCReputationLevel,
+    ShipPowerLevel,
+    CompletedCampaignLevel }
 public enum AssociatedFaction { None, Smugglers, FactionA, FactionB, FactionC }
 
 [Flags]

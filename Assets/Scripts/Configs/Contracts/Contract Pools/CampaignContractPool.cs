@@ -45,6 +45,7 @@ public class CampaignContractPool : ContractPool
         }
 
         unlockedContracts.Clear();
+        isDirty = true;
     }
 
 }

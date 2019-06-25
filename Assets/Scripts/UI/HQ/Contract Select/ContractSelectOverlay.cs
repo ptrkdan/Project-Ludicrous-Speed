@@ -33,14 +33,12 @@ public class ContractSelectOverlay : Overlay
 
     private void DisplayAllContracts()
     {
-        masterContractGate.UpdatePlayerPrereqStatus(new ContractPrereq(1, 1, 1, 1, 1));                // DEBUG
-        List<ContractConfig> availableContracts = masterContractGate.GetContracts();
+        List<ContractConfig> availableContracts = new List<ContractConfig>(masterContractGate.GetContracts());
         for (int i = 0; i < displayedContractCount; i++)
         {
             ContractConfig contractConfig = SelectFromContractConfigList(availableContracts);
             DisplayContract(contractConfig, i);
         }
-        contractsDisplayed = true;
     }
 
     private ContractConfig SelectFromContractConfigList(List<ContractConfig> contracts)

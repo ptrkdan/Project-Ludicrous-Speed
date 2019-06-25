@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
   m_Name: 001 Power Up!
   m_EditorClassIdentifier: 
+  contractID: 1
   contractTitle: Power Up!
   contractType: 0
   contractDetails: Go, go, airplane!
   runDistance: 5000
   associatedFaction: 0
   unlockPrereq:
-    criteria: 0100000001000000010000000100000001000000
+    criteria: 01000000010000000100000001000000010000000100000001000000
   difficultyLevel: 1
   securityLevel: 1
   securityUnits:

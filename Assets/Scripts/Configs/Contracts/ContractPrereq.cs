@@ -15,11 +15,14 @@ public class ContractPrereq
     }
 
     public ContractPrereq(
-        int playerLevel, int careerLevel, int reputationLevel, int shipPowerLevel, int campaignLevel)
+        int playerLevel, int smugglerReputation, int FactionAReputation, 
+        int FactionBReputation, int FactionCReputation, int shipPowerLevel, int campaignLevel)
     {
         criteria[(int)PrereqType.PlayerLevel] = playerLevel;
-        criteria[(int)PrereqType.CareerLevel] = careerLevel;
-        criteria[(int)PrereqType.ReputationLevel] = reputationLevel;
+        criteria[(int)PrereqType.SmugglerReputationLevel] = smugglerReputation;
+        criteria[(int)PrereqType.FactionAReputationLevel] = FactionAReputation;
+        criteria[(int)PrereqType.FactionBReputationLevel] = FactionBReputation;
+        criteria[(int)PrereqType.FactionCReputationLevel] = FactionCReputation;
         criteria[(int)PrereqType.ShipPowerLevel] = shipPowerLevel;
         criteria[(int)PrereqType.CompletedCampaignLevel] = campaignLevel;
     }

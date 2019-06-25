@@ -20,34 +20,50 @@ public class ContractManager : MonoBehaviour
 
     [Header("DEBUG")]
     [SerializeField] int playerLvl;
-    [SerializeField] int careerLvl;
-    [SerializeField] int reputationLvl;
+    [SerializeField] int smugglerReputationLvl;
+    [SerializeField] int FactionAReputationLvl;
+    [SerializeField] int FactionBReputationLvl;
+    [SerializeField] int FactionCReputationLvl;
     [SerializeField] int shipPowerLvl;
     [SerializeField] int campaign;
+
+    [SerializeField] bool resetCampaign;
+    [SerializeField] bool resetAllContractFlags;
 
     ContractPrereq playerPrereqStatus;
 
     private void Start()
     {
         playerPrereqStatus = new ContractPrereq(
-            playerLvl, careerLvl, reputationLvl, shipPowerLvl, campaign);
+            playerLvl, smugglerReputationLvl, FactionAReputationLvl,
+            FactionBReputationLvl, FactionCReputationLvl, shipPowerLvl, campaign);
+
+        masterContractGate.UpdatePlayerPrereqStatus(playerPrereqStatus);
 
         PlayerSingleton.instance.onPlayerLevelUpCallback += OnPlayerLevelUp;
-        PlayerSingleton.instance.onCareerLevelUpCallback += OnCareerLevelUp;
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
+        GameSession.instance.OnCampaignMissionCompleteCallback += OnCampaignMissionComplete;
+    }
+
+    private void Update()
+    {
+        if (resetCampaign)
+        {
+            masterContractGate.ResetCampaign();
+            resetCampaign = false;
+        }
+        if (resetAllContractFlags)
+        {
+            masterContractGate.ResetAllContractFlags();
+            resetAllContractFlags = false;
+        }
     }
 
     public MasterContractGate GetMasterContractGate() => masterContractGate;
-
+    
     private void OnPlayerLevelUp(int level)
     {
         playerPrereqStatus.Update(PrereqType.PlayerLevel, level);
-        UpdatePlayerPrereqStatus();
-    }
-
-    private void OnCareerLevelUp(int level)
-    {
-        playerPrereqStatus.Update(PrereqType.CareerLevel, level);
         UpdatePlayerPrereqStatus();
     }
 
@@ -63,10 +79,13 @@ public class ContractManager : MonoBehaviour
         UpdatePlayerPrereqStatus();
     }
 
-    private void OnCampaignMissionComplete(int campaignNum)
+    private void OnCampaignMissionComplete(bool success, int campaignID)
     {
-        playerPrereqStatus.Update(PrereqType.CompletedCampaignLevel, campaignNum);
-        UpdatePlayerPrereqStatus();
+        if (success)
+        {
+            playerPrereqStatus.Update(PrereqType.CompletedCampaignLevel, campaignID + 1);
+            UpdatePlayerPrereqStatus();
+        }
     }
 
     private void UpdatePlayerPrereqStatus()

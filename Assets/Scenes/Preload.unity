@@ -491,6 +491,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: playerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: campaign
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: smugglerReputationLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: FactionAReputationLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: FactionBReputationLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: FactionCReputationLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: shipPowerLvl
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: resetCampaign
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3770427088066939695, guid: b902b3563c76c1e42821263f0a0622bf,
+        type: 3}
+      propertyPath: resetAllContractFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b902b3563c76c1e42821263f0a0622bf, type: 3}
 --- !u!1001 &7192005719847862978

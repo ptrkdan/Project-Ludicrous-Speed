@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
   m_Name: 104 Under construction
   m_EditorClassIdentifier: 
+  contractID: 1004
   contractTitle: Under construction
   contractType: 1
   contractDetails: 'A shiny new trade station is being built at <system name>. My
@@ -20,7 +21,7 @@ MonoBehaviour:
   runDistance: 10000
   associatedFaction: 1
   unlockPrereq:
-    criteria: ffffffffffffffffffffffffffffffff03000000
+    criteria: 05000000ffffffffffffffffffffffff000000000000000002000000
   difficultyLevel: 3
   securityLevel: 8
   securityUnits:

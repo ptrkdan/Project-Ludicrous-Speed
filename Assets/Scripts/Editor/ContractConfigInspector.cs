@@ -6,6 +6,7 @@ public class ContractConfigInspector : Editor
 {
     ContractConfig config;
     // Basic Details
+    SerializedProperty contractID;
     SerializedProperty contractTitle;
     SerializedProperty contractType;
     SerializedProperty contractDetails;
@@ -41,6 +42,7 @@ public class ContractConfigInspector : Editor
     private void OnEnable()
     {
         // Basic Details
+        contractID = serializedObject.FindProperty("contractID");
         contractTitle = serializedObject.FindProperty("contractTitle");
         contractType = serializedObject.FindProperty("contractType");
         contractDetails = serializedObject.FindProperty("contractDetails");
@@ -79,6 +81,7 @@ public class ContractConfigInspector : Editor
 
         // Basic Details
         EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(contractID);
         EditorGUILayout.PropertyField(contractTitle);
         EditorGUILayout.PropertyField(contractType);
         EditorGUILayout.PropertyField(contractDetails, GUILayout.MinHeight(150));

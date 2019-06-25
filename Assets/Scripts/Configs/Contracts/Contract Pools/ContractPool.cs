@@ -22,6 +22,16 @@ public abstract class ContractPool : ScriptableObject
         isDirty = true;
     }
 
+    public void ResetFlags()
+    {
+        foreach (ContractConfig contract in allContracts)
+        {
+            contract.Flags = ContractFlags.None;
+        }
+        unlockedContracts.Clear();
+        isDirty = true;
+    }
+
     protected virtual void UpdateUnlockedContractsList()
     {
         isDirty = false;

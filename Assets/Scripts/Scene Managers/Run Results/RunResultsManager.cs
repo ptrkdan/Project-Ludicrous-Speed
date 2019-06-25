@@ -6,11 +6,6 @@ using TMPro;
 
 public class RunResultsManager : MonoBehaviour
 {
-    [Header("Cached")]
-    [SerializeField] GameSession session;
-    [SerializeField] PlayerSingleton player;
-    [SerializeField] SceneLoader sceneLoader;
-
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI resultsText;
     [SerializeField] Transform lootGrid;
@@ -20,6 +15,10 @@ public class RunResultsManager : MonoBehaviour
     [Header("UI Prefabs")]
     [SerializeField] RunResultsLootRow lootRowPrefab;
     
+    GameSession session;
+    PlayerSingleton player;
+    SceneLoader sceneLoader;
+
     private void Start() {
         session = FindObjectOfType<GameSession>();
         if (!session) {
@@ -34,6 +33,7 @@ public class RunResultsManager : MonoBehaviour
         SetResultsText(success);
         SetLoot(success);
         UpdatePlayerLevel(success);
+        InvokeMissionComplete(success, session.ActiveContract);
     }
 
     private void SetResultsText(bool success) {
@@ -106,4 +106,12 @@ public class RunResultsManager : MonoBehaviour
         }
     }
 
+    private void InvokeMissionComplete(bool success, ContractConfig contract)
+    {
+        session.OnMissionCompleteCallback?.Invoke(success, contract);
+        if (contract.ContractType == ContractType.Campaign)
+        {
+            session.OnCampaignMissionCompleteCallback?.Invoke(success, contract.ContractID);
+        }
+    }
 }

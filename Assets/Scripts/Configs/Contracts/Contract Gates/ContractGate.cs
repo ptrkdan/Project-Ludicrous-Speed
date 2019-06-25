@@ -3,8 +3,7 @@ using UnityEngine;
 
 public abstract class ContractGate : ScriptableObject
 {
-    protected ContractPrereq prereqs;
-
     public abstract List<ContractConfig> GetContracts();
     public abstract void UpdatePlayerPrereqStatus(ContractPrereq playerPrereqStatus);
+    public abstract void ResetAllContractFlags();
 }

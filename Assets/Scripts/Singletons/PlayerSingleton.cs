@@ -28,10 +28,7 @@ public class PlayerSingleton : MonoBehaviour
 
     public delegate void OnPlayerLevelUp(int level);
     public OnPlayerLevelUp onPlayerLevelUpCallback;
-
-    public delegate void OnCareerLevelUp(int level);
-    public OnCareerLevelUp onCareerLevelUpCallback;
-
+    
     public string PlayerName { get => playerName; set => playerName = value; }
 
     public int ExperiencePoints { get => experiencePoints; set => experiencePoints = value; }
@@ -46,7 +43,7 @@ public class PlayerSingleton : MonoBehaviour
     private void LevelUp() {
         playerLevel += 1;
         experiencePoints -= 100; // TODO: Required points depend on level
-        onPlayerLevelUpCallback.Invoke(playerLevel);
+        onPlayerLevelUpCallback?.Invoke(playerLevel);
     }
 
     #region InventoryMananger
