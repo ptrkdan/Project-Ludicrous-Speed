@@ -7,6 +7,7 @@ public class Loot : ScriptableObject
     protected int creditValue;
     protected LootType lootType;
     protected Sprite icon;
+    protected int itemDictKey;
 
     public Loot() { }
 
@@ -17,6 +18,7 @@ public class Loot : ScriptableObject
         creditValue = config.CreditValue;
         lootType = config.LootType;
         icon = config.Icon;
+        itemDictKey = config.ItemDictKey;
     }
 
     public string GetName() => name;
@@ -24,6 +26,7 @@ public class Loot : ScriptableObject
     public int GetCreditValue() => creditValue;
     public LootType GetLootType() => lootType;
     public Sprite GetIcon() => icon;
+    public int GetItemDictKey() => itemDictKey;
 
     public virtual void Use()
     {

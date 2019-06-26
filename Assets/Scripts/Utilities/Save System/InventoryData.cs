@@ -6,18 +6,18 @@ using UnityEngine;
 public class InventoryData
 {
     public int credits;
-    public List<string> playerInventory;
+    public List<int> playerInventory;
     public List<float[]> playerInventoryStats;
 
     public InventoryData(InventoryManager inventory)
     {
         credits = inventory.Credits;
-        playerInventory = new List<string>();
+        playerInventory = new List<int>();
         playerInventoryStats = new List<float[]>();
 
         foreach (Loot loot in inventory.GetPlayerInventory())
         {
-            playerInventory.Add(loot.GetName());
+            playerInventory.Add(loot.GetItemDictKey());
             if (loot.GetLootType() == LootType.Equipment)
             {
                 Equipment equipment = (Equipment)loot;
