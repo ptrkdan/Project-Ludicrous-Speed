@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
     #region Singleton
     public static StatsManager instance;
-    private void Awake() {
-        if (instance) {
+    private void Awake()
+    {
+        if (instance)
+        {
             return;
         }
         instance = this;
@@ -57,22 +58,24 @@ public class StatsManager : MonoBehaviour
         EquipmentManager.instance.onEquipmentChanged += OnEquipmentChanged;
     }
 
-    private void OnEquipmentChanged(Equipment newEquip, Equipment oldEquip) {
-        if (newEquip != null) {
-            foreach (StatType type in Enum.GetValues(typeof(StatType))) {
-                if (type != StatType.None) {
-                    StatModifier newMod = new StatModifier(
-                        newEquip, type, StatModType.Flat, newEquip.GetStatModValue(type));
-                    GetStat(type).AddModifier(newMod);
-                } 
+    private void OnEquipmentChanged(Equipment newEquip, Equipment oldEquip)
+    {
+        if (newEquip != null)
+        {
+            foreach (StatType type in Enum.GetValues(typeof(StatType)))
+            {
+
+                StatModifier newMod = new StatModifier(
+                    newEquip, type, StatModType.Flat, newEquip.GetStatModValue(type));
+                GetStat(type).AddModifier(newMod);
             }
         }
 
-        if (oldEquip != null) {
-            foreach (StatType type in Enum.GetValues(typeof(StatType))) {
-                if (type != StatType.None) {
-                    GetStat(type).RemoveModifier(oldEquip);
-                }
+        if (oldEquip != null)
+        {
+            foreach (StatType type in Enum.GetValues(typeof(StatType)))
+            {
+                GetStat(type).RemoveModifier(oldEquip);
             }
         }
     }

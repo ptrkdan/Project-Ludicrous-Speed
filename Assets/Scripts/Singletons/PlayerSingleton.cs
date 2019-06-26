@@ -14,6 +14,7 @@ public class PlayerSingleton : MonoBehaviour
             return;
         }
         instance = this;
+        LoadPlayer();
     }
     #endregion
 
@@ -28,7 +29,23 @@ public class PlayerSingleton : MonoBehaviour
 
     public delegate void OnPlayerLevelUp(int level);
     public OnPlayerLevelUp onPlayerLevelUpCallback;
-    
+
+    private void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    private void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        if (data == null) return;
+
+        playerName = data.playerName;
+        playerLevel = data.playerLevel;
+        experiencePoints = data.experiencePoints;
+    }
+
+    #region Basics
     public string PlayerName { get => playerName; set => playerName = value; }
 
     public int ExperiencePoints { get => experiencePoints; set => experiencePoints = value; }
@@ -37,6 +54,7 @@ public class PlayerSingleton : MonoBehaviour
         if (experiencePoints >= 100) {
             LevelUp();
         }
+        SavePlayer();
     }
 
     public int PlayerLevel { get => playerLevel; set => playerLevel = value; }
@@ -45,6 +63,7 @@ public class PlayerSingleton : MonoBehaviour
         experiencePoints -= 100; // TODO: Required points depend on level
         onPlayerLevelUpCallback?.Invoke(playerLevel);
     }
+    #endregion
 
     #region InventoryMananger
     public int GetCredits() {

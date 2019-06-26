@@ -8,12 +8,8 @@ public class StatModifier
     public readonly StatModType ModType;
     public float Value;
     public float Duration;
-
-    public StatModifier() {
-        StatType = StatType.None;
-    }
-
-    public StatModifier(object source, StatType statType) : this() {
+    
+    public StatModifier(object source, StatType statType) {
         StatType = statType;
         ModType = StatModType.Flat;
         Value = 0;

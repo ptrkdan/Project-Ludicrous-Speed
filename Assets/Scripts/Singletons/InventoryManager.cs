@@ -10,6 +10,8 @@ public class InventoryManager : MonoBehaviour
             return;
         }
         instance = this;
+        LoadInventory();
+        
     }
     #endregion
 
@@ -33,13 +35,46 @@ public class InventoryManager : MonoBehaviour
     public delegate void OnBuybackInventoryChanged();
     public OnBuybackInventoryChanged onBuybackInventoryChangedCallback;
 
+
+    private void SaveInventory()
+    {
+        SaveSystem.SaveInventory(this);
+    }
+
+    private void LoadInventory()
+    {
+        InventoryData data = SaveSystem.LoadInventory();
+        if (data == null) return;
+
+        credits = data.credits;
+
+        for (int i = 0; i < data.playerInventory.Count; i++)
+        {
+            LootConfig config = ItemDict.GetItem(data.playerInventory[i]);
+            Loot loot = config.Create();
+
+            playerInventory.Add(loot);
+            if (loot.GetLootType() == LootType.Equipment)
+            {
+                Equipment equipment = (Equipment)loot;
+                equipment.SetStatModValueFromSave(data.playerInventoryStats[i]);
+            }
+        }
+    }
+
     public int Credits { get => credits; private set => credits = value; }
-    public void AddToCredits(int amount) { credits += amount; }
+    public void AddToCredits(int amount)
+    {
+        credits += amount;
+        SaveInventory();
+    }
+
     public bool DeductFromCredits(int amount) {
         bool didDeduct = false;
         if (credits >= amount) {
             credits -= amount;
             didDeduct = true;
+            SaveInventory();
         }
 
         return didDeduct;
@@ -50,12 +85,14 @@ public class InventoryManager : MonoBehaviour
     public void AddToPlayerInventory(Loot item) {
         playerInventory.Add(item);
         onPlayerInventoryChangedCallback?.Invoke();
+        SaveInventory();
     }
     public bool RemoveFromPlayerInventory(Loot item) {
         bool didRemove = false;
         if (playerInventory.Remove(item)) {
             onPlayerInventoryChangedCallback?.Invoke();
             didRemove = true;
+            SaveInventory();
         }
         return didRemove;
     }

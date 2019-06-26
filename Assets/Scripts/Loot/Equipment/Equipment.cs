@@ -34,6 +34,15 @@ public class Equipment : Loot
         }
     }
 
+    public void SetStatModValueFromSave(float[] stats)
+    {
+        hullMod = stats[(int)StatType.Hull];
+        shieldMod = stats[(int)StatType.Shield];
+        engineMod = stats[(int)StatType.Engine];
+        weaponMod = stats[(int)StatType.Weapon];
+        auxMod = stats[(int)StatType.Aux];
+    }
+
     public Equipment() : base() { }
 
     public Equipment(EquipmentConfig config, bool isDefault = false) : base(config)
@@ -46,6 +55,18 @@ public class Equipment : Loot
         engineMod = Mathf.Floor(Random.Range(config.EngineModRange.x, config.EngineModRange.y));
         weaponMod = Mathf.Floor(Random.Range(config.WeaponModRange.x, config.WeaponModRange.y));
         auxMod = Mathf.Floor(Random.Range(config.AuxModRange.x, config.AuxModRange.y));
+    }
+
+    public Equipment(int[] stats, EquipmentConfig config, bool isEquipped, bool isDefault = false) : base(config)
+    {
+        this.isDefault = isDefault;
+        this.isEquipped = isEquipped;
+        equipSlot = config.EquipSlot;
+        hullMod = stats[(int)StatType.Hull];
+        shieldMod = stats[(int)StatType.Shield];
+        engineMod = stats[(int)StatType.Engine];
+        weaponMod = stats[(int)StatType.Weapon];
+        auxMod = stats[(int)StatType.Aux];
     }
 
     public override void Use()
