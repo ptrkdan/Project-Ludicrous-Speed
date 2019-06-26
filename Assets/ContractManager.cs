@@ -34,9 +34,12 @@ public class ContractManager : MonoBehaviour
 
     private void Start()
     {
-        playerPrereqStatus = new ContractPrereq(
+        if (playerPrereqStatus == null)
+        {
+            playerPrereqStatus = new ContractPrereq(
             playerLvl, smugglerReputationLvl, FactionAReputationLvl,
             FactionBReputationLvl, FactionCReputationLvl, shipPowerLvl, campaign);
+        }
 
         masterContractGate.UpdatePlayerPrereqStatus(playerPrereqStatus);
 
@@ -60,6 +63,12 @@ public class ContractManager : MonoBehaviour
     }
 
     public MasterContractGate GetMasterContractGate() => masterContractGate;
+
+    public ContractPrereq GetPlayerPrereqStatus() => playerPrereqStatus;
+    public void SetPlayerPrereqStatus(ContractPrereq contractPrereq)
+    {
+        playerPrereqStatus = contractPrereq;
+    }
     
     private void OnPlayerLevelUp(int level)
     {

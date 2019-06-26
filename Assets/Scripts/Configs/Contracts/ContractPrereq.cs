@@ -6,12 +6,24 @@ public class ContractPrereq
 {
     [SerializeField] int[] criteria = new int[Enum.GetValues(typeof(PrereqType)).Length];
 
+    public int[] GetCriteria() => criteria;
+    public void SetCriteria(int[] criteria) => this.criteria = criteria;
+
     public ContractPrereq()
     {
         for (int i = 0; i < Enum.GetValues(typeof(PrereqType)).Length; i++)
         {
             criteria[i] = -1;
         }
+    }
+
+    public ContractPrereq(int[] criteria)
+    {
+        if (criteria.Length != Enum.GetValues(typeof(PrereqType)).Length)
+        {
+            throw new Exception("Incorrect length of criteria");
+        }
+        this.criteria = criteria;
     }
 
     public ContractPrereq(

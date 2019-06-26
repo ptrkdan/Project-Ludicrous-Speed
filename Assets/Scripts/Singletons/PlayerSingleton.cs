@@ -30,6 +30,11 @@ public class PlayerSingleton : MonoBehaviour
     public delegate void OnPlayerLevelUp(int level);
     public OnPlayerLevelUp onPlayerLevelUpCallback;
 
+    private void OnDestroy()
+    {
+        SavePlayer();
+    }
+
     private void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -43,6 +48,7 @@ public class PlayerSingleton : MonoBehaviour
         playerName = data.playerName;
         playerLevel = data.playerLevel;
         experiencePoints = data.experiencePoints;
+        SetPrereqStatus(new ContractPrereq(data.playerPrereqStatus));
     }
 
     #region Basics
@@ -98,6 +104,16 @@ public class PlayerSingleton : MonoBehaviour
 
     public Stat GetStat(StatType type) {
         return StatsManager.instance.GetStat(type);
+    }
+
+    public ContractPrereq GetPrereqStatus()
+    {
+        return ContractManager.instance.GetPlayerPrereqStatus();
+    }
+
+    public void SetPrereqStatus(ContractPrereq contractPrereq)
+    {
+        ContractManager.instance.SetPlayerPrereqStatus(contractPrereq);
     }
     
     public string Title { get => title; set => title = value; }

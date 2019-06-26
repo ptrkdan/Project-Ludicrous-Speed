@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6656762581a5b43a085324a12ed8b2, type: 3}
   m_Name: Default Support
   m_EditorClassIdentifier: 
-  lootName: Cloacking Field
+  lootName: Refurbished Cloaking Field
   lootType: 2
   icon: {fileID: 21300000, guid: a55b12c079b859843b87c0d6b2aad461, type: 3}
   creditValue: 120
