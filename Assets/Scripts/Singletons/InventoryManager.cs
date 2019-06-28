@@ -10,7 +10,6 @@ public class InventoryManager : MonoBehaviour
             return;
         }
         instance = this;
-        LoadInventory();
         
     }
     #endregion
@@ -41,9 +40,8 @@ public class InventoryManager : MonoBehaviour
         SaveSystem.SaveInventory(this);
     }
 
-    private void LoadInventory()
+    public void LoadInventory(InventoryData data)
     {
-        InventoryData data = SaveSystem.LoadInventory();
         if (data == null) return;
 
         credits = data.credits;

@@ -14,7 +14,6 @@ public class PlayerSingleton : MonoBehaviour
             return;
         }
         instance = this;
-        LoadPlayer();
     }
     #endregion
 
@@ -40,9 +39,8 @@ public class PlayerSingleton : MonoBehaviour
         SaveSystem.SavePlayer(this);
     }
 
-    private void LoadPlayer()
+    public void LoadPlayer(PlayerData data)
     {
-        PlayerData data = SaveSystem.LoadPlayer();
         if (data == null) return;
 
         playerName = data.playerName;

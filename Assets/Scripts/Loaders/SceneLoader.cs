@@ -16,7 +16,19 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(START_MENU_SCENE_INDEX);
     }
 
-    public void GoToHQScene() {
+    public void LoadSavedGame()
+    {
+        SaveSystem.LoadGame();
+        GoToHQScene();
+    }
+
+    public void StartNewGame()
+    {
+        SaveSystem.DeleteSavedGame();
+        GoToHQScene();
+    }
+
+    private void GoToHQScene() {
         SceneManager.LoadScene(HQ_SCENE_INDEX);
     }
 

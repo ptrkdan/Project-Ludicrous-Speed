@@ -7,13 +7,14 @@ public static class SaveSystem
 {
     const string SAVE_FOLDER = "/save";
 
-    private static bool IsSaveFileExists()
+    public static void LoadGame()
     {
-        return Directory.Exists(Application.persistentDataPath + SAVE_FOLDER);
+        PlayerSingleton.instance.LoadPlayer(LoadPlayerData());
+        InventoryManager.instance.LoadInventory(LoadInventoryData());
     }
 
     [MenuItem("Save System/Delete Save")]
-    private static void DeleteSaveFolder()
+    public static void DeleteSavedGame()
     {
         if (IsSaveFileExists())
         {
@@ -43,7 +44,7 @@ public static class SaveSystem
         }
     }
 
-    public static PlayerData LoadPlayer()
+    public static PlayerData LoadPlayerData()
     {
         PlayerData data;
         string path = Application.persistentDataPath + SAVE_FOLDER + "/player.data";
@@ -93,7 +94,7 @@ public static class SaveSystem
     }
 
     [MenuItem("Save System/Load Inventory")]
-    public static InventoryData LoadInventory()
+    public static InventoryData LoadInventoryData()
     {
         InventoryData data;
         string path = Application.persistentDataPath + SAVE_FOLDER + "/inventory.data";
@@ -117,6 +118,11 @@ public static class SaveSystem
             Debug.Log($"Save file not found in {path}");
             return null;
         }
+    }
+
+    private static bool IsSaveFileExists()
+    {
+        return Directory.Exists(Application.persistentDataPath + SAVE_FOLDER);
     }
 
 }
