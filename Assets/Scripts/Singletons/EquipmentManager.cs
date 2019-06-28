@@ -29,10 +29,32 @@ public class EquipmentManager : MonoBehaviour
         new Equipment[System.Enum.GetNames(typeof(EquipmentSlot)).Length];
 
     InventoryManager inventory;
+    bool isLoading = false;
 
     private void Start()
     {
         inventory = InventoryManager.instance;
+    }
+
+    private void SaveEquipment()
+    {
+        SaveSystem.SaveEquipmentData(this);
+    }
+
+    public void LoadEquipment(EquipmentData data)
+    {
+        if (data == null) return;
+
+        isLoading = true;
+        for (int i = 0; i < data.equipments.Count; i++)
+        {
+            EquipmentConfig config = ItemDict.GetItem(data.equipments[i]) as EquipmentConfig;
+            Equipment equipment = config.Create() as Equipment;
+            equipment.SetStatModValueFromSave(data.equipmentStats[i]);
+            equipment.Use();
+        }
+
+        isLoading = false;
     }
 
     public Equipment GetEquipment(EquipmentSlot slot)
@@ -69,6 +91,10 @@ public class EquipmentManager : MonoBehaviour
             onEquipmentChanged.Invoke(newEquip, oldEquip);
         }
 
+        if (!isLoading && !newEquip.IsDefault)
+        {
+            SaveEquipment();
+        }
         // Debug.Log($"<color=green>{newEquip.GetName()}</color> equipped as <color=green>{newEquip.GetEquipSlot()}</color>");
     }
 
@@ -93,6 +119,7 @@ public class EquipmentManager : MonoBehaviour
                 onEquipmentChanged.Invoke(null, oldEquip);
             }
         }
+        SaveEquipment();
     }
 
     public void UnEquipAll()

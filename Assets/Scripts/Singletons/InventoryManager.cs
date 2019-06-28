@@ -5,12 +5,14 @@ public class InventoryManager : MonoBehaviour
 {
     #region Singleton
     public static InventoryManager instance;
-    private void Awake() {
-        if (instance) {
+    private void Awake()
+    {
+        if (instance)
+        {
             return;
         }
         instance = this;
-        
+
     }
     #endregion
 
@@ -37,7 +39,7 @@ public class InventoryManager : MonoBehaviour
 
     private void SaveInventory()
     {
-        SaveSystem.SaveInventory(this);
+        SaveSystem.SaveInventoryData(this);
     }
 
     public void LoadInventory(InventoryData data)
@@ -67,9 +69,11 @@ public class InventoryManager : MonoBehaviour
         SaveInventory();
     }
 
-    public bool DeductFromCredits(int amount) {
+    public bool DeductFromCredits(int amount)
+    {
         bool didDeduct = false;
-        if (credits >= amount) {
+        if (credits >= amount)
+        {
             credits -= amount;
             didDeduct = true;
             SaveInventory();
@@ -80,14 +84,17 @@ public class InventoryManager : MonoBehaviour
 
     #region Player Inventory
     public List<Loot> GetPlayerInventory() => playerInventory;
-    public void AddToPlayerInventory(Loot item) {
+    public void AddToPlayerInventory(Loot item)
+    {
         playerInventory.Add(item);
         onPlayerInventoryChangedCallback?.Invoke();
         SaveInventory();
     }
-    public bool RemoveFromPlayerInventory(Loot item) {
+    public bool RemoveFromPlayerInventory(Loot item)
+    {
         bool didRemove = false;
-        if (playerInventory.Remove(item)) {
+        if (playerInventory.Remove(item))
+        {
             onPlayerInventoryChangedCallback?.Invoke();
             didRemove = true;
             SaveInventory();
@@ -97,8 +104,9 @@ public class InventoryManager : MonoBehaviour
     #endregion
 
     #region Market Inventory
-    public List<Loot> GetMarketInventory() {
-        if (marketInventory == null || marketInventory.Count == 0 )
+    public List<Loot> GetMarketInventory()
+    {
+        if (marketInventory == null || marketInventory.Count == 0)
         {
             RestockMarketInventory();
         }
@@ -149,6 +157,6 @@ public class InventoryManager : MonoBehaviour
 
         return didRemove;
     }
-    
+
     #endregion
 }

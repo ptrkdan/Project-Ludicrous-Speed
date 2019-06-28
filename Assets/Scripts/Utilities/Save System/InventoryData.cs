@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class InventoryData
 {
     public int credits;
     public List<int> playerInventory;
     public List<float[]> playerInventoryStats;
 
-    public InventoryData(InventoryManager inventory)
+    public InventoryData(InventoryManager manager)
     {
-        credits = inventory.Credits;
+        credits = manager.Credits;
         playerInventory = new List<int>();
         playerInventoryStats = new List<float[]>();
 
-        foreach (Loot loot in inventory.GetPlayerInventory())
+        foreach (Loot loot in manager.GetPlayerInventory())
         {
             playerInventory.Add(loot.GetItemDictKey());
             if (loot.GetLootType() == LootType.Equipment)
@@ -34,5 +33,5 @@ public class InventoryData
             }
         }
     }
-    
+
 }

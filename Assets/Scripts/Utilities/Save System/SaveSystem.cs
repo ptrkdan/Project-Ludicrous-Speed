@@ -6,11 +6,13 @@ using UnityEngine;
 public static class SaveSystem
 {
     const string SAVE_FOLDER = "/save";
+    static BinaryFormatter formatter = new BinaryFormatter();
 
     public static void LoadGame()
     {
         PlayerSingleton.instance.LoadPlayer(LoadPlayerData());
         InventoryManager.instance.LoadInventory(LoadInventoryData());
+        EquipmentManager.instance.LoadEquipment(LoadEquipmentData());
     }
 
     [MenuItem("Save System/Delete Save")]
@@ -23,14 +25,14 @@ public static class SaveSystem
         Debug.Log("Save files deleted");
     }
 
-    public static void SavePlayer(PlayerSingleton player)
+    public static void SavePlayerData(PlayerSingleton player)
     {
         if (!IsSaveFileExists())
         {
             Directory.CreateDirectory(Application.persistentDataPath + SAVE_FOLDER);
         }
 
-        BinaryFormatter formatter = new BinaryFormatter();
+        formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + SAVE_FOLDER + "/player.data";
         FileStream stream = new FileStream(path, FileMode.Create);
         try
@@ -50,7 +52,7 @@ public static class SaveSystem
         string path = Application.persistentDataPath + SAVE_FOLDER + "/player.data";
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
+            formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             try
             {
@@ -70,20 +72,19 @@ public static class SaveSystem
         }
     }
 
-    [MenuItem("Save System/Save Inventory")]
-    public static void SaveInventory(InventoryManager inventory)
+    public static void SaveInventoryData(InventoryManager manager)
     {
         if (!IsSaveFileExists())
         {
             Directory.CreateDirectory(Application.persistentDataPath + SAVE_FOLDER);
         }
 
-        BinaryFormatter formatter = new BinaryFormatter();
+        formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + SAVE_FOLDER + "/inventory.data";
         FileStream stream = new FileStream(path, FileMode.Create);
         try
         {
-            InventoryData data = new InventoryData(inventory);
+            InventoryData data = new InventoryData(manager);
             formatter.Serialize(stream, data);
         }
         finally
@@ -93,14 +94,13 @@ public static class SaveSystem
         Debug.Log("Inventory saved.");
     }
 
-    [MenuItem("Save System/Load Inventory")]
     public static InventoryData LoadInventoryData()
     {
         InventoryData data;
         string path = Application.persistentDataPath + SAVE_FOLDER + "/inventory.data";
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
+            formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             try
             {
@@ -111,6 +111,54 @@ public static class SaveSystem
                 stream.Close();
             }
             Debug.Log("Inventory loaded.");
+            return data;
+        }
+        else
+        {
+            Debug.Log($"Save file not found in {path}");
+            return null;
+        }
+    }
+
+    public static void SaveEquipmentData(EquipmentManager manager)
+    {
+        if (!IsSaveFileExists())
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + SAVE_FOLDER);
+        }
+
+        formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + SAVE_FOLDER + "/equipment.data";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        try
+        {
+            EquipmentData data = new EquipmentData(manager);
+            formatter.Serialize(stream, data);
+        }
+        finally
+        {
+            stream.Close();
+        }
+        Debug.Log("Equipment saved.");
+    }
+
+    public static EquipmentData LoadEquipmentData()
+    {
+        EquipmentData data;
+        string path = Application.persistentDataPath + SAVE_FOLDER + "/equipment.data";
+        if (File.Exists(path))
+        {
+            formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+            try
+            {
+                data = formatter.Deserialize(stream) as EquipmentData;
+            }
+            finally
+            {
+                stream.Close();
+            }
+            Debug.Log("Equipment loaded.");
             return data;
         }
         else

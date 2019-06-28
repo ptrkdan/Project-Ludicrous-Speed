@@ -12,7 +12,7 @@ public static class ItemDict
     {
         itemKey = 0;
         dict.Clear();
-        Debug.Log("Loading items...");
+        Debug.Log("Loading items in dictionary...");
         LootConfig[] configs = Resources.LoadAll<LootConfig>("Loot Configs");
 
         foreach (LootConfig config in configs)

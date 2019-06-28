@@ -36,7 +36,7 @@ public class PlayerSingleton : MonoBehaviour
 
     private void SavePlayer()
     {
-        SaveSystem.SavePlayer(this);
+        SaveSystem.SavePlayerData(this);
     }
 
     public void LoadPlayer(PlayerData data)
