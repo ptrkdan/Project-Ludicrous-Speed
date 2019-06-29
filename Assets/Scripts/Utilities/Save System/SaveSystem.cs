@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 using UnityEngine;
 
 public static class SaveSystem
@@ -15,12 +14,12 @@ public static class SaveSystem
         EquipmentManager.instance.LoadEquipment(LoadEquipmentData());
     }
 
-    [MenuItem("Save System/Delete Save")]
     public static void DeleteSavedGame()
     {
         if (IsSaveFileExists())
         {
             Directory.Delete(Application.persistentDataPath + SAVE_FOLDER, true);
+            ContractManager.instance.ResetAllContractFlags();
         }
         Debug.Log("Save files deleted");
     }

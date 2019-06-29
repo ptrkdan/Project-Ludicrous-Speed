@@ -52,12 +52,12 @@ public class ContractManager : MonoBehaviour
     {
         if (resetCampaign)
         {
-            masterContractGate.ResetCampaign();
+            ResetCampaign();
             resetCampaign = false;
         }
         if (resetAllContractFlags)
         {
-            masterContractGate.ResetAllContractFlags();
+            ResetAllContractFlags();
             resetAllContractFlags = false;
         }
     }
@@ -70,6 +70,16 @@ public class ContractManager : MonoBehaviour
         playerPrereqStatus = contractPrereq;
     }
     
+    public void ResetCampaign()
+    {
+        masterContractGate.ResetCampaign();
+    }
+
+    public void ResetAllContractFlags()
+    {
+        masterContractGate.ResetAllContractFlags();
+    }
+
     private void OnPlayerLevelUp(int level)
     {
         playerPrereqStatus.Update(PrereqType.PlayerLevel, level);

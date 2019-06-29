@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public static class ItemDict
@@ -7,7 +6,6 @@ public static class ItemDict
     static Dictionary<int, LootConfig> dict = new Dictionary<int, LootConfig>();
     static int itemKey = 0;
 
-    [MenuItem("AssetDatabase/LoadAllItems")]
     public static void LoadAllItems()
     {
         itemKey = 0;
