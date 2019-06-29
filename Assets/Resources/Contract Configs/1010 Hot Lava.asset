@@ -10,38 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: 003 There goes the neighbourhood
+  m_Name: 1010 Hot Lava
   m_EditorClassIdentifier: 
-  contractID: 3
-  contractTitle: There goes the neighbourhood
-  contractType: 0
-  contractDetails: The planet in sector N-45 hosts a peculiar vegetation that can
-    be used for certain... concoctions
-  runDistance: 5000
-  associatedFaction: 0
+  contractID: 1010
+  contractTitle: Hot Lava
+  contractType: 1
+  contractDetails: This one requires stealth and finesse. Avoid the scanners, unless
+    you want to get swarmed like that leftover roast lechon at the canteen.
+  runDistance: 10000
+  associatedFaction: 1
   unlockPrereq:
-    criteria: ffffffffffffffffffffffffffffffff030000000300000003000000
-  difficultyLevel: 3
-  securityLevel: 2
+    criteria: 05000000020000000000000000000000000000000a00000003000000
+  difficultyLevel: 4
+  securityLevel: 8
   securityUnits:
   - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
-  creatureLevel: 3
+  creatureLevel: 1
   creatures: []
   hasCreatureBoss: 0
   potentialCreatureBoss: []
-  debrisLevel: 1
+  debrisLevel: 6
   debris:
   - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
-  lootLevel: 2
+  lootLevel: 4
   creditRewardLevel: 3
   lootDrops:
   - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
-  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
   specialLootDrops: []
   pickUps:
-  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
+  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
   pickUpDropRates: []

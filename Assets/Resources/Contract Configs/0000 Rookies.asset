@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: 000 Rookies
+  m_Name: 0000 Rookies
   m_EditorClassIdentifier: 
+  contractID: 0
   contractTitle: Rookies
   contractType: 0
   contractDetails: 'Look...Just grab the loot, dodge some rocks, get back home...

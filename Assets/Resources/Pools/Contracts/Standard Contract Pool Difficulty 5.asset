@@ -15,3 +15,4 @@ MonoBehaviour:
   allContracts:
   - {fileID: 11400000, guid: b2c891a630891394da9e1e92cce61ac3, type: 2}
   - {fileID: 11400000, guid: cb7187e0a8f7239468492d61735375b0, type: 2}
+  - {fileID: 11400000, guid: 178a8ebe6fadc7b4891a4f8c5555f9e9, type: 2}

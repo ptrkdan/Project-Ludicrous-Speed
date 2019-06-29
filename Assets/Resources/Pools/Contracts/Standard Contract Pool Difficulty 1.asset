@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allContracts:
   - {fileID: 11400000, guid: edbb73662b4468d4b9fe3b2af1a629ce, type: 2}
+  - {fileID: 11400000, guid: 1fed54b9507e00249a694a34665b9a5b, type: 2}
+  - {fileID: 11400000, guid: 0fd3619fee11a094f8cc275a86501356, type: 2}
+  - {fileID: 11400000, guid: 5c603d9cce4e3ea4181c94c43b5b6163, type: 2}

@@ -10,39 +10,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: 002 Covert Oops
+  m_Name: 1004 Under construction
   m_EditorClassIdentifier: 
-  contractID: 2
-  contractTitle: Covert Oops
-  contractType: 0
-  contractDetails: 'A smuggling run gone wrong needs assistance in a nearby system.
-    By assistance, I mean the crew''s dead and there''s valuable loot ripe for the
-    picking. Just... make sure you don''t attract the attention of the locals. '
-  runDistance: 5000
+  contractID: 1004
+  contractTitle: Under construction
+  contractType: 1
+  contractDetails: 'A shiny new trade station is being built at <system name>. My
+    sources tell me that they''re using a whole lot of etherium steel for the exterior
+    framing. Those can make really sturdy ships. See if you can borrow a handful. '
+  runDistance: 10000
   associatedFaction: 1
   unlockPrereq:
-    criteria: 03000000010000000100000000000000010000000100000002000000
-  difficultyLevel: 2
-  securityLevel: 3
+    criteria: 05000000ffffffffffffffffffffffff000000000000000002000000
+  difficultyLevel: 3
+  securityLevel: 8
   securityUnits:
   - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
-  hasSecurityBoss: 0
+  hasSecurityBoss: 1
   potentialSecurityBoss: []
   creatureLevel: 1
   creatures: []
   hasCreatureBoss: 0
   potentialCreatureBoss: []
-  debrisLevel: 1
+  debrisLevel: 4
   debris:
   - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
-  lootLevel: 2
-  creditRewardLevel: 3
+  lootLevel: 1
+  creditRewardLevel: 1
   lootDrops:
   - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
-  specialLootDrops:
-  - {fileID: 11400000, guid: d976cbbd60848714893b61e044865fed, type: 2}
+  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
+  specialLootDrops: []
   pickUps:
-  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
   - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
+  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
   pickUpDropRates: []

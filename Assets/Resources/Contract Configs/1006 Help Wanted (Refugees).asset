@@ -10,38 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: 103 Through the wire
+  m_Name: 1006 Help Wanted (Refugees)
   m_EditorClassIdentifier: 
-  contractID: 1003
-  contractTitle: Through the Wire
+  contractID: 1006
+  contractTitle: Help Wanted
   contractType: 1
-  contractDetails: This one's gonna be a stretch. Great loot at a terribly well-guarded
-    sector. On top of that, it's at the centre of an asteroid cluster. You'd better
-    bring your umbrella for this one, kid.
-  runDistance: 20000
-  associatedFaction: 1
+  contractDetails: 'A group of refugees are seeking some offworld assistance with
+    avoiding the local regime. Sometimes you gotta do good, ya know? '
+  runDistance: 5000
+  associatedFaction: 0
   unlockPrereq:
-    criteria: 140000000a0000000a0000000a000000050000000500000005000000
-  difficultyLevel: 8
-  securityLevel: 8
-  securityUnits: []
+    criteria: 05000000000000000000000000000000000000000a00000002000000
+  difficultyLevel: 1
+  securityLevel: 3
+  securityUnits:
+  - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
   creatureLevel: 1
   creatures: []
   hasCreatureBoss: 0
   potentialCreatureBoss: []
-  debrisLevel: 8
+  debrisLevel: 2
   debris:
   - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
-  lootLevel: 8
-  creditRewardLevel: 8
+  lootLevel: 2
+  creditRewardLevel: 1
   lootDrops:
   - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
-  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
+  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
   specialLootDrops: []
-  pickUps:
-  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
-  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
+  pickUps: []
   pickUpDropRates: []

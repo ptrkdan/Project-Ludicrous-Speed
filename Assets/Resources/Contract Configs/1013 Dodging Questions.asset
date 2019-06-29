@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: 102 Give Me a Reason
+  m_Name: 1013 Dodging Questions
   m_EditorClassIdentifier: 
-  contractID: 1002
-  contractTitle: Give Me a Reason
+  contractID: 1013
+  contractTitle: Dodging Questions
   contractType: 1
-  contractDetails: 'An angry syndicate boss wants his cup of coffee. Better fetch
-    it before he reaches somebody gets hurt. '
-  runDistance: 10000
-  associatedFaction: 1
+  contractDetails: "Hey, uhh... I'm looking for a pilot who's experienced at dodging
+    scanners. I, uh..., may have drawn some unwanted attention while enjoying drinks
+    with the locals.\r\n\r\n\"Who?\" Don't worry about \"who\", buddy.\r\n\r\nLook,
+    I'm in a real rush right now, so are you in or not? I'm sure there are other pilots
+    who are willing to take my credits without being so nosy."
+  runDistance: 5000
+  associatedFaction: 0
   unlockPrereq:
-    criteria: ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-  difficultyLevel: 5
+    criteria: 05000000000000000000000000000000000000000000000002000000
+  difficultyLevel: 1
   securityLevel: 5
   securityUnits:
   - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
@@ -31,17 +34,14 @@ MonoBehaviour:
   creatures: []
   hasCreatureBoss: 0
   potentialCreatureBoss: []
-  debrisLevel: 1
+  debrisLevel: 2
   debris:
   - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
-  lootLevel: 3
-  creditRewardLevel: 5
+  lootLevel: 2
+  creditRewardLevel: 2
   lootDrops:
   - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
-  - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
   specialLootDrops: []
-  pickUps:
-  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
-  - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
+  pickUps: []
   pickUpDropRates: []

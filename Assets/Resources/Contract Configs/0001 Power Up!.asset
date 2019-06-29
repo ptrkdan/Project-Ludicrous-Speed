@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
-  m_Name: 101 Vets Only
+  m_Name: 0001 Power Up!
   m_EditorClassIdentifier: 
-  contractID: 1001
-  contractTitle: Vets Only
-  contractType: 1
-  contractDetails: This one's gonna be bumpy ride.
-  runDistance: 10000
-  associatedFaction: 1
+  contractID: 1
+  contractTitle: Power Up!
+  contractType: 0
+  contractDetails: Go, go, airplane!
+  runDistance: 5000
+  associatedFaction: 0
   unlockPrereq:
-    criteria: 0f000000050000000000000019000000030000000300000003000000
-  difficultyLevel: 5
-  securityLevel: 4
+    criteria: 01000000010000000100000001000000010000000100000001000000
+  difficultyLevel: 1
+  securityLevel: 1
   securityUnits:
   - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
   hasSecurityBoss: 0
@@ -30,17 +30,17 @@ MonoBehaviour:
   creatures: []
   hasCreatureBoss: 0
   potentialCreatureBoss: []
-  debrisLevel: 7
+  debrisLevel: 5
   debris:
   - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
-  lootLevel: 4
-  creditRewardLevel: 5
+  lootLevel: 1
+  creditRewardLevel: 1
   lootDrops:
-  - {fileID: 11400000, guid: cb754eba63fe16240bd308cb22f41845, type: 2}
   - {fileID: 11400000, guid: 195d1fb767ebea844963c188b7f2b485, type: 2}
-  specialLootDrops: []
+  specialLootDrops:
+  - {fileID: 11400000, guid: 2baa1c6af360c0745b21ff2dc1e7259d, type: 2}
   pickUps:
-  - {fileID: 11400000, guid: 60f5395cf2db38841af599b1248e1e67, type: 2}
   - {fileID: 11400000, guid: bd7ca7eede3dad94296a85760733e396, type: 2}
-  pickUpDropRates: []
+  pickUpDropRates:
+  - 20

@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf60d7c66e9fa849a0beea63e671f67, type: 3}
   m_Name: Standard Contract Pool Difficulty 4
   m_EditorClassIdentifier: 
-  allContracts: []
+  allContracts:
+  - {fileID: 11400000, guid: 2f83594f17328e9488d98166d853e415, type: 2}
+  - {fileID: 11400000, guid: c8a4a9b126a84b24eae90791b350edf1, type: 2}
+  - {fileID: 11400000, guid: 4b3c51bbbf4b00544bafc384a0089f33, type: 2}
