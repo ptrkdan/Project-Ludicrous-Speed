@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidSpawner : MonoBehaviour
+public class DebrisSpawner : MonoBehaviour
 {
     [Header("Spawn parameters")]
     [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
-    [SerializeField] List<AsteroidController> asteroidList;
+    [SerializeField] List<DebrisController> debrisPrefabs;
 
-    [Header("Asteroid stats")]
+    [Header("Debris stats")]
     [SerializeField] float baseHealth = 100;
     [SerializeField] Vector2 scaleRange = new Vector2(1, 10);
     [SerializeField] float baseSpeed = 5f;
@@ -29,7 +29,7 @@ public class AsteroidSpawner : MonoBehaviour
             yield return new WaitForSeconds(
                 Random.Range(spawnDelayRange.x, spawnDelayRange.y)
             );
-            SpawnAsteroid();
+            SpawnDebris();
         }
     }
 
@@ -43,34 +43,37 @@ public class AsteroidSpawner : MonoBehaviour
         spawning = false;
     }
 
-    private void SpawnAsteroid()
-    {
-        currentSpawnPoint = spawnPoints[Random.Range(1, spawnPoints.Length)]; // spawnPoints[0] = this
-        float randomSpin = Random.Range(0, 180f);
-        float randomScale = Random.Range(scaleRange.x, scaleRange.y);
-        int randomMeteor = Random.Range(0, asteroidList.Count);
-
-        float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
-        StatModifier speedMod = new StatModifier(gameObject, StatType.Engine, StatModType.Flat, baseSpeed + randomMoveSpeed);
-
-        //Debug.Log($"Spawning asteroid at vector {currentSpawnPoint.position.y}");
-
-        AsteroidController newAsteroid =
-            Instantiate(asteroidList[randomMeteor],
-            currentSpawnPoint.position,
-            currentSpawnPoint.rotation) as AsteroidController;
-        newAsteroid.transform.parent = currentSpawnPoint.transform;
-        newAsteroid.transform.localScale = new Vector3(randomScale, randomScale, 0);
-        newAsteroid.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
-        newAsteroid.GetComponent<AsteroidStats>().GetStat(StatType.Engine).AddModifier(speedMod);
-        newAsteroid.GetComponent<AsteroidStats>().SetCurrentHealth(baseHealth * randomScale / 3);
-    }
-
     public void SetDifficulty(int difficulty)
     {
         spawnDelayRange.x = 5 / (difficulty + 2) - 0.3f;  // TODO Set const
         spawnDelayRange.y = 10 / (difficulty + 2) - 0.5f;  // TODO Set const
         scaleRange.x = difficulty;              // TODO Set const
         scaleRange.y = difficulty + 8;          // TODO Set const
+    }
+
+    public void SetDebrisPrefabs(List<DebrisController> debrisPrefabs)
+    {
+        this.debrisPrefabs = debrisPrefabs;
+    }
+
+    private void SpawnDebris()
+    {
+        currentSpawnPoint = spawnPoints[Random.Range(1, spawnPoints.Length)]; // spawnPoints[0] = this
+        float randomSpin = Random.Range(0, 180f);
+        float randomScale = Random.Range(scaleRange.x, scaleRange.y);
+        int randomDebris = Random.Range(0, debrisPrefabs.Count);
+
+        float randomMoveSpeed = Random.Range(randomSpeedMin, randomSpeedMax);
+        StatModifier speedMod = new StatModifier(gameObject, StatType.Engine, StatModType.Flat, baseSpeed + randomMoveSpeed);
+
+        DebrisController newDebris =
+            Instantiate(debrisPrefabs[randomDebris],
+            currentSpawnPoint.position,
+            currentSpawnPoint.rotation) as DebrisController;
+        newDebris.transform.parent = currentSpawnPoint.transform;
+        newDebris.transform.localScale = new Vector3(randomScale, randomScale, 0);
+        newDebris.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
+        newDebris.GetComponent<AsteroidStats>().GetStat(StatType.Engine).AddModifier(speedMod);
+        newDebris.GetComponent<AsteroidStats>().SetCurrentHealth(baseHealth * randomScale / 3);
     }
 }

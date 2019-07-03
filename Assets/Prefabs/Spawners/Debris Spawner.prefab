@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3109339409758345376}
   - component: {fileID: 3109339409758345379}
   m_Layer: 0
-  m_Name: AsteroidSpawner
+  m_Name: Debris Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,9 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelayRange: {x: 0.05, y: 0.05}
-  asteroidList:
-  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
-  - {fileID: 1918596753867978311, guid: 83b273908b5c3db4aad15e93ef0bc0df, type: 3}
+  debrisPrefabs: []
   baseHealth: 100
   scaleRange: {x: 1, y: 10}
   baseSpeed: 15
@@ -80,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (10)
+      value: Debris Spawn Point (10)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -155,7 +153,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (8)
+      value: Debris Spawn Point (8)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -230,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (1)
+      value: Debris Spawn Point (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -305,7 +303,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (13)
+      value: Debris Spawn Point (13)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -380,7 +378,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (16)
+      value: Debris Spawn Point (16)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -455,7 +453,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (5)
+      value: Debris Spawn Point (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -530,7 +528,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (11)
+      value: Debris Spawn Point (11)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -605,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (12)
+      value: Debris Spawn Point (12)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -680,7 +678,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (3)
+      value: Debris Spawn Point (3)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -755,7 +753,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (0)
+      value: Debris Spawn Point (0)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -830,7 +828,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (9)
+      value: Debris Spawn Point (9)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -905,7 +903,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (14)
+      value: Debris Spawn Point (14)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -980,7 +978,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (2)
+      value: Debris Spawn Point (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -1055,7 +1053,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (7)
+      value: Debris Spawn Point (7)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -1130,7 +1128,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (15)
+      value: Debris Spawn Point (15)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -1205,7 +1203,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (6)
+      value: Debris Spawn Point (6)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -1280,7 +1278,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Asteroid Spawn Point (4)
+      value: Debris Spawn Point (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}

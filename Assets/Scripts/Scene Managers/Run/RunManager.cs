@@ -17,15 +17,14 @@ public class RunManager : MonoBehaviour
     [SerializeField] PlayableDirector runEndTimeline;
 
     [Header("Spawners")]
-    [SerializeField] AsteroidSpawner asteroidSpawner;
+    [SerializeField] DebrisSpawner asteroidSpawner;
     [SerializeField] SecuritySpawner securitySpawner;
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI distanceRemainingText;
 
-
-
     GameSession session;
+    ContractConfig config;
     PlayerController player;
 
     int distanceRemaining;
@@ -40,6 +39,7 @@ public class RunManager : MonoBehaviour
         {
             sceneLoader.GoToPreload();
         }
+        config = session.ActiveContract;
         player = FindObjectOfType<PlayerController>();
         player.GetComponent<PlayerStats>().onStatChange += onStatChange;
 
@@ -81,35 +81,32 @@ public class RunManager : MonoBehaviour
     private void ConfigureRun()
     {
         // Set remaining distance on UI
-        distanceRemaining = session.ActiveContract.RunDistance;
+        distanceRemaining = config.RunDistance;
         distanceRemainingText.text = distanceRemaining.ToString();
 
-        // Configure spawners with contract difficulty
-        int difficulty = session.ActiveContract.DifficultyLevel;
-        ConfigureAsteroidSpawner(difficulty);
-        ConfigureEnemySpawner(difficulty);
+        // Configure spawners
+        ConfigureAsteroidSpawner();
+        ConfigureEnemySpawner();
         ConfigureLootManager();
         ConfigureStats();
     }
 
-    private void ConfigureAsteroidSpawner(int difficulty)
+    private void ConfigureAsteroidSpawner()
     {
-        asteroidSpawner.SetDifficulty(difficulty);
+        asteroidSpawner.SetDifficulty(config.DifficultyLevel);
+        asteroidSpawner.SetDebrisPrefabs(config.Debris);
     }
 
-    private void ConfigureEnemySpawner(int difficulty)
+    private void ConfigureEnemySpawner()
     {
-        SecuritySpawner[] spawners = securitySpawner.GetComponentsInChildren<SecuritySpawner>();
-        foreach (SecuritySpawner spawner in spawners)
-        {
-            spawner.SetDifficulty(difficulty);
-        }
+        securitySpawner.SetDifficulty(config.DifficultyLevel);
+        securitySpawner.SetSecurityUnitPrefabs(config.SecurityUnits);
     }
 
     private void ConfigureLootManager()
     {
         LootManager.instance.ConfigureAvailableLoot(
-            session.ActiveContract.PickUps);
+            config.PickUps);
     }
     #endregion
 

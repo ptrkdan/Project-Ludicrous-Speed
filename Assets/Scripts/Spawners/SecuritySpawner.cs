@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class SecuritySpawner : MonoBehaviour
 {
-    Quaternion rotateLeft = Quaternion.Euler(new Vector3(0, 0, -90));
-
     [SerializeField] int spawnDistanceToPlayer = 2;
     [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
-    [SerializeField] EnemyController SecurityUnitPrefab;
+    [SerializeField] List<EnemyController> securityUnitPrefabs;
     [SerializeField] List<WaveConfig> waveConfigs;
 
     bool spawning = true;
@@ -16,7 +14,6 @@ public class SecuritySpawner : MonoBehaviour
     Transform[] spawnPoints;
     Transform currentSpawnPoint;
     //int startingWave = 0;
-    //private Quaternion rotateRight = Quaternion.Euler(new Vector3(0, 0, 90));
 
     private IEnumerator Start()
     {
@@ -41,6 +38,16 @@ public class SecuritySpawner : MonoBehaviour
         spawning = false;
     }
 
+    public void SetDifficulty(int difficulty)
+    {
+        // TODO Implement difficulty factor
+    }
+
+    public void SetSecurityUnitPrefabs(List<EnemyController> securityUnitPrefabs)
+    {
+        this.securityUnitPrefabs = securityUnitPrefabs;
+    }
+
     private void SpawnUnit()
     {
         // Get Player location
@@ -52,10 +59,9 @@ public class SecuritySpawner : MonoBehaviour
             Mathf.Clamp(playerPosition + spawnDistanceToPlayer, 0, spawnPoints.Length-1);
         currentSpawnPoint = spawnPoints[Random.Range(minSpawnPosition, maxSpawnPosition)];
 
-        //Debug.Log($"Spawning security unit at vector {currentSpawnPoint.position.y}");
-
         // Create new unit
-        EnemyController newUnit = Instantiate(SecurityUnitPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation) as EnemyController;
+        EnemyController unitPrefab = securityUnitPrefabs[Random.Range(0, securityUnitPrefabs.Count)];
+        EnemyController newUnit = Instantiate(unitPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation) as EnemyController;
         newUnit.transform.parent = currentSpawnPoint.transform;
     }
 
@@ -77,9 +83,4 @@ public class SecuritySpawner : MonoBehaviour
     //        yield return new WaitForSeconds(waveConfig.TimeBetweenSpawns);
     //    }
     //}
-
-    public void SetDifficulty(int difficulty)
-    {
-
-    }
 }
