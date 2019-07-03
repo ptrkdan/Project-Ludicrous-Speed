@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 
-public class Weapon : Equipment
+public abstract class Weapon : Equipment
 {
     protected WeaponType weaponType;
+    protected Transform turret;
     protected Projectile projectilePrefab;
     protected Stat damage;
     protected Stat speed;
@@ -30,10 +31,8 @@ public class Weapon : Equipment
         shootSFXVolume = config.ShootSFXVolume;
     }
 
-    public override void Activate(Vector3 weaponPosition, Quaternion weaponRotation)
-    {
-        base.Activate(weaponPosition, weaponRotation);
-    }
+    public abstract void SetTurretPosition(Transform turret);
+    protected abstract Projectile CreateProjectile();
 
     protected void PlayFireSFX()
     {

@@ -17,6 +17,7 @@ public abstract class EnemyController : LivingInteractable
         rigidBody = GetComponent<Rigidbody2D>();
 
         weapon = (EnemyWeapon)weaponConfig.Create();
+        weapon.SetTurretPosition(turret);
         ResetShotCooldown();
     }
 
@@ -48,7 +49,7 @@ public abstract class EnemyController : LivingInteractable
 
     private void FireWeapon()
     {
-        weapon.Activate(turret.position, turret.rotation);
+        weapon.Activate();
     }
 
     private void ResetShotCooldown()

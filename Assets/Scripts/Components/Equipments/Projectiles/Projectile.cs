@@ -9,13 +9,7 @@ public class Projectile : Interactable
 
     private void Awake()
     {
-        GameObject projectileParent = GameObject.Find(PROJECTILE_PARENT_NAME);
-        if(!projectileParent)
-        {
-            projectileParent = new GameObject(PROJECTILE_PARENT_NAME);
-        }
-
-        transform.parent = projectileParent.transform;
+        AssignProjectileTransformParent();
     }
 
     public override void Interact(Interactable other)
@@ -25,13 +19,11 @@ public class Projectile : Interactable
 
     protected override void OnTriggerEnter2D(Collider2D other) {
         base.OnTriggerEnter2D(other);
-        Destroy(gameObject);
+        Destroy(gameObject);        // May not be the the case for all projectiles
     }
 
-    public virtual Projectile Fire() {
+    public virtual void Fire() {
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
-
-        return this;
     }
 
     public virtual void SetDamage(float value) {
@@ -40,5 +32,16 @@ public class Projectile : Interactable
 
     public virtual void SetSpeed(float value) {
         speed = value;
+    }
+
+    private void AssignProjectileTransformParent()
+    {
+        GameObject projectileParent = GameObject.Find(PROJECTILE_PARENT_NAME);
+        if (!projectileParent)
+        {
+            projectileParent = new GameObject(PROJECTILE_PARENT_NAME);
+        }
+
+        transform.parent = projectileParent.transform;
     }
 }

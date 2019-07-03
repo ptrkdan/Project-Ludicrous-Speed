@@ -76,7 +76,7 @@ public class Equipment : Loot
         RemoveFromInventory();
     }
 
-    public virtual void Activate(Vector3 projectileOrigin, Quaternion rotation) { }
+    public virtual void Activate() { }
 
     public virtual void Deactivate() { }
 }

@@ -15,22 +15,15 @@ public class ChargedWeapon : Weapon
         chargeDuration = config.ChargeDuration;
     }
 
-    public override void Activate(Vector3 weaponPosition, Quaternion weaponRotation)
+    public override void Activate()
     {
-        base.Activate(weaponPosition, weaponRotation);
         if (!chargingProjectile)
         {
-            chargingProjectile = Instantiate(
-                projectilePrefab,
-                weaponPosition,
-                weaponRotation) as ChargedProjectile;
-            chargingProjectile.DisableCollider();
-            chargingProjectile.SetDamage(damage.GetCalcValue());
-            chargingProjectile.SetSpeed(speed.GetCalcValue());
+            chargingProjectile = CreateProjectile() as ChargedProjectile;
         }
 
         // Keep projectile attached to ship
-        chargingProjectile.transform.position = weaponPosition;
+        chargingProjectile.transform.position = turret.position;
     }
 
     public override void Deactivate()
@@ -46,5 +39,22 @@ public class ChargedWeapon : Weapon
         {
             Destroy(chargingProjectile.gameObject);
         }
+    }
+
+    public override void SetTurretPosition(Transform turret)
+    {
+        this.turret = turret;
+    }
+
+    protected override Projectile CreateProjectile()
+    {
+        ChargedProjectile projectile = Instantiate(
+                projectilePrefab,
+                turret.position,
+                turret.rotation) as ChargedProjectile;
+        projectile.SetDamage(damage.GetCalcValue());
+        projectile.SetSpeed(speed.GetCalcValue());
+
+        return projectile;
     }
 }

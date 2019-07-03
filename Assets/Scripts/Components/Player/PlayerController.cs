@@ -6,7 +6,7 @@ public class PlayerController : LivingInteractable
     const float START_POS_X = 10f;
     const float START_POS_Y = 8f;
 
-    [SerializeField] Transform weaponPosition;
+    [SerializeField] Transform turret;
 
     [Header("Equipments")]
     [SerializeField] Weapon primaryWpn;
@@ -70,6 +70,8 @@ public class PlayerController : LivingInteractable
         StopAllCoroutines();
     }
 
+
+    // TODO Remove
     public void MoveToStartPosition()
     {
         Vector3 startPosition = new Vector3(START_POS_X, START_POS_Y);
@@ -86,6 +88,9 @@ public class PlayerController : LivingInteractable
         primaryWpn = (Weapon)player.GetEquipment(EquipmentSlot.PrimaryWeapon);
         secondaryWpn = (Weapon)player.GetEquipment(EquipmentSlot.SecondaryWeapon);
         supportEquip = (SupportEquipment)player.GetEquipment(EquipmentSlot.Support);
+
+        primaryWpn.SetTurretPosition(turret);
+        secondaryWpn.SetTurretPosition(turret);
     }
 
 
@@ -136,7 +141,7 @@ public class PlayerController : LivingInteractable
     {
         while (true)
         {
-            primaryWpn.Activate(weaponPosition.position, weaponPosition.rotation);
+            primaryWpn.Activate();
 
             if (primaryWpn.GetWeaponType() == WeaponType.Auto)
             {
@@ -160,7 +165,7 @@ public class PlayerController : LivingInteractable
     {
         while (true)
         {
-            secondaryWpn.Activate(weaponPosition.position, Quaternion.AngleAxis(-90, Vector3.forward));
+            secondaryWpn.Activate();
 
             if (secondaryWpn.GetWeaponType() == WeaponType.Auto)
             {
