@@ -53,7 +53,8 @@ public class ChargedWeapon : Weapon
                 turret.position,
                 turret.rotation) as ChargedProjectile;
         projectile.SetDamage(damage.GetCalcValue());
-        projectile.SetSpeed(speed.GetCalcValue());
+        Vector2 velocity = turret.transform.right * speed.GetCalcValue();
+        projectile.SetVelocity(velocity);
 
         return projectile;
     }

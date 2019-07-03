@@ -5,7 +5,7 @@ public class Projectile : Interactable
 {
     const string PROJECTILE_PARENT_NAME = "Projectiles";
 
-    protected float speed;
+    protected Vector2 velocity;
 
     private void Awake()
     {
@@ -23,15 +23,15 @@ public class Projectile : Interactable
     }
 
     public virtual void Fire() {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, 0);
+        GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
     public virtual void SetDamage(float value) {
         GetComponent<DamageDealer>().Damage = value;
     }
 
-    public virtual void SetSpeed(float value) {
-        speed = value;
+    public virtual void SetVelocity(Vector2 value) {
+        velocity = value;
     }
 
     private void AssignProjectileTransformParent()
