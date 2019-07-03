@@ -2,9 +2,9 @@
 
 public class Repairer : PickUp
 {
-    [SerializeField] int repairValue = 100;
+    [SerializeField] float repairValue = 100;
 
-    public int RepairValue { get => repairValue; set => repairValue = value; }
+    public float RepairValue { get => repairValue; set => repairValue = value; }
     
     public override void Interact(Interactable target) {
         base.Interact(target);

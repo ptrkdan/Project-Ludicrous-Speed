@@ -9,7 +9,7 @@ public class AsteroidSpawner : MonoBehaviour
     [SerializeField] List<AsteroidController> asteroidList;
 
     [Header("Asteroid stats")]
-    [SerializeField] int baseHealth = 100;
+    [SerializeField] float baseHealth = 100;
     [SerializeField] Vector2 scaleRange = new Vector2(1, 10);
     [SerializeField] float baseSpeed = 5f;
     [SerializeField] Vector2 speedRange = new Vector2(0.1f, 5);
@@ -63,7 +63,7 @@ public class AsteroidSpawner : MonoBehaviour
         newAsteroid.transform.localScale = new Vector3(randomScale, randomScale, 0);
         newAsteroid.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
         newAsteroid.GetComponent<AsteroidStats>().GetStat(StatType.Engine).AddModifier(speedMod);
-        newAsteroid.GetComponent<AsteroidStats>().SetCurrentHealth(baseHealth * (int)randomScale / 3);
+        newAsteroid.GetComponent<AsteroidStats>().SetCurrentHealth(baseHealth * randomScale / 3);
     }
 
     public void SetDifficulty(int difficulty)

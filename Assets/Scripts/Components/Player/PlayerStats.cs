@@ -46,7 +46,7 @@ public class PlayerStats : InteractableStats
         timeUntilShieldRegen = shieldRegenDelay;
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         if (!isInvincible)
         {
@@ -80,7 +80,7 @@ public class PlayerStats : InteractableStats
         }
     }
 
-    public override void RepairDamage(int repair)
+    public override void RepairDamage(float repair)
     {
         base.RepairDamage(repair);
         UpdateHullArmouBar();

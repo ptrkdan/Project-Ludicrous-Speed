@@ -22,6 +22,7 @@ public class Projectile : Interactable
     {
         GetComponent<DamageDealer>().DealDamage(other);
     }
+
     protected override void OnTriggerEnter2D(Collider2D other) {
         base.OnTriggerEnter2D(other);
         Destroy(gameObject);
@@ -33,7 +34,7 @@ public class Projectile : Interactable
         return this;
     }
 
-    public virtual void SetDamage(int value) {
+    public virtual void SetDamage(float value) {
         GetComponent<DamageDealer>().Damage = value;
     }
 

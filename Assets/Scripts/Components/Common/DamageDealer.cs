@@ -2,9 +2,9 @@
 
 public class DamageDealer : MonoBehaviour
 {
-    [SerializeField] int damage = 100;
+    [SerializeField] float damage = 100;
 
-    public int Damage { get => damage;
+    public float Damage { get => damage;
         set => damage = value; }
 
     public void DealDamage(Interactable target) {

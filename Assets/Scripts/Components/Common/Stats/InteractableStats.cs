@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class InteractableStats : MonoBehaviour
 {
-    [SerializeField] protected int maxHealth = 100;
-    [SerializeField] protected int currentHealth;
+    [SerializeField] protected float maxHealth = 100;
+    [SerializeField] protected float currentHealth;
 
     [Header("Base Stats")]
     [SerializeField] protected Stat hull;
@@ -20,8 +20,8 @@ public class InteractableStats : MonoBehaviour
     public delegate void OnStatChange(StatType type);
     public OnStatChange onStatChange;
 
-    public int GetCurrentHealth() => currentHealth;
-    public void SetCurrentHealth(int currentHealth) => this.currentHealth = currentHealth;
+    public float GetCurrentHealth() => currentHealth;
+    public void SetCurrentHealth(float currentHealth) => this.currentHealth = currentHealth;
     public Stat GetStat(StatType type) {
         Stat stat;
         switch(type)
@@ -57,16 +57,16 @@ public class InteractableStats : MonoBehaviour
         }
     }
 
-    protected virtual int CalculateDamage(int damage) {
-        int finalDamage = damage - Mathf.FloorToInt(GetStat(StatType.Hull).GetCalcValue());
-        return Mathf.Clamp(finalDamage, 0, int.MaxValue);
+    protected virtual float CalculateDamage(float damage) {
+        float finalDamage = damage - GetStat(StatType.Hull).GetCalcValue();
+        return Mathf.Clamp(finalDamage, 0, float.MaxValue);
     }
 
-    public virtual void TakeDamage(int damage) {
+    public virtual void TakeDamage(float damage) {
             currentHealth -= CalculateDamage(damage);
     }
 
-    public virtual void RepairDamage(int repair) {
+    public virtual void RepairDamage(float repair) {
         currentHealth = Mathf.Clamp(currentHealth + repair, 0, maxHealth);
     }
 

@@ -10,7 +10,7 @@ public class AsteroidStats : InteractableStats
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathSFXVolume;
 
-    public override void TakeDamage(int damage) {
+    public override void TakeDamage(float damage) {
         base.TakeDamage(damage);
         if (currentHealth <= 0) {
             Die();

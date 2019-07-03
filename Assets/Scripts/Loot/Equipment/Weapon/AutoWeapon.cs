@@ -20,7 +20,7 @@ public class AutoWeapon : Weapon
                 projectilePrefab,
                 weaponPosition,
                 weaponRotation);
-        projectile.SetDamage((int)damage.GetCalcValue());
+        projectile.SetDamage(damage.GetCalcValue());
         projectile.SetSpeed(speed.GetCalcValue());
         projectile.Fire();
         PlayFireSFX();

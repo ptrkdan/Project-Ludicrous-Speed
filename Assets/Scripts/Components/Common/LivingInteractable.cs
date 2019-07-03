@@ -13,10 +13,10 @@ public class LivingInteractable : Interactable {
 
     protected virtual void Initialize() { }
 
-    public virtual void TakeDamage(int damage) {
+    public virtual void TakeDamage(float damage) {
         stats.TakeDamage(damage);
     }
-    public virtual void RepairDamage(int repair) {
+    public virtual void RepairDamage(float repair) {
         stats.RepairDamage(repair);
     }
 

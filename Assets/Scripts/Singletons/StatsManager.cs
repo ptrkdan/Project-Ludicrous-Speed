@@ -17,14 +17,14 @@ public class StatsManager : MonoBehaviour
 
 
     [Header("Base Stats")]
-    [SerializeField] protected int maxHealth = 1000;
+    [SerializeField] protected float maxHealth = 1000;
     [SerializeField] protected Stat hull = new Stat(StatType.Hull);
     [SerializeField] protected Stat shield = new Stat(StatType.Shield);
     [SerializeField] protected Stat engine = new Stat(StatType.Engine);
     [SerializeField] protected Stat weapon = new Stat(StatType.Weapon);
     [SerializeField] protected Stat aux = new Stat(StatType.Aux);
 
-    public int GetMaxHealth() => maxHealth;
+    public float GetMaxHealth() => maxHealth;
     public Stat GetStat(StatType type)
     {
         Stat stat;

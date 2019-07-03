@@ -25,7 +25,7 @@ public class ChargedWeapon : Weapon
                 weaponPosition,
                 weaponRotation) as ChargedProjectile;
             chargingProjectile.DisableCollider();
-            chargingProjectile.SetDamage((int)damage.GetCalcValue());
+            chargingProjectile.SetDamage(damage.GetCalcValue());
             chargingProjectile.SetSpeed(speed.GetCalcValue());
         }
 
