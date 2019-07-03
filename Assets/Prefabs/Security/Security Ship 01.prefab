@@ -173,17 +173,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a50833f475fe644e8956ceb1b1341af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 250
   currentHealth: 0
   hull:
     type: 1
     baseValue: 10
   shield:
     type: 2
-    baseValue: 10
+    baseValue: 30
   engine:
-    type: 3
-    baseValue: 35
+    type: 2
+    baseValue: 30
   weapon:
     type: 4
     baseValue: 10

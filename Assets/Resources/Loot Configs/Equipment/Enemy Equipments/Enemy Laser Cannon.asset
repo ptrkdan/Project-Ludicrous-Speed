@@ -29,7 +29,7 @@ MonoBehaviour:
     baseValue: 100
   speed:
     type: 0
-    baseValue: -30
+    baseValue: 30
   shootSFX: {fileID: 8300000, guid: 024fce0d4011d4844abdcb71f641dfb9, type: 3}
   shootSFXVolume: 0
   projectilePrefab: {fileID: 1747218502393766121, guid: 2e8224a8e03dd9044961408ecfc4b3ef,

@@ -5,7 +5,7 @@ public abstract class EnemyController : LivingInteractable
     [Header("Weaponry")]
     [SerializeField] float shotCounter;
     [SerializeField] EnemyWeaponConfig weaponConfig;
-    [SerializeField] Transform turret;
+    [SerializeField] protected Transform turret;
 
     protected Rigidbody2D rigidBody;
     protected EnemyWeapon weapon;
@@ -14,17 +14,23 @@ public abstract class EnemyController : LivingInteractable
 
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-
-        weapon = (EnemyWeapon)weaponConfig.Create();
-        weapon.SetTurretPosition(turret);
-        ResetShotCooldown();
+        Initialize();
     }
 
     private void Update()
     {
         Move();
         CountDownAndShoot();
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+
+        rigidBody = GetComponent<Rigidbody2D>();
+        weapon = (EnemyWeapon)weaponConfig.Create();
+        weapon.SetTurretPosition(turret);
+        ResetShotCooldown();
     }
 
     public override void Interact(Interactable other)
@@ -37,7 +43,7 @@ public abstract class EnemyController : LivingInteractable
         base.OnTriggerEnter2D(other);
     }
 
-    private void CountDownAndShoot()
+    protected virtual void CountDownAndShoot()
     {
         shotCounter -= Time.deltaTime;
         if (shotCounter <= 0)
@@ -47,12 +53,12 @@ public abstract class EnemyController : LivingInteractable
         }
     }
 
-    private void FireWeapon()
+    protected virtual void FireWeapon()
     {
         weapon.Activate();
     }
 
-    private void ResetShotCooldown()
+    protected virtual void ResetShotCooldown()
     {
         float cooldown = weapon.GetCooldown().GetCalcValue();
         float variation = weapon.GetCoolDownVariation();

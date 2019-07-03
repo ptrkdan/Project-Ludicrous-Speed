@@ -12,6 +12,7 @@ public class LivingInteractable : Interactable {
     }
 
     protected virtual void Initialize() { }
+    protected virtual void OnUpdate() { }
 
     public virtual void TakeDamage(float damage) {
         stats.TakeDamage(damage);

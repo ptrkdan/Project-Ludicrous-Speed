@@ -24,6 +24,7 @@ MonoBehaviour:
   securityLevel: 1
   securityUnits:
   - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
+  - {fileID: 6967525668798753815, guid: 73c77629bc63cd84680105853e2a6e4b, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
   creatureLevel: 1

@@ -33,8 +33,6 @@ public class AutoWeapon : Weapon
                 turret.position,
                 turret.rotation);
         projectile.SetDamage(damage.GetCalcValue());
-        Debug.Log($"{name} projectile velocity: {turret.transform.right}\n" +
-            $"\tprojectile speed: {speed.GetCalcValue()}");
         Vector2 velocity = turret.transform.right * speed.GetCalcValue();
         projectile.SetVelocity(velocity);
 
