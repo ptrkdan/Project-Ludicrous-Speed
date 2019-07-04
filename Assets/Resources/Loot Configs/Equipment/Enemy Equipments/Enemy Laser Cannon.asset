@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootName: Security Laser Cannon Mk1
   lootType: 2
-  icon: {fileID: 21300000, guid: f1e6d6dea4b659c408aa284a9e475f65, type: 3}
+  icon: {fileID: 21300000, guid: cd875eb26a6fe95499e4a0a13511f03b, type: 3}
   creditValue: 0
   lootDescription: Will most likely damage eyesight
   equipSlot: 0

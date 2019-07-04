@@ -25,7 +25,7 @@ MonoBehaviour:
   difficultyLevel: 3
   securityLevel: 1
   securityUnits:
-  - {fileID: 507616555979316925, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
+  - {fileID: 6103957904908381547, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
   creatureLevel: 5
