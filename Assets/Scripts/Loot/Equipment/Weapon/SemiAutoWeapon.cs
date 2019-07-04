@@ -6,7 +6,7 @@ public class SemiAutoWeapon : Weapon
     Stat burstCooldown;
     int numShots;
     float lastShotFired = 0;
-    bool isFiring = false;
+    bool isTriggerReleased;
 
     public SemiAutoWeapon() : base() { }
 
@@ -18,25 +18,22 @@ public class SemiAutoWeapon : Weapon
         shotCooldown = config.ShotCooldown;
         burstCooldown = config.BurstCooldown;
         numShots = config.NumShots;
+        isTriggerReleased = true;
     }
 
     public override void Activate()
     {
-        if (isFiring && Time.time - lastShotFired < burstCooldown.GetCalcValue())
-            return;       // Dismiss if already firing
-
-        isFiring = true;
-        lastShotFired = Time.time;
-        EquipmentManager.instance.StartCoroutine(FireShots());
+        if (IsShotReady() && isTriggerReleased)
+        {
+            isTriggerReleased = false;
+            lastShotFired = Time.time;
+            EquipmentManager.instance.StartCoroutine(FireShots());
+        }
     }
 
     public override void Deactivate()
     {
-        if (Time.time - lastShotFired >= burstCooldown.GetCalcValue())
-        {
-            lastShotFired = 0;
-            isFiring = false;
-        }
+        isTriggerReleased = true;
     }
 
     public override void SetTurretPosition(Transform turret)
@@ -69,5 +66,16 @@ public class SemiAutoWeapon : Weapon
             shotsFired++;
         }
         
+    }
+
+    private bool IsShotReady()
+    {
+        bool isShotReady = false;
+        if (Time.time - lastShotFired >= burstCooldown.GetCalcValue())
+        {
+            isShotReady = true;
+        }
+
+        return isShotReady;
     }
 }

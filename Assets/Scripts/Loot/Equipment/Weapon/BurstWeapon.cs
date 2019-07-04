@@ -10,7 +10,7 @@ public class BurstWeapon : Weapon
 
     Quaternion originalTurretRotation;
     float lastShotFired;
-    bool isKeyReleased;
+    bool isTriggerReleased;
 
     public BurstWeapon() : base() { }
 
@@ -22,14 +22,14 @@ public class BurstWeapon : Weapon
         numOfShots = config.NumOfShots;
 
         lastShotFired = 0;
-        isKeyReleased = true;
+        isTriggerReleased = true;
     }
 
     public override void Activate()
     {
-        if (CheckIsShotReady() && isKeyReleased)
+        if (IsShotReady() && isTriggerReleased)
         {
-            isKeyReleased = false;
+            isTriggerReleased = false;
             lastShotFired = Time.time;
             for (int i = 0; i < numOfShots; i++)
             {
@@ -41,7 +41,7 @@ public class BurstWeapon : Weapon
 
     public override void Deactivate()
     {
-        isKeyReleased = true;
+        isTriggerReleased = true;
     }
 
     public override void SetTurretPosition(Transform turret)
@@ -68,7 +68,7 @@ public class BurstWeapon : Weapon
         return projectile;
     }
 
-    private bool CheckIsShotReady()
+    private bool IsShotReady()
     {
         bool isShotReady = false;
 
