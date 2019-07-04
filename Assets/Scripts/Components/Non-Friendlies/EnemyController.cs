@@ -65,7 +65,7 @@ public abstract class EnemyController : LivingInteractable
 
     protected virtual void ResetShotCooldown()
     {
-        float cooldown = weapon.GetCooldown().GetCalcValue();
+        float cooldown = weapon.GetShotCooldown().GetCalcValue();
         float variation = weapon.GetCoolDownVariation();
         shotCounter = Random.Range(cooldown - variation, cooldown + variation);
     }

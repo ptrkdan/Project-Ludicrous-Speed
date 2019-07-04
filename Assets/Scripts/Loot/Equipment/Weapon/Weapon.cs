@@ -7,7 +7,7 @@ public abstract class Weapon : Equipment
     protected Projectile projectilePrefab;
     protected Stat damage;
     protected Stat speed;
-    protected Stat cooldown;
+    protected Stat shotCooldown;
     protected AudioClip shootSFX;
     protected float shootSFXVolume;
 
@@ -15,7 +15,7 @@ public abstract class Weapon : Equipment
     public Projectile GetProjectile() => projectilePrefab;
     public Stat GetDamage() => damage;
     public Stat GetSpeed() => speed;
-    public Stat GetCooldown() => cooldown;
+    public Stat GetShotCooldown() => shotCooldown;
     public AudioClip GetShootSFX() => shootSFX;
     public float GetShootSFXVolume() => shootSFXVolume;
 
@@ -40,4 +40,4 @@ public abstract class Weapon : Equipment
     }
 }
 
-public enum WeaponType { Auto, Charged }
+public enum WeaponType { Auto, SemiAuto, Burst, Charged }

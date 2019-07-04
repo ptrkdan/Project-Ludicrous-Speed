@@ -145,7 +145,7 @@ public class PlayerController : LivingInteractable
 
             if (primaryWpn.GetWeaponType() == WeaponType.Auto)
             {
-                yield return new WaitForSeconds(primaryWpn.GetCooldown().GetCalcValue());
+                yield return new WaitForSeconds(primaryWpn.GetShotCooldown().GetCalcValue());
             }
             else if (primaryWpn.GetWeaponType() == WeaponType.Charged)
             {
@@ -169,7 +169,7 @@ public class PlayerController : LivingInteractable
 
             if (secondaryWpn.GetWeaponType() == WeaponType.Auto)
             {
-                yield return new WaitForSeconds(secondaryWpn.GetCooldown().GetCalcValue());
+                yield return new WaitForSeconds(secondaryWpn.GetShotCooldown().GetCalcValue());
             }
             else if (secondaryWpn.GetWeaponType() == WeaponType.Charged)
             {
