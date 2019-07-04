@@ -7,9 +7,14 @@ public abstract class EnemyController : LivingInteractable
     [SerializeField] EnemyWeaponConfig weaponConfig;
     [SerializeField] protected Transform turret;
 
+    [Header("Spawning")]
+    [SerializeField] protected SpawnPreference spawnPreference;
+
+
     protected Rigidbody2D rigidBody;
     protected EnemyWeapon weapon;
 
+    public SpawnPreference GetSpawnPreference() => spawnPreference;
     protected abstract void Move();
 
     private void Start()
@@ -65,3 +70,5 @@ public abstract class EnemyController : LivingInteractable
         shotCounter = Random.Range(cooldown - variation, cooldown + variation);
     }
 }
+
+public enum SpawnPreference { NearPlayer, TopBottom, Middle, Anywhere }

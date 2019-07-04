@@ -12,13 +12,16 @@ public class SecuritySpawner : MonoBehaviour
     bool spawning = true;
     PlayerController player;
     Transform[] spawnPoints;
-    Transform currentSpawnPoint;
+    List<int> bottomSpawnPoints;
+    List<int> midSpawnPoints;
+    List<int> topSpawnPoints;
+    List<int> topBottomSpawnPoints;
     //int startingWave = 0;
 
     private IEnumerator Start()
     {
         player = FindObjectOfType<PlayerController>();
-        spawnPoints = GetComponentsInChildren<Transform>();
+        SetSpawnPoints();
 
         while (spawning)
         {
@@ -48,21 +51,75 @@ public class SecuritySpawner : MonoBehaviour
         this.securityUnitPrefabs = securityUnitPrefabs;
     }
 
+    private void SetSpawnPoints()
+    {
+        spawnPoints = GetComponentsInChildren<Transform>();
+        int numSpawnPoints = spawnPoints.Length - 1; // spawnPoints[0] == this
+
+        // Divide spawn points into 3 segments: top, mid, bottom
+        int bottomMidDivide = Mathf.FloorToInt(numSpawnPoints / 4);       
+        int topMidDivide = numSpawnPoints - Mathf.CeilToInt(numSpawnPoints / 4);
+
+        bottomSpawnPoints = new List<int>();
+        for (int i = 0; i <= bottomMidDivide; i++)
+        {
+            bottomSpawnPoints.Add(i);
+        }
+        midSpawnPoints = new List<int>();
+        for (int i = bottomMidDivide; i <= topMidDivide; i++)
+        {
+            midSpawnPoints.Add(i);
+        }
+        topSpawnPoints = new List<int>();
+        for (int i = topMidDivide; i <= spawnPoints.Length - 1; i++)
+        {
+            topSpawnPoints.Add(i);
+        }
+        topBottomSpawnPoints = new List<int>();
+        topBottomSpawnPoints.AddRange(topSpawnPoints);
+        topBottomSpawnPoints.AddRange(bottomSpawnPoints);
+    }
+
     private void SpawnUnit()
     {
-        // Get Player location
-        int playerPosition = Mathf.RoundToInt(player.GetComponent<Transform>().position.y);
-        // Select spawn point +/- spawnDistanceToPlayer
-        int minSpawnPosition = 
-            Mathf.Clamp(playerPosition - spawnDistanceToPlayer, 0, spawnPoints.Length-1);
-        int maxSpawnPosition = 
-            Mathf.Clamp(playerPosition + spawnDistanceToPlayer, 0, spawnPoints.Length-1);
-        currentSpawnPoint = spawnPoints[Random.Range(minSpawnPosition, maxSpawnPosition)];
+        EnemyController unitPrefab = securityUnitPrefabs[Random.Range(0, securityUnitPrefabs.Count)];
+        Transform selectedSpawnPoint = SelectSpawnPoint(unitPrefab.GetSpawnPreference());
 
         // Create new unit
-        EnemyController unitPrefab = securityUnitPrefabs[Random.Range(0, securityUnitPrefabs.Count)];
-        EnemyController newUnit = Instantiate(unitPrefab, currentSpawnPoint.position, currentSpawnPoint.rotation) as EnemyController;
-        newUnit.transform.parent = currentSpawnPoint.transform;
+        EnemyController newUnit = Instantiate(unitPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation) as EnemyController;
+        newUnit.transform.parent = selectedSpawnPoint.transform;
+    }
+
+    private Transform SelectSpawnPoint(SpawnPreference spawnPreference)
+    {
+        int randomIndex = -1;
+        switch (spawnPreference)
+        {
+            case (SpawnPreference.NearPlayer):
+                // Get Player location
+                int playerPosition = Mathf.RoundToInt(player.GetComponent<Transform>().position.y);
+                // Select spawn point +/- spawnDistanceToPlayer
+                int minSpawnPosition =
+                    Mathf.Clamp(playerPosition - spawnDistanceToPlayer, 0, spawnPoints.Length - 1);
+                int maxSpawnPosition =
+                    Mathf.Clamp(playerPosition + spawnDistanceToPlayer, 0, spawnPoints.Length - 1);
+
+                randomIndex = Random.Range(minSpawnPosition, maxSpawnPosition);
+                break;
+            case (SpawnPreference.TopBottom):
+                randomIndex = topBottomSpawnPoints[Random.Range(0, topBottomSpawnPoints.Count)];
+                break;
+            case (SpawnPreference.Middle):
+                randomIndex = midSpawnPoints[Random.Range(0, midSpawnPoints.Count)];
+                break;
+            case (SpawnPreference.Anywhere):
+                randomIndex = Random.Range(1, spawnPoints.Length); // spawnPoint[0] == this
+                break;
+            default:
+                break;
+        }
+
+        return spawnPoints[randomIndex];
     }
 
     //private IEnumerator SpawnAllWaves() {

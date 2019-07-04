@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3109339409758345378}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -44,7 +44,8 @@ Transform:
   - {fileID: 6681438192696544935}
   - {fileID: 1389229873385279689}
   - {fileID: 1750088990087470612}
-  - {fileID: 5142125480164120865}
+  - {fileID: 1262737358046648483}
+  - {fileID: 6348665831958922550}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -368,7 +369,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2997191257734206805}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3638181524344029907
+--- !u!1001 &3259454790124625604
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -378,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_Name
-      value: Debris Spawn Point (16)
+      value: Debris Spawn Point (17)
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -388,7 +389,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -418,7 +419,7 @@ PrefabInstance:
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
         type: 3}
@@ -437,11 +438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96f4830e6c8e33a4bbce8c6619f67537, type: 3}
---- !u!4 &5142125480164120865 stripped
+--- !u!4 &6348665831958922550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
     type: 3}
-  m_PrefabInstance: {fileID: 3638181524344029907}
+  m_PrefabInstance: {fileID: 3259454790124625604}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3912676698917091425
 PrefabInstance:
@@ -892,6 +893,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
     type: 3}
   m_PrefabInstance: {fileID: 7041082286344378551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7252820548411769681
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3109339409758345376}
+    m_Modifications:
+    - target: {fileID: 8440050486551288817, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_Name
+      value: Debris Spawn Point (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 96f4830e6c8e33a4bbce8c6619f67537, type: 3}
+--- !u!4 &1262737358046648483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8440050486551288818, guid: 96f4830e6c8e33a4bbce8c6619f67537,
+    type: 3}
+  m_PrefabInstance: {fileID: 7252820548411769681}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7378756592755084091
 PrefabInstance:

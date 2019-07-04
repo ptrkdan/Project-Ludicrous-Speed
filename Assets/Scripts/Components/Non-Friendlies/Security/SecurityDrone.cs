@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SecurityDrone : StraightPathEnemyController
 {
+    [Header("Turret")]
     [SerializeField, Tooltip("Rotate speed, in degrees")] float turretRotateSpeed = 5f;
 
     float maxAngle;

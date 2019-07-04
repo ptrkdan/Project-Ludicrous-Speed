@@ -52,7 +52,8 @@ MonoBehaviour:
   shotCounter: 0
   weaponConfig: {fileID: 11400000, guid: 7162c489106693245b60bb14a83cca5e, type: 2}
   turret: {fileID: 6967525669705354668}
-  turretRotateSpeed: 10
+  spawnPreference: 1
+  turretRotateSpeed: 5
 --- !u!114 &6967525668798753812
 MonoBehaviour:
   m_ObjectHideFlags: 0
