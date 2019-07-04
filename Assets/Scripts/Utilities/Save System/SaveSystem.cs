@@ -7,6 +7,11 @@ public static class SaveSystem
     const string SAVE_FOLDER = "/save";
     static BinaryFormatter formatter = new BinaryFormatter();
 
+    public static bool IsSaveFileExists()
+    {
+        return Directory.Exists(Application.persistentDataPath + SAVE_FOLDER);
+    }
+
     public static void LoadGame()
     {
         PlayerSingleton.instance.LoadPlayer(LoadPlayerData());
@@ -166,10 +171,4 @@ public static class SaveSystem
             return null;
         }
     }
-
-    private static bool IsSaveFileExists()
-    {
-        return Directory.Exists(Application.persistentDataPath + SAVE_FOLDER);
-    }
-
 }
