@@ -9,31 +9,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd9d01f9df2c8ef4ba93d3d47f75a456, type: 3}
-  m_Name: Citrine Laser Cannon Mk1
+  m_Script: {fileID: 11500000, guid: 7aa2a5c635a124943b02d052d0850c2e, type: 3}
+  m_Name: Sapphire Twin Laser Cannon Mk5
   m_EditorClassIdentifier: 
-  lootName: Citrine Laser Cannon Mk1
+  lootName: Sapphire Twin Laser Cannon Mk1
   lootType: 2
-  icon: {fileID: 21300000, guid: 772d02034a3bd5b4e88664af7faef60c, type: 3}
-  creditValue: 120
-  lootDescription: Will most likely damage eyesight
+  icon: {fileID: 21300000, guid: aae21a81fca959741a803c98c5c5350c, type: 3}
+  creditValue: 150
+  lootDescription: 
   equipSlot: 0
   isEquipped: 0
   hullModRange: {x: 1, y: 5}
   shieldModRange: {x: 1, y: 5}
   engineModRange: {x: 1, y: 5}
-  weaponModRange: {x: 1, y: 10}
+  weaponModRange: {x: 1, y: 5}
   auxModRange: {x: 1, y: 5}
   shotCooldown:
     type: 0
-    baseValue: 0.1
+    baseValue: 0.05
   damage:
-    type: 1
-    baseValue: 100
+    type: 0
+    baseValue: 150
   speed:
-    type: 3
+    type: 0
     baseValue: 25
   shootSFX: {fileID: 8300000, guid: c7980882e7b8df74b9e24e923e4d3904, type: 3}
   shootSFXVolume: 0.2
-  projectilePrefab: {fileID: 7820966588208491003, guid: 53d03f3ee5962124a8a3380481bda475,
+  projectilePrefab: {fileID: 1747218502393766121, guid: fae3c333cf2e5df42b68f7e471c3f350,
     type: 3}
+  burstCooldown:
+    type: 0
+    baseValue: 1
+  numOfShots: 2

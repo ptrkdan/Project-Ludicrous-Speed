@@ -24,6 +24,9 @@ MonoBehaviour:
   engineModRange: {x: 1, y: 5}
   weaponModRange: {x: 1, y: 10}
   auxModRange: {x: 1, y: 5}
+  shotCooldown:
+    type: 0
+    baseValue: 0.1
   damage:
     type: 1
     baseValue: 100
@@ -34,6 +37,3 @@ MonoBehaviour:
   shootSFXVolume: 0.2
   projectilePrefab: {fileID: 7820966588208491003, guid: cdfab6b28c468de449c5bc2feec079bf,
     type: 3}
-  cooldown:
-    type: 0
-    baseValue: 0.1
