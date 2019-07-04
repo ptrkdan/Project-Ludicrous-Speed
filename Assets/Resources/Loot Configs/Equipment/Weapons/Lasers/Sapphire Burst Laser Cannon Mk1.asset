@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9aa05945959a846936824632cf49de, type: 3}
+  m_Name: Burst Sapphire Laser Cannon Mk1
+  m_EditorClassIdentifier: 
+  lootName: 
+  lootType: 0
+  icon: {fileID: 0}
+  creditValue: 0
+  lootDescription: 
+  equipSlot: 0
+  isEquipped: 0
+  hullModRange: {x: 0, y: 0}
+  shieldModRange: {x: 0, y: 0}
+  engineModRange: {x: 0, y: 0}
+  weaponModRange: {x: 0, y: 0}
+  auxModRange: {x: 0, y: 0}
+  damage:
+    type: 0
+    baseValue: 0
+  speed:
+    type: 0
+    baseValue: 0
+  shootSFX: {fileID: 0}
+  shootSFXVolume: 0
+  projectilePrefab: {fileID: 0}
+  burstCooldown:
+    type: 0
+    baseValue: 0
+  burstRadius: 0
+  numOfShots: 0

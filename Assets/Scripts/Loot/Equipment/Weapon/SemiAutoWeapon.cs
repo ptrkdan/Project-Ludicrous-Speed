@@ -63,6 +63,7 @@ public class SemiAutoWeapon : Weapon
         while (shotsFired < numShots)
         {
             CreateProjectile().Fire();
+            PlayFireSFX();
 
             yield return new WaitForSeconds(shotCooldown.GetCalcValue());
             shotsFired++;

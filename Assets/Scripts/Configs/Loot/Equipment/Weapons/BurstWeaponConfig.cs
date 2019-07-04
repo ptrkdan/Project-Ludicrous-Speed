@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BurstWeaponConfig : MonoBehaviour
+[CreateAssetMenu(menuName = "Configs/Equipment/Burst Weapon")]
+public class BurstWeaponConfig : WeaponConfig
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Projectile")]
+    [SerializeField] Projectile projectilePrefab;
+    [SerializeField, Range(5, 45)] float burstRadius;
+    [SerializeField] int numOfShots;
+
+    public Projectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
+    public float BurstRadius { get => burstRadius; set => burstRadius = value; }
+    public int NumOfShots { get => numOfShots; set => numOfShots = value; }
+
+    public override Loot Create(bool isDefault)
     {
-        
+        return new BurstWeapon(this, isDefault);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override Loot Create()
     {
-        
+        return new BurstWeapon(this);
     }
 }

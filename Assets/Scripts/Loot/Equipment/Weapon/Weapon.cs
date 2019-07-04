@@ -25,6 +25,7 @@ public abstract class Weapon : Equipment
         : base(config, isDefault)
     {
         IsDefault = isDefault;
+        shotCooldown = config.ShotCooldown;
         damage = config.Damage;
         speed = config.Speed;
         shootSFX = config.ShootSFX;

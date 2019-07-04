@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Loot : ScriptableObject
+public class Loot : MonoBehaviour
 {
     protected new string name;
     protected string description;

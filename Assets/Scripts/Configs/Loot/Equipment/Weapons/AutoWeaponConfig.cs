@@ -7,10 +7,8 @@ public class AutoWeaponConfig : WeaponConfig
 {
     [Header("Projectile")]
     [SerializeField] Projectile projectilePrefab;
-    [SerializeField] Stat cooldown;
 
     public Projectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
-    public Stat Cooldown { get => cooldown; set => cooldown = value; }
 
     public override Loot Create(bool isDefault)
     {

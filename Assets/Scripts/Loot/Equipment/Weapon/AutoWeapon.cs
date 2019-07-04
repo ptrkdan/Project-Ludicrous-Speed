@@ -10,7 +10,7 @@ public class AutoWeapon : Weapon
     {
         weaponType = WeaponType.Auto;
         projectilePrefab = config.ProjectilePrefab;
-        shotCooldown = config.Cooldown;
+        shotCooldown = config.ShotCooldown;
     }
 
 
