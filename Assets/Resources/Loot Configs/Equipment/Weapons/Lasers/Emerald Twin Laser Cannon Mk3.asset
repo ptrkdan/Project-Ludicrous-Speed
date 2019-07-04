@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootName: Emerald Twin Laser Cannon Mk1
   lootType: 2
-  icon: {fileID: 21300000, guid: aae21a81fca959741a803c98c5c5350c, type: 3}
+  icon: {fileID: 21300000, guid: 78064460789669741aeb18eb587cadab, type: 3}
   creditValue: 150
   lootDescription: 
   equipSlot: 0

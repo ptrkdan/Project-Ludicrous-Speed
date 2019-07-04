@@ -15,9 +15,21 @@ MonoBehaviour:
   rarity: 0
   dropRate: 0.5
   lootList:
+  - {fileID: 11400000, guid: 7921460b6dcb6fa45a3a994610d25bb7, type: 2}
   - {fileID: 11400000, guid: fe62f4c0285fce5479b05f5e7a0ac100, type: 2}
+  - {fileID: 11400000, guid: 8cfcd84f5bf2c4a43b6079acb76a1a8f, type: 2}
+  - {fileID: 11400000, guid: 0cd9cd46a76023f4bba6325f714b8948, type: 2}
   - {fileID: 11400000, guid: ac4ff96073e7c5d4d8e2ffd6f4f35f65, type: 2}
+  - {fileID: 11400000, guid: dd2bb01028a12e343a17f9454fae802d, type: 2}
+  - {fileID: 11400000, guid: 124a0d0c8c42c8a4ba3df66155cd44f7, type: 2}
   - {fileID: 11400000, guid: 72b751746f983fa4494cf5e2cdc69711, type: 2}
+  - {fileID: 11400000, guid: f7141d1a82b6d8543b4ef1324e2d0305, type: 2}
+  - {fileID: 11400000, guid: 1b0f36ce41f18bf4fad6bc2f99d8e4b5, type: 2}
   - {fileID: 11400000, guid: 234f042dabb850f44b99d24978590298, type: 2}
+  - {fileID: 11400000, guid: b54534179862f0f4dad46e89feabbc48, type: 2}
+  - {fileID: 11400000, guid: 44125dcd800813e4991c76a0f97b9be6, type: 2}
   - {fileID: 11400000, guid: 6987824a29f1475409c25c7e502c2d3b, type: 2}
+  - {fileID: 11400000, guid: 6dbd0e9a91f39a9499022050ed1a9f6a, type: 2}
+  - {fileID: 11400000, guid: 04e9130ca656917409915698ed172faf, type: 2}
   - {fileID: 11400000, guid: 69bfa0adefdb44a4b822d8364ac709d0, type: 2}
+  - {fileID: 11400000, guid: f5444a394b8e2d343b0c6a3f1c8c32ad, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootName: Sapphire Twin Laser Cannon Mk1
   lootType: 2
-  icon: {fileID: 21300000, guid: aae21a81fca959741a803c98c5c5350c, type: 3}
+  icon: {fileID: 21300000, guid: 1c6c909688e1daa479a27bce69468ed6, type: 3}
   creditValue: 150
   lootDescription: 
   equipSlot: 0
