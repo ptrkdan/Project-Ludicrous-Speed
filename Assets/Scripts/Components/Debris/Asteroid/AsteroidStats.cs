@@ -22,7 +22,6 @@ public class AsteroidStats : InteractableStats
 
         DropLoot();
 
-        // TODO: Add explosion vfx
         ParticleSystem deathVFX
             = Instantiate(deathVFXPrefab, transform.position, transform.rotation);
         Destroy(deathVFX.gameObject, deathVFXDuration);

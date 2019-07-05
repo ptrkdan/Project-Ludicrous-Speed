@@ -5,6 +5,9 @@ using UnityEngine;
 public static class SaveSystem
 {
     const string SAVE_FOLDER = "/save";
+    const string PLAYER_SAVE_FILE = "/player.dat";
+    const string INVENTORY_SAVE_FILE = "/inventory.dat";
+    const string EQUIPMENT_SAVE_FILE = "/equipment.dat";
     static BinaryFormatter formatter = new BinaryFormatter();
 
     public static bool IsSaveFileExists()
@@ -37,7 +40,7 @@ public static class SaveSystem
         }
 
         formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + SAVE_FOLDER + "/player.data";
+        string path = Application.persistentDataPath + SAVE_FOLDER + PLAYER_SAVE_FILE;
         FileStream stream = new FileStream(path, FileMode.Create);
         try
         {
@@ -53,7 +56,7 @@ public static class SaveSystem
     public static PlayerData LoadPlayerData()
     {
         PlayerData data;
-        string path = Application.persistentDataPath + SAVE_FOLDER + "/player.data";
+        string path = Application.persistentDataPath + SAVE_FOLDER + PLAYER_SAVE_FILE;
         if (File.Exists(path))
         {
             formatter = new BinaryFormatter();
@@ -84,7 +87,7 @@ public static class SaveSystem
         }
 
         formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + SAVE_FOLDER + "/inventory.data";
+        string path = Application.persistentDataPath + SAVE_FOLDER + INVENTORY_SAVE_FILE;
         FileStream stream = new FileStream(path, FileMode.Create);
         try
         {
@@ -101,7 +104,7 @@ public static class SaveSystem
     public static InventoryData LoadInventoryData()
     {
         InventoryData data;
-        string path = Application.persistentDataPath + SAVE_FOLDER + "/inventory.data";
+        string path = Application.persistentDataPath + SAVE_FOLDER + INVENTORY_SAVE_FILE;
         if (File.Exists(path))
         {
             formatter = new BinaryFormatter();
@@ -132,7 +135,7 @@ public static class SaveSystem
         }
 
         formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + SAVE_FOLDER + "/equipment.data";
+        string path = Application.persistentDataPath + SAVE_FOLDER + EQUIPMENT_SAVE_FILE;
         FileStream stream = new FileStream(path, FileMode.Create);
         try
         {
@@ -149,7 +152,7 @@ public static class SaveSystem
     public static EquipmentData LoadEquipmentData()
     {
         EquipmentData data;
-        string path = Application.persistentDataPath + SAVE_FOLDER + "/equipment.data";
+        string path = Application.persistentDataPath + SAVE_FOLDER + EQUIPMENT_SAVE_FILE;
         if (File.Exists(path))
         {
             formatter = new BinaryFormatter();
@@ -169,6 +172,50 @@ public static class SaveSystem
         {
             Debug.Log($"Save file not found in {path}");
             return null;
+        }
+    }
+
+    public static void CreateNewSave()
+    {
+        DeleteSavedGame();
+
+        formatter = new BinaryFormatter();
+        Directory.CreateDirectory(Application.persistentDataPath + SAVE_FOLDER);
+
+        string path = Application.persistentDataPath + SAVE_FOLDER + PLAYER_SAVE_FILE;
+        FileStream stream = new FileStream(path, FileMode.CreateNew);
+        try
+        {
+            PlayerData data = new PlayerData(PlayerSingleton.instance);
+            formatter.Serialize(stream, data);
+        }
+        finally
+        {
+            stream.Close();
+        }
+
+        path = Application.persistentDataPath + SAVE_FOLDER + INVENTORY_SAVE_FILE;
+        stream = new FileStream(path, FileMode.CreateNew);
+        try
+        {
+            InventoryData data = new InventoryData(InventoryManager.instance);
+            formatter.Serialize(stream, data);
+        }
+        finally
+        {
+            stream.Close();
+        }
+
+        path = Application.persistentDataPath + SAVE_FOLDER + EQUIPMENT_SAVE_FILE;
+        stream = new FileStream(path, FileMode.CreateNew);
+        try
+        {
+            EquipmentData data = new EquipmentData(EquipmentManager.instance);
+            formatter.Serialize(stream, data);
+        }
+        finally
+        {
+            stream.Close();
         }
     }
 }

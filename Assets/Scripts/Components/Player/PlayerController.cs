@@ -69,15 +69,7 @@ public class PlayerController : LivingInteractable
         // Stop any weapon coroutines
         StopAllCoroutines();
     }
-
-
-    // TODO Remove
-    public void MoveToStartPosition()
-    {
-        Vector3 startPosition = new Vector3(START_POS_X, START_POS_Y);
-        transform.TransformPoint(startPosition);
-    }
-
+    
     public override void Interact(Interactable other)
     {
         GetComponent<DamageDealer>().DealDamage(other);

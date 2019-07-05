@@ -24,7 +24,7 @@ public class SceneLoader : MonoBehaviour
 
     public void StartNewGame()
     {
-        SaveSystem.DeleteSavedGame();
+        SaveSystem.CreateNewSave();
         GoToHQScene();
     }
 

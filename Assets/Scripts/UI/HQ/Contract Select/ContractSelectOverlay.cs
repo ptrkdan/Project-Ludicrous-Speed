@@ -34,6 +34,11 @@ public class ContractSelectOverlay : Overlay
     private void DisplayAllContracts()
     {
         List<ContractConfig> availableContracts = new List<ContractConfig>(masterContractGate.GetContracts());
+        if (availableContracts.Count < displayedContractCount)
+        {
+            displayedContractCount = availableContracts.Count;
+        }
+
         for (int i = 0; i < displayedContractCount; i++)
         {
             ContractConfig contractConfig = SelectFromContractConfigList(availableContracts);

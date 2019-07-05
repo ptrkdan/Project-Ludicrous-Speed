@@ -21,11 +21,12 @@ MonoBehaviour:
   runDistance: 20000
   associatedFaction: 1
   unlockPrereq:
-    criteria: 140000000a0000000a0000000a000000050000000500000005000000
+    criteria: 01000000010000000100000001000000010000000100000001000000
   difficultyLevel: 8
   securityLevel: 8
   securityUnits:
   - {fileID: 6103957904908381547, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
+  - {fileID: 6967525668798753815, guid: 73c77629bc63cd84680105853e2a6e4b, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
   creatureLevel: 1

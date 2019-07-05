@@ -29,9 +29,12 @@ public class PlayerSingleton : MonoBehaviour
     public delegate void OnPlayerLevelUp(int level);
     public OnPlayerLevelUp onPlayerLevelUpCallback;
 
-    private void OnDestroy()
+    private void OnApplicationQuit()
     {
-        SavePlayer();
+        if (SaveSystem.IsSaveFileExists())
+        {
+            SavePlayer();
+        }
     }
 
     private void SavePlayer()
