@@ -11,3 +11,4 @@ public class CreatureSpawnPoint : MonoBehaviour
 }
 
 public enum SpawnPointSide { Left, Right }
+public enum SpawnPointSidePreference { Left, Right, Both }

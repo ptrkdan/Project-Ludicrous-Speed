@@ -33,6 +33,8 @@ public abstract class EnemyController : LivingInteractable
         base.Initialize();
 
         rigidBody = GetComponent<Rigidbody2D>();
+        if (!weaponConfig) return;
+
         weapon = (EnemyWeapon)weaponConfig.Create();
         weapon.SetTurretPosition(turret);
         ResetShotCooldown();
