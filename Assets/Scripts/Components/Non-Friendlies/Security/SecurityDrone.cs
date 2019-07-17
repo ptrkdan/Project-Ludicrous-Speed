@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SecurityDrone : StraightPathEnemyController
+public class SecurityDrone : SecurityUnitController
 {
     [Header("Turret")]
     [SerializeField, Tooltip("Rotate speed, in degrees")] float turretRotateSpeed = 5f;
@@ -19,6 +17,11 @@ public class SecurityDrone : StraightPathEnemyController
         base.Initialize();
         player = FindObjectOfType<PlayerController>();
         SetTurretAngle();
+    }
+
+    protected override void Move()
+    {
+        rigidBody.MovePosition(transform.position + Vector3.right * stats.GetStat(StatType.Engine).GetCalcValue() * Time.fixedDeltaTime);
     }
 
     protected override void FireWeapon()
@@ -51,10 +54,10 @@ public class SecurityDrone : StraightPathEnemyController
         {
             minAngle = 60;
             maxAngle = 120;
-            turretAngle = minAngle; 
+            turretAngle = minAngle;
             isRotatingCW = false;
         }
-        else 
+        else
         {
             minAngle = 240;
             maxAngle = 300;

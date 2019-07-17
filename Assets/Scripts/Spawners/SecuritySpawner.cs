@@ -6,7 +6,7 @@ public class SecuritySpawner : MonoBehaviour
 {
     [SerializeField] int spawnDistanceToPlayer = 2;
     [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
-    [SerializeField] List<EnemyController> securityUnitPrefabs;
+    [SerializeField] List<SecurityUnitController> securityUnitPrefabs;
     [SerializeField] List<WaveConfig> waveConfigs;
 
     bool spawning = true;
@@ -47,7 +47,7 @@ public class SecuritySpawner : MonoBehaviour
         // TODO Implement difficulty factor
     }
 
-    public void SetSecurityUnitPrefabs(List<EnemyController> securityUnitPrefabs)
+    public void SetSecurityUnitPrefabs(List<SecurityUnitController> securityUnitPrefabs)
     {
         this.securityUnitPrefabs = securityUnitPrefabs;
     }

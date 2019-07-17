@@ -18,7 +18,7 @@ public class ContractConfig : ScriptableObject
     [SerializeField] [Range(1, 10)] int difficultyLevel = 1;
     [Space]
     [SerializeField] [Range(1, 10)] int securityLevel = 1;
-    [SerializeField] List<EnemyController> securityUnits;               // TODO Change to SecurityController
+    [SerializeField] List<SecurityUnitController> securityUnits;               // TODO Change to SecurityController
     [SerializeField] bool hasSecurityBoss = false;
     [SerializeField] List<EnemyController> potentialSecurityBoss;       // TODO Change to SecurityBossController
     [Space]
@@ -51,7 +51,7 @@ public class ContractConfig : ScriptableObject
     public ContractPrereq UnlockPrereq { get => unlockPrereq; set => unlockPrereq = value; }
     public int DifficultyLevel { get => difficultyLevel; set => difficultyLevel = value; }
     public int SecurityLevel { get => securityLevel; set => securityLevel = value; }
-    public List<EnemyController> SecurityUnits { get => securityUnits; set => securityUnits = value; }
+    public List<SecurityUnitController> SecurityUnits { get => securityUnits; set => securityUnits = value; }
     public List<EnemyController> PotentialSecurityBoss { get => potentialSecurityBoss; set => potentialSecurityBoss = value; }
     public int CreatureLevel { get => creatureLevel; set => creatureLevel = value; }
     public List<CreatureController> Creatures { get => creatures; set => creatures = value; }
