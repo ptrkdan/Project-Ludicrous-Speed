@@ -37,7 +37,7 @@ public class ChargedWeapon : Weapon
         }
         else
         {
-            Destroy(chargingProjectile.gameObject);
+            DestroyProjectile();
         }
     }
 
@@ -57,5 +57,12 @@ public class ChargedWeapon : Weapon
         projectile.SetVelocity(velocity);
 
         return projectile;
+    }
+
+    private void DestroyProjectile()
+    {
+        // TODO: Play decharge animation;
+
+        Destroy(chargingProjectile.gameObject);
     }
 }

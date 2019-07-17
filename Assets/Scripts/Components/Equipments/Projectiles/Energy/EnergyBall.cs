@@ -2,7 +2,7 @@
 
 public class EnergyBall : ChargedProjectile
 {
-    float size = 1f;
+    [SerializeField] float sizeIncreaseStep = 1f;
     [SerializeField] float maxSize = 3f;
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -12,13 +12,14 @@ public class EnergyBall : ChargedProjectile
 
     public void IncreaseSize(float amount)
     {
-        if (size < maxSize)
+        // Called in animator, once per animation cycle
+        if (sizeIncreaseStep < maxSize)
         {
-            size += amount;
-            GetComponentInChildren<Transform>().localScale += new Vector3(size, size);
+            sizeIncreaseStep += amount;
+            GetComponentInChildren<Transform>().localScale += new Vector3(sizeIncreaseStep, sizeIncreaseStep);
         }
         
-        if (size >= maxSize)
+        if (sizeIncreaseStep >= maxSize)
         {
             isCharged = true;
         }
