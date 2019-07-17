@@ -20,20 +20,10 @@ public class AsteroidStats : InteractableStats
     public override void Die() {
         base.Die();
 
-        DropLoot();
-
         ParticleSystem deathVFX
             = Instantiate(deathVFXPrefab, transform.position, transform.rotation);
         Destroy(deathVFX.gameObject, deathVFXDuration);
         
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
-    }
-
-    private void DropLoot() {
-        PickUpLootConfig lootConfig = LootManager.instance.DropLoot();
-        if (lootConfig != null) {
-            LootController loot = Instantiate(lootConfig.LootPrefab, gameObject.transform.parent);
-            loot.Drop(lootConfig, transform.position);
-        }
     }
 }

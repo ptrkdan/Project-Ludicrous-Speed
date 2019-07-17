@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 6103957904908381547}
   - component: {fileID: 1719441985581814819}
   - component: {fileID: 1298490598032868000}
+  - component: {fileID: 8353211100241327437}
   - component: {fileID: 2623521241850326822}
   - component: {fileID: 762805762130988418}
   m_Layer: 9
@@ -161,6 +162,7 @@ MonoBehaviour:
   shotCounter: 0
   weaponConfig: {fileID: 11400000, guid: 7162c489106693245b60bb14a83cca5e, type: 2}
   turret: {fileID: 5958048957169585620}
+  spawnPreference: 0
 --- !u!114 &1719441985581814819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +210,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 250
+--- !u!114 &8353211100241327437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402688160538775879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881644ae357027b408f2f5996982987a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &2623521241850326822
 Rigidbody2D:
   serializedVersion: 4
