@@ -162,6 +162,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &86116460 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8544830581910082698, guid: 546c19f7658b20f4daf33dceda3a0ddf,
+    type: 3}
+  m_PrefabInstance: {fileID: 8544830581278146613}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad69a1ba27718847b06dabf12728532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &128247907
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +335,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &538999717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5954333800708040824, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5954333801085906730}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad69a1ba27718847b06dabf12728532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &661863052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5722974970853839562, guid: 80cf03db686fbfe459a34b5c78526e9b,
@@ -1655,6 +1679,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Left Creature Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 5954333800708040826, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5954333800708040827, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1855,6 +1884,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Creature Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8544830581910082696, guid: 546c19f7658b20f4daf33dceda3a0ddf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8544830581910082699, guid: 546c19f7658b20f4daf33dceda3a0ddf,
         type: 3}
       propertyPath: m_RootOrder
@@ -2023,6 +2057,16 @@ PrefabInstance:
       propertyPath: securitySpawner
       value: 
       objectReference: {fileID: 661863054}
+    - target: {fileID: 8733867357581898324, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: leftCreatureSpawner
+      value: 
+      objectReference: {fileID: 538999717}
+    - target: {fileID: 8733867357581898324, guid: ef50cdabf0d8be041b20681948c46287,
+        type: 3}
+      propertyPath: rightCreatureSpawner
+      value: 
+      objectReference: {fileID: 86116460}
     - target: {fileID: 8733867357581898325, guid: ef50cdabf0d8be041b20681948c46287,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -19,6 +19,8 @@ public class RunManager : MonoBehaviour
     [Header("Spawners")]
     [SerializeField] DebrisSpawner asteroidSpawner;
     [SerializeField] SecuritySpawner securitySpawner;
+    [SerializeField] CreatureSpawner leftCreatureSpawner;
+    [SerializeField] CreatureSpawner rightCreatureSpawner;
 
     [Header("UI References")]
     [SerializeField] TextMeshProUGUI distanceRemainingText;
@@ -59,12 +61,16 @@ public class RunManager : MonoBehaviour
         isStarted = true;
         asteroidSpawner.gameObject.SetActive(true);
         securitySpawner.gameObject.SetActive(true);
+        leftCreatureSpawner.gameObject.SetActive(true);
+        rightCreatureSpawner.gameObject.SetActive(true);
     }
 
     public void StopSpawners()
     {
         asteroidSpawner.StopSpawning();
         securitySpawner.StopSpawning();
+        leftCreatureSpawner.StopSpawning();
+        rightCreatureSpawner.StopSpawning();
     }
 
     public void UpdateHullArmouBar(float value)
