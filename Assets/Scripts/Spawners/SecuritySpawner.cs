@@ -26,7 +26,8 @@ public class SecuritySpawner : MonoBehaviour
         while (spawning)
         {
             yield return new WaitForSeconds(Random.Range(spawnDelayRange.x, spawnDelayRange.y));
-            SpawnUnit();
+            if (securityUnitPrefabs.Count > 0)
+                SpawnUnit();
         }
 
     }

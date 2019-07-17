@@ -24,7 +24,8 @@ public class CreatureSpawner : MonoBehaviour
         while (spawning)
         {
             yield return new WaitForSeconds(Random.Range(spawnDelayRange.x, spawnDelayRange.y));
-            SpawnUnit();
+            if (creatureUnitPrefabs.Count > 0)
+                SpawnUnit();
         }
     }
 

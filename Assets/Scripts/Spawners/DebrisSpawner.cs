@@ -26,10 +26,9 @@ public class DebrisSpawner : MonoBehaviour
 
         while (spawning)
         {
-            yield return new WaitForSeconds(
-                Random.Range(spawnDelayRange.x, spawnDelayRange.y)
-            );
-            SpawnDebris();
+            yield return new WaitForSeconds(Random.Range(spawnDelayRange.x, spawnDelayRange.y));
+            if (debrisPrefabs.Count > 0)
+                SpawnDebris();
         }
     }
 
