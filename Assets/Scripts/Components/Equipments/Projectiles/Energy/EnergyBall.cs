@@ -1,9 +1,20 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnergyBall : ChargedProjectile
 {
     [SerializeField] float sizeIncreaseStep = 1f;
     [SerializeField] float maxSize = 3f;
+    [SerializeField] ParticleSystem dissipationVFX;
+    [SerializeField] float disspateVFXDelay = 1f;
+    
+    public override void Dissipate()
+    {
+        base.Dissipate();
+
+        ParticleSystem dissipate = Instantiate(dissipationVFX, transform.position, transform.rotation);
+        Destroy(dissipate.gameObject, disspateVFXDelay);
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {

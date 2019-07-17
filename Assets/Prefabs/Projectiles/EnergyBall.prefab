@@ -149,6 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeIncreaseStep: 0.5
   maxSize: 2
+  dissipationVFX: {fileID: 2851858284520759876, guid: c54c3dedf907e514fba2ee244e9df39e,
+    type: 3}
+  dissipationDelay: 1
 --- !u!114 &5014908033285724091
 MonoBehaviour:
   m_ObjectHideFlags: 0
