@@ -42,7 +42,7 @@ public abstract class EnemyController : LivingInteractable
 
     public override void Interact(Interactable other)
     {
-        GetComponent<DamageDealer>().DealDamage(other);
+        GetComponent<DamageDealer>()?.DealDamage(other);
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)

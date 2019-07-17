@@ -23,7 +23,7 @@ public class ContractConfig : ScriptableObject
     [SerializeField] List<EnemyController> potentialSecurityBoss;       // TODO Change to SecurityBossController
     [Space]
     [SerializeField] [Range(1, 10)] int creatureLevel = 1;
-    [SerializeField] List<EnemyController> creatures;                   // TODO Change to CreatureController
+    [SerializeField] List<CreatureController> creatures;
     [SerializeField] bool hasCreatureBoss = false;
     [SerializeField] List<EnemyController> potentialCreatureBoss;       // TODO Change to CreatureBossController
     [Space]
@@ -54,7 +54,7 @@ public class ContractConfig : ScriptableObject
     public List<EnemyController> SecurityUnits { get => securityUnits; set => securityUnits = value; }
     public List<EnemyController> PotentialSecurityBoss { get => potentialSecurityBoss; set => potentialSecurityBoss = value; }
     public int CreatureLevel { get => creatureLevel; set => creatureLevel = value; }
-    public List<EnemyController> Creatures { get => creatures; set => creatures = value; }
+    public List<CreatureController> Creatures { get => creatures; set => creatures = value; }
     public List<EnemyController> PotentialCreatureBoss { get => potentialCreatureBoss; set => potentialCreatureBoss = value; }
     public int DebrisLevel { get => debrisLevel; set => debrisLevel = value; }
     public List<DebrisController> Debris { get => debris; set => debris = value; }

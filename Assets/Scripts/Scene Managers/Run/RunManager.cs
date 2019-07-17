@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -92,7 +93,8 @@ public class RunManager : MonoBehaviour
 
         // Configure spawners
         ConfigureAsteroidSpawner();
-        ConfigureEnemySpawner();
+        ConfigureSecuritySpawner();
+        ConfigureCreatureSpawners();
         ConfigureLootManager();
         ConfigureStats();
     }
@@ -103,10 +105,39 @@ public class RunManager : MonoBehaviour
         asteroidSpawner.SetDebrisPrefabs(config.Debris);
     }
 
-    private void ConfigureEnemySpawner()
+    private void ConfigureSecuritySpawner()
     {
         securitySpawner.SetDifficulty(config.DifficultyLevel);
         securitySpawner.SetSecurityUnitPrefabs(config.SecurityUnits);
+    }
+
+    private void ConfigureCreatureSpawners()
+    {
+        leftCreatureSpawner.SetDifficulty(config.DifficultyLevel);
+        rightCreatureSpawner.SetDifficulty(config.DifficultyLevel);
+
+        List<CreatureController> leftCreatureSpawnerPrefabs = new List<CreatureController>();
+        List<CreatureController> rightCreatureSpawnerPrefabs = new List<CreatureController>();
+        foreach (CreatureController creature in config.Creatures)
+        {
+            switch(creature.GetSpawnPointSidePreference())
+            {
+                case (SpawnPointSidePreference.Left):
+                    leftCreatureSpawnerPrefabs.Add(creature);
+                    break;
+                case (SpawnPointSidePreference.Right):
+                    rightCreatureSpawnerPrefabs.Add(creature);
+                    break;
+                case (SpawnPointSidePreference.Both):
+                default:
+                    leftCreatureSpawnerPrefabs.Add(creature);
+                    rightCreatureSpawnerPrefabs.Add(creature);
+                    break;
+            }
+
+            leftCreatureSpawner.SetCreatureUnitPrefabs(leftCreatureSpawnerPrefabs);
+            rightCreatureSpawner.SetCreatureUnitPrefabs(rightCreatureSpawnerPrefabs);
+        }
     }
 
     private void ConfigureLootManager()

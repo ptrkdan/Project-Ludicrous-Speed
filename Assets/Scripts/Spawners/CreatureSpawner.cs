@@ -6,7 +6,7 @@ public class CreatureSpawner : MonoBehaviour
 {
     [SerializeField] int spawnDistanceToPlayer = 2;
     [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
-    [SerializeField] List<EnemyController> creatureUnitPrefabs;
+    [SerializeField] List<CreatureController> creatureUnitPrefabs;
 
     bool spawning = true;
     PlayerController player;
@@ -43,7 +43,7 @@ public class CreatureSpawner : MonoBehaviour
         // TODO: Implement difficulty factor
     }
 
-    public void SetCreatureUnitPrefabs(List<EnemyController> creatureUnitPrefabs)
+    public void SetCreatureUnitPrefabs(List<CreatureController> creatureUnitPrefabs)
     {
         this.creatureUnitPrefabs = creatureUnitPrefabs;
     }
