@@ -5,20 +5,23 @@ public class EnergyBall : ChargedProjectile
 {
     [SerializeField] float sizeIncreaseStep = 1f;
     [SerializeField] float maxSize = 3f;
+
     [SerializeField] ParticleSystem dissipationVFX;
-    [SerializeField] float disspateVFXDelay = 1f;
+    [SerializeField] EnergyBallExplosion explosion;
     
     public override void Dissipate()
     {
         base.Dissipate();
 
         ParticleSystem dissipate = Instantiate(dissipationVFX, transform.position, transform.rotation);
-        Destroy(dissipate.gameObject, disspateVFXDelay);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
+        base.OnTriggerEnter2D(other);
+
         // Create explosion field that will expand in time around point of collision
+        Instantiate(explosion, transform.position, transform.rotation);
     }
 
     public void IncreaseSize(float amount)

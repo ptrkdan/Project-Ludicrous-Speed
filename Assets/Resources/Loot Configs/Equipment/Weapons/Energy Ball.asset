@@ -17,13 +17,16 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b64b31c8b1292114fbf16e92170c8033, type: 3}
   creditValue: 100
   lootDescription: Area of effect projectile that detonates after X seconds.
-  equipSlot: 1
+  equipSlot: 0
   isEquipped: 0
   hullModRange: {x: 0, y: 5}
   shieldModRange: {x: 1, y: 5}
   engineModRange: {x: 1, y: 5}
   weaponModRange: {x: 1, y: 10}
   auxModRange: {x: 1, y: 10}
+  shotCooldown:
+    type: 0
+    baseValue: 0
   damage:
     type: 4
     baseValue: 1000

@@ -20,6 +20,7 @@ public class ChargedWeapon : Weapon
         if (!chargingProjectile)
         {
             chargingProjectile = CreateProjectile() as ChargedProjectile;
+            chargingProjectile.DisableCollider();
         }
 
         // Keep projectile attached to ship

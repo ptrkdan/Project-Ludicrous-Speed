@@ -1684,6 +1684,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5954333800708040824, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
+        type: 3}
+      propertyPath: creatureUnitPrefabs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954333800708040824, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
+        type: 3}
+      propertyPath: creatureUnitPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4448460353028551622, guid: 6d9c71be9a7205143b8afebe6597b196,
+        type: 3}
+    - target: {fileID: 5954333800708040824, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
+        type: 3}
+      propertyPath: spawnDelayRange.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5954333800708040827, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1703,22 +1719,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954333800708040824, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
-        type: 3}
-      propertyPath: creatureUnitPrefabs.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954333800708040824, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
-        type: 3}
-      propertyPath: creatureUnitPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4448460353028551622, guid: 6d9c71be9a7205143b8afebe6597b196,
-        type: 3}
-    - target: {fileID: 5954333800708040824, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3,
-        type: 3}
-      propertyPath: spawnDelayRange.y
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7c227c02e19ef45b4a13f5c7cbdfb3, type: 3}
@@ -1889,6 +1889,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8544830581910082698, guid: 546c19f7658b20f4daf33dceda3a0ddf,
+        type: 3}
+      propertyPath: creatureUnitPrefabs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544830581910082698, guid: 546c19f7658b20f4daf33dceda3a0ddf,
+        type: 3}
+      propertyPath: creatureUnitPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4448460353028551622, guid: 6d9c71be9a7205143b8afebe6597b196,
+        type: 3}
+    - target: {fileID: 8544830581910082698, guid: 546c19f7658b20f4daf33dceda3a0ddf,
+        type: 3}
+      propertyPath: spawnDelayRange.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8544830581910082699, guid: 546c19f7658b20f4daf33dceda3a0ddf,
         type: 3}
       propertyPath: m_RootOrder
@@ -2003,22 +2019,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8544830581910082698, guid: 546c19f7658b20f4daf33dceda3a0ddf,
-        type: 3}
-      propertyPath: creatureUnitPrefabs.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8544830581910082698, guid: 546c19f7658b20f4daf33dceda3a0ddf,
-        type: 3}
-      propertyPath: creatureUnitPrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4448460353028551622, guid: 6d9c71be9a7205143b8afebe6597b196,
-        type: 3}
-    - target: {fileID: 8544830581910082698, guid: 546c19f7658b20f4daf33dceda3a0ddf,
-        type: 3}
-      propertyPath: spawnDelayRange.y
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 546c19f7658b20f4daf33dceda3a0ddf, type: 3}

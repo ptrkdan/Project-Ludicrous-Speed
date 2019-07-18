@@ -9,7 +9,6 @@ TagManager:
   - Friendly
   - Non-Friendly
   - Damage Dealer
-  - Damager
   - Path
   layers:
   - Default
