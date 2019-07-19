@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c735692d1e7d34296d7f113273b957, type: 3}
+  m_Name: Enemy Laser Cannon Slow
+  m_EditorClassIdentifier: 
+  lootName: Security Laser Cannon Mk1
+  lootType: 2
+  icon: {fileID: 21300000, guid: cd875eb26a6fe95499e4a0a13511f03b, type: 3}
+  creditValue: 0
+  lootDescription: Will most likely damage eyesight
+  equipSlot: 0
+  isEquipped: 0
+  hullModRange: {x: 0, y: 0}
+  shieldModRange: {x: 0, y: 0}
+  engineModRange: {x: 0, y: 0}
+  weaponModRange: {x: 0, y: 0}
+  auxModRange: {x: 0, y: 0}
+  shotCooldown:
+    type: 4
+    baseValue: 1
+  damage:
+    type: 0
+    baseValue: 100
+  speed:
+    type: 0
+    baseValue: 30
+  shootSFX: {fileID: 8300000, guid: 024fce0d4011d4844abdcb71f641dfb9, type: 3}
+  shootSFXVolume: 0
+  projectilePrefab: {fileID: 1747218502393766121, guid: 2a1ead0cc4a3c4e4bb3df55e156e9cbf,
+    type: 3}
+  cooldownVariation: 0.5

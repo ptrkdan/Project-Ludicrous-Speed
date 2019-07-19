@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4448460353028551623}
   - component: {fileID: 4448460353028551622}
   - component: {fileID: 4448460353028551621}
+  - component: {fileID: 211716474209140871}
   m_Layer: 8
   m_Name: Alien Passenger Ship
   m_TagString: Friendly
@@ -87,7 +88,7 @@ MonoBehaviour:
   shotCounter: 0
   weaponConfig: {fileID: 0}
   turret: {fileID: 0}
-  spawnPreference: 0
+  spawnPreference: 2
   spawnPointSidePreference: 2
 --- !u!114 &4448460353028551621
 MonoBehaviour:
@@ -123,6 +124,18 @@ MonoBehaviour:
   explosionDuration: 1
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.7
+--- !u!114 &211716474209140871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4448460353028551620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7bc06a3a768e842b30b69c24e34e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4448460353365888293
 GameObject:
   m_ObjectHideFlags: 0

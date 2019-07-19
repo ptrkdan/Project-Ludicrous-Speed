@@ -2,7 +2,7 @@
 {
     float cooldownVariation;
 
-    public float GetCoolDownVariation() => cooldownVariation;
+    public float GetCooldownVariation() => cooldownVariation;
 
     public EnemyWeapon() : base() { }
 

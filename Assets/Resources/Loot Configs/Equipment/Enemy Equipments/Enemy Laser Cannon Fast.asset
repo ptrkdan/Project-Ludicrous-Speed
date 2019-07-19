@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c735692d1e7d34296d7f113273b957, type: 3}
-  m_Name: Enemy Laser Cannon
+  m_Name: Enemy Laser Cannon Fast
   m_EditorClassIdentifier: 
   lootName: Security Laser Cannon Mk1
   lootType: 2
@@ -26,7 +26,7 @@ MonoBehaviour:
   auxModRange: {x: 0, y: 0}
   shotCooldown:
     type: 4
-    baseValue: 1
+    baseValue: 0.5
   damage:
     type: 0
     baseValue: 100
@@ -37,4 +37,4 @@ MonoBehaviour:
   shootSFXVolume: 0
   projectilePrefab: {fileID: 1747218502393766121, guid: 2a1ead0cc4a3c4e4bb3df55e156e9cbf,
     type: 3}
-  cooldownVariation: 0.5
+  cooldownVariation: 0.1

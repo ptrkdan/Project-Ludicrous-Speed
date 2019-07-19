@@ -31,7 +31,7 @@ public abstract class Weapon : Equipment
         shootSFX = config.ShootSFX;
         shootSFXVolume = config.ShootSFXVolume;
     }
-
+    public Transform GetTurretPosition() => turret;
     public abstract void SetTurretPosition(Transform turret);
     protected abstract Projectile CreateProjectile();
 

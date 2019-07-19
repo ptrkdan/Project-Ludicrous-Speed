@@ -2,7 +2,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(InteractableStats))]
-public class LivingInteractable : Interactable {
+public class LivingInteractable : Interactable
+{
+    protected Behaviour[] behaviours;
     protected InteractableStats stats;
     private float onCollisionGlowDuration = 0.15f;
 
@@ -11,8 +13,17 @@ public class LivingInteractable : Interactable {
         Initialize();
     }
 
-    protected virtual void Initialize() { }
-    protected virtual void OnUpdate() { }
+    private void Update()
+    {
+        foreach (Behaviour behaviour in behaviours)
+        {
+            behaviour.Do();
+        }
+    }
+
+    protected virtual void Initialize() {
+        behaviours = GetComponents<Behaviour>();
+    }
 
     public virtual void TakeDamage(float damage) {
         stats.TakeDamage(damage);

@@ -24,11 +24,12 @@ MonoBehaviour:
   difficultyLevel: 3
   securityLevel: 2
   securityUnits:
-  - {fileID: 6103957904908381547, guid: 9c0b4c1afc84738408c85ee1d338d27c, type: 3}
+  - {fileID: 6967525668798753815, guid: 73c77629bc63cd84680105853e2a6e4b, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
   creatureLevel: 3
-  creatures: []
+  creatures:
+  - {fileID: 4448460353028551622, guid: 6d9c71be9a7205143b8afebe6597b196, type: 3}
   hasCreatureBoss: 0
   potentialCreatureBoss: []
   debrisLevel: 1

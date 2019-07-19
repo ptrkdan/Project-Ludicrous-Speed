@@ -287,6 +287,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b482a8fb29da1f54faf710ddbadaa55b,
         type: 2}
+    - target: {fileID: 453103975835575823, guid: 493f62394dee81343a86025d56033463,
+        type: 3}
+      propertyPath: primaryWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: ce6ded74fab213a4591e15e3601afa4a,
+        type: 2}
     - target: {fileID: 453103975835575820, guid: 493f62394dee81343a86025d56033463,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -415,7 +421,7 @@ PrefabInstance:
         type: 3}
       propertyPath: activeContract
       value: 
-      objectReference: {fileID: 11400000, guid: c724f3a85bc1a7344b5965c365982691,
+      objectReference: {fileID: 11400000, guid: 0118c8c47f9e5504d8fcc4a23f042f51,
         type: 2}
     - target: {fileID: 1792732914214086996, guid: 56fd01e9eaad30141940dcb632529107,
         type: 3}

@@ -7,7 +7,7 @@ public class WaypointEnemyController : EnemyController {
 
     public WaveConfig WaveConfig { get => waveConfig; set => waveConfig = value; }
 
-    protected override void Move() {
+    protected void Move() {
         if (waypointIndex <= waveConfig.GetWayPoints().Count - 1) {
             var targetPosition = waveConfig.GetWayPoints()[waypointIndex].transform.position;
             var currentMovement = stats.GetStat(StatType.Engine).GetCalcValue() * Time.deltaTime;
