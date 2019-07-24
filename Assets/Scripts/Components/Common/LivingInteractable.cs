@@ -5,6 +5,7 @@ using UnityEngine;
 public class LivingInteractable : Interactable
 {
     protected Behaviour[] behaviours;
+    protected BehaviourState behaviourStates;
     protected InteractableStats stats;
     private float onCollisionGlowDuration = 0.15f;
 
@@ -15,9 +16,10 @@ public class LivingInteractable : Interactable
 
     private void Update()
     {
+        behaviourStates = BehaviourState.None;
         foreach (Behaviour behaviour in behaviours)
         {
-            behaviour.Do();
+            behaviourStates = behaviour.Do(behaviourStates);
         }
     }
 

@@ -2,9 +2,10 @@
 
 public class MoveStraightBehaviour : MovementBehaviour
 {
-    public override void Do()
+    public override BehaviourState Do(BehaviourState currentState)
     {
         Move();
+        return currentState | BehaviourState.Moved;
     }
 
     protected override void Move()

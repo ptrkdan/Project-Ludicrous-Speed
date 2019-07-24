@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6967525668798753815}
   - component: {fileID: 6967525668798753812}
   - component: {fileID: 1372369450605176021}
-  - component: {fileID: 6002476325645055009}
+  - component: {fileID: 344975942407152073}
   - component: {fileID: 6967525668798753813}
   - component: {fileID: 6614033572888467984}
   - component: {fileID: 6967525668798753818}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7bc06a3a768e842b30b69c24e34e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6002476325645055009
+--- !u!114 &344975942407152073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,11 +110,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6967525668798753817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c29e60bbd99ac40ac108c502a25c1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b5ba92916fa318448b6182de959c4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret: {fileID: 6967525669705354668}
-  turretRotationSpeed: 15
+  shootUpAngle: 90
+  shootDownAngle: -90
 --- !u!114 &6967525668798753813
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -419,12 +419,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1792732914214086996, guid: 56fd01e9eaad30141940dcb632529107,
         type: 3}
-      propertyPath: activeContract
-      value: 
-      objectReference: {fileID: 11400000, guid: 0118c8c47f9e5504d8fcc4a23f042f51,
-        type: 2}
-    - target: {fileID: 1792732914214086996, guid: 56fd01e9eaad30141940dcb632529107,
-        type: 3}
       propertyPath: isRunSuccessful
       value: 1
       objectReference: {fileID: 0}

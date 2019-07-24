@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a8f8a208056d459f5d0c9de75dd4a, type: 3}
+  m_Name: 9999 Test Contract
+  m_EditorClassIdentifier: 
+  contractID: 9999
+  contractTitle: Test Contract
+  contractType: 1
+  contractDetails: So here's the story...
+  runDistance: 9999999
+  associatedFaction: 0
+  unlockPrereq:
+    criteria: ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  difficultyLevel: 1
+  securityLevel: 1
+  securityUnits:
+  - {fileID: 6967525668798753815, guid: 73c77629bc63cd84680105853e2a6e4b, type: 3}
+  hasSecurityBoss: 0
+  potentialSecurityBoss: []
+  creatureLevel: 1
+  creatures: []
+  hasCreatureBoss: 0
+  potentialCreatureBoss: []
+  debrisLevel: 1
+  debris: []
+  lootLevel: 1
+  creditRewardLevel: 1
+  lootDrops: []
+  specialLootDrops: []
+  pickUps: []
+  pickUpDropRates: []

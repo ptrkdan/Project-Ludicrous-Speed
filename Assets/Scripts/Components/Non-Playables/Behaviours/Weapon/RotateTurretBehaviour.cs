@@ -1,46 +1,34 @@
 ﻿using UnityEngine;
 
-public class RotateTurretAndFireWeaponBehaviour : WeaponBehaviour
+public class RotateTurretBehaviour : WeaponBehaviour
 {
     [SerializeField, Tooltip("Rotation speed, in degrees")] float turretRotationSpeed = 5f;
-
-    float shotCounter;
 
     Transform turret;
     float maxAngle;
     float minAngle;
     float turretAngle = 0;
     bool isRotatingCW;
-    
-    public override void Do()
+
+    public override BehaviourState Do(BehaviourState currentState)
     {
-        RotateAndFire();
+        // Only rotate after firing weapon
+        if (currentState.HasFlag(BehaviourState.Fired))
+        {
+            RotateTurret();
+        }
+
+        return currentState;
     }
 
     public override void SetWeapon(EnemyWeapon weapon)
     {
         base.SetWeapon(weapon);
         SetTurretAngle();
-        ResetShotCooldown();
+        RotateTurret();
     }
 
-    private void RotateAndFire()
-    {
-        shotCounter -= Time.deltaTime;
-        if (shotCounter <= 0)
-        {
-            RotateWeaponTurret();
-            FireWeapon();
-            ResetShotCooldown();
-        }
-    }
-
-    private void FireWeapon()
-    {
-        weapon.Activate();
-    }
-
-    private void RotateWeaponTurret()
+    private void RotateTurret()
     {
         turret.rotation = Quaternion.AngleAxis(turretAngle, Vector3.forward);
         if (isRotatingCW)
@@ -77,12 +65,5 @@ public class RotateTurretAndFireWeaponBehaviour : WeaponBehaviour
             turretAngle = maxAngle;
             isRotatingCW = true;
         }
-    }
-
-    private void ResetShotCooldown()
-    {
-        float cooldown = weapon.GetShotCooldown().GetCalcValue();
-        float variation = weapon.GetCooldownVariation();
-        shotCounter = Random.Range(cooldown - variation, cooldown + variation);
     }
 }
