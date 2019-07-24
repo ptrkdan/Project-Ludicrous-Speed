@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FireAtPlayerYCoordBehaviour : WeaponBehaviour
+public class FireAtAngleBehaviour : WeaponBehaviour
 {
     [SerializeField] float shootUpAngle = 90f;
     [SerializeField] float shootDownAngle = -90f;
