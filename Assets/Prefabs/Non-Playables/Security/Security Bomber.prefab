@@ -125,7 +125,8 @@ GameObject:
   - component: {fileID: 3833136888139985767}
   - component: {fileID: 3833136888139985766}
   - component: {fileID: 3833136888139985765}
-  - component: {fileID: 3833136888139985764}
+  - component: {fileID: 3995701485575024793}
+  - component: {fileID: 5346882653142418721}
   - component: {fileID: 623372076564376414}
   m_Layer: 12
   m_Name: Security Bomber
@@ -241,9 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3be0118abc26754ca3d4d4526b64e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponConfig: {fileID: 0}
-  turret: {fileID: 0}
-  spawnPreference: 0
+  weaponConfig: {fileID: 11400000, guid: 7162c489106693245b60bb14a83cca5e, type: 2}
+  turret: {fileID: 3833136886636285091}
+  spawnPreference: 1
 --- !u!114 &3833136888139985765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +279,7 @@ MonoBehaviour:
   explosionDuration: 1
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.7
---- !u!114 &3833136888139985764
+--- !u!114 &3995701485575024793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,9 +288,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 3833136888139988123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7bc06a3a768e842b30b69c24e34e14, type: 3}
+  m_Script: {fileID: 11500000, guid: 74d35cebfb10bc04f9729a8d6fa7e994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnitude: 1
+  frequency: 0.5
+--- !u!114 &5346882653142418721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833136888139988123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5ba92916fa318448b6182de959c4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootUpAngle: 45
+  shootDownAngle: -45
 --- !u!114 &623372076564376414
 MonoBehaviour:
   m_ObjectHideFlags: 0
