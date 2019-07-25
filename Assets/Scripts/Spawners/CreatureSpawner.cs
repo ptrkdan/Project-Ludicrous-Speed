@@ -103,6 +103,12 @@ public class CreatureSpawner : MonoBehaviour
 
                 randomIndex = Random.Range(minSpawnPosition, maxSpawnPosition);
                 break;
+            case (SpawnPreference.Top):
+                randomIndex = topSpawnPoints[Random.Range(0, topSpawnPoints.Count)];
+                break;
+            case (SpawnPreference.Bottom):
+                randomIndex = bottomSpawnPoints[Random.Range(0, bottomSpawnPoints.Count)];
+                break;
             case (SpawnPreference.TopBottom):
                 randomIndex = topBottomSpawnPoints[Random.Range(0, topBottomSpawnPoints.Count)];
                 break;

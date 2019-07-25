@@ -51,4 +51,4 @@ public abstract class EnemyController : LivingInteractable
     }
 }
 
-public enum SpawnPreference { NearPlayer, TopBottom, Middle, Anywhere }
+public enum SpawnPreference { NearPlayer, Top, Bottom, TopBottom, Middle, Anywhere }
