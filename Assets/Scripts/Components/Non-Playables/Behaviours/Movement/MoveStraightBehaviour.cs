@@ -14,7 +14,7 @@ public class MoveStraightBehaviour : MovementBehaviour
         Vector3 movement = Vector3.right 
             * transform.parent.localScale.x 
             * engineFactor 
-            * Time.fixedDeltaTime;
+            * Time.deltaTime;
         rigidBody.MovePosition(transform.position + movement);
     }
 

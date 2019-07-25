@@ -21,17 +21,18 @@ MonoBehaviour:
   unlockPrereq:
     criteria: ffffffffffffffffffffffffffffffffffffffffffffffffffffffff
   difficultyLevel: 1
-  securityLevel: 1
+  securityLevel: 8
   securityUnits:
-  - {fileID: 6967525668798753815, guid: 73c77629bc63cd84680105853e2a6e4b, type: 3}
+  - {fileID: 3833136888139985766, guid: 7750dafd143927046a92ab7c95c8515d, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
   creatureLevel: 1
   creatures: []
   hasCreatureBoss: 0
   potentialCreatureBoss: []
-  debrisLevel: 1
-  debris: []
+  debrisLevel: 5
+  debris:
+  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
   lootLevel: 1
   creditRewardLevel: 1
   lootDrops: []

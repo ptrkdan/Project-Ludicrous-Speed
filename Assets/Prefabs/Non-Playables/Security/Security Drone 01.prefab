@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6967525668798753814}
   - component: {fileID: 6967525668798753815}
   - component: {fileID: 6967525668798753812}
-  - component: {fileID: 1372369450605176021}
+  - component: {fileID: 1173824741672096822}
   - component: {fileID: 344975942407152073}
   - component: {fileID: 6967525668798753813}
   - component: {fileID: 6614033572888467984}
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponConfig: {fileID: 11400000, guid: 0e98f5e57e2e6c44c921be39e4ec54ef, type: 2}
   turret: {fileID: 6967525669705354668}
-  spawnPreference: 1
+  spawnPreference: 3
 --- !u!114 &6967525668798753812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   explosionDuration: 1
   deathSFX: {fileID: 8300000, guid: 0368953b2537c9944b4577939f1ac4e8, type: 3}
   deathSFXVolume: 0.7
---- !u!114 &1372369450605176021
+--- !u!114 &1173824741672096822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,9 +98,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6967525668798753817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7bc06a3a768e842b30b69c24e34e14, type: 3}
+  m_Script: {fileID: 11500000, guid: 573144e9223a7e24c81bf929dcd4965a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  avoidLayers:
+    serializedVersion: 2
+    m_Bits: 10496
+  lookAheadDistance: 10
 --- !u!114 &344975942407152073
 MonoBehaviour:
   m_ObjectHideFlags: 0
