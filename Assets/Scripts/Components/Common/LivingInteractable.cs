@@ -16,7 +16,6 @@ public class LivingInteractable : Interactable
 
     private void Update()
     {
-        behaviourStates = BehaviourState.None;
         foreach (Behaviour behaviour in behaviours)
         {
             behaviourStates = behaviour.Do(behaviourStates);

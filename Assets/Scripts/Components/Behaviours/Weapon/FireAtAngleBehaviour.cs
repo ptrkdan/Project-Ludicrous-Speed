@@ -5,45 +5,28 @@ public class FireAtAngleBehaviour : WeaponBehaviour
     [SerializeField] float shootUpAngle = 90f;
     [SerializeField] float shootDownAngle = -90f;
 
-    float shotCounter;
-    BehaviourState newState = BehaviourState.None;
-
     public override BehaviourState Do(BehaviourState currentState)
     {
         CountdownAndShoot();
 
-        return currentState | newState;
+        return SetNewBehaviourState(currentState);
     }
 
     public override void SetWeapon(EnemyWeapon weapon)
     {
         base.SetWeapon(weapon);
         SetTurretAngle();
-        ResetShotCooldown();
     }
 
-    private void CountdownAndShoot()
+    protected override void CountdownAndShoot()
     {
         shotCounter -= Time.deltaTime;
-        newState = BehaviourState.None;
         if (shotCounter <= 0)
         {
             FireWeapon();
             ResetShotCooldown();
-            newState = BehaviourState.Fired;
+            isFired = true;
         }
-    }
-
-    private void FireWeapon()
-    {
-        weapon.Activate();
-    }
-
-    private void ResetShotCooldown()
-    {
-        float cooldown = weapon.GetShotCooldown().GetCalcValue();
-        float variation = weapon.GetCooldownVariation();
-        shotCounter = Random.Range(cooldown - variation, cooldown + variation);
     }
 
     private void SetTurretAngle()
@@ -54,7 +37,7 @@ public class FireAtAngleBehaviour : WeaponBehaviour
         PlayerController player = FindObjectOfType<PlayerController>();
         bool isPlayerAbove = player.transform.position.y > transform.position.y;
 
-        float angle = 0;
+        float angle;
         if (isPlayerAbove)
         {
             angle = shootUpAngle;
