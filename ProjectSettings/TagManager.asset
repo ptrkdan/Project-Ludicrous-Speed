@@ -10,6 +10,7 @@ TagManager:
   - Non-Friendly
   - Damage Dealer
   - Path
+  - Debris
   layers:
   - Default
   - TransparentFX

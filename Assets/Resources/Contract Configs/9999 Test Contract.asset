@@ -23,7 +23,7 @@ MonoBehaviour:
   difficultyLevel: 1
   securityLevel: 8
   securityUnits:
-  - {fileID: 3833136888139985766, guid: 7750dafd143927046a92ab7c95c8515d, type: 3}
+  - {fileID: 6967525668798753815, guid: 5d076c5a5396ad14bba5d48ab613be78, type: 3}
   hasSecurityBoss: 0
   potentialSecurityBoss: []
   creatureLevel: 1
@@ -31,8 +31,7 @@ MonoBehaviour:
   hasCreatureBoss: 0
   potentialCreatureBoss: []
   debrisLevel: 5
-  debris:
-  - {fileID: 5675900306870086891, guid: 9d5f14781303a214c8624b05e58bab67, type: 3}
+  debris: []
   lootLevel: 1
   creditRewardLevel: 1
   lootDrops: []
