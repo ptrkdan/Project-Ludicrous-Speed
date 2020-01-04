@@ -1,26 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MoveBySineBehaviour : MovementBehaviour
 {
-    const float MAGNITUDE_FACTOR = 0.01f;
+    private const float MAGNITUDE_FACTOR = 0.01f;
 
-    [SerializeField] float magnitude = 1f;
-    [SerializeField] float frequency = 1f;
+    [SerializeField] private float magnitude = 1f;
+    [SerializeField] private float frequency = 1f;
+    private float randomness;
 
-    float randomness;
+    #region Methods: Unity 
 
     private void Awake()
     {
         randomness = Random.Range(0, 180);
     }
 
-    public override BehaviourState Do(BehaviourState currentState)
+    #endregion Methods: Unity 
+
+    public override BehaviourState Do()
     {
         Move();
+        SetBehaviourState();
 
-        return currentState | BehaviourState.Moved;
+        return CurrentState;
     }
 
     protected override void Move()

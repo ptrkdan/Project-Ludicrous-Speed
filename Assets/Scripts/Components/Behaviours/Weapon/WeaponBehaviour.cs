@@ -1,36 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class WeaponBehaviour : Behaviour
 {
     protected bool isFired;
     protected float shotCounter;
 
-    protected EnemyWeapon weapon;
-    public EnemyWeapon GetWeapon() => weapon;
+    public EnemyWeapon Weapon { get; private set; }
+
+    #region Methods: Weapon
+
     public virtual void SetWeapon(EnemyWeapon weapon)
     {
-        this.weapon = weapon;
+        Weapon = weapon;
         ResetShotCooldown();
     }
 
     protected virtual void FireWeapon()
     {
-        weapon.Activate();
+        Weapon.Activate();
     }
 
     protected virtual void ResetShotCooldown()
     {
-        float cooldown = weapon.GetShotCooldown().GetCalcValue();
-        float variation = weapon.GetCooldownVariation();
+        float cooldown = Weapon.GetShotCooldown().GetCalcValue();
+        float variation = Weapon.GetCooldownVariation();
         shotCounter = Random.Range(cooldown - variation, cooldown + variation);
     }
 
-    protected BehaviourState SetNewBehaviourState(BehaviourState currentState)
+    protected virtual void CountdownAndShoot()
     {
-        return isFired ? currentState | BehaviourState.Fired : currentState & (~BehaviourState.Fired);
+        shotCounter -= Time.deltaTime;
+        isFired = false;
+        if (shotCounter <= 0)
+        {
+            FireWeapon();
+            ResetShotCooldown();
+            isFired = true;
+        }
     }
 
-    protected abstract void CountdownAndShoot();
+    #endregion Methods: Weapon 
+
+    #region Methods: Behaviour State
+
+    protected override void SetBehaviourState()
+    {
+        CurrentState = isFired ? CurrentState | BehaviourState.Fired : CurrentState & (~BehaviourState.Fired);
+    }
+
+    #endregion Methods: Behaviour State
 }

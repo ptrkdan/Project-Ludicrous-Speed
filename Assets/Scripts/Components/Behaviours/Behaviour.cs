@@ -2,13 +2,8 @@
 
 public abstract class Behaviour : MonoBehaviour
 {
-    public abstract BehaviourState Do(BehaviourState currentState);
+    protected BehaviourState CurrentState { get; set; } = BehaviourState.None;
 
-}
-[System.Flags]
-public enum BehaviourState {
-    None        = 0,
-    Moved       = 1,
-    Fired       = 2,
-    Interacted  = 4
+    public abstract BehaviourState Do();
+    protected abstract void SetBehaviourState();
 }

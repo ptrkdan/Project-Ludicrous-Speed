@@ -2,18 +2,19 @@
 
 public class MoveAndAvoidBehaviour : MovementBehaviour
 {
-    [SerializeField] LayerMask avoidLayers;
-    [SerializeField] float lookAheadDistance = 10f;
+    [SerializeField] private LayerMask avoidLayers;
+    [SerializeField] private float lookAheadDistance = 10f;
 
-    float yDirection = 0;
-    bool isDangerAhead = false;
+    private float yDirection = 0;
+    private bool isDangerAhead = false;
 
-    public override BehaviourState Do(BehaviourState currentState)
+    public override BehaviourState Do()
     {
         CheckAhead();
         Move();
+        SetBehaviourState();
 
-        return currentState | BehaviourState.Moved;
+        return CurrentState;
     }
 
     protected override void Move()
@@ -52,13 +53,6 @@ public class MoveAndAvoidBehaviour : MovementBehaviour
                 Vector2.right,
                 lookAheadDistance,
                 avoidLayers);
-        if (lookAhead.collider != null)
-        {
-            isDangerAhead = true;
-        }
-        else
-        {
-            isDangerAhead = false;
-        }
+        isDangerAhead = lookAhead.collider != null;
     }
 }

@@ -1,24 +1,10 @@
-﻿using UnityEngine;
-
-public class FireWeaponBehaviour : WeaponBehaviour
+﻿public class FireWeaponBehaviour : WeaponBehaviour
 {
-
-    public override BehaviourState Do(BehaviourState currentState)
+    public override BehaviourState Do()
     {
         CountdownAndShoot();
+        SetBehaviourState();
 
-        return SetNewBehaviourState(currentState);
-    }
-
-    protected override void CountdownAndShoot()
-    {
-        shotCounter -= Time.deltaTime;
-        isFired = false;
-        if (shotCounter <= 0)
-        {
-            FireWeapon();
-            ResetShotCooldown();
-            isFired = true;
-        }
+        return CurrentState;
     }
 }

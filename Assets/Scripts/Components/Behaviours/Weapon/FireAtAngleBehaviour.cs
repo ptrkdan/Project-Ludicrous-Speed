@@ -2,14 +2,17 @@
 
 public class FireAtAngleBehaviour : WeaponBehaviour
 {
-    [SerializeField] float shootUpAngle = 90f;
-    [SerializeField] float shootDownAngle = -90f;
+    private const float DEFAULT_ANGLE = 90f;
 
-    public override BehaviourState Do(BehaviourState currentState)
+    [SerializeField] private float shootUpAngle = DEFAULT_ANGLE;
+    [SerializeField] private float shootDownAngle = -DEFAULT_ANGLE;
+
+    public override BehaviourState Do()
     {
         CountdownAndShoot();
+        SetBehaviourState();
 
-        return SetNewBehaviourState(currentState);
+        return CurrentState;
     }
 
     public override void SetWeapon(EnemyWeapon weapon)
@@ -18,35 +21,19 @@ public class FireAtAngleBehaviour : WeaponBehaviour
         SetTurretAngle();
     }
 
-    protected override void CountdownAndShoot()
-    {
-        shotCounter -= Time.deltaTime;
-        if (shotCounter <= 0)
-        {
-            FireWeapon();
-            ResetShotCooldown();
-            isFired = true;
-        }
-    }
+    #region Private Methods
 
     private void SetTurretAngle()
     {
-        Transform turret = weapon.GetTurretPosition();
+        Transform turret = Weapon.GetTurretPosition();
 
         // Find player position
         PlayerController player = FindObjectOfType<PlayerController>();
         bool isPlayerAbove = player.transform.position.y > transform.position.y;
 
-        float angle;
-        if (isPlayerAbove)
-        {
-            angle = shootUpAngle;
-        }
-        else
-        {
-            angle = shootDownAngle;
-        }
-
+        float angle = isPlayerAbove ? shootUpAngle : shootDownAngle;
         turret.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+
+    #endregion Private Methods
 }

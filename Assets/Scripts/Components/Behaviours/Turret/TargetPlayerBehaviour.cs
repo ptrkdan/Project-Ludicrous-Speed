@@ -1,19 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TargetPlayerBehaviour : TurretBehaviour
+﻿public class TargetPlayerBehaviour : TurretBehaviour
 {
-    public override BehaviourState Do(BehaviourState currentState)
+    public override BehaviourState Do()
     {
         RotateTurret();
 
-        return currentState;
-    }
-
-    private void RotateTurret()
-    {
-        
+        return CurrentState;
     }
 
     protected override void SetTurretAngle()
@@ -23,5 +14,10 @@ public class TargetPlayerBehaviour : TurretBehaviour
         // Find angle towards player
 
         // Set turret angle
+    }
+
+    private void RotateTurret()
+    {
+
     }
 }

@@ -2,18 +2,20 @@
 
 public class MoveStraightBehaviour : MovementBehaviour
 {
-    public override BehaviourState Do(BehaviourState currentState)
+    public override BehaviourState Do()
     {
         Move();
-        return currentState | BehaviourState.Moved;
+        SetBehaviourState();
+
+        return CurrentState;
     }
 
     protected override void Move()
     {
         float engineFactor = stats.GetStat(StatType.Engine).GetCalcValue();
-        Vector3 movement = Vector3.right 
-            * transform.parent.localScale.x 
-            * engineFactor 
+        Vector3 movement = Vector3.right
+            * transform.parent.localScale.x
+            * engineFactor
             * Time.deltaTime;
         rigidBody.MovePosition(transform.position + movement);
     }
