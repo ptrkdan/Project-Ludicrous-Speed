@@ -2,8 +2,8 @@
 
 public class ChargedWeapon : Weapon
 {
-    Stat chargeDuration;
-    ChargedProjectile chargingProjectile;
+    private Stat chargeDuration;
+    private ChargedProjectile chargingProjectile;
 
     public ChargedWeapon() : base() { }
 
@@ -53,8 +53,8 @@ public class ChargedWeapon : Weapon
                 projectilePrefab,
                 turret.position,
                 turret.rotation) as ChargedProjectile;
-        projectile.SetDamage(damage.GetCalcValue());
-        Vector2 velocity = turret.transform.right * speed.GetCalcValue();
+        projectile.SetDamage(damage.Value);
+        Vector2 velocity = turret.transform.right * speed.Value;
         projectile.SetVelocity(velocity);
 
         return projectile;

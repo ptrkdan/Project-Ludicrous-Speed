@@ -1,19 +1,32 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LootDropper : MonoBehaviour
 {
-    [SerializeField] bool specialLootOverride;
-    [SerializeField] PickUpLootConfig specialLootConfig;
+    [SerializeField] private bool specialLootOverride;
+    [SerializeField] private PickUpLootConfig specialLootConfig;
+
+    #region Methods: Unity
 
     private void OnDestroy()
     {
         DropLoot();
     }
 
+    #endregion Methods: Unity
+
     private void DropLoot()
     {
-        PickUpLootConfig lootConfig = null;
+        PickUpLootConfig lootConfig = AttemptLootDrop();
+        if (lootConfig != null)
+        {
+            LootController loot = Instantiate(lootConfig.LootPrefab, LootManager.instance.transform);
+            loot.Drop(lootConfig, transform.position);
+        }
+    }
+
+    private PickUpLootConfig AttemptLootDrop()
+    {
+        PickUpLootConfig lootConfig;
         if (specialLootOverride)
         {
             lootConfig = specialLootConfig;
@@ -21,13 +34,8 @@ public class LootDropper : MonoBehaviour
         else
         {
             lootConfig = LootManager.instance.DropLoot();
-            
         }
 
-        if (lootConfig != null)
-        {
-            LootController loot = Instantiate(lootConfig.LootPrefab, LootManager.instance.transform);
-            loot.Drop(lootConfig, transform.position);
-        }
+        return lootConfig;
     }
 }

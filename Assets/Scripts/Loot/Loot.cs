@@ -43,4 +43,3 @@ public class Loot : ScriptableObject
 public enum LootType { Currency, Loot, Equipment }
 public enum DamageType { None, Laser, Ballistic, Bio }
 public enum ArmourType { None, Shield, Hull, Metal, Bio, Mineral }
-public enum StatType { Hull, Shield, Engine, Weapon, Aux }

@@ -22,7 +22,7 @@ public abstract class WeaponBehaviour : Behaviour
 
     protected virtual void ResetShotCooldown()
     {
-        float cooldown = Weapon.GetShotCooldown().GetCalcValue();
+        float cooldown = Weapon.GetShotCooldown().Value;
         float variation = Weapon.GetCooldownVariation();
         shotCounter = Random.Range(cooldown - variation, cooldown + variation);
     }

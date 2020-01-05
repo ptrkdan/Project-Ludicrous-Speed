@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class SemiAutoWeapon : Weapon
 {
-    Stat burstCooldown;
-    int numShots;
-    float lastShotFired = 0;
-    bool isTriggerReleased;
+    private Stat burstCooldown;
+    private int numShots;
+    private float lastShotFired = 0;
+    private bool isTriggerReleased;
 
     public SemiAutoWeapon() : base() { }
 
@@ -47,8 +47,8 @@ public class SemiAutoWeapon : Weapon
             projectilePrefab,
             turret.position,
             turret.rotation);
-        projectile.SetDamage(damage.GetCalcValue());
-        Vector2 velocity = turret.transform.right * speed.GetCalcValue();
+        projectile.SetDamage(damage.Value);
+        Vector2 velocity = turret.transform.right * speed.Value;
         projectile.SetVelocity(velocity);
 
         return projectile;
@@ -62,16 +62,16 @@ public class SemiAutoWeapon : Weapon
             CreateProjectile().Fire();
             PlayFireSFX();
 
-            yield return new WaitForSeconds(shotCooldown.GetCalcValue());
+            yield return new WaitForSeconds(shotCooldown.Value);
             shotsFired++;
         }
-        
+
     }
 
     private bool IsShotReady()
     {
         bool isShotReady = false;
-        if (Time.time - lastShotFired >= burstCooldown.GetCalcValue())
+        if (Time.time - lastShotFired >= burstCooldown.Value)
         {
             isShotReady = true;
         }

@@ -19,7 +19,7 @@ public class MoveAndAvoidBehaviour : MovementBehaviour
 
     protected override void Move()
     {
-        float engineFactor = stats.GetStat(StatType.Engine).GetCalcValue();
+        float engineFactor = stats.GetStat(StatType.Engine).Value;
         Vector3 xMovement = Vector3.right
             * transform.parent.localScale.x
             * engineFactor

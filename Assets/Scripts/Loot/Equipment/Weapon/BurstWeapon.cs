@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class BurstWeapon : Weapon
 {
-    Projectile projectilePrefab;
-    float burstRadius;
-    int numOfShots;
-
-    Quaternion originalTurretRotation;
-    float lastShotFired;
-    bool isTriggerReleased;
+    private new Projectile projectilePrefab;
+    private float burstRadius;
+    private int numOfShots;
+    private Quaternion originalTurretRotation;
+    private float lastShotFired;
+    private bool isTriggerReleased;
 
     public BurstWeapon() : base() { }
 
@@ -61,8 +60,8 @@ public class BurstWeapon : Weapon
                 projectilePrefab,
                 turret.position,
                 turret.rotation);  // Add random rotation to turret rotation
-        projectile.SetDamage(damage.GetCalcValue());
-        Vector2 velocity = turret.transform.right * speed.GetCalcValue();
+        projectile.SetDamage(damage.Value);
+        Vector2 velocity = turret.transform.right * speed.Value;
         projectile.SetVelocity(velocity);
 
         return projectile;
@@ -72,7 +71,7 @@ public class BurstWeapon : Weapon
     {
         bool isShotReady = false;
 
-        if (Time.time - lastShotFired >= shotCooldown.GetCalcValue())
+        if (Time.time - lastShotFired >= shotCooldown.Value)
         {
             isShotReady = true;
         }

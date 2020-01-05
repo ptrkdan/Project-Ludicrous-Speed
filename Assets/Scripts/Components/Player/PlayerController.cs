@@ -3,34 +3,31 @@ using UnityEngine;
 
 public class PlayerController : LivingInteractable
 {
-    const float START_POS_X = 10f;
-    const float START_POS_Y = 8f;
+    private const float START_POS_X = 10f;
+    private const float START_POS_Y = 8f;
 
-    [SerializeField] Transform turret;
+    [SerializeField] private Transform turret;
 
     [Header("Equipments")]
-    [SerializeField] Weapon primaryWpn;
-    [SerializeField] Weapon secondaryWpn;
-    [SerializeField] SupportEquipment supportEquip;
+    [SerializeField] private Weapon primaryWpn;
+    [SerializeField] private Weapon secondaryWpn;
+    [SerializeField] private SupportEquipment supportEquip;
 
     [Space]
-    [SerializeField] float engineValueFactor = 0.5f;
+    [SerializeField] private float engineValueFactor = 0.5f;
     private float movementXMin;
     private float movementXMax;
     private float movementYMin;
     private float movementYMax;
-
-    Vector3 movement = new Vector2();
-
-    PlayerSingleton player;
-    Animator animator;
-    Rigidbody2D rigidBody;
-    bool isFiringPrimaryWpn = false;
-    bool isFiringSecondaryWpn = false;
-    Coroutine primaryWpnCoroutine;
-    Coroutine secondaryWpnCoroutine;
-
-    bool isControllable = false;
+    private Vector3 movement = new Vector2();
+    private PlayerSingleton player;
+    private Animator animator;
+    private Rigidbody2D rigidBody;
+    private bool isFiringPrimaryWpn = false;
+    private bool isFiringSecondaryWpn = false;
+    private Coroutine primaryWpnCoroutine;
+    private Coroutine secondaryWpnCoroutine;
+    private bool isControllable = false;
 
     private void Start()
     {
@@ -69,7 +66,7 @@ public class PlayerController : LivingInteractable
         // Stop any weapon coroutines
         StopAllCoroutines();
     }
-    
+
     public override void Interact(Interactable other)
     {
         GetComponent<DamageDealer>().DealDamage(other);
@@ -129,7 +126,7 @@ public class PlayerController : LivingInteractable
         }
     }
 
-    IEnumerator ActivatePrimaryWeapon()
+    private IEnumerator ActivatePrimaryWeapon()
     {
         while (true)
         {
@@ -137,7 +134,7 @@ public class PlayerController : LivingInteractable
 
             if (primaryWpn.GetWeaponType() == WeaponType.Auto)
             {
-                yield return new WaitForSeconds(primaryWpn.GetShotCooldown().GetCalcValue());
+                yield return new WaitForSeconds(primaryWpn.GetShotCooldown().Value);
             }
             else if (primaryWpn.GetWeaponType() == WeaponType.Charged)
             {
@@ -153,7 +150,7 @@ public class PlayerController : LivingInteractable
         primaryWpn.Deactivate();
     }
 
-    IEnumerator ActivateSecondaryWeapon()
+    private IEnumerator ActivateSecondaryWeapon()
     {
         while (true)
         {
@@ -161,7 +158,7 @@ public class PlayerController : LivingInteractable
 
             if (secondaryWpn.GetWeaponType() == WeaponType.Auto)
             {
-                yield return new WaitForSeconds(secondaryWpn.GetShotCooldown().GetCalcValue());
+                yield return new WaitForSeconds(secondaryWpn.GetShotCooldown().Value);
             }
             else if (secondaryWpn.GetWeaponType() == WeaponType.Charged)
             {
@@ -181,7 +178,7 @@ public class PlayerController : LivingInteractable
     {
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         float playerEngineValue =
-            StatsManager.instance.GetStat(StatType.Engine).GetCalcValue() * engineValueFactor;
+            StatsManager.instance.GetStat(StatType.Engine).Value * engineValueFactor;
         Vector3 newPosition =
             transform.position + movement * playerEngineValue * Time.fixedDeltaTime;
         newPosition.Set(

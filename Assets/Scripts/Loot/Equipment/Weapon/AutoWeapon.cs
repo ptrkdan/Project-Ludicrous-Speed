@@ -32,8 +32,8 @@ public class AutoWeapon : Weapon
                 projectilePrefab,
                 turret.position,
                 turret.rotation);
-        projectile.SetDamage(damage.GetCalcValue());
-        Vector2 velocity = turret.transform.right * speed.GetCalcValue();
+        projectile.SetDamage(damage.Value);
+        Vector2 velocity = turret.transform.right * speed.Value;
         projectile.SetVelocity(velocity);
 
         return projectile;

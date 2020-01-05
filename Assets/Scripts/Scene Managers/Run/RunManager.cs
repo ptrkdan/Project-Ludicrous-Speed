@@ -13,28 +13,25 @@ public class RunManager : MonoBehaviour
         instance = this;
     }
     #endregion
-    [SerializeField] SceneLoader sceneLoader;
-    [SerializeField] BackgroundParticleManager bgParticleManager;
-    [SerializeField] PlayableDirector runEndTimeline;
+    [SerializeField] private SceneLoader sceneLoader;
+    [SerializeField] private BackgroundParticleManager bgParticleManager;
+    [SerializeField] private PlayableDirector runEndTimeline;
 
     [Header("Spawners")]
-    [SerializeField] DebrisSpawner asteroidSpawner;
-    [SerializeField] SecuritySpawner securitySpawner;
-    [SerializeField] CreatureSpawner leftCreatureSpawner;
-    [SerializeField] CreatureSpawner rightCreatureSpawner;
+    [SerializeField] private DebrisSpawner asteroidSpawner;
+    [SerializeField] private SecuritySpawner securitySpawner;
+    [SerializeField] private CreatureSpawner leftCreatureSpawner;
+    [SerializeField] private CreatureSpawner rightCreatureSpawner;
 
     [Header("UI References")]
-    [SerializeField] TextMeshProUGUI distanceRemainingText;
-
-    GameSession session;
-    ContractConfig config;
-    PlayerController player;
-
-    int distanceRemaining;
-
-    bool isStarted = false;
-    bool isFinished = false;
-    float playerEngineStatFactor;
+    [SerializeField] private TextMeshProUGUI distanceRemainingText;
+    private GameSession session;
+    private ContractConfig config;
+    private PlayerController player;
+    private int distanceRemaining;
+    private bool isStarted = false;
+    private bool isFinished = false;
+    private float playerEngineStatFactor;
     private void Start()
     {
         session = FindObjectOfType<GameSession>();
@@ -83,7 +80,7 @@ public class RunManager : MonoBehaviour
     {
         FindObjectOfType<ShieldSlider>().UpdateValue(value);
     }
-       
+
     #region Run Configuration
     private void ConfigureRun()
     {
@@ -120,7 +117,7 @@ public class RunManager : MonoBehaviour
         List<CreatureController> rightCreatureSpawnerPrefabs = new List<CreatureController>();
         foreach (CreatureController creature in config.Creatures)
         {
-            switch(creature.GetSpawnPointSidePreference())
+            switch (creature.GetSpawnPointSidePreference())
             {
                 case (SpawnPointSidePreference.Left):
                     leftCreatureSpawnerPrefabs.Add(creature);
@@ -164,7 +161,7 @@ public class RunManager : MonoBehaviour
     private void UpdateSpeed()
     {
         float playerEngineStat =
-            player.GetComponent<PlayerStats>().GetStat(StatType.Engine).GetCalcValue();
+            player.GetComponent<PlayerStats>().GetStat(StatType.Engine).Value;
         playerEngineStatFactor = playerEngineStat / 25;        // TODO: Create factor formula
         bgParticleManager.UpdateVelocity(playerEngineStatFactor);
     }
@@ -190,14 +187,14 @@ public class RunManager : MonoBehaviour
 
     private bool IsMapClear()
     {
-        SecuritySpawnPoint[] securitySpawnPoints = 
+        SecuritySpawnPoint[] securitySpawnPoints =
             securitySpawner.GetComponentsInChildren<SecuritySpawnPoint>();
         foreach (SecuritySpawnPoint spawnPoint in securitySpawnPoints)
         {
             if (spawnPoint.HasChildren())
             {
                 return false;// Spawner has children; map is not cleared
-            }      
+            }
         }
         AsteroidSpawnPoint[] asteroidSpawnPoints =
             asteroidSpawner.GetComponentsInChildren<AsteroidSpawnPoint>();

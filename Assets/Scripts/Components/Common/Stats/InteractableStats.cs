@@ -15,16 +15,31 @@ public class InteractableStats : MonoBehaviour
     [SerializeField] protected Stat weapon;
     [SerializeField] protected Stat aux;
 
-    List<StatModifier> modifiers = new List<StatModifier>();
+    private List<StatModifier> modifiers = new List<StatModifier>();
 
     public delegate void OnStatChange(StatType type);
     public OnStatChange onStatChange;
 
-    public float GetCurrentHealth() => currentHealth;
-    public void SetCurrentHealth(float currentHealth) => this.currentHealth = currentHealth;
-    public Stat GetStat(StatType type) {
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
+
+    #region Methods: Unity
+
+    private void OnDisable()
+    {
+        foreach (StatModifier modifier in modifiers)
+        {
+            RemoveBuff(modifier.StatType, modifier);
+        }
+    }
+
+    #endregion Methods: Unity
+
+    #region Methods: Stats
+
+    public Stat GetStat(StatType type)
+    {
         Stat stat;
-        switch(type)
+        switch (type)
         {
             case (StatType.Hull):
                 stat = hull;
@@ -49,28 +64,40 @@ public class InteractableStats : MonoBehaviour
         return stat;
     }
 
-    private void OnDisable()
-    { 
-        foreach(StatModifier modifier in modifiers)
+    public void UpdateStats()
+    {
+        foreach (StatType type in Enum.GetValues(typeof(StatType)))
         {
-            RemoveBuff(modifier.StatType, modifier);
+            GetStat(type).UpdateCalcValue();
         }
     }
 
-    protected virtual float CalculateDamage(float damage) {
-        float finalDamage = damage - GetStat(StatType.Hull).GetCalcValue();
-        return Mathf.Clamp(finalDamage, 0, float.MaxValue);
+    #endregion Methods: Stats
+
+    #region Methods: Damage
+
+    public virtual void TakeDamage(float damage)
+    {
+        currentHealth -= CalculateDamage(damage);
     }
 
-    public virtual void TakeDamage(float damage) {
-            currentHealth -= CalculateDamage(damage);
-    }
-
-    public virtual void RepairDamage(float repair) {
+    public virtual void RepairDamage(float repair)
+    {
         currentHealth = Mathf.Clamp(currentHealth + repair, 0, maxHealth);
     }
 
-    public virtual void SetBuff(StatType type, StatModifier modifier) {
+    protected virtual float CalculateDamage(float damage)
+    {
+        float finalDamage = damage - GetStat(StatType.Hull).Value;      // TODO: Write formula for damage mitigation
+        return Mathf.Clamp(finalDamage, 0, float.MaxValue);
+    }
+
+    #endregion Methods: Damage
+
+    #region Methods: Buff
+
+    public virtual void SetBuff(StatType type, StatModifier modifier)
+    {
         if (modifier.Duration > 0)
         {
             StartCoroutine(SetBuffForDuration(type, modifier));
@@ -84,25 +111,24 @@ public class InteractableStats : MonoBehaviour
         onStatChange?.Invoke(type);
     }
 
-    public virtual void RemoveBuff(StatType type, StatModifier modifier) {
+    public virtual void RemoveBuff(StatType type, StatModifier modifier)
+    {
         GetStat(type).RemoveModifier(modifier.Source);
         onStatChange?.Invoke(type);
     }
 
-    IEnumerator SetBuffForDuration(StatType type, StatModifier modifier) {
+    private IEnumerator SetBuffForDuration(StatType type, StatModifier modifier)
+    {
         GetStat(type).AddModifier(modifier);
         yield return new WaitForSeconds(modifier.Duration);
         modifiers.Remove(modifier);
-        RemoveBuff(type, modifier);     
+        RemoveBuff(type, modifier);
     }
 
-    public void UpdateStats() {
-        foreach(StatType type in Enum.GetValues(typeof(StatType))) {
-            GetStat(type).UpdateCalcValue();
-        }
-    }
+    #endregion Methods: Buff
 
-    public virtual void Die() { 
+    public virtual void Die()
+    {
         Destroy(gameObject);
     }
 }

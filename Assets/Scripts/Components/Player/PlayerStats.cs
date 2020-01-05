@@ -3,22 +3,25 @@
 public class PlayerStats : InteractableStats
 {
     [Header("VFX")]
-    [SerializeField] ParticleSystem explosionVFX;
-    [SerializeField] float explosionDuration = 1;
+#pragma warning disable CS0649 // Field 'PlayerStats.explosionVFX' is never assigned to, and will always have its default value null
+    [SerializeField] private ParticleSystem explosionVFX;
+#pragma warning restore CS0649 // Field 'PlayerStats.explosionVFX' is never assigned to, and will always have its default value null
+    [SerializeField] private float explosionDuration = 1;
 
     [Header("Audio")]
-    [SerializeField] AudioClip deathSFX;
-    [SerializeField] [Range(0, 1)] float deathSFXVolume = 1f;
+#pragma warning disable CS0649 // Field 'PlayerStats.deathSFX' is never assigned to, and will always have its default value null
+    [SerializeField] private AudioClip deathSFX;
+#pragma warning restore CS0649 // Field 'PlayerStats.deathSFX' is never assigned to, and will always have its default value null
+    [SerializeField] [Range(0, 1)] private float deathSFXVolume = 1f;
 
     [Header("Misc.")]
-    [SerializeField] bool isInvincible = false;
-    [SerializeField] float gameOverDelay = 2f;
-
-    float maxShield;
-    float currentShield;
-    float shieldRegenDelay;
-    float shieldRegenAmount;
-    float timeUntilShieldRegen;
+    [SerializeField] private bool isInvincible = false;
+    [SerializeField] private float gameOverDelay = 2f;
+    private float maxShield;
+    private float currentShield;
+    private float shieldRegenDelay;
+    private float shieldRegenAmount;
+    private float timeUntilShieldRegen;
 
     private void Start()
     {
@@ -39,10 +42,10 @@ public class PlayerStats : InteractableStats
         aux = StatsManager.instance.GetStat(StatType.Aux);
         maxHealth = StatsManager.instance.GetMaxHealth();
         currentHealth = maxHealth;
-        maxShield = Mathf.FloorToInt(shield.GetCalcValue()) * 100;  // TODO Make shield factor const
+        maxShield = Mathf.FloorToInt(shield.Value) * 100;  // TODO Make shield factor const
         currentShield = maxShield;
         shieldRegenDelay = 200;                                     // TODO Finalize shield regen formula
-        shieldRegenAmount = aux.GetCalcValue();                 // TODO Make shield regen amount formula
+        shieldRegenAmount = aux.Value;                 // TODO Make shield regen amount formula
         timeUntilShieldRegen = shieldRegenDelay;
     }
 

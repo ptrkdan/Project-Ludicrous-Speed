@@ -2,12 +2,13 @@
 
 public class DamageDealer : MonoBehaviour
 {
-    [SerializeField] float damage = 100;
+    [SerializeField] public float Damage = 100;
 
-    public float Damage { get => damage;
-        set => damage = value; }
-
-    public void DealDamage(Interactable target) {
-        target.GetComponent<LivingInteractable>()?.TakeDamage(damage);
+    public void DealDamage(Interactable target)
+    {
+        if (target is LivingInteractable)
+        {
+            target.GetComponent<LivingInteractable>().TakeDamage(Damage);
+        }
     }
 }

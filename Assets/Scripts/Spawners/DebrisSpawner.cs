@@ -5,20 +5,19 @@ using UnityEngine;
 public class DebrisSpawner : MonoBehaviour
 {
     [Header("Spawn parameters")]
-    [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
-    [SerializeField] List<DebrisController> debrisPrefabs;
+    [SerializeField] private Vector2 spawnDelayRange = new Vector2(1, 10);
+    [SerializeField] private List<DebrisController> debrisPrefabs;
 
     [Header("Debris stats")]
-    [SerializeField] float baseHealth = 100;
-    [SerializeField] Vector2 scaleRange = new Vector2(1, 10);
-    [SerializeField] float baseSpeed = 5f;
-    [SerializeField] Vector2 speedRange = new Vector2(0.1f, 5);
-    [SerializeField] float randomSpeedMin = 0.1f;
-    [SerializeField] float randomSpeedMax = 5f;
-
-    bool spawning = true;
-    Transform[] spawnPoints;
-    Transform currentSpawnPoint;
+    [SerializeField] private float baseHealth = 100;
+    [SerializeField] private Vector2 scaleRange = new Vector2(1, 10);
+    [SerializeField] private float baseSpeed = 5f;
+    [SerializeField] private Vector2 speedRange = new Vector2(0.1f, 5);
+    [SerializeField] private float randomSpeedMin = 0.1f;
+    [SerializeField] private float randomSpeedMax = 5f;
+    private bool spawning = true;
+    private Transform[] spawnPoints;
+    private Transform currentSpawnPoint;
 
     private IEnumerator Start()
     {
@@ -73,6 +72,6 @@ public class DebrisSpawner : MonoBehaviour
         newDebris.transform.localScale = new Vector3(randomScale, randomScale, 0);
         newDebris.GetComponent<Rigidbody2D>().MoveRotation(randomSpin);
         newDebris.GetComponent<AsteroidStats>().GetStat(StatType.Engine).AddModifier(speedMod);
-        newDebris.GetComponent<AsteroidStats>().SetCurrentHealth(baseHealth * randomScale / 3);
+        newDebris.GetComponent<AsteroidStats>().CurrentHealth = baseHealth * randomScale / 3;
     }
 }

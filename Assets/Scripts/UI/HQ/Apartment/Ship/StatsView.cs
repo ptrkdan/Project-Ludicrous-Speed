@@ -3,20 +3,21 @@ using TMPro;
 
 public class StatsView : Overlay
 {
-    [SerializeField] TextMeshProUGUI hull; 
-    [SerializeField] TextMeshProUGUI shield; 
-    [SerializeField] TextMeshProUGUI engine; 
-    [SerializeField] TextMeshProUGUI weapon; 
-    [SerializeField] TextMeshProUGUI aux;
+    [SerializeField] private TextMeshProUGUI hull;
+    [SerializeField] private TextMeshProUGUI shield;
+    [SerializeField] private TextMeshProUGUI engine;
+    [SerializeField] private TextMeshProUGUI weapon;
+    [SerializeField] private TextMeshProUGUI aux;
 
-    PlayerSingleton player;
+    private PlayerSingleton player;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         player = FindObjectOfType<PlayerSingleton>();
-        hull.text = player.GetStat(StatType.Hull).GetCalcValue().ToString();
-        shield.text = player.GetStat(StatType.Shield).GetCalcValue().ToString();
-        engine.text = player.GetStat(StatType.Engine).GetCalcValue().ToString();
-        weapon.text = player.GetStat(StatType.Weapon).GetCalcValue().ToString();
-        aux.text = player.GetStat(StatType.Aux).GetCalcValue().ToString();
+        hull.text = player.GetStat(StatType.Hull).Value.ToString();
+        shield.text = player.GetStat(StatType.Shield).Value.ToString();
+        engine.text = player.GetStat(StatType.Engine).Value.ToString();
+        weapon.text = player.GetStat(StatType.Weapon).Value.ToString();
+        aux.text = player.GetStat(StatType.Aux).Value.ToString();
     }
 }
