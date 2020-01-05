@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 
 public class CreditsView : Overlay
 {
-    [SerializeField] TextMeshProUGUI creditsText;
+    [SerializeField] private TextMeshProUGUI creditsText;
 
     private void OnEnable()
     {

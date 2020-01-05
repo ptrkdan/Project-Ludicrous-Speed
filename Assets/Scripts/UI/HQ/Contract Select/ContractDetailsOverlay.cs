@@ -1,25 +1,23 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ContractDetailsOverlay : Overlay
 {
 
     [Header("UI References")]
-    [SerializeField] TextMeshProUGUI contractTitleText;
-    [SerializeField] TextMeshProUGUI contractDetailsText;
-    [SerializeField] Transform lootLabel;
-    [SerializeField] Transform difficultyLabel;
-    [SerializeField] Transform lootList;
-    [SerializeField] Transform specialLootList;
+    [SerializeField] private TextMeshProUGUI contractTitleText;
+    [SerializeField] private TextMeshProUGUI contractDetailsText;
+    [SerializeField] private Transform lootLabel;
+    [SerializeField] private Transform difficultyLabel;
+    [SerializeField] private Transform lootList;
+    [SerializeField] private Transform specialLootList;
 
     [Header("UI Prefabs")]
-    [SerializeField] ContractLootSlot contractLootSlotPrefab;
-
-    GameSession session;
-    SceneLoader sceneLoader;
-    ContractConfig contract;
+    [SerializeField] private ContractLootSlot contractLootSlotPrefab;
+    private GameSession session;
+    private SceneLoader sceneLoader;
+    private ContractConfig contract;
 
     private void Awake()
     {

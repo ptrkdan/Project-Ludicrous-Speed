@@ -4,22 +4,24 @@ public class HangarShipView : Overlay
 {
 
     [Header("Equipment Points")]
-    [SerializeField] EquipmentPoint primaryWpnPoint;
-    [SerializeField] EquipmentPoint secondaryWpnPoint;
-    [SerializeField] EquipmentPoint supportPoint;
-    [SerializeField] EquipmentPoint primaryModPoint;
-    [SerializeField] EquipmentPoint secondaryModPoint;
+    [SerializeField] private EquipmentPoint primaryWpnPoint;
+    [SerializeField] private EquipmentPoint secondaryWpnPoint;
+    [SerializeField] private EquipmentPoint supportPoint;
+    [SerializeField] private EquipmentPoint primaryModPoint;
+    [SerializeField] private EquipmentPoint secondaryModPoint;
 
-    PlayerSingleton player;
-    HangarOverlay hangarManager;
+    private PlayerSingleton player;
+    private HangarOverlay hangarManager;
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         player = FindObjectOfType<PlayerSingleton>();
         hangarManager = FindObjectOfType<HangarOverlay>();
         SetEquipInfo();
     }
 
-    private void SetEquipInfo() {
+    private void SetEquipInfo()
+    {
         primaryWpnPoint.SetInfo(player.GetEquipment(EquipmentSlot.PrimaryWeapon));
         secondaryWpnPoint.SetInfo(player.GetEquipment(EquipmentSlot.SecondaryWeapon));
         supportPoint.SetInfo(player.GetEquipment(EquipmentSlot.Support));
@@ -27,7 +29,8 @@ public class HangarShipView : Overlay
         secondaryModPoint.SetInfo(player.GetEquipment(EquipmentSlot.SecondaryMod));
     }
 
-    public void OnEquipmentClick(EquipmentPoint equipment) {
+    public void OnEquipmentClick(EquipmentPoint equipment)
+    {
         hangarManager.OnEquipmentClick(equipment);
     }
 }

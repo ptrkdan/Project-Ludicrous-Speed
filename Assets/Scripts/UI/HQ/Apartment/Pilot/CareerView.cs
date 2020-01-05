@@ -1,25 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class CareerView : Overlay
 {
     [Header("UI References")]
-    [SerializeField] Image careerIcon;
-    [SerializeField] TextMeshProUGUI playerTitle;
-    [SerializeField] TextMeshProUGUI playerTitleDescription;
+    [SerializeField] private Image careerIcon;
+    [SerializeField] private TextMeshProUGUI playerTitle;
+    [SerializeField] private TextMeshProUGUI playerTitleDescription;
 
-    public void SetCareerIcon(Sprite sprite) {
+    public void SetCareerIcon(Sprite sprite)
+    {
         careerIcon.sprite = sprite;
     }
 
-    public void SetPlayerTitle(string title) {
+    public void SetPlayerTitle(string title)
+    {
         playerTitle.text = title;
     }
 
-    public void SetPlayerTitleDescription(string description) {
+    public void SetPlayerTitleDescription(string description)
+    {
         playerTitleDescription.text = description;
     }
 }

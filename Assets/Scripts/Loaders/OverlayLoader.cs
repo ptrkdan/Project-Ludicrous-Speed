@@ -1,25 +1,28 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class OverlayLoader : MonoBehaviour {
+public class OverlayLoader : MonoBehaviour
+{
 
-    [SerializeField] Canvas worldCanvas;
-    [SerializeField] ContractSelectOverlay contractSelectOverlayPrefab;
-    [SerializeField] ContractDetailsOverlay contractDetailsOverlayPrefab;
-    [SerializeField] ApartmentOverlay apartmentOverlayPrefab;
-    [SerializeField] HangarOverlay hangarShipOverlayPrefab;
-    [SerializeField] MarketOverlay marketOverlayPrefab;
-    [SerializeField] OfficeOverlay officeOverlayPrefab;
+    [SerializeField] private Canvas worldCanvas;
+    [SerializeField] private ContractSelectOverlay contractSelectOverlayPrefab;
+    [SerializeField] private ContractDetailsOverlay contractDetailsOverlayPrefab;
+    [SerializeField] private ApartmentOverlay apartmentOverlayPrefab;
+    [SerializeField] private HangarOverlay hangarShipOverlayPrefab;
+    [SerializeField] private MarketOverlay marketOverlayPrefab;
+    [SerializeField] private OfficeOverlay officeOverlayPrefab;
 
-    GameSession session;
-    SceneLoader sceneLoader;
-    Stack<Overlay> overlayStack;     // Current overlay will always be on the top of the stack
-    
+    private GameSession session;
+    private SceneLoader sceneLoader;
+    private Stack<Overlay> overlayStack;     // Current overlay will always be on the top of the stack
 
-    private void Awake() {
+
+    private void Awake()
+    {
         session = FindObjectOfType<GameSession>();
         sceneLoader = FindObjectOfType<SceneLoader>();
-        if(!session) {
+        if (!session)
+        {
             sceneLoader.GoToPreload();
         }
 
@@ -27,62 +30,77 @@ public class OverlayLoader : MonoBehaviour {
         ResetHQScene();
     }
 
-    private void HideCurrentOverlay() {
-        if (overlayStack.Count > 1) {
+    private void HideCurrentOverlay()
+    {
+        if (overlayStack.Count > 1)
+        {
             overlayStack.Peek().gameObject.SetActive(false);
         }
     }
 
-    private void ShowCurrentOverlay() {
-        if (overlayStack.Count > 1) {
+    private void ShowCurrentOverlay()
+    {
+        if (overlayStack.Count > 1)
+        {
             overlayStack.Peek().gameObject.SetActive(true);
         }
     }
 
-    private void ResetHQScene() {
+    private void ResetHQScene()
+    {
         // TODO: Deactive overlays from stack instead
 
-        if (overlayStack.Count > 1) {
+        if (overlayStack.Count > 1)
+        {
             Overlay overlay = overlayStack.Pop();
-            while (overlay != null) {
+            while (overlay != null)
+            {
                 Destroy(overlay);
                 overlay = overlayStack.Pop();
-            }        
+            }
         }
     }
 
-    private void GoToNextOverlay(Overlay nextOverlayPrefab) {
+    private void GoToNextOverlay(Overlay nextOverlayPrefab)
+    {
         HideCurrentOverlay();
         Overlay nextOverlay = Instantiate(nextOverlayPrefab);
         overlayStack.Push(nextOverlay);
         nextOverlay.Display();
     }
 
-    public void OpenContractSelectOverlay() {
+    public void OpenContractSelectOverlay()
+    {
         GoToNextOverlay(contractSelectOverlayPrefab);
     }
 
-    public void OpenContractDetailsOverlay() {
+    public void OpenContractDetailsOverlay()
+    {
         GoToNextOverlay(contractDetailsOverlayPrefab);
     }
 
-    public void OpenApartmentOverlay() {
+    public void OpenApartmentOverlay()
+    {
         GoToNextOverlay(apartmentOverlayPrefab);
     }
 
-    public void OpenHangarOverlay() {
+    public void OpenHangarOverlay()
+    {
         GoToNextOverlay(hangarShipOverlayPrefab);
     }
-    
-    public void OpenMarketOverlay() {
+
+    public void OpenMarketOverlay()
+    {
         GoToNextOverlay(marketOverlayPrefab);
     }
 
-    public void OpenOfficeOverlay() {
+    public void OpenOfficeOverlay()
+    {
         GoToNextOverlay(officeOverlayPrefab);
     }
 
-    public void GoBack(Overlay currentOverlay) {
+    public void GoBack(Overlay currentOverlay)
+    {
         Destroy(currentOverlay.gameObject);
         overlayStack.Pop();
         ShowCurrentOverlay();

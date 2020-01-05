@@ -1,9 +1,8 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class CreatureController : EnemyController
 {
-    [SerializeField] SpawnPointSidePreference spawnPointSidePreference = SpawnPointSidePreference.Both;
+    [SerializeField] private SpawnPointSidePreference spawnPointSidePreference = SpawnPointSidePreference.Both;
 
     public SpawnPointSidePreference GetSpawnPointSidePreference() => spawnPointSidePreference;
 }

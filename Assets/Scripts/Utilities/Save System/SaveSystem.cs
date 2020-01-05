@@ -4,11 +4,11 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    const string SAVE_FOLDER = "/save";
-    const string PLAYER_SAVE_FILE = "/player.dat";
-    const string INVENTORY_SAVE_FILE = "/inventory.dat";
-    const string EQUIPMENT_SAVE_FILE = "/equipment.dat";
-    static BinaryFormatter formatter = new BinaryFormatter();
+    private const string SAVE_FOLDER = "/save";
+    private const string PLAYER_SAVE_FILE = "/player.dat";
+    private const string INVENTORY_SAVE_FILE = "/inventory.dat";
+    private const string EQUIPMENT_SAVE_FILE = "/equipment.dat";
+    private static BinaryFormatter formatter = new BinaryFormatter();
 
     public static bool IsSaveFileExists()
     {

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ContractLootSlot : MonoBehaviour
 {
-    [SerializeField] Image itemIcon;
+    [SerializeField] private Image itemIcon;
 
     public void SetIcon(Sprite icon)
     {

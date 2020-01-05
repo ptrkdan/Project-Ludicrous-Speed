@@ -6,41 +6,41 @@ using UnityEngine;
 public class ContractConfig : ScriptableObject
 {
     [Header("Basic Details")]
-    [SerializeField] int contractID = 0;
-    [SerializeField] string contractTitle = "New contract";
-    [SerializeField] ContractType contractType = ContractType.Standard;
-    [SerializeField] [TextArea] string contractDetails = "So here's the story...";
-    [SerializeField] int runDistance = 1000;
-    [SerializeField] AssociatedFaction associatedFaction = AssociatedFaction.None;
-    [SerializeField] ContractPrereq unlockPrereq = new ContractPrereq();
+    [SerializeField] private int contractID = 0;
+    [SerializeField] private string contractTitle = "New contract";
+    [SerializeField] private ContractType contractType = ContractType.Standard;
+    [SerializeField, TextArea] private string contractDetails = "So here's the story...";
+    [SerializeField] private int runDistance = 1000;
+    [SerializeField] private AssociatedFaction associatedFaction = AssociatedFaction.None;
+    [SerializeField] private ContractPrereq unlockPrereq = new ContractPrereq();
 
     [Header("Non-Friendlies Parameters")]
-    [SerializeField] [Range(1, 10)] int difficultyLevel = 1;
+    [SerializeField, Range(1, 10)] private int difficultyLevel = 1;
     [Space]
-    [SerializeField] [Range(1, 10)] int securityLevel = 1;
-    [SerializeField] List<SecurityUnitController> securityUnits;               // TODO Change to SecurityController
-    [SerializeField] bool hasSecurityBoss = false;
-    [SerializeField] List<EnemyController> potentialSecurityBoss;       // TODO Change to SecurityBossController
+    [SerializeField, Range(1, 10)] private int securityLevel = 1;
+    [SerializeField] private List<SecurityUnitController> securityUnits;               // TODO Change to SecurityController
+    [SerializeField] private bool hasSecurityBoss = false;
+    [SerializeField] private List<EnemyController> potentialSecurityBoss;       // TODO Change to SecurityBossController
     [Space]
-    [SerializeField] [Range(1, 10)] int creatureLevel = 1;
-    [SerializeField] List<CreatureController> creatures;
-    [SerializeField] bool hasCreatureBoss = false;
-    [SerializeField] List<EnemyController> potentialCreatureBoss;       // TODO Change to CreatureBossController
+    [SerializeField, Range(1, 10)] private int creatureLevel = 1;
+    [SerializeField] private List<CreatureController> creatures;
+    [SerializeField] private bool hasCreatureBoss = false;
+    [SerializeField] private List<EnemyController> potentialCreatureBoss;       // TODO Change to CreatureBossController
     [Space]
-    [SerializeField] [Range(1, 10)] int debrisLevel = 1;
-    [SerializeField] List<DebrisController> debris;
+    [SerializeField, Range(1, 10)] private int debrisLevel = 1;
+    [SerializeField] private List<DebrisController> debris;
 
     [Header("Rewards")]
-    [SerializeField] [Range(1, 10)] int lootLevel = 1;
-    [SerializeField] [Range(1, 10)] int creditRewardLevel = 1;
-    [SerializeField] List<LootFactory> lootDrops;
-    [SerializeField] List<LootConfig> specialLootDrops;
+    [SerializeField, Range(1, 10)] private int lootLevel = 1;
+    [SerializeField, Range(1, 10)] private int creditRewardLevel = 1;
+    [SerializeField] private List<LootFactory> lootDrops;
+    [SerializeField] private List<LootConfig> specialLootDrops;
 
     [Header("Misc.")]
-    [SerializeField] List<PickUpLootConfig> pickUps;
-    [SerializeField] List<float> pickUpDropRates;           // TODO Refactor
+    [SerializeField] private List<PickUpLootConfig> pickUps;
+    [SerializeField] private List<float> pickUpDropRates;           // TODO Refactor
 
-    ContractFlags flags;
+    private ContractFlags flags;
 
     public int ContractID { get => contractID; set => contractID = value; }
     public ContractType ContractType { get => contractType; set => contractType = value; }
@@ -68,14 +68,16 @@ public class ContractConfig : ScriptableObject
 }
 
 public enum ContractType { Campaign, Standard, Special }
-public enum PrereqType {
+public enum PrereqType
+{
     PlayerLevel,
     SmugglerReputationLevel,
     FactionAReputationLevel,
     FactionBReputationLevel,
     FactionCReputationLevel,
     ShipPowerLevel,
-    CompletedCampaignLevel }
+    CompletedCampaignLevel
+}
 public enum AssociatedFaction { None, Smugglers, FactionA, FactionB, FactionC }
 
 [Flags]

@@ -2,15 +2,15 @@
 
 public class EquipmentConfig : LootConfig
 {
-    [SerializeField] EquipmentSlot equipSlot;
-    [SerializeField] bool isEquipped;
+    [SerializeField] private EquipmentSlot equipSlot;
+    [SerializeField] private bool isEquipped;
 
     [Header("Stat Mod values")]
-    [SerializeField] Vector2 hullModRange;
-    [SerializeField] Vector2 shieldModRange;
-    [SerializeField] Vector2 engineModRange;
-    [SerializeField] Vector2 weaponModRange;
-    [SerializeField] Vector2 auxModRange;
+    [SerializeField] private Vector2 hullModRange;
+    [SerializeField] private Vector2 shieldModRange;
+    [SerializeField] private Vector2 engineModRange;
+    [SerializeField] private Vector2 weaponModRange;
+    [SerializeField] private Vector2 auxModRange;
 
     public EquipmentSlot EquipSlot { get => equipSlot; }
     public bool IsEquipped { get => isEquipped; }

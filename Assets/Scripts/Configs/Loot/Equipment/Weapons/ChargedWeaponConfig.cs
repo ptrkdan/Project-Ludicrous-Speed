@@ -3,10 +3,10 @@
 [CreateAssetMenu(menuName = "Configs/Equipment/Charged Weapon")]
 public class ChargedWeaponConfig : WeaponConfig
 {
-    [SerializeField] ChargedProjectile projectilePrefab;
-    [SerializeField] Stat chargeDuration;
+    [SerializeField] private ChargedProjectile projectilePrefab;
+    [SerializeField] private Stat chargeDuration;
 
-    public new ChargedProjectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
+    public ChargedProjectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
     public Stat ChargeDuration { get => chargeDuration; set => chargeDuration = value; }
 
     public override Loot Create(bool isDefault)

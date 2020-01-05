@@ -1,19 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class RunResultsLootRow : MonoBehaviour
 {
-    [SerializeField] Image lootImage;
-    [SerializeField] TextMeshProUGUI lootName;
+    [SerializeField] private Image lootImage;
+    [SerializeField] private TextMeshProUGUI lootName;
 
-    public void DisplayLoot(LootConfig config) {
+    public void DisplayLoot(LootConfig config)
+    {
         lootImage.sprite = config.Icon;
-        if (config.LootName == "Credits") {
+        if (config.LootName == "Credits")
+        {
             lootName.text = $"{config.LootName} : {((Credits)config).GetCreditValue()}";
-        } else {
+        }
+        else
+        {
             lootName.text = config.LootName;
         }
     }

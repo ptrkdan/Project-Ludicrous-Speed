@@ -16,16 +16,16 @@ public class InventoryManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] int credits;
-    [SerializeField] List<Loot> playerInventory;
+    [SerializeField] private int credits;
+    [SerializeField] private List<Loot> playerInventory;
 
     [Header("Market Inventory")]
-    [SerializeField] int numItems = 9;
-    [SerializeField] List<Loot> marketInventory;
-    [SerializeField] List<Loot> buybackInventory;
+    [SerializeField] private int numItems = 9;
+    [SerializeField] private List<Loot> marketInventory;
+    [SerializeField] private List<Loot> buybackInventory;
 
     [Header("[DEBUG]")]
-    [SerializeField] List<LootConfig> availableMarketItems;
+    [SerializeField] private List<LootConfig> availableMarketItems;
 
     public delegate void OnPlayerInventoryChanged();
     public OnPlayerInventoryChanged onPlayerInventoryChangedCallback;

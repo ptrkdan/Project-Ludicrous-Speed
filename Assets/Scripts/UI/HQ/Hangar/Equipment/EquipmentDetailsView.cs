@@ -5,25 +5,25 @@ using TMPro;
 public class EquipmentDetailsView : Overlay
 {
     [Header("UI References")]
-    [SerializeField] Image equipmentIcon;
-    [SerializeField] TextMeshProUGUI equipmentName;
-    [SerializeField] TextMeshProUGUI hullValue;
-    [SerializeField] TextMeshProUGUI shieldValue;
-    [SerializeField] TextMeshProUGUI engineValue;
-    [SerializeField] TextMeshProUGUI weaponValue;
-    [SerializeField] TextMeshProUGUI auxValue;
-    [SerializeField] Button equipButton;
-    [SerializeField] Button unequipButton;
+    [SerializeField] private Image equipmentIcon;
+    [SerializeField] private TextMeshProUGUI equipmentName;
+    [SerializeField] private TextMeshProUGUI hullValue;
+    [SerializeField] private TextMeshProUGUI shieldValue;
+    [SerializeField] private TextMeshProUGUI engineValue;
+    [SerializeField] private TextMeshProUGUI weaponValue;
+    [SerializeField] private TextMeshProUGUI auxValue;
+    [SerializeField] private Button equipButton;
+    [SerializeField] private Button unequipButton;
 
-    Equipment equipment;
-
-    public void DisplayEquipmentDetails(Equipment equipment) {
+    private Equipment equipment;
+    public void DisplayEquipmentDetails(Equipment equipment)
+    {
         if (equipment == null) return;
         ClearDetails();
         this.equipment = equipment;
         equipmentIcon.sprite = equipment.GetIcon();
         equipmentName.text = equipment.GetName() +
-            (equipment.IsEquipped? " (Equipped)" : null);
+            (equipment.IsEquipped ? " (Equipped)" : null);
         hullValue.text = equipment.GetStatModValue(StatType.Hull).ToString();
         shieldValue.text = equipment.GetStatModValue(StatType.Shield).ToString();
         engineValue.text = equipment.GetStatModValue(StatType.Engine).ToString();
@@ -31,10 +31,13 @@ public class EquipmentDetailsView : Overlay
         auxValue.text = equipment.GetStatModValue(StatType.Aux).ToString();
         if (!equipment.IsDefault)
         {
-            if (equipment.IsEquipped) {
+            if (equipment.IsEquipped)
+            {
                 equipButton.gameObject.SetActive(false);
                 unequipButton.gameObject.SetActive(true);
-            } else {
+            }
+            else
+            {
                 equipButton.gameObject.SetActive(true);
                 unequipButton.gameObject.SetActive(false);
 
@@ -42,7 +45,8 @@ public class EquipmentDetailsView : Overlay
         }
     }
 
-    private void ClearDetails() {
+    private void ClearDetails()
+    {
         equipmentName.text = "";
         hullValue.text = "";
         shieldValue.text = "";

@@ -1,36 +1,33 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class InventoryDetailsView : Overlay 
+public class InventoryDetailsView : Overlay
 {
 
     [Header("UI References - Item Info")]
-    [SerializeField] TextMeshProUGUI itemName;
-    [SerializeField] TextMeshProUGUI itemCost;
-    [SerializeField] TextMeshProUGUI itemDescription;
-    [SerializeField] Image itemIcon;
+    [SerializeField] private TextMeshProUGUI itemName;
+    [SerializeField] private TextMeshProUGUI itemCost;
+    [SerializeField] private TextMeshProUGUI itemDescription;
+    [SerializeField] private Image itemIcon;
 
     [Header("UI References - Item Stats")]
-    [SerializeField] RectTransform statsPanel;
-    [SerializeField] TextMeshProUGUI hullValue;
-    [SerializeField] TextMeshProUGUI shieldValue;
-    [SerializeField] TextMeshProUGUI engineValue;
-    [SerializeField] TextMeshProUGUI weaponValue;
-    [SerializeField] TextMeshProUGUI auxValue;
+    [SerializeField] private RectTransform statsPanel;
+    [SerializeField] private TextMeshProUGUI hullValue;
+    [SerializeField] private TextMeshProUGUI shieldValue;
+    [SerializeField] private TextMeshProUGUI engineValue;
+    [SerializeField] private TextMeshProUGUI weaponValue;
+    [SerializeField] private TextMeshProUGUI auxValue;
 
     [Header("UI References - Controls")]
-    [SerializeField] RectTransform controlsPanel;
-    [SerializeField] Button sellButton;
-    [SerializeField] Button compareButton;
-    [SerializeField] Button equipButton;
+    [SerializeField] private RectTransform controlsPanel;
+    [SerializeField] private Button sellButton;
+    [SerializeField] private Button compareButton;
+    [SerializeField] private Button equipButton;
+    private Loot item;
 
-    Loot item;
-
-    public void DisplayLootDetails(Loot item) {
+    public void DisplayLootDetails(Loot item)
+    {
         ClearDetails();
         this.item = item;
         itemName.text = item.GetName();
@@ -49,7 +46,7 @@ public class InventoryDetailsView : Overlay
             shieldValue.text = equipment.GetStatModValue(StatType.Shield).ToString();
             engineValue.text = equipment.GetStatModValue(StatType.Engine).ToString();
             weaponValue.text = equipment.GetStatModValue(StatType.Weapon).ToString();
-            auxValue.text = equipment.GetStatModValue(StatType.Aux).ToString();            
+            auxValue.text = equipment.GetStatModValue(StatType.Aux).ToString();
         }
         else
         {
@@ -72,7 +69,8 @@ public class InventoryDetailsView : Overlay
         Debug.Log($"Comparing {item.GetName()} with currently equipped item ");
     }
 
-    public void OnEquip() {
+    public void OnEquip()
+    {
         item.Use();
         ClearDetails();
     }

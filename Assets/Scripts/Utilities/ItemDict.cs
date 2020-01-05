@@ -3,8 +3,8 @@ using UnityEngine;
 
 public static class ItemDict
 {
-    static Dictionary<int, LootConfig> dict = new Dictionary<int, LootConfig>();
-    static int itemKey = 0;
+    private static Dictionary<int, LootConfig> dict = new Dictionary<int, LootConfig>();
+    private static int itemKey = 0;
 
     public static void LoadAllItems()
     {

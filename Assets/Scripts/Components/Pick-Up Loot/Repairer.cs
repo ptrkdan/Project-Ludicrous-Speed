@@ -2,18 +2,21 @@
 
 public class Repairer : PickUp
 {
-    [SerializeField] float repairValue = 100;
+    [SerializeField] private float repairValue = 100;
 
     public float RepairValue { get => repairValue; set => repairValue = value; }
-    
-    public override void Interact(Interactable target) {
+
+    public override void Interact(Interactable target)
+    {
         base.Interact(target);
-        if (target.GetType().IsSubclassOf(typeof(LivingInteractable))) {
+        if (target.GetType().IsSubclassOf(typeof(LivingInteractable)))
+        {
             Repair((LivingInteractable)target);
         }
     }
 
-    private void Repair(LivingInteractable target) {
+    private void Repair(LivingInteractable target)
+    {
         target.RepairDamage(repairValue);
     }
 }

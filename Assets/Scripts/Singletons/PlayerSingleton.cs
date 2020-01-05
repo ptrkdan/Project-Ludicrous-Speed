@@ -17,14 +17,14 @@ public class PlayerSingleton : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] string playerName = "TEST PILOT";
-    [SerializeField] int experiencePoints;
-    [SerializeField] int playerLevel = 1;
+    [SerializeField] private string playerName = "TEST PILOT";
+    [SerializeField] private int experiencePoints;
+    [SerializeField] private int playerLevel = 1;
 
     [Header("Career")]
-    [SerializeField] string title = "Cannon Fodder";
-    [SerializeField] [TextArea] string titleDescription = "You're as expendable as the tissue they hand out at stations.";
-    [SerializeField] List<GameObject> perks;    // TODO: Make Perks GameObject
+    [SerializeField] private string title = "Cannon Fodder";
+    [SerializeField] [TextArea] private string titleDescription = "You're as expendable as the tissue they hand out at stations.";
+    [SerializeField] private List<GameObject> perks;    // TODO: Make Perks GameObject
 
     public delegate void OnPlayerLevelUp(int level);
     public OnPlayerLevelUp onPlayerLevelUpCallback;
@@ -56,16 +56,19 @@ public class PlayerSingleton : MonoBehaviour
     public string PlayerName { get => playerName; set => playerName = value; }
 
     public int ExperiencePoints { get => experiencePoints; set => experiencePoints = value; }
-    public void IncreaseExperiencePoints(int amount) {
+    public void IncreaseExperiencePoints(int amount)
+    {
         experiencePoints += amount;
-        if (experiencePoints >= 100) {
+        if (experiencePoints >= 100)
+        {
             LevelUp();
         }
         SavePlayer();
     }
 
     public int PlayerLevel { get => playerLevel; set => playerLevel = value; }
-    private void LevelUp() {
+    private void LevelUp()
+    {
         playerLevel += 1;
         experiencePoints -= 100; // TODO: Required points depend on level
         onPlayerLevelUpCallback?.Invoke(playerLevel);
@@ -73,37 +76,45 @@ public class PlayerSingleton : MonoBehaviour
     #endregion
 
     #region InventoryMananger
-    public int GetCredits() {
+    public int GetCredits()
+    {
         return InventoryManager.instance.Credits;
     }
 
-    public void AddToCredits(int amount) {
+    public void AddToCredits(int amount)
+    {
         InventoryManager.instance.AddToCredits(amount);
     }
 
-    public bool DeductFromCredits(int amount) {
+    public bool DeductFromCredits(int amount)
+    {
         return InventoryManager.instance.DeductFromCredits(amount);
     }
 
-    public List<Loot> GetInventory() {
+    public List<Loot> GetInventory()
+    {
         return InventoryManager.instance.GetPlayerInventory();
     }
-    
-    public void AddToInventory(Loot item) {
+
+    public void AddToInventory(Loot item)
+    {
         InventoryManager.instance.AddToPlayerInventory(item);
     }
-    public bool RemoveFromInventory(Loot item) {
+    public bool RemoveFromInventory(Loot item)
+    {
         return InventoryManager.instance.RemoveFromPlayerInventory(item);
     }
     #endregion
 
     #region EquipmentManager
-    public Equipment GetEquipment(EquipmentSlot slot) {
+    public Equipment GetEquipment(EquipmentSlot slot)
+    {
         return EquipmentManager.instance.GetEquipment(slot);
     }
     #endregion
 
-    public Stat GetStat(StatType type) {
+    public Stat GetStat(StatType type)
+    {
         return StatsManager.instance.GetStat(type);
     }
 
@@ -116,7 +127,7 @@ public class PlayerSingleton : MonoBehaviour
     {
         ContractManager.instance.SetPlayerPrereqStatus(contractPrereq);
     }
-    
+
     public string Title { get => title; set => title = value; }
     public string TitleDescription { get => titleDescription; set => titleDescription = value; }
 }

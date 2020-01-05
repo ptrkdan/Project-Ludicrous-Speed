@@ -6,7 +6,7 @@ using UnityEngine;
 public class AutoWeaponConfig : WeaponConfig
 {
     [Header("Projectile")]
-    [SerializeField] Projectile projectilePrefab;
+    [SerializeField] private Projectile projectilePrefab;
 
     public Projectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
 

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SecuritySpawner : MonoBehaviour
 {
-    [SerializeField] int spawnDistanceToPlayer = 2;
-    [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
-    [SerializeField] List<SecurityUnitController> securityUnitPrefabs;
-    [SerializeField] List<WaveConfig> waveConfigs;
+    [SerializeField] private int spawnDistanceToPlayer = 2;
+    [SerializeField] private Vector2 spawnDelayRange = new Vector2(1, 10);
+    [SerializeField] private List<SecurityUnitController> securityUnitPrefabs;
+    [SerializeField] private List<WaveConfig> waveConfigs;
 
-    bool spawning = true;
-    PlayerController player;
-    Transform[] spawnPoints;
-    List<int> bottomSpawnPoints;
-    List<int> midSpawnPoints;
-    List<int> topSpawnPoints;
-    List<int> topBottomSpawnPoints;
+    private bool spawning = true;
+    private PlayerController player;
+    private Transform[] spawnPoints;
+    private List<int> bottomSpawnPoints;
+    private List<int> midSpawnPoints;
+    private List<int> topSpawnPoints;
+    private List<int> topBottomSpawnPoints;
     //int startingWave = 0;
 
     private IEnumerator Start()
@@ -58,7 +58,7 @@ public class SecuritySpawner : MonoBehaviour
         int numSpawnPoints = spawnPoints.Length - 1; // spawnPoints[0] == this
 
         // Divide spawn points into 3 segments: top, mid, bottom
-        int bottomMidDivide = Mathf.FloorToInt(numSpawnPoints / 4);       
+        int bottomMidDivide = Mathf.FloorToInt(numSpawnPoints / 4);
         int topMidDivide = numSpawnPoints - Mathf.CeilToInt(numSpawnPoints / 4);
 
         bottomSpawnPoints = new List<int>();

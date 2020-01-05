@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EquipmentListView : Overlay
 {
     [Header("UI References")]
-    [SerializeField] ItemGrid equipmentGrid;
+    [SerializeField] private ItemGrid equipmentGrid;
 
     [Header("UI Prefabs")]
-    [SerializeField] HangarInventorySlot inventorySlotPrefab;
+    [SerializeField] private HangarInventorySlot inventorySlotPrefab;
+    private PlayerSingleton player;
+    private EquipmentSlot slot;
 
-    PlayerSingleton player;
-    EquipmentSlot slot;
-
-    private void OnEnable() {
+    private void OnEnable()
+    {
         player = FindObjectOfType<PlayerSingleton>();
         InventoryManager.instance.onPlayerInventoryChangedCallback += UpdateEquipmentList;
     }
@@ -28,16 +27,20 @@ public class EquipmentListView : Overlay
         DisplayLootForEquipmentSlot(slot);
     }
 
-    private void ClearInventoryGrid() {
-        if (!equipmentGrid) {
+    private void ClearInventoryGrid()
+    {
+        if (!equipmentGrid)
+        {
             equipmentGrid = FindObjectOfType<ItemGrid>();
         }
         HangarInventorySlot[] slots = equipmentGrid.GetComponentsInChildren<HangarInventorySlot>();
-        foreach (HangarInventorySlot slot in slots) {
+        foreach (HangarInventorySlot slot in slots)
+        {
             slot.ClearSlot();
         }
     }
-    public void DisplayLootForEquipmentSlot(EquipmentSlot slot) {
+    public void DisplayLootForEquipmentSlot(EquipmentSlot slot)
+    {
         this.slot = slot;
 
         ClearInventoryGrid();
@@ -46,9 +49,11 @@ public class EquipmentListView : Overlay
         List<Loot> equipments = player.GetInventory().FindAll(
             (loot) => loot.GetType().BaseType == typeof(Equipment)
         );
-        for (int i = 0; i < equipments.Count; i++) {
+        for (int i = 0; i < equipments.Count; i++)
+        {
             Equipment equipment = equipments[i] as Equipment;
-            if (equipment.GetEquipSlot() == slot) {
+            if (equipment.GetEquipSlot() == slot)
+            {
                 HangarInventorySlot inventorySlot = Instantiate(inventorySlotPrefab, equipmentGrid.transform);
                 inventorySlot.DisplayLoot(equipment);
             }

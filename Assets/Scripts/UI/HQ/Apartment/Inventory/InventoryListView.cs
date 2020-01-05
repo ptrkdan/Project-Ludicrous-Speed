@@ -3,17 +3,18 @@
 public class InventoryListView : Overlay
 {
     [Header("Cached")]
-    [SerializeField] InventoryManager inventory;
+    [SerializeField] private InventoryManager inventory;
 
     [Header("UI References")]
-    [SerializeField] ItemGrid inventoryGrid;
+    [SerializeField] private ItemGrid inventoryGrid;
 
     [Header("UI Prefabs")]
-    [SerializeField] ApartmentInventorySlot inventorySlotPrefab;
+    [SerializeField] private ApartmentInventorySlot inventorySlotPrefab;
 
-    private void OnEnable () {
+    private void OnEnable()
+    {
         inventory = InventoryManager.instance;
-        inventory.onPlayerInventoryChangedCallback += UpdateInventory;     
+        inventory.onPlayerInventoryChangedCallback += UpdateInventory;
 
         UpdateInventory();
     }
@@ -23,21 +24,26 @@ public class InventoryListView : Overlay
         inventory.onPlayerInventoryChangedCallback -= UpdateInventory;
     }
 
-    private void UpdateInventory() {
-        ClearInventory(); 
-        for (int i = 0; i < inventory.GetPlayerInventory().Count; i++) {
+    private void UpdateInventory()
+    {
+        ClearInventory();
+        for (int i = 0; i < inventory.GetPlayerInventory().Count; i++)
+        {
             Loot loot = inventory.GetPlayerInventory()[i];
             ApartmentInventorySlot inventorySlot = Instantiate(inventorySlotPrefab, inventoryGrid.transform);
-            inventorySlot.DisplayLoot(loot);            
+            inventorySlot.DisplayLoot(loot);
         }
     }
 
-    private void ClearInventory() {
-        if (!inventoryGrid) {       // Is there a clearer way to do this?
+    private void ClearInventory()
+    {
+        if (!inventoryGrid)
+        {       // Is there a clearer way to do this?
             inventoryGrid = FindObjectOfType<ItemGrid>();
         }
         ApartmentInventorySlot[] slots = inventoryGrid.GetComponentsInChildren<ApartmentInventorySlot>();
-        foreach(ApartmentInventorySlot slot in slots) {
+        foreach (ApartmentInventorySlot slot in slots)
+        {
             slot.ClearSlot();
         }
     }

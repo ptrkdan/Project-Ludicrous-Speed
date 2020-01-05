@@ -15,21 +15,20 @@ public class EquipmentManager : MonoBehaviour
     #endregion
 
     [Header("Default Equipment")]
-    [SerializeField] WeaponConfig primaryWeapon;
-    [SerializeField] WeaponConfig secondaryWeapon;
-    [SerializeField] SupportEquipConfig supportEquipment;
-    [SerializeField] ModEquipConfig primaryMod;
-    [SerializeField] ModEquipConfig secondaryMod;
+    [SerializeField] private WeaponConfig primaryWeapon;
+    [SerializeField] private WeaponConfig secondaryWeapon;
+    [SerializeField] private SupportEquipConfig supportEquipment;
+    [SerializeField] private ModEquipConfig primaryMod;
+    [SerializeField] private ModEquipConfig secondaryMod;
 
     public delegate void OnEquipmentChanged(Equipment newEquip, Equipment oldEquip);
     public OnEquipmentChanged onEquipmentChanged;
 
     [SerializeField]
-    Equipment[] currentEquipment =
+    private Equipment[] currentEquipment =
         new Equipment[System.Enum.GetNames(typeof(EquipmentSlot)).Length];
-
-    InventoryManager inventory;
-    bool isLoading = false;
+    private InventoryManager inventory;
+    private bool isLoading = false;
 
     private void Start()
     {

@@ -4,26 +4,30 @@ using UnityEngine.UI;
 public class ApartmentInventorySlot : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] InventoryDetailsView detailsView;
-    [SerializeField] Image icon;
+    [SerializeField] private InventoryDetailsView detailsView;
+    [SerializeField] private Image icon;
 
     [Space]
-    [SerializeField] Loot loot;
+    [SerializeField] private Loot loot;
 
-    private void Start() {
+    private void Start()
+    {
         detailsView = FindObjectOfType<InventoryDetailsView>();
     }
 
-    public void DisplayLoot(Loot newLoot) {
+    public void DisplayLoot(Loot newLoot)
+    {
         loot = newLoot;
         icon.sprite = loot.GetIcon();
     }
 
-    public void ClearSlot() {
+    public void ClearSlot()
+    {
         Destroy(gameObject);
     }
 
-    public void DisplayLootDetails() {
+    public void DisplayLootDetails()
+    {
         detailsView.DisplayLootDetails(loot);
     }
 }

@@ -1,57 +1,60 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
-public class ApartmentOverlay : Overlay {
-    const string PILOT_TAB = "Pilot Tab Button";
-    const string SHIP_TAB = "Ship Tab Button";
-    const string INVENTORY_TAB = "Inventory Tab Button";
+public class ApartmentOverlay : Overlay
+{
+    private const string PILOT_TAB = "Pilot Tab Button";
+    private const string SHIP_TAB = "Ship Tab Button";
+    private const string INVENTORY_TAB = "Inventory Tab Button";
 
     [Header("Cached")]
-    [SerializeField] PlayerSingleton player;
+    [SerializeField] private PlayerSingleton player;
 
     [Header("UI References")]
-    [SerializeField] TextMeshProUGUI playerNameText;
-    [SerializeField] TextMeshProUGUI playerLevelText;
-    [SerializeField] Slider playerExpBar;
-    [SerializeField] RectTransform contentArea;
+    [SerializeField] private TextMeshProUGUI playerNameText;
+    [SerializeField] private TextMeshProUGUI playerLevelText;
+    [SerializeField] private Slider playerExpBar;
+    [SerializeField] private RectTransform contentArea;
 
     [Header("UI Prefabs")]
-    [SerializeField] CareerView careerView;
-    [SerializeField] Overlay perksView;
-    [SerializeField] ShipView shipView;
-    [SerializeField] StatsView statsView;
-    [SerializeField] InventoryListView inventoryListView;
-    [SerializeField] InventoryDetailsView inventoryDetailsView;
-    [SerializeField] CreditsView creditsView;
+    [SerializeField] private CareerView careerView;
+    [SerializeField] private Overlay perksView;
+    [SerializeField] private ShipView shipView;
+    [SerializeField] private StatsView statsView;
+    [SerializeField] private InventoryListView inventoryListView;
+    [SerializeField] private InventoryDetailsView inventoryDetailsView;
+    [SerializeField] private CreditsView creditsView;
 
     [Space]
-    [SerializeField] string activeTab;
+    [SerializeField] private string activeTab;
 
     public string ActiveTab { get => activeTab; set => activeTab = value; }
 
-    public override void Display() {
+    public override void Display()
+    {
         base.Display();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         player = FindObjectOfType<PlayerSingleton>();
         SetPlayerInfo();
         ChangeTab(PILOT_TAB);
     }
 
-    private void SetPlayerInfo() {
+    private void SetPlayerInfo()
+    {
         playerNameText.text = player.PlayerName;
         playerLevelText.text = $"LVL {player.PlayerLevel.ToString()}";
         playerExpBar.value = (float)player.ExperiencePoints / 100;             // TODO: Change percentage based on level
     }
 
-    private void ChangeTab(string nextTab) {
+    private void ChangeTab(string nextTab)
+    {
         ClearContentArea();
-        switch (nextTab) {
+        switch (nextTab)
+        {
             case PILOT_TAB:
                 CareerView career = Instantiate(careerView, contentArea);
                 // TODO: career.SetCareerIcon = ???
@@ -75,15 +78,19 @@ public class ApartmentOverlay : Overlay {
         activeTab = nextTab;
     }
 
-    private void ClearContentArea() {
-        foreach (Overlay view in contentArea.GetComponentsInChildren<Overlay>()) {
+    private void ClearContentArea()
+    {
+        foreach (Overlay view in contentArea.GetComponentsInChildren<Overlay>())
+        {
             Destroy(view.gameObject);
         }
     }
 
-    public void OnTabButtonClick(Button tabButton) {
+    public void OnTabButtonClick(Button tabButton)
+    {
         string nextTab = tabButton.name;
-        if (activeTab != nextTab) {
+        if (activeTab != nextTab)
+        {
             ChangeTab(nextTab);
         }
     }

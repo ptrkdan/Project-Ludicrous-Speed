@@ -4,10 +4,10 @@ using UnityEngine.UI;
 public class MarketBuybackItemSlot : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] MarketBuybackItemDetailsView detailsView;
-    [SerializeField] Image icon;
+    [SerializeField] private MarketBuybackItemDetailsView detailsView;
+    [SerializeField] private Image icon;
 
-    Loot loot;
+    private Loot loot;
 
     private void Start()
     {

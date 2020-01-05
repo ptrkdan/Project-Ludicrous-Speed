@@ -1,6 +1,6 @@
 ﻿public class EnemyWeapon : AutoWeapon
 {
-    float cooldownVariation;
+    private float cooldownVariation;
 
     public float GetCooldownVariation() => cooldownVariation;
 

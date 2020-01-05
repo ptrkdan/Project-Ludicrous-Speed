@@ -4,16 +4,16 @@
 public class ProjectileConfig : ScriptableObject
 {
     [Header("Prefab")]
-    [SerializeField] Projectile projectile;
+    [SerializeField] private Projectile projectile;
 
     [Header("Stats")]
-    [SerializeField] float speed;
-    [SerializeField] float shotCooldown;
-    [SerializeField] float shotCooldownVariation;
+    [SerializeField] private float speed;
+    [SerializeField] private float shotCooldown;
+    [SerializeField] private float shotCooldownVariation;
 
     [Header("Audio")]
-    [SerializeField] AudioClip shootSFX;
-    [SerializeField] [Range(0, 1)] float shootSFXVolume = 0.3f;
+    [SerializeField] private AudioClip shootSFX;
+    [SerializeField] [Range(0, 1)] private float shootSFXVolume = 0.3f;
 
     public Projectile Projectile { get => projectile; set => projectile = value; }
     public float Speed { get => speed; set => speed = value; }

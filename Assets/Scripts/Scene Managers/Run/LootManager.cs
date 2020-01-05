@@ -8,17 +8,19 @@ public class LootManager : MonoBehaviour
     #region Singleton
     public static LootManager instance;
 
-    private void Awake() {
-        if (instance != null) {
+    private void Awake()
+    {
+        if (instance != null)
+        {
             return;
         }
         instance = this;
     }
     #endregion
 
-    [SerializeField] List<PickUpLootConfig> availableLoot;
+    [SerializeField] private List<PickUpLootConfig> availableLoot;
 
-    public void ConfigureAvailableLoot(List<PickUpLootConfig> availableLoot) 
+    public void ConfigureAvailableLoot(List<PickUpLootConfig> availableLoot)
     {
         this.availableLoot = availableLoot;
     }

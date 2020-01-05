@@ -4,9 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Configs/Loot/Loot Pool")]
 public class LootPool : ScriptableObject
 {
-    [SerializeField] LootRarity rarity;
-    [SerializeField] [Range(0f, 1f)] float dropRate;
-    [SerializeField] List<LootConfig> lootList;
+    [SerializeField] private LootRarity rarity;
+    [SerializeField] [Range(0f, 1f)] private float dropRate;
+    [SerializeField] private List<LootConfig> lootList;
 
     public LootRarity GetRarity() => rarity;
     public List<LootConfig> GetLootList() => lootList;

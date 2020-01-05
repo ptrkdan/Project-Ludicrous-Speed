@@ -1,28 +1,28 @@
-﻿using System;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 
 public class MarketOverlay : Overlay
 {
     [Header("UI Reference")]
-    [SerializeField] RectTransform contentArea;
-    [SerializeField] TextMeshProUGUI credits;
+    [SerializeField] private RectTransform contentArea;
+    [SerializeField] private TextMeshProUGUI credits;
 
     [Header("UI Prefabs - Buy")]
-    [SerializeField] MarketBuyItemListView buyItemListView;
-    [SerializeField] MarketBuyItemDetailsView buyItemDetailsView;
+    [SerializeField] private MarketBuyItemListView buyItemListView;
+    [SerializeField] private MarketBuyItemDetailsView buyItemDetailsView;
     [Header("UI Prefabs - Sell")]
-    [SerializeField] MarketSellItemListView sellItemListView;
-    [SerializeField] MarketSellItemDetailsView sellItemDetailsView;
+    [SerializeField] private MarketSellItemListView sellItemListView;
+    [SerializeField] private MarketSellItemDetailsView sellItemDetailsView;
     [Header("UI Prefabs - Buyback")]
-    [SerializeField] MarketBuybackItemListView buybackItemListView;
-    [SerializeField] MarketBuybackItemDetailsView buybackItemDetailsView;
+    [SerializeField] private MarketBuybackItemListView buybackItemListView;
+    [SerializeField] private MarketBuybackItemDetailsView buybackItemDetailsView;
 
-    MarketTab activeTab;
+    private MarketTab activeTab;
 
     public MarketTab GetActiveTab() => activeTab;
 
-    public override void Display() {
+    public override void Display()
+    {
         base.Display();
     }
 

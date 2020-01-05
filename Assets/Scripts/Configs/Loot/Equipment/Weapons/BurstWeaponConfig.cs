@@ -6,9 +6,9 @@ using UnityEngine;
 public class BurstWeaponConfig : WeaponConfig
 {
     [Header("Projectile")]
-    [SerializeField] Projectile projectilePrefab;
-    [SerializeField, Range(5, 45)] float burstRadius;
-    [SerializeField] int numOfShots;
+    [SerializeField] private Projectile projectilePrefab;
+    [SerializeField, Range(5, 45)] private float burstRadius;
+    [SerializeField] private int numOfShots;
 
     public Projectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
     public float BurstRadius { get => burstRadius; set => burstRadius = value; }

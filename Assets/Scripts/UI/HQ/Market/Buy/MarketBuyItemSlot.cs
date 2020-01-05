@@ -4,10 +4,10 @@ using UnityEngine.UI;
 public class MarketBuyItemSlot : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] MarketBuyItemDetailsView detailsView;
-    [SerializeField] Image icon;
+    [SerializeField] private MarketBuyItemDetailsView detailsView;
+    [SerializeField] private Image icon;
 
-    Loot loot;
+    private Loot loot;
 
     private void Start()
     {

@@ -2,7 +2,7 @@
 
 public class CreatureSpawnPoint : MonoBehaviour
 {
-    [SerializeField] SpawnPointSide side;
+    [SerializeField] private SpawnPointSide side;
 
     public bool HasChildren()
     {

@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class CreatureSpawner : MonoBehaviour
 {
-    [SerializeField] int spawnDistanceToPlayer = 2;
-    [SerializeField] Vector2 spawnDelayRange = new Vector2(1, 10);
-    [SerializeField] List<CreatureController> creatureUnitPrefabs;
+    [SerializeField] private int spawnDistanceToPlayer = 2;
+    [SerializeField] private Vector2 spawnDelayRange = new Vector2(1, 10);
+    [SerializeField] private List<CreatureController> creatureUnitPrefabs;
 
-    bool spawning = true;
-    PlayerController player;
-    Transform[] spawnPoints;
-    List<int> bottomSpawnPoints;
-    List<int> midSpawnPoints;
-    List<int> topSpawnPoints;
-    List<int> topBottomSpawnPoints;
+    private bool spawning = true;
+    private PlayerController player;
+    private Transform[] spawnPoints;
+    private List<int> bottomSpawnPoints;
+    private List<int> midSpawnPoints;
+    private List<int> topSpawnPoints;
+    private List<int> topBottomSpawnPoints;
 
     private IEnumerator Start()
     {

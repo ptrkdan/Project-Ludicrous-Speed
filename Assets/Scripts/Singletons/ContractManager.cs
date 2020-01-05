@@ -16,21 +16,20 @@ public class ContractManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] MasterContractGate masterContractGate;
+    [SerializeField] private MasterContractGate masterContractGate;
 
     [Header("DEBUG")]
-    [SerializeField] int playerLvl;
-    [SerializeField] int smugglerReputationLvl;
-    [SerializeField] int FactionAReputationLvl;
-    [SerializeField] int FactionBReputationLvl;
-    [SerializeField] int FactionCReputationLvl;
-    [SerializeField] int shipPowerLvl;
-    [SerializeField] int campaign;
+    [SerializeField] private int playerLvl;
+    [SerializeField] private int smugglerReputationLvl;
+    [SerializeField] private int FactionAReputationLvl;
+    [SerializeField] private int FactionBReputationLvl;
+    [SerializeField] private int FactionCReputationLvl;
+    [SerializeField] private int shipPowerLvl;
+    [SerializeField] private int campaign;
+    [SerializeField] private bool resetCampaign;
+    [SerializeField] private bool resetAllContractFlags;
 
-    [SerializeField] bool resetCampaign;
-    [SerializeField] bool resetAllContractFlags;
-
-    ContractPrereq playerPrereqStatus;
+    private ContractPrereq playerPrereqStatus;
 
     private void Start()
     {
@@ -69,7 +68,7 @@ public class ContractManager : MonoBehaviour
     {
         playerPrereqStatus = contractPrereq;
     }
-    
+
     public void ResetCampaign()
     {
         masterContractGate.ResetCampaign();

@@ -14,9 +14,9 @@ public class GameSession : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] ContractConfig activeContract;
-    [SerializeField] bool isRunSuccessful;
-    [SerializeField] Canvas quitConfirmationOverlayPrefab;
+    [SerializeField] private ContractConfig activeContract;
+    [SerializeField] private bool isRunSuccessful;
+    [SerializeField] private Canvas quitConfirmationOverlayPrefab;
 
     public ContractConfig ActiveContract { get => activeContract; set => activeContract = value; }
     public bool IsRunSuccessful { get => isRunSuccessful; set => isRunSuccessful = value; }
@@ -26,8 +26,7 @@ public class GameSession : MonoBehaviour
 
     public delegate void OnCampaignMissionComplete(bool success, int campaignID);
     public OnCampaignMissionComplete OnCampaignMissionCompleteCallback;
-
-    Canvas quitConfirmationOverlay;
+    private Canvas quitConfirmationOverlay;
     private void Update()
     {
         if (Input.GetButtonDown("Cancel") && quitConfirmationOverlay == null)

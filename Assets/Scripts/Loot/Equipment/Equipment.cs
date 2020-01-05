@@ -3,14 +3,14 @@
 
 public class Equipment : Loot
 {
-    bool isEquipped;
-    bool isDefault;
-    EquipmentSlot equipSlot;
-    float hullMod;
-    float shieldMod;
-    float engineMod;
-    float weaponMod;
-    float auxMod;
+    private bool isEquipped;
+    private bool isDefault;
+    private EquipmentSlot equipSlot;
+    private float hullMod;
+    private float shieldMod;
+    private float engineMod;
+    private float weaponMod;
+    private float auxMod;
 
     public bool IsEquipped { get; set; }
     public bool IsDefault { get; set; }

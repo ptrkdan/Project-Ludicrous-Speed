@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnergyBall : ChargedProjectile
 {
-    [SerializeField] float sizeIncreaseStep = 1f;
-    [SerializeField] float maxSize = 3f;
+    [SerializeField] private float sizeIncreaseStep = 1f;
+    [SerializeField] private float maxSize = 3f;
 
-    [SerializeField] ParticleSystem dissipationVFX;
-    [SerializeField] EnergyBallExplosion explosion;
-    
+    [SerializeField] private ParticleSystem dissipationVFX;
+    [SerializeField] private EnergyBallExplosion explosion;
+
     public override void Dissipate()
     {
         base.Dissipate();
@@ -32,7 +31,7 @@ public class EnergyBall : ChargedProjectile
             sizeIncreaseStep += amount;
             GetComponentInChildren<Transform>().localScale += new Vector3(sizeIncreaseStep, sizeIncreaseStep);
         }
-        
+
         if (sizeIncreaseStep >= maxSize)
         {
             isCharged = true;

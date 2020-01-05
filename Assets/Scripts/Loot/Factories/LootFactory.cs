@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public abstract class LootFactory : ScriptableObject
 {
-    [SerializeField] Sprite icon;
+    [SerializeField] private Sprite icon;
     [SerializeField] protected LootPool[] lootPools;
 
     public Sprite Icon { get => icon; }

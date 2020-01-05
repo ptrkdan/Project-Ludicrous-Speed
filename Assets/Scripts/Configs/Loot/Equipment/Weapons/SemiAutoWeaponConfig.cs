@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName ="Configs/Equipment/Semi Auto Weapon")]
+[CreateAssetMenu(menuName = "Configs/Equipment/Semi Auto Weapon")]
 public class SemiAutoWeaponConfig : WeaponConfig
 {
     [Header("Projectile")]
-    [SerializeField] Projectile projectilePrefab;
-    [SerializeField] Stat burstCooldown;
-    [SerializeField] int numOfShots;
+    [SerializeField] private Projectile projectilePrefab;
+    [SerializeField] private Stat burstCooldown;
+    [SerializeField] private int numOfShots;
 
     public Projectile ProjectilePrefab { get => projectilePrefab; set => projectilePrefab = value; }
     public Stat BurstCooldown { get => burstCooldown; set => burstCooldown = value; }

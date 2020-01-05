@@ -1,15 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MarketSellItemListView : Overlay
 {
     [Header("UI References")]
-    [SerializeField] ItemGrid itemGrid;
+    [SerializeField] private ItemGrid itemGrid;
 
     [Header("UI Prefab")]
-    [SerializeField] MarketSellItemSlot itemSlotPrefab;
+    [SerializeField] private MarketSellItemSlot itemSlotPrefab;
 
-    InventoryManager inventory;
+    private InventoryManager inventory;
 
     private void OnEnable()
     {
@@ -38,7 +37,7 @@ public class MarketSellItemListView : Overlay
     private void ClearInventory()
     {
         MarketSellItemSlot[] slots = itemGrid.GetComponentsInChildren<MarketSellItemSlot>();
-        foreach(MarketSellItemSlot slot in slots)
+        foreach (MarketSellItemSlot slot in slots)
         {
             slot.ClearSlot();
         }

@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Button continueButton;
-    [SerializeField] Button deleteSaveButton;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private Button deleteSaveButton;
 
-    SceneLoader sceneLoader;
+    private SceneLoader sceneLoader;
 
     private void Start()
     {

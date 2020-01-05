@@ -3,7 +3,7 @@
 public abstract class EnemyController : LivingInteractable
 {
     [Header("Weaponry")]
-    [SerializeField] EnemyWeaponConfig weaponConfig;
+    [SerializeField] private EnemyWeaponConfig weaponConfig;
     [SerializeField] protected Transform turret;
 
     [Header("Spawning")]
@@ -13,7 +13,7 @@ public abstract class EnemyController : LivingInteractable
     protected EnemyWeapon weapon;
 
     public SpawnPreference GetSpawnPreference() => spawnPreference;
-    
+
 
     protected override void Initialize()
     {

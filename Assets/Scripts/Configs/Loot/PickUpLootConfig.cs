@@ -3,15 +3,15 @@
 [CreateAssetMenu(menuName = "Configs/Loot/Pick-Up Loot")]
 public class PickUpLootConfig : LootConfig
 {
-    [SerializeField] LootController lootPrefab;
-    
-    [SerializeField] [Range(0,1)] float dropRate = 0.5f;
-    [SerializeField] float damageValue = 0;
-    [SerializeField] DamageType damageType;
-    [SerializeField] float healValue = 0;
-    [SerializeField] ArmourType healType;
-    [SerializeField] float boostValue = 0;
-    [SerializeField] StatType buffType;
+    [SerializeField] private LootController lootPrefab;
+
+    [SerializeField, Range(0, 1)] private float dropRate = 0.5f;
+    [SerializeField] private float damageValue = 0;
+    [SerializeField] private DamageType damageType;
+    [SerializeField] private float healValue = 0;
+    [SerializeField] private ArmourType healType;
+    [SerializeField] private float boostValue = 0;
+    [SerializeField] private StatType buffType;
 
     public LootController LootPrefab { get => lootPrefab; }
     public float DropRate { get => dropRate; set => dropRate = value; }

@@ -4,12 +4,12 @@ using UnityEngine;
 public class MarketBuybackItemListView : Overlay
 {
     [Header("UI References")]
-    [SerializeField] ItemGrid itemGrid;
+    [SerializeField] private ItemGrid itemGrid;
 
     [Header("UI Prefabs")]
-    [SerializeField] MarketBuybackItemSlot itemSlotPrefab;
+    [SerializeField] private MarketBuybackItemSlot itemSlotPrefab;
 
-    List<Loot> itemList;
+    private List<Loot> itemList;
 
     private void OnEnable()
     {

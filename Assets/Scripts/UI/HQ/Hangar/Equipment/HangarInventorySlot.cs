@@ -4,26 +4,30 @@ using UnityEngine.UI;
 public class HangarInventorySlot : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] EquipmentDetailsView detailsView;
-    [SerializeField] Image icon;
+    [SerializeField] private EquipmentDetailsView detailsView;
+    [SerializeField] private Image icon;
 
     [Space]
-    [SerializeField] Equipment equipment;
+    [SerializeField] private Equipment equipment;
 
-    private void Start() {
+    private void Start()
+    {
         detailsView = FindObjectOfType<EquipmentDetailsView>();
     }
 
-    public void DisplayLoot(Equipment newLoot) {
+    public void DisplayLoot(Equipment newLoot)
+    {
         equipment = newLoot;
         icon.sprite = equipment.GetIcon();
     }
 
-    public void ClearSlot() {
+    public void ClearSlot()
+    {
         Destroy(gameObject);
     }
 
-    public void DisplayLootDetails() {
+    public void DisplayLootDetails()
+    {
         detailsView.DisplayEquipmentDetails(equipment);
     }
 }

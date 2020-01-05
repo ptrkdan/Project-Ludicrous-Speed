@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShipView : Overlay
 {
 
-    public void GoToHangar() {
+    public void GoToHangar()
+    {
         FindObjectOfType<OverlayLoader>().OpenHangarOverlay();
     }
 }

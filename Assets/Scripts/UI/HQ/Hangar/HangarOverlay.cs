@@ -3,39 +3,45 @@
 public class HangarOverlay : Overlay
 {
     [Header("UI References")]
-    [SerializeField] Transform contentArea;
+    [SerializeField] private Transform contentArea;
 
     [Header("UI Prefabs")]
-    [SerializeField] HangarShipView shipView;
-    [SerializeField] EquipmentListView equipmentListView;
-    [SerializeField] EquipmentDetailsView equipmentDetailsView;
+    [SerializeField] private HangarShipView shipView;
+    [SerializeField] private EquipmentListView equipmentListView;
+    [SerializeField] private EquipmentDetailsView equipmentDetailsView;
 
-    PlayerSingleton player;
-    bool isDisplayingEquipmentDetail = false;
+    private PlayerSingleton player;
+    private bool isDisplayingEquipmentDetail = false;
 
-    public override void Display() {
+    public override void Display()
+    {
         base.Display();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         player = FindObjectOfType<PlayerSingleton>();
         DisplayShipView();
     }
 
 
-    private void ClearContentArea() {
-        foreach (Overlay view in contentArea.GetComponentsInChildren<Overlay>()) {
+    private void ClearContentArea()
+    {
+        foreach (Overlay view in contentArea.GetComponentsInChildren<Overlay>())
+        {
             Destroy(view.gameObject);
         }
     }
 
-    private void DisplayShipView() {
+    private void DisplayShipView()
+    {
         ClearContentArea();
         HangarShipView ship = Instantiate(shipView, contentArea);
         isDisplayingEquipmentDetail = false;
     }
 
-    private void DisplayEquipmentDetails(EquipmentPoint equipPoint) {
+    private void DisplayEquipmentDetails(EquipmentPoint equipPoint)
+    {
         ClearContentArea();
         EquipmentDetailsView equipmentDetails = Instantiate(equipmentDetailsView, contentArea);
         equipmentDetails.DisplayEquipmentDetails(equipPoint.Equipment);
@@ -43,15 +49,20 @@ public class HangarOverlay : Overlay
         equipmentList.DisplayLootForEquipmentSlot(equipPoint.EquipSlot);
         isDisplayingEquipmentDetail = true;
     }
-    
-    public void OnEquipmentClick (EquipmentPoint equipment) {
+
+    public void OnEquipmentClick(EquipmentPoint equipment)
+    {
         DisplayEquipmentDetails(equipment);
     }
 
-    public override void GoBack() {
-        if (isDisplayingEquipmentDetail) {
+    public override void GoBack()
+    {
+        if (isDisplayingEquipmentDetail)
+        {
             DisplayShipView();
-        } else {
+        }
+        else
+        {
             base.GoBack();
         }
     }

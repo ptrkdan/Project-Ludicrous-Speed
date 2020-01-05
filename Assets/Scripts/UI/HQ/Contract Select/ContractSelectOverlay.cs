@@ -4,16 +4,16 @@ using UnityEngine;
 public class ContractSelectOverlay : Overlay
 {
     [Header("UI Prefabs")]
-    [SerializeField] ContractSelection contractSelectionPrefab;
+    [SerializeField] private ContractSelection contractSelectionPrefab;
 
     [Header("UI Offsets")]
-    [SerializeField] float contractSelectXOffset = 0;
-    [SerializeField] float contractSelectYOffset = 60;
-    [SerializeField] float contractSelectHeight = 100;
+    [SerializeField] private float contractSelectXOffset = 0;
+    [SerializeField] private float contractSelectYOffset = 60;
+    [SerializeField] private float contractSelectHeight = 100;
 
     [Header("Contract Data")]
-    [SerializeField] [Range(1, 3)] int displayedContractCount = 3;
-    MasterContractGate masterContractGate;
+    [SerializeField] [Range(1, 3)] private int displayedContractCount = 3;
+    private MasterContractGate masterContractGate;
 
     private bool contractsDisplayed = false;
 

@@ -3,7 +3,7 @@
 [RequireComponent(typeof(DamageDealer))]
 public class Projectile : Interactable
 {
-    const string PROJECTILE_PARENT_NAME = "Projectiles";
+    private const string PROJECTILE_PARENT_NAME = "Projectiles";
 
     protected Vector2 velocity;
 
@@ -17,20 +17,24 @@ public class Projectile : Interactable
         GetComponent<DamageDealer>().DealDamage(other);
     }
 
-    protected override void OnTriggerEnter2D(Collider2D other) {
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
         base.OnTriggerEnter2D(other);
         Destroy(gameObject);        // May not be the the case for all projectiles
     }
 
-    public virtual void Fire() {
+    public virtual void Fire()
+    {
         GetComponent<Rigidbody2D>().velocity = velocity;
     }
 
-    public virtual void SetDamage(float value) {
+    public virtual void SetDamage(float value)
+    {
         GetComponent<DamageDealer>().Damage = value;
     }
 
-    public virtual void SetVelocity(Vector2 value) {
+    public virtual void SetVelocity(Vector2 value)
+    {
         velocity = value;
     }
 

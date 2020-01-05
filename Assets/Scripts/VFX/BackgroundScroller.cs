@@ -2,11 +2,11 @@
 
 public class BackgroundScroller : MonoBehaviour
 {
-    [SerializeField] float scrollSpeed = 0.5f;
-    [SerializeField] float scrollSpeedMax = 5f;
+    [SerializeField] private float scrollSpeed = 0.5f;
+    [SerializeField] private float scrollSpeedMax = 5f;
 
-    Material backgroundMaterial;
-    Vector2 offset;
+    private Material backgroundMaterial;
+    private Vector2 offset;
 
     private void Start()
     {

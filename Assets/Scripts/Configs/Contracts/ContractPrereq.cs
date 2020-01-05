@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class ContractPrereq
 {
-    [SerializeField] int[] criteria = new int[Enum.GetValues(typeof(PrereqType)).Length];
+    [SerializeField] private int[] criteria = new int[Enum.GetValues(typeof(PrereqType)).Length];
 
     public int[] GetCriteria() => criteria;
     public void SetCriteria(int[] criteria) => this.criteria = criteria;
@@ -27,7 +27,7 @@ public class ContractPrereq
     }
 
     public ContractPrereq(
-        int playerLevel, int smugglerReputation, int FactionAReputation, 
+        int playerLevel, int smugglerReputation, int FactionAReputation,
         int FactionBReputation, int FactionCReputation, int shipPowerLevel, int campaignLevel)
     {
         criteria[(int)PrereqType.PlayerLevel] = playerLevel;

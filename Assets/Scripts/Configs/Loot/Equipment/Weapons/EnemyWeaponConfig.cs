@@ -4,7 +4,7 @@
 public class EnemyWeaponConfig : AutoWeaponConfig
 {
     [Header("Misc.")]
-    [SerializeField] float cooldownVariation;
+    [SerializeField] private float cooldownVariation;
 
     public float CooldownVariation { get => cooldownVariation; set => cooldownVariation = value; }
 

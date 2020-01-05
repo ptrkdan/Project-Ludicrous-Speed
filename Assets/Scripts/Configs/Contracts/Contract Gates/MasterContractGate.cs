@@ -4,12 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Configs/Gates/Master Contract Gate")]
 public class MasterContractGate : ContractGate
 {
-    [SerializeField] CampaignContractGate campaignContractGate;
-    [SerializeField] StandardContractGate standardContractGate;
+    [SerializeField] private CampaignContractGate campaignContractGate;
+    [SerializeField] private StandardContractGate standardContractGate;
+
     //[SerializeField] SpecialContractGate specialContractGate;
 
-    List<ContractConfig> unlockedContracts = new List<ContractConfig>();
-    bool isDirty = true;
+    private List<ContractConfig> unlockedContracts = new List<ContractConfig>();
+    private bool isDirty = true;
 
     public override List<ContractConfig> GetContracts()
     {

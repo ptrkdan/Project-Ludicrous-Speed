@@ -5,29 +5,29 @@ using TMPro;
 public class MarketBuyItemDetailsView : Overlay
 {
     [Header("UI References - Item Info")]
-    [SerializeField] TextMeshProUGUI itemName;
-    [SerializeField] TextMeshProUGUI itemCost;
-    [SerializeField] TextMeshProUGUI itemDescription;
-    [SerializeField] Image itemIcon;
+    [SerializeField] private TextMeshProUGUI itemName;
+    [SerializeField] private TextMeshProUGUI itemCost;
+    [SerializeField] private TextMeshProUGUI itemDescription;
+    [SerializeField] private Image itemIcon;
 
     [Header("UI References - Item Stats")]
-    [SerializeField] RectTransform statsPanel;
-    [SerializeField] TextMeshProUGUI hullValue;
-    [SerializeField] TextMeshProUGUI shieldValue;
-    [SerializeField] TextMeshProUGUI engineValue;
-    [SerializeField] TextMeshProUGUI weaponValue;
-    [SerializeField] TextMeshProUGUI auxValue;
+    [SerializeField] private RectTransform statsPanel;
+    [SerializeField] private TextMeshProUGUI hullValue;
+    [SerializeField] private TextMeshProUGUI shieldValue;
+    [SerializeField] private TextMeshProUGUI engineValue;
+    [SerializeField] private TextMeshProUGUI weaponValue;
+    [SerializeField] private TextMeshProUGUI auxValue;
 
     [Header("UI References - Controls")]
-    [SerializeField] RectTransform controlsPanel;
-    [SerializeField] Button buyButton;
-    [SerializeField] Button compareButton;
-    [SerializeField] Button buyAndEquipButton;
+    [SerializeField] private RectTransform controlsPanel;
+    [SerializeField] private Button buyButton;
+    [SerializeField] private Button compareButton;
+    [SerializeField] private Button buyAndEquipButton;
 
     [Space]
-    [SerializeField] int itemCostFactor = 4;
+    [SerializeField] private int itemCostFactor = 4;
 
-    Loot item;
+    private Loot item;
 
     private void Start()
     {

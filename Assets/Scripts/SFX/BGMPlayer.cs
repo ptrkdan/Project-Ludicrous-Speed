@@ -7,10 +7,14 @@ public class BGMPlayer : MonoBehaviour
         SetUpSingleton();
     }
 
-    private void SetUpSingleton() {
-        if (FindObjectsOfType(GetType()).Length > 1) {
+    private void SetUpSingleton()
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
             Destroy(gameObject);
-        } else {
+        }
+        else
+        {
             DontDestroyOnLoad(gameObject);
         }
     }

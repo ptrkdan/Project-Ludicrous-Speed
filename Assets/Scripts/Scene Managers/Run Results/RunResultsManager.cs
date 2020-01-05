@@ -7,21 +7,23 @@ using TMPro;
 public class RunResultsManager : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] TextMeshProUGUI resultsText;
-    [SerializeField] Transform lootGrid;
-    [SerializeField] Button restartButton;
-    [SerializeField] Button hqButton;
+    [SerializeField] private TextMeshProUGUI resultsText;
+    [SerializeField] private Transform lootGrid;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button hqButton;
 
     [Header("UI Prefabs")]
-    [SerializeField] RunResultsLootRow lootRowPrefab;
-    
-    GameSession session;
-    PlayerSingleton player;
-    SceneLoader sceneLoader;
+    [SerializeField] private RunResultsLootRow lootRowPrefab;
 
-    private void Start() {
+    private GameSession session;
+    private PlayerSingleton player;
+    private SceneLoader sceneLoader;
+
+    private void Start()
+    {
         session = FindObjectOfType<GameSession>();
-        if (!session) {
+        if (!session)
+        {
             sceneLoader.GoToPreload();
         }
 
@@ -29,23 +31,28 @@ public class RunResultsManager : MonoBehaviour
         FinalizeResults(session.IsRunSuccessful);
     }
 
-    private void FinalizeResults(bool success) {
+    private void FinalizeResults(bool success)
+    {
         SetResultsText(success);
         SetLoot(success);
         UpdatePlayerLevel(success);
         InvokeMissionComplete(success, session.ActiveContract);
     }
 
-    private void SetResultsText(bool success) {
-        if(success) {
+    private void SetResultsText(bool success)
+    {
+        if (success)
+        {
             resultsText.text = "Successful!";
             restartButton.gameObject.SetActive(false);
             hqButton.transform.position -= new Vector3(120, 0); // TODO Make into const
-        } else {
+        }
+        else
+        {
             resultsText.text = "Busted!";
         }
     }
-    
+
     private void SetLoot(bool success)
     {
         if (success)
@@ -91,7 +98,8 @@ public class RunResultsManager : MonoBehaviour
                     player.AddToInventory(receivedRewards[i].Create());
                 }
             }
-        } else
+        }
+        else
         {
             // TODO Penalty? Give reduced credit reward?
         }
@@ -102,7 +110,7 @@ public class RunResultsManager : MonoBehaviour
         // TODO Determine experience point reward for successful and failed missions
         if (success)
         {
-            PlayerSingleton.instance.IncreaseExperiencePoints(100); 
+            PlayerSingleton.instance.IncreaseExperiencePoints(100);
         }
     }
 

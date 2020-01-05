@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Configs/Gates/Campaign Contract Gate")]
 public class CampaignContractGate : ContractGate
 {
-    [SerializeField] CampaignContractPool campaignContractPool;
+    [SerializeField] private CampaignContractPool campaignContractPool;
 
     public override List<ContractConfig> GetContracts()
     {
