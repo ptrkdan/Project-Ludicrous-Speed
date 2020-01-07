@@ -117,7 +117,7 @@ public class RunManager : MonoBehaviour
         List<CreatureController> rightCreatureSpawnerPrefabs = new List<CreatureController>();
         foreach (CreatureController creature in config.Creatures)
         {
-            switch (creature.GetSpawnPointSidePreference())
+            switch (creature.SpawnPointSidePreference)
             {
                 case (SpawnPointSidePreference.Left):
                     leftCreatureSpawnerPrefabs.Add(creature);

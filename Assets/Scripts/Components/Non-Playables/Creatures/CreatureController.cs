@@ -4,5 +4,5 @@ public abstract class CreatureController : EnemyController
 {
     [SerializeField] private SpawnPointSidePreference spawnPointSidePreference = SpawnPointSidePreference.Both;
 
-    public SpawnPointSidePreference GetSpawnPointSidePreference() => spawnPointSidePreference;
+    public SpawnPointSidePreference SpawnPointSidePreference => spawnPointSidePreference;
 }

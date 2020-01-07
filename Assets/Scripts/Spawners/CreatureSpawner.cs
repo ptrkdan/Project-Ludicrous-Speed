@@ -81,7 +81,7 @@ public class CreatureSpawner : MonoBehaviour
     private void SpawnUnit()
     {
         EnemyController unitPrefab = creatureUnitPrefabs[Random.Range(0, creatureUnitPrefabs.Count)];
-        Transform selectedSpawnPoint = SelectSpawnPoint(unitPrefab.GetSpawnPreference());
+        Transform selectedSpawnPoint = SelectSpawnPoint(unitPrefab.SpawnPreference);
 
         EnemyController newUnit = Instantiate(unitPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
         newUnit.transform.parent = selectedSpawnPoint.transform;

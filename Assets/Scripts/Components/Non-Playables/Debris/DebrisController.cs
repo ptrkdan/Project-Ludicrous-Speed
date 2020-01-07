@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-
-public class DebrisController : LivingInteractable
+﻿public class DebrisController : LivingInteractable
 {
     protected override void Initialize()
     {

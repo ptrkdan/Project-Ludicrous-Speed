@@ -84,7 +84,7 @@ public class SecuritySpawner : MonoBehaviour
     private void SpawnUnit()
     {
         EnemyController unitPrefab = securityUnitPrefabs[Random.Range(0, securityUnitPrefabs.Count)];
-        Transform selectedSpawnPoint = SelectSpawnPoint(unitPrefab.GetSpawnPreference());
+        Transform selectedSpawnPoint = SelectSpawnPoint(unitPrefab.SpawnPreference);
 
         // Create new unit
         EnemyController newUnit = Instantiate(unitPrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation) as EnemyController;

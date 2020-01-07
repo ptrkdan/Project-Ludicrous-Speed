@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class SecurityBomber : SecurityUnitController
+﻿public class SecurityBomber : SecurityUnitController
 {
 
 }

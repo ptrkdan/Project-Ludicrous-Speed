@@ -12,7 +12,7 @@ public abstract class EnemyController : LivingInteractable
     protected Rigidbody2D rigidBody;
     protected EnemyWeapon weapon;
 
-    public SpawnPreference GetSpawnPreference() => spawnPreference;
+    public SpawnPreference SpawnPreference => spawnPreference;
 
 
     protected override void Initialize()
@@ -28,7 +28,8 @@ public abstract class EnemyController : LivingInteractable
     private void InitializeWeapon()
     {
         if (!weaponConfig) return;
-        weapon = (EnemyWeapon)weaponConfig.Create();
+
+        weapon = weaponConfig.Create() as EnemyWeapon;
         weapon.SetTurretPosition(turret);
     }
 
@@ -47,7 +48,11 @@ public abstract class EnemyController : LivingInteractable
 
     public override void Interact(Interactable other)
     {
-        GetComponent<DamageDealer>()?.DealDamage(other);
+        DamageDealer damageDealer = GetComponent<DamageDealer>();
+        if (damageDealer)
+        {
+            damageDealer.DealDamage(other);
+        }
     }
 }
 

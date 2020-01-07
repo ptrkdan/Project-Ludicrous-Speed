@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class AlienPassengerShip : CreatureController
+﻿public class AlienPassengerShip : CreatureController
 {
 
 }

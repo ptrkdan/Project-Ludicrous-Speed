@@ -9,7 +9,7 @@ public class EnemyStats : InteractableStats
 
     [Header("Audio")]
     [SerializeField] private AudioClip deathSFX;
-    [SerializeField] [Range(0, 1)] private float deathSFXVolume = 0.7f;
+    [SerializeField, Range(0, 1)] private float deathSFXVolume = 0.7f;
 
     public override void TakeDamage(float damage)
     {

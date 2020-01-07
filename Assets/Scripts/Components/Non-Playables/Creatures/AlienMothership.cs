@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class AlienMothership : CreatureController
+﻿public class AlienMothership : CreatureController
 {
 
 }

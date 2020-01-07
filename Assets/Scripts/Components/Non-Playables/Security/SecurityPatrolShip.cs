@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class SecurityPatrolShip : SecurityUnitController
+﻿public class SecurityPatrolShip : SecurityUnitController
 {
 
 }

@@ -3,20 +3,17 @@
 public class PlayerStats : InteractableStats
 {
     [Header("VFX")]
-#pragma warning disable CS0649 // Field 'PlayerStats.explosionVFX' is never assigned to, and will always have its default value null
     [SerializeField] private ParticleSystem explosionVFX;
-#pragma warning restore CS0649 // Field 'PlayerStats.explosionVFX' is never assigned to, and will always have its default value null
     [SerializeField] private float explosionDuration = 1;
 
     [Header("Audio")]
-#pragma warning disable CS0649 // Field 'PlayerStats.deathSFX' is never assigned to, and will always have its default value null
     [SerializeField] private AudioClip deathSFX;
-#pragma warning restore CS0649 // Field 'PlayerStats.deathSFX' is never assigned to, and will always have its default value null
-    [SerializeField] [Range(0, 1)] private float deathSFXVolume = 1f;
+    [SerializeField, Range(0, 1)] private float deathSFXVolume = 1f;
 
     [Header("Misc.")]
     [SerializeField] private bool isInvincible = false;
     [SerializeField] private float gameOverDelay = 2f;
+
     private float maxShield;
     private float currentShield;
     private float shieldRegenDelay;
@@ -61,7 +58,7 @@ public class PlayerStats : InteractableStats
                 currentShield -= damage;
                 if (currentShield < 0)
                 {
-                    remainingDamage = currentShield * -1; // Get the inverse of current shield value
+                    remainingDamage = currentShield * -1; // Get the inverse of negative shield value
                     currentShield = 0;
                 }
                 else
@@ -72,7 +69,7 @@ public class PlayerStats : InteractableStats
             }
 
             if (remainingDamage > 0)
-            {   // if there is still remaining daamge after shield, take hull damage
+            {   // if there is still remaining damage after shield, take hull damage
                 base.TakeDamage(Mathf.FloorToInt(remainingDamage));
                 UpdateHullArmouBar();
                 if (currentHealth <= 0)
@@ -99,7 +96,6 @@ public class PlayerStats : InteractableStats
 
         // Death SFX
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
-
 
         // Load Run Result Scene
         FindObjectOfType<GameSession>().IsRunSuccessful = false;
@@ -135,11 +131,11 @@ public class PlayerStats : InteractableStats
 
     private void UpdateHullArmouBar()
     {
-        RunManager.instance.UpdateHullArmouBar((float)currentHealth / maxHealth);
+        RunManager.instance.UpdateHullArmouBar(currentHealth / maxHealth);
     }
 
     private void UpdateShieldBar()
     {
-        RunManager.instance.UpdateShieldBar((float)currentShield / maxShield);
+        RunManager.instance.UpdateShieldBar(currentShield / maxShield);
     }
 }

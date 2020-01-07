@@ -15,6 +15,7 @@ public class PlayerController : LivingInteractable
 
     [Space]
     [SerializeField] private float engineValueFactor = 0.5f;
+
     private float movementXMin;
     private float movementXMax;
     private float movementYMin;
@@ -74,9 +75,9 @@ public class PlayerController : LivingInteractable
 
     private void SetEquipment()
     {
-        primaryWpn = (Weapon)player.GetEquipment(EquipmentSlot.PrimaryWeapon);
-        secondaryWpn = (Weapon)player.GetEquipment(EquipmentSlot.SecondaryWeapon);
-        supportEquip = (SupportEquipment)player.GetEquipment(EquipmentSlot.Support);
+        primaryWpn = player.GetEquipment(EquipmentSlot.PrimaryWeapon) as Weapon;
+        secondaryWpn = player.GetEquipment(EquipmentSlot.SecondaryWeapon) as Weapon;
+        supportEquip = player.GetEquipment(EquipmentSlot.Support) as SupportEquipment;
 
         primaryWpn.SetTurretPosition(turret);
         secondaryWpn.SetTurretPosition(turret);

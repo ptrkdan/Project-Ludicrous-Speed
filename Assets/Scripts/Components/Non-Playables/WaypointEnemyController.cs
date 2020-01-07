@@ -12,8 +12,8 @@ public class WaypointEnemyController : EnemyController
     {
         if (waypointIndex <= waveConfig.GetWayPoints().Count - 1)
         {
-            var targetPosition = waveConfig.GetWayPoints()[waypointIndex].transform.position;
-            var currentMovement = stats.GetStat(StatType.Engine).Value * Time.deltaTime;
+            Vector3 targetPosition = waveConfig.GetWayPoints()[waypointIndex].transform.position;
+            float currentMovement = stats.GetStat(StatType.Engine).Value * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, currentMovement);
 
             if (transform.position == targetPosition)

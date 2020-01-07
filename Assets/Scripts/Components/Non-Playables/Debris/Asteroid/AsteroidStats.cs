@@ -8,7 +8,7 @@ public class AsteroidStats : InteractableStats
 
     [Header("SFX")]
     [SerializeField] private AudioClip deathSFX;
-    [SerializeField] [Range(0, 1)] private float deathSFXVolume;
+    [SerializeField, Range(0, 1)] private float deathSFXVolume;
 
     public override void TakeDamage(float damage)
     {
