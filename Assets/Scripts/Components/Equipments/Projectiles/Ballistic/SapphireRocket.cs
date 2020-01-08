@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class SapphireRocket : Projectile
+﻿public class SapphireRocket : Projectile
 {
 
 }

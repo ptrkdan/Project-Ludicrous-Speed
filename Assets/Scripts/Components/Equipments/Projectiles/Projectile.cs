@@ -12,15 +12,15 @@ public class Projectile : Interactable
         AssignProjectileTransformParent();
     }
 
-    public override void Interact(Interactable other)
-    {
-        GetComponent<DamageDealer>().DealDamage(other);
-    }
-
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         base.OnTriggerEnter2D(other);
         Destroy(gameObject);        // May not be the the case for all projectiles
+    }
+
+    public override void Interact(Interactable other)
+    {
+        GetComponent<DamageDealer>().DealDamage(other);
     }
 
     public virtual void Fire()

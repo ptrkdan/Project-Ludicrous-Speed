@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public abstract class Laser : Projectile
+﻿public abstract class Laser : Projectile
 {
-    
+
 }
